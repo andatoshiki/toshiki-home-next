@@ -47,7 +47,7 @@ export function SoftwareGrid({
       />
 
       {/* Grid container with backdrop blur */}
-      <ol className="relative m-0 grid list-none grid-cols-3 items-start justify-center gap-6 px-4 py-8 backdrop-blur-md backdrop-saturate-[1.25] sm:px-6 sm:py-10 md:grid-cols-4 md:px-8 md:py-12 lg:grid-cols-5">
+      <ol className="relative m-0 grid list-none grid-cols-3 items-start justify-center gap-6 px-4 py-8 backdrop-blur-md backdrop-saturate-[1.25] sm:px-6 sm:py-10 md:grid-cols-4 md:px-8 md:py-12 lg:grid-cols-6">
         {sortedItems.map(item => (
           <li key={item.id} className="flex justify-center">
             <button
@@ -57,7 +57,7 @@ export function SoftwareGrid({
               className="group/software flex w-full max-w-[100px] cursor-pointer flex-col items-center gap-1.5 rounded-lg pb-1 no-underline outline-none transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50"
             >
               {/* App Icon */}
-              <div className="relative h-24 w-24 scale-95 transition-transform duration-200 ease-out group-hover/software:scale-100 sm:h-28 sm:w-28 md:h-28 md:w-28">
+              <div className="relative h-20 w-20 scale-95 transition-transform duration-200 ease-out group-hover/software:scale-100 sm:h-24 sm:w-24 md:h-24 md:w-24">
                 <Image
                   src={item.image}
                   alt={item.name}
