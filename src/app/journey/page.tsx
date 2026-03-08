@@ -50,7 +50,7 @@ export default function JourneyPage() {
   }, [locations])
 
   return (
-    <div className="content-container m-auto space-y-8">
+    <div className="content-container content-vertical-spaces m-auto space-y-8">
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div className="flex items-center gap-3">
           <Title text="Journey" description="Places I've been and want to go" />
