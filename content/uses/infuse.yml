@@ -1,0 +1,11 @@
+id: infuse
+name: Infuse
+type: software
+description: Elegant media player for Apple platforms with rich format support and clean library browsing.
+image: https://cdn.tosh1ki.de/assets/images/20260308110430.png
+url: https://firecore.com/infuse
+tags:
+  - media
+  - player
+  - apple
+featured: false

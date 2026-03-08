@@ -1,0 +1,10 @@
+id: vivaldi
+name: Vivaldi
+type: software
+description: Feature-rich browser with deep customization, tab management, and built-in productivity tools.
+image: https://cdn.tosh1ki.de/assets/images/20260308110504.png
+url: https://vivaldi.com
+tags:
+  - browser
+  - productivity
+featured: false

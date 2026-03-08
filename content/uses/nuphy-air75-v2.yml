@@ -1,0 +1,11 @@
+id: nuphy-air75-v2
+name: NuPhy Air75 V2
+type: hardware
+description: Low-profile wireless mechanical keyboard with a compact 75% layout, excellent typing feel, and multi-device connectivity.
+image: https://cdn.tosh1ki.de/assets/images/20260308111019.png
+url: https://nuphy.com/products/air75-v2
+tags:
+  - keyboard
+  - mechanical
+  - wireless
+featured: false

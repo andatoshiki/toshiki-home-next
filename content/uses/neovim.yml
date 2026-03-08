@@ -1,0 +1,11 @@
+id: neovim
+name: NeoVim
+type: software
+description: Highly customizable modal text editor focused on speed, extensibility, and an efficient keyboard-driven workflow.
+image: https://cdn.tosh1ki.de/assets/images/20260308111524.png
+url: https://neovim.io
+tags:
+  - editor
+  - terminal
+  - development
+featured: false

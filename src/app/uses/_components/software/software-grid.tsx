@@ -47,7 +47,7 @@ export function SoftwareGrid({
       />
 
       {/* Grid container with backdrop blur */}
-      <ol className="relative m-0 grid list-none grid-cols-2 items-start justify-center gap-6 px-4 py-8 backdrop-blur-md backdrop-saturate-[1.25] sm:grid-cols-3 sm:px-6 sm:py-10 md:grid-cols-4 md:px-8 md:py-12 lg:grid-cols-5">
+      <ol className="relative m-0 grid list-none grid-cols-3 items-start justify-center gap-6 px-4 py-8 backdrop-blur-md backdrop-saturate-[1.25] sm:px-6 sm:py-10 md:grid-cols-4 md:px-8 md:py-12 lg:grid-cols-5">
         {sortedItems.map(item => (
           <li key={item.id} className="flex justify-center">
             <button

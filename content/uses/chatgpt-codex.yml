@@ -1,0 +1,11 @@
+id: chatgpt-codex
+name: Codex
+type: software
+description: AI coding assistant for writing, refactoring, and debugging code with contextual project awareness.
+image: https://cdn.tosh1ki.de/assets/images/20260308111327.png
+url: https://chatgpt.com
+tags:
+  - ai
+  - coding
+  - productivity
+featured: false
