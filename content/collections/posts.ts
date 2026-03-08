@@ -10,6 +10,7 @@ export const posts = defineCollection({
       date: s.isodate(),
       lastUpdate: s.isodate().optional(),
       description: s.string(),
+      lang: s.string().optional(),
       category: s.string(),
       tags: s
         .string()
