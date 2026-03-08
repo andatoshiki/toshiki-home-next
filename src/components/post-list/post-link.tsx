@@ -11,7 +11,12 @@ import {
 import { Post } from '#content'
 
 import { Date } from '~/components/date'
-import { DraftBadge, PlannedBadge, TestBadge } from './post-badges'
+import {
+  DraftBadge,
+  LanguageBadge,
+  PlannedBadge,
+  TestBadge
+} from './post-badges'
 
 interface Props {
   post: Post
@@ -44,6 +49,10 @@ export function PostLink({ post, hideYear = false }: Props) {
   const showDate = !post.test
   const showReadingTime = !post.test
   const titleIcon = getTitleIcon(post.category)
+  const rawLanguage = (post as Post & { lang?: string }).lang?.trim()
+  const showLanguageBadge = Boolean(
+    rawLanguage && rawLanguage.toLowerCase() !== 'english'
+  )
 
   if (post.status === 'planned') {
     return (
@@ -52,10 +61,13 @@ export function PostLink({ post, hideYear = false }: Props) {
           <h2 className="text-xl font-bold text-neutral-700 dark:text-neutral-500">
             {post.title}
           </h2>
-          <span className="relative overflow-hidden rounded-lg">
-            <span className="shine group-hover:animate-shine group-hover:animate-duration-[1.5s]" />
-            <PlannedBadge />
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="relative overflow-hidden rounded-lg">
+              <span className="shine group-hover:animate-shine group-hover:animate-duration-[1.5s]" />
+              <PlannedBadge />
+            </span>
+            {showLanguageBadge && <LanguageBadge lang={rawLanguage!} />}
+          </div>
         </div>
         <span className="hidden text-neutral-500 md:inline">
           {post.description}
@@ -97,6 +109,7 @@ export function PostLink({ post, hideYear = false }: Props) {
             </h2>
             {post.test && <TestBadge />}
             {post.status === 'draft' && !post.test && <DraftBadge />}
+            {showLanguageBadge && <LanguageBadge lang={rawLanguage!} />}
           </div>
           <span className="hidden items-center gap-3 text-neutral-500 group-hover:text-neutral-700 group-active:text-neutral-700 dark:group-hover:text-neutral-400 group-active:dark:text-neutral-400 md:inline-flex">
             {post.description}

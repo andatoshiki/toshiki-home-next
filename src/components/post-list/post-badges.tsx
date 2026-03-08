@@ -3,7 +3,8 @@
 import {
   Code,
   FileDashed,
-  PencilSimpleLine
+  PencilSimpleLine,
+  Globe
 } from '@phosphor-icons/react/dist/ssr'
 
 export const DraftBadge = () => (
@@ -21,5 +22,11 @@ export const PlannedBadge = () => (
 export const TestBadge = () => (
   <div className="common-badge border-green-600/20 bg-green-600/5 text-green-600">
     <Code size="1em" /> Test
+  </div>
+)
+
+export const LanguageBadge = ({ lang }: { lang: string }) => (
+  <div className="common-badge border-cyan-600/20 bg-cyan-600/5 text-cyan-600">
+    <Globe size="1em" /> {lang}
   </div>
 )
