@@ -1,22 +1,22 @@
 appid: 2458530
-name: '魔女的夜宴'
-playtimeMinutes: 1627
-playtimeHours: 27.1
-playtime2Weeks: 194
-lastPlayed: 1766458012
-iconUrl: 'https://media.steampowered.com/steamcommunity/public/images/apps/2458530/cba4da3d4d301df7aa297fc543cc419f7212b3da.jpg'
-headerImage: 'https://steamcdn-a.akamaihd.net/steam/apps/2458530/header.jpg'
-capsuleImage: 'https://steamcdn-a.akamaihd.net/steam/apps/2458530/capsule_231x87.jpg'
+name: "魔女的夜宴"
+playtimeMinutes: 1649
+playtimeHours: 27.5
+playtime2Weeks: null
+lastPlayed: 1766717593
+iconUrl: "https://media.steampowered.com/steamcommunity/public/images/apps/2458530/cba4da3d4d301df7aa297fc543cc419f7212b3da.jpg"
+headerImage: "https://steamcdn-a.akamaihd.net/steam/apps/2458530/header.jpg"
+capsuleImage: "https://steamcdn-a.akamaihd.net/steam/apps/2458530/capsule_231x87.jpg"
 developers:
-  - 'YUZUSOFT'
+  - "YUZUSOFT"
 publishers:
-  - 'HIKARI FIELD'
+  - "HIKARI FIELD"
 genres:
-  - 'Adventure'
-  - 'Casual'
-releaseDate: 'Jul 21, 2023'
-shortDescription: '《魔女的夜宴》是日本超人气美少女游戏品牌YUZUSOFT（柚子社）的经典名作。女主角绫地宁宁由当红声优桐谷华配音，是该社历代作品中最具代表性的女主角之一。国际中文版拥有超越原版的1920X1080的高清画质。本作也曾在美少女游戏大赏和萌系游戏大赏中斩获众多奖项。'
+  - "Adventure"
+  - "Casual"
+releaseDate: "Jul 21, 2023"
+shortDescription: "《魔女的夜宴》是日本超人气美少女游戏品牌YUZUSOFT（柚子社）的经典名作。女主角绫地宁宁由当红声优桐谷华配音，是该社历代作品中最具代表性的女主角之一。国际中文版拥有超越原版的1920X1080的高清画质。本作也曾在美少女游戏大赏和萌系游戏大赏中斩获众多奖项。"
 metacriticScore: null
-storeUrl: 'https://store.steampowered.com/app/2458530'
+storeUrl: "https://store.steampowered.com/app/2458530"
 isFree: false
-priceCents: 2204
+priceCents: 3499

@@ -1,22 +1,22 @@
-steamId: '76561199848389213'
-personaName: 'Anda Toshiki'
-profileUrl: 'https://steamcommunity.com/id/andatoshiki/'
-avatar: 'https://avatars.steamstatic.com/9693f45821359e00e74e56280535e863c753bf87.jpg'
-avatarMedium: 'https://avatars.steamstatic.com/9693f45821359e00e74e56280535e863c753bf87_medium.jpg'
-avatarFull: 'https://avatars.steamstatic.com/9693f45821359e00e74e56280535e863c753bf87_full.jpg'
+steamId: "76561199848389213"
+personaName: "Anda Toshiki"
+profileUrl: "https://steamcommunity.com/id/andatoshiki/"
+avatar: "https://avatars.steamstatic.com/9693f45821359e00e74e56280535e863c753bf87.jpg"
+avatarMedium: "https://avatars.steamstatic.com/9693f45821359e00e74e56280535e863c753bf87_medium.jpg"
+avatarFull: "https://avatars.steamstatic.com/9693f45821359e00e74e56280535e863c753bf87_full.jpg"
 level: 5
 createdAt: 1745208773
-country: 'US'
-realName: 'Anda Toshiki'
+country: "US"
+realName: "Anda Toshiki"
 totalGames: 22
-totalPlaytimeHours: 977.2
+totalPlaytimeHours: 992.6
 gamesPlayed: 16
 freeGames: 1
 paidGames: 21
-totalValueCents: 17390
-playedValueCents: 12621
-unplayedValueCents: 4769
-pricePerHour: 18
+totalValueCents: 51044
+playedValueCents: 43050
+unplayedValueCents: 7994
+pricePerHour: 51
 hoursInFreeGames: 22
-hoursInPaidGames: 955.2
-lastUpdated: 1766712958
+hoursInPaidGames: 970.7
+lastUpdated: 1772989807

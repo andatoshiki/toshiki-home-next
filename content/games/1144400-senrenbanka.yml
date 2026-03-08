@@ -1,23 +1,23 @@
 appid: 1144400
-name: 'Senren＊Banka'
+name: "Senren＊Banka"
 playtimeMinutes: 965
 playtimeHours: 16.1
 playtime2Weeks: null
 lastPlayed: 1756615777
-iconUrl: 'https://media.steampowered.com/steamcommunity/public/images/apps/1144400/52bb7ecf2ec4e08b37206e52bd43e328d785fabb.jpg'
-headerImage: 'https://steamcdn-a.akamaihd.net/steam/apps/1144400/header.jpg'
-capsuleImage: 'https://steamcdn-a.akamaihd.net/steam/apps/1144400/capsule_231x87.jpg'
+iconUrl: "https://media.steampowered.com/steamcommunity/public/images/apps/1144400/52bb7ecf2ec4e08b37206e52bd43e328d785fabb.jpg"
+headerImage: "https://steamcdn-a.akamaihd.net/steam/apps/1144400/header.jpg"
+capsuleImage: "https://steamcdn-a.akamaihd.net/steam/apps/1144400/capsule_231x87.jpg"
 developers:
-  - 'YUZUSOFT'
+  - "YUZUSOFT"
 publishers:
-  - 'HIKARI FIELD'
-  - 'NekoNyan Ltd.'
+  - "HIKARI FIELD"
+  - "NekoNyan Ltd."
 genres:
-  - 'Adventure'
-  - 'Casual'
-releaseDate: 'Feb 14, 2020'
+  - "Adventure"
+  - "Casual"
+releaseDate: "Feb 14, 2020"
 shortDescription: "Senren＊Banka is a Japanese-style visual novel produced by Yuzusoft, a Japanese developer of romance VNs. This game commemorated Yuzusoft's 10th anniversary. It won numerous awards on the year of its release in Japan for its art, music, and characters."
 metacriticScore: null
-storeUrl: 'https://store.steampowered.com/app/1144400'
+storeUrl: "https://store.steampowered.com/app/1144400"
 isFree: false
-priceCents: 1924
+priceCents: 3499

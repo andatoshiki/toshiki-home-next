@@ -1,21 +1,21 @@
 appid: 1034940
-name: 'Higurashi When They Cry Hou - Ch.7 Minagoroshi'
+name: "Higurashi When They Cry Hou - Ch.7 Minagoroshi"
 playtimeMinutes: 0
 playtimeHours: 0
 playtime2Weeks: null
 lastPlayed: 0
-iconUrl: 'https://media.steampowered.com/steamcommunity/public/images/apps/1034940/232366ea6b1498ef8ad7b939f50eb7de6e9a200e.jpg'
-headerImage: 'https://steamcdn-a.akamaihd.net/steam/apps/1034940/header.jpg'
-capsuleImage: 'https://steamcdn-a.akamaihd.net/steam/apps/1034940/capsule_231x87.jpg'
+iconUrl: "https://media.steampowered.com/steamcommunity/public/images/apps/1034940/232366ea6b1498ef8ad7b939f50eb7de6e9a200e.jpg"
+headerImage: "https://steamcdn-a.akamaihd.net/steam/apps/1034940/header.jpg"
+capsuleImage: "https://steamcdn-a.akamaihd.net/steam/apps/1034940/capsule_231x87.jpg"
 developers:
-  - '07th Expansion'
+  - "07th Expansion"
 publishers:
-  - 'MangaGamer'
+  - "MangaGamer"
 genres:
-  - 'Adventure'
-releaseDate: 'Jul 18, 2019'
-shortDescription: 'Higurashi When They Cry is a sound novel. The music, backgrounds and characters work together to create a world that is the stage of a novel for the user to read. They laugh and cry and get angry. The user takes the point of view of the protagonist to experience the story.'
+  - "Adventure"
+releaseDate: "Jul 18, 2019"
+shortDescription: "Higurashi When They Cry is a sound novel. The music, backgrounds and characters work together to create a world that is the stage of a novel for the user to read. They laugh and cry and get angry. The user takes the point of view of the protagonist to experience the story."
 metacriticScore: null
-storeUrl: 'https://store.steampowered.com/app/1034940'
+storeUrl: "https://store.steampowered.com/app/1034940"
 isFree: false
-priceCents: 519
+priceCents: 799

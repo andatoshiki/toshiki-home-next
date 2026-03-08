@@ -1,24 +1,24 @@
 appid: 105600
-name: 'Terraria'
-playtimeMinutes: 15253
-playtimeHours: 254.2
-playtime2Weeks: 598
-lastPlayed: 1766642482
-iconUrl: 'https://media.steampowered.com/steamcommunity/public/images/apps/105600/858961e95fbf869f136e1770d586e0caefd4cfac.jpg'
-headerImage: 'https://steamcdn-a.akamaihd.net/steam/apps/105600/header.jpg'
-capsuleImage: 'https://steamcdn-a.akamaihd.net/steam/apps/105600/capsule_231x87.jpg'
+name: "Terraria"
+playtimeMinutes: 16067
+playtimeHours: 267.8
+playtime2Weeks: 3
+lastPlayed: 1772700189
+iconUrl: "https://media.steampowered.com/steamcommunity/public/images/apps/105600/858961e95fbf869f136e1770d586e0caefd4cfac.jpg"
+headerImage: "https://steamcdn-a.akamaihd.net/steam/apps/105600/header.jpg"
+capsuleImage: "https://steamcdn-a.akamaihd.net/steam/apps/105600/capsule_231x87.jpg"
 developers:
-  - 'Re-Logic'
+  - "Re-Logic"
 publishers:
-  - 'Re-Logic'
+  - "Re-Logic"
 genres:
-  - 'Action'
-  - 'Adventure'
-  - 'Indie'
-  - 'RPG'
-releaseDate: 'May 16, 2011'
-shortDescription: 'Dig, fight, explore, build! Nothing is impossible in this action-packed adventure game. Four Pack also available!'
+  - "Action"
+  - "Adventure"
+  - "Indie"
+  - "RPG"
+releaseDate: "May 16, 2011"
+shortDescription: "Dig, fight, explore, build! Nothing is impossible in this action-packed adventure game. Four Pack also available!"
 metacriticScore: 83
-storeUrl: 'https://store.steampowered.com/app/105600'
+storeUrl: "https://store.steampowered.com/app/105600"
 isFree: false
-priceCents: 499
+priceCents: 999

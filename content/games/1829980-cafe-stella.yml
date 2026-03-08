@@ -1,23 +1,23 @@
 appid: 1829980
-name: 'Cafe Stella'
+name: "Cafe Stella"
 playtimeMinutes: 0
 playtimeHours: 0
 playtime2Weeks: null
 lastPlayed: 0
-iconUrl: 'https://media.steampowered.com/steamcommunity/public/images/apps/1829980/8a1a4abc123ac2ee8aef018ef31f2ce487157277.jpg'
-headerImage: 'https://steamcdn-a.akamaihd.net/steam/apps/1829980/header.jpg'
-capsuleImage: 'https://steamcdn-a.akamaihd.net/steam/apps/1829980/capsule_231x87.jpg'
+iconUrl: "https://media.steampowered.com/steamcommunity/public/images/apps/1829980/8a1a4abc123ac2ee8aef018ef31f2ce487157277.jpg"
+headerImage: "https://steamcdn-a.akamaihd.net/steam/apps/1829980/header.jpg"
+capsuleImage: "https://steamcdn-a.akamaihd.net/steam/apps/1829980/capsule_231x87.jpg"
 developers:
-  - 'YUZUSOFT'
+  - "YUZUSOFT"
 publishers:
-  - 'NekoNyan Ltd.'
-  - 'HIKARI FIELD'
+  - "NekoNyan Ltd."
+  - "HIKARI FIELD"
 genres:
-  - 'Adventure'
-  - 'Casual'
-releaseDate: 'Mar 25, 2022'
+  - "Adventure"
+  - "Casual"
+releaseDate: "Mar 25, 2022"
 shortDescription: "Takamine Kousei was living a carefree college life until, one day, he tragically died in an accident. But then, the bizarre happened: Takamine Kousei opened his eyes again. And what's more, when he woke up, it was the morning of the very day, he had died."
 metacriticScore: null
-storeUrl: 'https://store.steampowered.com/app/1829980'
+storeUrl: "https://store.steampowered.com/app/1829980"
 isFree: false
-priceCents: 2099
+priceCents: 3499
