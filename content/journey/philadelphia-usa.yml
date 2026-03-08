@@ -1,0 +1,12 @@
+id: philadelphia-usa
+name: Philadelphia
+coordinates:
+  latitude: 39.9526
+  longitude: -75.1652
+country: United States
+region: Pennsylvania
+city: Philadelphia
+status: wishlist
+tags:
+  - wishlist
+featured: false

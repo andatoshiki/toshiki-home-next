@@ -1,0 +1,12 @@
+id: columbus-usa
+name: Columbus
+coordinates:
+  latitude: 39.9612
+  longitude: -82.9988
+country: United States
+region: Ohio
+city: Columbus
+status: wishlist
+tags:
+  - wishlist
+featured: false

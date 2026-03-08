@@ -1,0 +1,12 @@
+id: calgary-canada
+name: Calgary
+coordinates:
+  latitude: 51.044733
+  longitude: -114.071883
+country: Canada
+region: Alberta
+city: Calgary
+status: visited
+tags:
+  - travel
+featured: false

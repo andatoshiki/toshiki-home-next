@@ -1,0 +1,22 @@
+appid: 673750
+name: 'Super Bunny Man'
+playtimeMinutes: 40
+playtimeHours: 0.7
+playtime2Weeks: null
+lastPlayed: 1764882213
+iconUrl: 'https://media.steampowered.com/steamcommunity/public/images/apps/673750/84dacb8846b7ede61ca12576ee2c5393b390ed88.jpg'
+headerImage: 'https://steamcdn-a.akamaihd.net/steam/apps/673750/header.jpg'
+capsuleImage: 'https://steamcdn-a.akamaihd.net/steam/apps/673750/capsule_231x87.jpg'
+developers:
+  - 'Catobyte'
+publishers:
+  - 'Catobyte Ltd'
+genres:
+  - 'Action'
+  - 'Indie'
+releaseDate: 'May 16, 2023'
+shortDescription: 'A physics-based co-op platformer about a guy in a rabbit costume! Team up with a friend or three (local or online) to beat levels, find hidden carrots and race against the clock. Experience bunny madness. Embrace carrot chaos. Become Super Bunny Man.'
+metacriticScore: null
+storeUrl: 'https://store.steampowered.com/app/673750'
+isFree: false
+priceCents: 749

@@ -1,0 +1,12 @@
+id: kyoto-japan
+name: Kyoto
+coordinates:
+  latitude: 35.0116
+  longitude: 135.7681
+country: Japan
+region: Kansai
+city: Kyoto
+status: visited
+tags:
+  - travel
+featured: false

@@ -1,0 +1,14 @@
+id: ecnu-china
+name: East China Normal University
+coordinates:
+  latitude: 31.2243
+  longitude: 121.4117
+country: China
+region: Shanghai
+city: Shanghai
+status: visited
+description: Visited East China Normal University (华东师范大学)
+tags:
+  - travel
+  - university
+featured: false

@@ -1,0 +1,12 @@
+id: warsaw-poland
+name: Warsaw
+coordinates:
+  latitude: 52.2297
+  longitude: 21.0122
+country: Poland
+region: Masovian
+city: Warsaw
+status: wishlist
+tags:
+  - wishlist
+featured: false

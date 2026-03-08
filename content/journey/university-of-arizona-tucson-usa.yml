@@ -1,0 +1,13 @@
+id: university-of-arizona-tucson-usa
+name: University of Arizona
+coordinates:
+  latitude: 32.2319
+  longitude: -110.9501
+country: United States
+region: Arizona
+city: Tucson
+status: visited
+date: 2026-01-02
+tags:
+  - visited
+featured: false

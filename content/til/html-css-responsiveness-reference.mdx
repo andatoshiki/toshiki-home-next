@@ -1,0 +1,162 @@
+---
+title: 'HTML, CSS & Responsiveness Reference Sheet'
+date: '2025-01-19'
+description: 'A comprehensive collection of references and guides for HTML, CSS, and building responsive layouts, including key properties, selectors, media queries, and best practices.'
+tags:
+  - html
+  - css
+  - webdev
+  - responsiveness
+---
+
+# HTML, CSS & Responsiveness Reference Sheet
+
+Here is a collection of references for HTML & CSS that can be used as a study guide. Responsiveness explanations and examples are also included.
+
+## HTML
+
+- [Cheatsheet](https://websitesetup.org/html5-cheat-sheet/)
+
+### Basic HTML
+
+- **Class & ID** – [Usage](https://css-tricks.com/the-difference-between-id-and-class/)
+- **Adding CSS** – [Link Tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)
+- **Adding JS** – [Script](https://www.tutorialsteacher.com/javascript/script-tag)
+
+## CSS
+
+- All Properties – [Reference](https://tympanus.net/codrops/css_reference/)
+
+### Basic CSS
+
+- **Box Model** – [Explained](https://css-tricks.com/box-sizing/)
+- **Positioning** – [Guide](https://css-tricks.com/almanac/properties/p/position/)
+- **After & Before Elements** – [Reference](https://css-tricks.com/almanac/selectors/a/after-and-before/) | [Applications](https://bryanlrobinson.com/blog/2018/08/07/top-3-uses-of-after-and-before-css-pseudo-elements/)
+- **Pseudo Class Selectors** – [:not](https://css-tricks.com/almanac/selectors/n/not/) | [:nth-child](https://css-tricks.com/almanac/selectors/n/nth-child/) | [Others](https://css-tricks.com/pseudo-class-selectors/)
+- **Special Functions** – [calc()](https://css-tricks.com/a-complete-guide-to-calc-in-css/) | [Others](https://www.sitepoint.com/8-clever-tricks-with-css-functions/)
+
+### Positioning
+
+- **Flexbox** – [Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/), [Cheatsheet](http://flexbox.malven.co/)
+- **Grid** – [Guide](https://css-tricks.com/snippets/css/complete-guide-grid/), [Cheatsheet](http://grid.malven.co/)
+
+### Animations
+
+- **Creating Animations** – [Reference](https://css-tricks.com/almanac/properties/a/animation/)
+- **Using Transitions** – [Reference](https://css-tricks.com/almanac/properties/t/transition/)
+
+### Images & Transformation
+
+- **Background Images & Gradients** – [Reference](https://css-tricks.com/almanac/properties/b/background-image/)
+- **Transform** – [Reference](https://css-tricks.com/almanac/properties/t/transform/)
+- **Clipping & Masking** – [Reference](https://css-tricks.com/clipping-masking-css/), [Tool](http://bennettfeely.com/clippy/)
+
+### Useful Properties
+
+- [:target](https://developer.mozilla.org/en-US/docs/Web/CSS/:target)
+- [background-clip](https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip)
+- [perspective](https://3dtransforms.desandro.com/perspective)
+- [backface-visibility](https://developer.mozilla.org/en-US/docs/Web/CSS/backface-visibility)
+- [overflow](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow)
+- [background-blend-mode](https://css-tricks.com/almanac/properties/b/background-blend-mode/), [mix-blend-mode](https://css-tricks.com/almanac/properties/m/mix-blend-mode/)
+- [box-decoration-break](https://developer.mozilla.org/en-US/docs/Web/CSS/box-decoration-break)
+- [shape-outside](https://css-tricks.com/almanac/properties/s/shape-outside/)
+- [filter](https://css-tricks.com/almanac/properties/f/filter/)
+- [object-fit](https://css-tricks.com/almanac/properties/o/object-fit/)
+- [hyphens](https://developer.mozilla.org/en-US/docs/Web/CSS/hyphens)
+- [backdrop-filter](https://css-tricks.com/almanac/properties/b/backdrop-filter/)
+
+## Responsiveness
+
+- **Meta Tag**
+  ```html
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  ```
+
+### Screen Width Usage
+
+- **Desktop First**: use `max-width` (higher to lower).
+- **Mobile First**: use `min-width` (lower to higher).
+
+### Order to Apply Media Queries
+
+1. base + typography
+2. general layout
+3. grid
+4. page layout
+5. components
+
+### Handling Images
+
+- **Density Switching**
+
+  ```html
+  <img srcset="img1x.png 1x, img2x.png 2x" alt="Image" />
+  ```
+
+- **Art Directions**
+
+  ```html
+  <picture>
+    <source
+      srcset="imgsmall1x.png 1x, imgsmall2x.png 2x"
+      media="(max-width: 37.5em)"
+    />
+    <img srcset="img1x.png 1x, img2x.png 2x" alt="img" />
+  </picture>
+  ```
+
+- **Resolution Switching**
+
+  ```html
+  <img
+    srcset="img1.png 300w, img1-large.png 1000w"
+    sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+  />
+  ```
+
+- **Handling Images in CSS**
+  ```css
+  @media (min-resolution: 192dpi) and (min-width: 600px),
+    (-webkit-min-device-pixel-ratio: 2) and (min-width: 600px) {
+    /* image you want to set */
+  }
+  ```
+
+### Feature Queries
+
+- **Browser Support**
+
+  ```css
+  @supports (-webkit-backdrop-filter: blur(10px)) or
+    (backdrop-filter: blur(10px)) {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+  ```
+
+- **Touch Capability**
+  ```css
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+  }
+  ```
+
+## Other Useful Concepts
+
+- **Optimizing Images** – [Optimizilla](https://imagecompressor.com/)
+- **SEO with Meta Tags** – [Guide](https://searchenginewatch.com/sew/how-to/2067564/how-to-use-html-meta-tags)
+- **Class Naming Convention** – [BEM](https://css-tricks.com/bem-101/)
+- **Global Reset**
+  ```css
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+  }
+  html {
+    font-size: 62.5%;
+  }
+  body {
+    box-sizing: border-box;
+  }
+  ```

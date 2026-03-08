@@ -1,0 +1,14 @@
+id: chicago-riverwalk-usa
+name: Chicago Riverwalk
+coordinates:
+  latitude: 41.8879
+  longitude: -87.6235
+country: United States
+region: Illinois
+city: Chicago
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+  - landmark
+featured: false

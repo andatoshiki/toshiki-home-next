@@ -1,0 +1,11 @@
+id: iphone-14-pro
+name: iPhone 14 Pro
+type: hardware
+description: Apple's flagship smartphone featuring a 6.1-inch display, A16 Bionic chip, advanced camera system with ProRaw and ProRes support, and exceptional performance.
+image: https://cdn.tosh1ki.de/assets/images/20260106180146.avif
+url: https://www.apple.com/iphone-14-pro
+tags:
+  - smartphone
+  - apple
+  - mobile
+featured: false

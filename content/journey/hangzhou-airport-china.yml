@@ -1,0 +1,12 @@
+id: hangzhou-airport-china
+name: Hangzhou Xiaoshan
+coordinates:
+  latitude: 30.2295
+  longitude: 120.4344
+country: China
+region: Zhejiang
+city: Hangzhou
+status: airport
+tags:
+  - airport
+featured: false

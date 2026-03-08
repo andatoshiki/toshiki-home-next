@@ -1,0 +1,12 @@
+id: madrid-spain
+name: Madrid
+coordinates:
+  latitude: 40.4168
+  longitude: -3.7038
+country: Spain
+region: Community of Madrid
+city: Madrid
+status: wishlist
+tags:
+  - wishlist
+featured: false

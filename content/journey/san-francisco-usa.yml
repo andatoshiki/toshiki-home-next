@@ -1,0 +1,12 @@
+id: san-francisco-usa
+name: San Francisco
+coordinates:
+  latitude: 37.7749
+  longitude: -122.4194
+country: United States
+region: California
+city: San Francisco
+status: visited
+tags:
+  - travel
+featured: false

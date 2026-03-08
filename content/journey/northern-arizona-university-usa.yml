@@ -1,0 +1,13 @@
+id: northern-arizona-university-usa
+name: Northern Arizona University
+coordinates:
+  latitude: 35.1894
+  longitude: -111.6545
+country: United States
+region: Arizona
+city: Flagstaff
+status: visited
+date: 2026-01-02
+tags:
+  - visited
+featured: false

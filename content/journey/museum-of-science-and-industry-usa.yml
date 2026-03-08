@@ -1,0 +1,16 @@
+id: museum-of-science-and-industry-usa
+name: Museum of Science and Industry
+coordinates:
+  latitude: 41.7906
+  longitude: -87.5831
+country: United States
+region: Illinois
+city: Chicago
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+  - landmark
+  - museum
+  - science
+featured: false

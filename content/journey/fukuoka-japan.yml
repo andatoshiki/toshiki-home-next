@@ -1,0 +1,12 @@
+id: fukuoka-japan
+name: Fukuoka
+coordinates:
+  latitude: 33.5904
+  longitude: 130.4017
+country: Japan
+region: Kyushu
+city: Fukuoka
+status: visited
+tags:
+  - travel
+featured: false

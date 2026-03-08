@@ -1,0 +1,11 @@
+id: jellyfin
+name: Jellyfin
+type: software
+description: A free and open-source media server solution that lets you collect, manage, and stream your media to any device from your own server.
+image: https://cdn.tosh1ki.de/assets/images/20260106002612.png
+url: https://jellyfin.org
+tags:
+  - media
+  - streaming
+  - self-hosted
+featured: false

@@ -1,0 +1,12 @@
+id: hamburg-germany
+name: Hamburg
+coordinates:
+  latitude: 53.5511
+  longitude: 9.9937
+country: Germany
+region: Hamburg
+city: Hamburg
+status: wishlist
+tags:
+  - wishlist
+featured: false

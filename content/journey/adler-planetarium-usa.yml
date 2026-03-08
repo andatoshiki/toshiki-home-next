@@ -1,0 +1,16 @@
+id: adler-planetarium-usa
+name: Adler Planetarium
+coordinates:
+  latitude: 41.8663
+  longitude: -87.6068
+country: United States
+region: Illinois
+city: Chicago
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+  - landmark
+  - museum
+  - science
+featured: false

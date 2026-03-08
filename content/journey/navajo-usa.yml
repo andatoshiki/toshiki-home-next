@@ -1,0 +1,13 @@
+id: navajo-usa
+name: Navajo
+coordinates:
+  latitude: 35.0867
+  longitude: -110.3211
+country: United States
+region: Arizona
+city: Navajo
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+featured: false

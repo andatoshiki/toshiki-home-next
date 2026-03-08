@@ -1,0 +1,12 @@
+id: hongkong-airport-china
+name: Hong Kong International
+coordinates:
+  latitude: 22.3080
+  longitude: 113.9185
+country: China
+region: Hong Kong
+city: Hong Kong
+status: airport
+tags:
+  - airport
+featured: false

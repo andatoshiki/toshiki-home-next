@@ -1,0 +1,12 @@
+id: brussels-belgium
+name: Brussels
+coordinates:
+  latitude: 50.8503
+  longitude: 4.3517
+country: Belgium
+region: Brussels-Capital Region
+city: Brussels
+status: wishlist
+tags:
+  - wishlist
+featured: false

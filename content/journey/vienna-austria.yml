@@ -1,0 +1,12 @@
+id: vienna-austria
+name: Vienna
+coordinates:
+  latitude: 48.2082
+  longitude: 16.3738
+country: Austria
+region: Vienna
+city: Vienna
+status: wishlist
+tags:
+  - wishlist
+featured: false

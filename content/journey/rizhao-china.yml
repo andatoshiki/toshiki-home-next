@@ -1,0 +1,12 @@
+id: rizhao-china
+name: Rizhao
+coordinates:
+  latitude: 35.4164
+  longitude: 119.5269
+country: China
+region: Shandong
+city: Rizhao
+status: visited
+tags:
+  - travel
+featured: false

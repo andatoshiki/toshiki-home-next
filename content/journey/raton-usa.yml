@@ -1,0 +1,13 @@
+id: raton-usa
+name: Raton
+coordinates:
+  latitude: 36.9033
+  longitude: -104.4392
+country: United States
+region: New Mexico
+city: Raton
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+featured: false

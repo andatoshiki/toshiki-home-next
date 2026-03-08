@@ -1,0 +1,11 @@
+id: tailscale
+name: Tailscale
+type: software
+description: A zero-config VPN that creates a secure network between your devices using WireGuard, making it easy to access your machines from anywhere.
+image: https://cdn.tosh1ki.de/assets/images/20260105235527.png
+url: https://tailscale.com
+tags:
+  - networking
+  - vpn
+  - security
+featured: false

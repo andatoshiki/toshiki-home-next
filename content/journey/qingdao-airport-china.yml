@@ -1,0 +1,12 @@
+id: qingdao-airport-china
+name: Qingdao Jiaodong
+coordinates:
+  latitude: 36.2611
+  longitude: 120.1222
+country: China
+region: Shandong
+city: Qingdao
+status: airport
+tags:
+  - airport
+featured: false

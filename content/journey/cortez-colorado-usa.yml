@@ -1,0 +1,13 @@
+id: cortez-colorado-usa
+name: Cortez
+coordinates:
+  latitude: 37.3489
+  longitude: -108.5859
+country: United States
+region: Colorado
+city: Cortez
+status: visited
+date: 2026-01-02
+tags:
+  - visited
+featured: false

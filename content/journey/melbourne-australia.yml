@@ -1,0 +1,12 @@
+id: melbourne-australia
+name: Melbourne
+coordinates:
+  latitude: -37.8136
+  longitude: 144.9631
+country: Australia
+region: Victoria
+city: Melbourne
+status: wishlist
+tags:
+  - wishlist
+featured: false

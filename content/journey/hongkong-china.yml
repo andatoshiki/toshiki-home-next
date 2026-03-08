@@ -1,0 +1,12 @@
+id: hongkong-china
+name: Hong Kong
+coordinates:
+  latitude: 22.3193
+  longitude: 114.1694
+country: China
+region: Hong Kong
+city: Hong Kong
+status: visited
+tags:
+  - travel
+featured: false

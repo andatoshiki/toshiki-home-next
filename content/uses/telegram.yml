@@ -1,0 +1,10 @@
+id: telegram
+name: Telegram
+type: software
+description: A cloud-based mobile and desktop messaging app with a focus on security and speed, featuring end-to-end encryption, group chats, channels, and extensive bot support.
+image: https://cdn.tosh1ki.de/assets/images/20260105185656.png
+url: https://telegram.org
+tags:
+  - messaging
+  - communication
+featured: false

@@ -1,0 +1,12 @@
+id: sydney-australia
+name: Sydney
+coordinates:
+  latitude: -33.8688
+  longitude: 151.2093
+country: Australia
+region: New South Wales
+city: Sydney
+status: wishlist
+tags:
+  - wishlist
+featured: false

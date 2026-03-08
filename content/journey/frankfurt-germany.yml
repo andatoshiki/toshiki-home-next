@@ -1,0 +1,12 @@
+id: frankfurt-germany
+name: Frankfurt
+coordinates:
+  latitude: 50.1109
+  longitude: 8.6821
+country: Germany
+region: Hesse
+city: Frankfurt
+status: wishlist
+tags:
+  - wishlist
+featured: false

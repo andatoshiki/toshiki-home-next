@@ -1,0 +1,12 @@
+id: montreal-canada
+name: Montreal
+coordinates:
+  latitude: 45.501689
+  longitude: -73.567256
+country: Canada
+region: Quebec
+city: Montreal
+status: visited
+tags:
+  - travel
+featured: false

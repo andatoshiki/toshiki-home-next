@@ -1,0 +1,12 @@
+id: kitchener-canada
+name: Kitchener
+coordinates:
+  latitude: 43.451639
+  longitude: -80.492533
+country: Canada
+region: Ontario
+city: Kitchener
+status: visited
+tags:
+  - travel
+featured: false

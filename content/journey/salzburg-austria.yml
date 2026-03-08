@@ -1,0 +1,12 @@
+id: salzburg-austria
+name: Salzburg
+coordinates:
+  latitude: 47.8095
+  longitude: 13.0550
+country: Austria
+region: Salzburg
+city: Salzburg
+status: wishlist
+tags:
+  - wishlist
+featured: false

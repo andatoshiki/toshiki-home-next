@@ -1,0 +1,12 @@
+id: houston-usa
+name: Houston
+coordinates:
+  latitude: 29.7604
+  longitude: -95.3698
+country: United States
+region: Texas
+city: Houston
+status: wishlist
+tags:
+  - wishlist
+featured: false

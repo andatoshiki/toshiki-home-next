@@ -1,0 +1,12 @@
+id: tokyo-japan
+name: Tokyo
+coordinates:
+  latitude: 35.6762
+  longitude: 139.6503
+country: Japan
+region: Kanto
+city: Tokyo
+status: visited
+tags:
+  - travel
+featured: false

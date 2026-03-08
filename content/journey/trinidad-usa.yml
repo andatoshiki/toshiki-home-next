@@ -1,0 +1,13 @@
+id: trinidad-usa
+name: Trinidad
+coordinates:
+  latitude: 37.1695
+  longitude: -104.5005
+country: United States
+region: Colorado
+city: Trinidad
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+featured: false

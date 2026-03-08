@@ -1,0 +1,13 @@
+id: minami-osaka-japan
+name: Minami (Namba)
+coordinates:
+  latitude: 34.6666
+  longitude: 135.5019
+country: Japan
+region: Osaka
+city: Osaka
+status: visited
+tags:
+  - travel
+  - osaka-area
+featured: false

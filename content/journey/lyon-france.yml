@@ -1,0 +1,12 @@
+id: lyon-france
+name: Lyon
+coordinates:
+  latitude: 45.7640
+  longitude: 4.8357
+country: France
+region: Auvergne-Rhône-Alpes
+city: Lyon
+status: wishlist
+tags:
+  - wishlist
+featured: false

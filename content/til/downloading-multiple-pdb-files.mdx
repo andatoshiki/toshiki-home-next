@@ -1,0 +1,55 @@
+---
+title: 'Downloading Multiple PDB Files with a Script'
+date: '2025-12-21'
+description: 'Instructions for batch downloading PDB files using wget or curl with a provided shell script.'
+tags:
+  - pdb
+  - bioinformatics
+  - unix
+  - curl
+  - wget
+---
+
+Multiple PDB files can be downloaded in Unix-like systems (MacOS or Linux) using [wget](https://en.wikipedia.org/wiki/Wget) or [curl](https://en.wikipedia.org/wiki/CURL).
+
+A batch script is available for downloading multiple PDB files by passing in a file that contains a comma-separated list of PDB IDs. The script requires `curl` to be installed.
+
+### Getting PDB ID Lists
+
+- On the RCSB search results page, select **"PDB IDs"** from the **"Tabular Report"** menu.
+- Use the **"Download IDs"** button to export a comma-separated list.
+- Lists can also be generated programmatically with the [Search API](https://search.rcsb.org/).
+
+For complete downloads or synchronization, see the [file download services page](https://www.rcsb.org/docs/programmatic-access/file-download-services).
+
+## Usage
+
+1. Make the script executable:
+   ```bash
+   chmod +x batch_download.sh
+   ```
+2. Show help:
+   ```bash
+   ./batch_download.sh -h
+   ```
+
+## Examples
+
+If `list_file.txt` contains PDB IDs:
+
+- Download `pdb.gz` files:
+
+  ```bash
+  ./batch_download.sh -f list_file.txt -p
+  ```
+
+- Download `cif.gz` files:
+
+  ```bash
+  ./batch_download.sh -f list_file.txt -c
+  ```
+
+- Download `pdb.gz`, `cif.gz`, and `sf.cif.gz` files:
+  ```bash
+  ./batch_download.sh -f list_file.txt -c -p -s
+  ```

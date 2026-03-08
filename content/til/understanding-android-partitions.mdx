@@ -1,0 +1,30 @@
+---
+title: 'Understanding Android Partitions'
+date: '2025-01-23'
+description: 'A summarized guide to Android device partitions, their functions, and how they relate to boot, system, and hardware components.'
+tags:
+  - android
+  - partitions
+  - system
+  - reference
+---
+
+Android devices use GUID Partition Table (GPT) to organize internal memory, allowing more partitions and better reliability than the older MBR scheme.
+
+- system: contains the Android OS and system apps
+- data: stores user apps, personal files, and settings
+- boot: holds the kernel and initramfs
+- vendor: includes vendor-specific drivers, binaries, and HALs
+- recovery: alternative boot partition for recovery tools and flashing updates
+- cache: temporary storage for updates and frequently accessed files
+- persist, misc, EFS, modem: store calibration data, IMEI, modem firmware, and device-specific settings
+
+Other notes:
+
+- SoC partitions (aboot, sbl, tz, rpm) handle low-level bootstrapping and security
+- Modem/baseband runs its own firmware separate from Android, responsible for mobile communication
+- Bootloaders like SBL and ABOOT load the kernel securely before Android starts
+- Common filesystems: ext4, f2fs (most partitions), vfat (modem). Virtual filesystems include /proc, /sys, /dev
+- Project Treble (Android 8+) separates system and vendor code to improve update delivery
+
+Key takeaway: although Android devices may have 50+ partitions, the main ones that affect users are system, data, boot, and recovery.

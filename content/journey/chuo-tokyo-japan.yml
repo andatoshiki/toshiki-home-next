@@ -1,0 +1,13 @@
+id: chuo-tokyo-japan
+name: Chuo
+coordinates:
+  latitude: 35.6702
+  longitude: 139.7720
+country: Japan
+region: Tokyo
+city: Tokyo
+status: visited
+tags:
+  - travel
+  - tokyo-district
+featured: false

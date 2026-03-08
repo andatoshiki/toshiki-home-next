@@ -1,0 +1,16 @@
+import { GitCommit } from '@phosphor-icons/react/dist/ssr'
+import { getGithubCommits } from '~/lib/api/github'
+
+export async function Commits() {
+  const { total_count } = await getGithubCommits()
+
+  return (
+    <div className="flex h-full w-full flex-col justify-center gap-3 rounded-3xl border border-neutral-200 bg-white p-4 leading-none dark:border-neutral-800 dark:bg-neutral-950 md:p-7">
+      <span className="inline-flex items-center gap-2 text-neutral-600">
+        <span>Commits</span>
+        <GitCommit size="1em" weight="duotone" />
+      </span>
+      <div className="flex h-full items-center text-2xl">{total_count}</div>
+    </div>
+  )
+}

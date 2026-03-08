@@ -1,0 +1,12 @@
+id: shenzhen-china
+name: Shenzhen
+coordinates:
+  latitude: 22.5431
+  longitude: 114.0579
+country: China
+region: Guangdong
+city: Shenzhen
+status: visited
+tags:
+  - travel
+featured: false

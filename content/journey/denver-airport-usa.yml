@@ -1,0 +1,12 @@
+id: denver-airport-usa
+name: Denver International
+coordinates:
+  latitude: 39.8561
+  longitude: -104.6737
+country: United States
+region: Colorado
+city: Denver
+status: airport
+tags:
+  - airport
+featured: false

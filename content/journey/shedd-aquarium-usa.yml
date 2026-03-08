@@ -1,0 +1,15 @@
+id: shedd-aquarium-usa
+name: Shedd Aquarium
+coordinates:
+  latitude: 41.8676
+  longitude: -87.6140
+country: United States
+region: Illinois
+city: Chicago
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+  - landmark
+  - aquarium
+featured: false

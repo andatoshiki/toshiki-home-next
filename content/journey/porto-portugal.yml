@@ -1,0 +1,12 @@
+id: porto-portugal
+name: Porto
+coordinates:
+  latitude: 41.1579
+  longitude: -8.6291
+country: Portugal
+region: Norte
+city: Porto
+status: wishlist
+tags:
+  - wishlist
+featured: false

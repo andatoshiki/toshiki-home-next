@@ -1,0 +1,12 @@
+id: oslo-norway
+name: Oslo
+coordinates:
+  latitude: 59.9139
+  longitude: 10.7522
+country: Norway
+region: Oslo
+city: Oslo
+status: visited
+tags:
+  - travel
+featured: false

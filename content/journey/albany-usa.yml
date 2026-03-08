@@ -1,0 +1,12 @@
+id: albany-usa
+name: Albany
+coordinates:
+  latitude: 42.6526
+  longitude: -73.7562
+country: United States
+region: New York
+city: Albany
+status: visited
+tags:
+  - travel
+featured: false

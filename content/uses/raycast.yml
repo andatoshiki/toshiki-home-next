@@ -1,0 +1,11 @@
+id: raycast
+name: Raycast
+type: software
+description: A blazingly fast, totally extendable launcher for macOS that lets you control your tools with just a few keystrokes, featuring built-in extensions, clipboard history, and window management.
+image: https://cdn.tosh1ki.de/assets/images/20260105235908.png
+url: https://www.raycast.com
+tags:
+  - productivity
+  - launcher
+  - macos
+featured: false

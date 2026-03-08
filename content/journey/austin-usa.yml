@@ -1,0 +1,12 @@
+id: austin-usa
+name: Austin
+coordinates:
+  latitude: 30.2672
+  longitude: -97.7431
+country: United States
+region: Texas
+city: Austin
+status: wishlist
+tags:
+  - wishlist
+featured: false

@@ -1,0 +1,12 @@
+id: oslo-airport-norway
+name: Oslo Gardermoen
+coordinates:
+  latitude: 60.1939
+  longitude: 11.1004
+country: Norway
+region: Oslo
+city: Oslo
+status: airport
+tags:
+  - airport
+featured: false

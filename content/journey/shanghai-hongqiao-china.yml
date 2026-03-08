@@ -1,0 +1,12 @@
+id: shanghai-hongqiao-china
+name: Shanghai Hongqiao (SHA)
+coordinates:
+  latitude: 31.1979
+  longitude: 121.3363
+country: China
+region: Shanghai
+city: Shanghai
+status: airport
+tags:
+  - airport
+featured: false

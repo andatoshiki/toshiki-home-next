@@ -1,0 +1,12 @@
+id: indianapolis-usa
+name: Indianapolis
+coordinates:
+  latitude: 39.7684
+  longitude: -86.1581
+country: United States
+region: Indiana
+city: Indianapolis
+status: wishlist
+tags:
+  - wishlist
+featured: false

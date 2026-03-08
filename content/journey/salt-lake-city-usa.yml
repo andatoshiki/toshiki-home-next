@@ -1,0 +1,12 @@
+id: salt-lake-city-usa
+name: Salt Lake City
+coordinates:
+  latitude: 40.7608
+  longitude: -111.8910
+country: United States
+region: Utah
+city: Salt Lake City
+status: visited
+tags:
+  - travel
+featured: false

@@ -1,0 +1,12 @@
+id: scottsdale-usa
+name: Scottsdale
+coordinates:
+  latitude: 33.4942
+  longitude: -111.9261
+country: United States
+region: Arizona
+city: Scottsdale
+status: visited
+tags:
+  - travel
+featured: false

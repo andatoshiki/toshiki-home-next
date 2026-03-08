@@ -1,0 +1,12 @@
+id: wenzhou-china
+name: Wenzhou
+coordinates:
+  latitude: 27.9938
+  longitude: 120.6994
+country: China
+region: Zhejiang
+city: Wenzhou
+status: visited
+tags:
+  - travel
+featured: false

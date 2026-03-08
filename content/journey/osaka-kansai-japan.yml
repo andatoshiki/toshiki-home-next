@@ -1,0 +1,12 @@
+id: osaka-kansai-japan
+name: Kansai International
+coordinates:
+  latitude: 34.4347
+  longitude: 135.2441
+country: Japan
+region: Kansai
+city: Osaka
+status: airport
+tags:
+  - airport
+featured: false

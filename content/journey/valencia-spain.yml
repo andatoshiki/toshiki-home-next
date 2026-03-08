@@ -1,0 +1,12 @@
+id: valencia-spain
+name: Valencia
+coordinates:
+  latitude: 39.4699
+  longitude: -0.3763
+country: Spain
+region: Valencia
+city: Valencia
+status: wishlist
+tags:
+  - wishlist
+featured: false

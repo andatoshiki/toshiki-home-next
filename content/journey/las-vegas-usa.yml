@@ -1,0 +1,12 @@
+id: las-vegas-usa
+name: Las Vegas
+coordinates:
+  latitude: 36.1699
+  longitude: -115.1398
+country: United States
+region: Nevada
+city: Las Vegas
+status: visited
+tags:
+  - travel
+featured: false

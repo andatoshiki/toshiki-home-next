@@ -1,0 +1,12 @@
+id: amsterdam-netherlands
+name: Amsterdam
+coordinates:
+  latitude: 52.3676
+  longitude: 4.9041
+country: Netherlands
+region: North Holland
+city: Amsterdam
+status: wishlist
+tags:
+  - wishlist
+featured: false

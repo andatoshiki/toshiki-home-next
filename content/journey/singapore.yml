@@ -1,0 +1,12 @@
+id: singapore
+name: Singapore
+coordinates:
+  latitude: 1.3521
+  longitude: 103.8198
+country: Singapore
+region: South East Asia
+city: Singapore
+status: wishlist
+tags:
+  - wishlist
+featured: false

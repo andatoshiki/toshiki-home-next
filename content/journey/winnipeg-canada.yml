@@ -1,0 +1,12 @@
+id: winnipeg-canada
+name: Winnipeg
+coordinates:
+  latitude: 49.895138
+  longitude: -97.138374
+country: Canada
+region: Manitoba
+city: Winnipeg
+status: visited
+tags:
+  - travel
+featured: false

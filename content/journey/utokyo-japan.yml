@@ -1,0 +1,14 @@
+id: utokyo-japan
+name: University of Tokyo
+coordinates:
+  latitude: 35.7126
+  longitude: 139.7610
+country: Japan
+region: Tokyo
+city: Tokyo
+status: visited
+description: Visited University of Tokyo (東京大学)
+tags:
+  - travel
+  - university
+featured: false

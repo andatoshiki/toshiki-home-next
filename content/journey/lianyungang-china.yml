@@ -1,0 +1,12 @@
+id: lianyungang-china
+name: Lianyungang
+coordinates:
+  latitude: 34.5967
+  longitude: 119.2219
+country: China
+region: Jiangsu
+city: Lianyungang
+status: visited
+tags:
+  - travel
+featured: false

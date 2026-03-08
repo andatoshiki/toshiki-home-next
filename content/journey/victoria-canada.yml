@@ -1,0 +1,12 @@
+id: victoria-canada
+name: Victoria
+coordinates:
+  latitude: 48.428421
+  longitude: -123.365644
+country: Canada
+region: British Columbia
+city: Victoria
+status: visited
+tags:
+  - travel
+featured: false

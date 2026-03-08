@@ -1,0 +1,12 @@
+id: dallas-usa
+name: Dallas
+coordinates:
+  latitude: 32.7767
+  longitude: -96.7970
+country: United States
+region: Texas
+city: Dallas
+status: wishlist
+tags:
+  - wishlist
+featured: false

@@ -1,0 +1,12 @@
+id: buckeye-usa
+name: Buckeye
+coordinates:
+  latitude: 33.3703
+  longitude: -112.5838
+country: United States
+region: Arizona
+city: Buckeye
+status: visited
+tags:
+  - travel
+featured: false

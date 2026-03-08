@@ -1,0 +1,12 @@
+id: brisbane-australia
+name: Brisbane
+coordinates:
+  latitude: -27.4698
+  longitude: 153.0251
+country: Australia
+region: Queensland
+city: Brisbane
+status: wishlist
+tags:
+  - wishlist
+featured: false

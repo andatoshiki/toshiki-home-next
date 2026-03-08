@@ -1,0 +1,12 @@
+id: atlanta-usa
+name: Atlanta
+coordinates:
+  latitude: 33.7490
+  longitude: -84.3880
+country: United States
+region: Georgia
+city: Atlanta
+status: wishlist
+tags:
+  - wishlist
+featured: false

@@ -1,0 +1,12 @@
+id: antwerp-belgium
+name: Antwerp
+coordinates:
+  latitude: 51.2194
+  longitude: 4.4025
+country: Belgium
+region: Flanders
+city: Antwerp
+status: wishlist
+tags:
+  - wishlist
+featured: false

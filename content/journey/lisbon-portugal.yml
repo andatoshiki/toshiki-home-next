@@ -1,0 +1,12 @@
+id: lisbon-portugal
+name: Lisbon
+coordinates:
+  latitude: 38.7223
+  longitude: -9.1393
+country: Portugal
+region: Lisbon
+city: Lisbon
+status: wishlist
+tags:
+  - wishlist
+featured: false

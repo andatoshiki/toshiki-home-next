@@ -1,0 +1,30 @@
+---
+title: 'Proxy Git in Terminal'
+date: '2025-11-21'
+description: 'Guide on configuring Git proxy via terminal or global Git settings.'
+tags:
+  - git
+  - proxy
+  - terminal
+---
+
+### 方法 A：代理终端
+
+Mac 的 ClashX 直接有复制终端代理命令的选项，复制后终端执行，然后 Clone 就走代理了，但只对当前终端起作用；要想以后打开终端都走代理，就修改配置文件 `.zshrc`，增加
+
+```bash
+export https_proxy="http://127.0.0.1:7890"
+export http_proxy="http://127.0.0.1:7890"
+export all_proxy="socks5://127.0.0.1:7890"
+```
+
+> 这样的似乎终端里就都走代理了，在考虑 gitee 会不会变慢，会不会第二种办法更好呢？
+
+### 方法 B：代理 Gayhub
+
+配置全局 git 代理：
+
+```bash
+git config --global http.proxy http://127.0.0.1:7890
+git config --global https.proxy https://127.0.0.1:7890
+```

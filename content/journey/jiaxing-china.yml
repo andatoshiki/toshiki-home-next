@@ -1,0 +1,12 @@
+id: jiaxing-china
+name: Jiaxing
+coordinates:
+  latitude: 30.7450
+  longitude: 120.7555
+country: China
+region: Zhejiang
+city: Jiaxing
+status: visited
+tags:
+  - travel
+featured: false

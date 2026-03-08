@@ -1,0 +1,13 @@
+id: meguro-tokyo-japan
+name: Meguro
+coordinates:
+  latitude: 35.6331
+  longitude: 139.6982
+country: Japan
+region: Tokyo
+city: Tokyo
+status: visited
+tags:
+  - travel
+  - tokyo-district
+featured: false

@@ -1,0 +1,12 @@
+id: seville-spain
+name: Seville
+coordinates:
+  latitude: 37.3891
+  longitude: -5.9845
+country: Spain
+region: Andalusia
+city: Seville
+status: wishlist
+tags:
+  - wishlist
+featured: false

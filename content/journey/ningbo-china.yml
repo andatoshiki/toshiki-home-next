@@ -1,0 +1,12 @@
+id: ningbo-china
+name: Ningbo
+coordinates:
+  latitude: 29.8683
+  longitude: 121.5440
+country: China
+region: Zhejiang
+city: Ningbo
+status: visited
+tags:
+  - travel
+featured: false

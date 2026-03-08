@@ -1,0 +1,11 @@
+id: xiaomi-lightbar
+name: Xiaomi Smart Lightbar
+type: hardware
+description: A versatile smart ambient light that syncs with your screen, provides customizable lighting effects, and integrates with smart home systems for mood and productivity.
+image: https://cdn.tosh1ki.de/assets/images/20260106181255.png
+url: https://www.mi.com
+tags:
+  - smart-home
+  - lighting
+  - productivity
+featured: false

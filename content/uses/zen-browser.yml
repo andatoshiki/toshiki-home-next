@@ -1,0 +1,10 @@
+id: zen-browser
+name: Zen
+type: software
+description: A beautifully designed, privacy-focused browser built on Firefox with a clean interface, vertical tabs, and optimized performance for a distraction-free browsing experience.
+image: https://cdn.tosh1ki.de/assets/images/20260105185735.png
+url: https://zen-browser.app
+tags:
+  - browser
+  - privacy
+featured: false

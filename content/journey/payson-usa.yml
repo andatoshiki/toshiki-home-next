@@ -1,0 +1,13 @@
+id: payson-usa
+name: Payson
+coordinates:
+  latitude: 34.2309
+  longitude: -111.3251
+country: United States
+region: Arizona
+city: Payson
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+featured: false

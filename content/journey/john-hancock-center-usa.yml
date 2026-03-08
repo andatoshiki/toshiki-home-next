@@ -1,0 +1,15 @@
+id: john-hancock-center-usa
+name: John Hancock Center (875 North Michigan)
+coordinates:
+  latitude: 41.8988
+  longitude: -87.6229
+country: United States
+region: Illinois
+city: Chicago
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+  - landmark
+  - skyscraper
+featured: false

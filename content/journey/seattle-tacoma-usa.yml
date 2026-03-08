@@ -1,0 +1,12 @@
+id: seattle-tacoma-usa
+name: Seattle-Tacoma International
+coordinates:
+  latitude: 47.4502
+  longitude: -122.3088
+country: United States
+region: Washington
+city: Seattle
+status: airport
+tags:
+  - airport
+featured: false

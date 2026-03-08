@@ -1,0 +1,12 @@
+id: geneva-switzerland
+name: Geneva
+coordinates:
+  latitude: 46.2044
+  longitude: 6.1432
+country: Switzerland
+region: Geneva
+city: Geneva
+status: wishlist
+tags:
+  - wishlist
+featured: false

@@ -1,0 +1,12 @@
+id: qingdao-china
+name: Qingdao
+coordinates:
+  latitude: 36.0671
+  longitude: 120.3826
+country: China
+region: Shandong
+city: Qingdao
+status: visited
+tags:
+  - travel
+featured: false

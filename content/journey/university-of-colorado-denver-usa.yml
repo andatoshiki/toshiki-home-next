@@ -1,0 +1,15 @@
+id: university-of-colorado-denver-usa
+name: University of Colorado Denver
+coordinates:
+  latitude: 39.7457
+  longitude: -105.0046
+country: United States
+region: Colorado
+city: Denver
+status: visited
+date: 2026-01-04
+tags:
+  - travel
+  - education
+  - university
+featured: false

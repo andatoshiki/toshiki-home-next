@@ -1,0 +1,12 @@
+id: minneapolis-usa
+name: Minneapolis
+coordinates:
+  latitude: 44.9778
+  longitude: -93.2650
+country: United States
+region: Minnesota
+city: Minneapolis
+status: wishlist
+tags:
+  - wishlist
+featured: false

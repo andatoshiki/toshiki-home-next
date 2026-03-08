@@ -1,0 +1,78 @@
+---
+title: 'Rules for Chinese Citizen Identification Number'
+description: 'Explains the structure, validation, and calculation of the check digit for Chinese citizen ID numbers, including a worked example.'
+date: '2025-03-25'
+tags:
+  - chinese-id
+  - validation
+  - algorithm
+  - til
+---
+
+# Rules for Chinese Citizen Identification Number
+
+Chinese citizen ID numbers are 18 digits long:
+
+- The first 17 digits are the **Master number**, consisting of address code, date of birth, and sequence code.
+- The 18th digit is the **Check number**, calculated from the first 17 digits.
+
+The check digit is computed using the formula:
+
+$$
+S = \sum_{i=1}^{17} a_i \times w_i
+$$
+
+where
+
+- $a_i$ = digit at position $i$
+- $w_i$ = corresponding weight factor
+
+Weight factors:
+
+$$(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2)$$
+
+Then compute:
+
+$$r = S \bmod 11$$
+
+The mapping from $r$ to check code:
+
+| r    | 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  |
+| ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Code | 1   | 0   | X   | 9   | 8   | 7   | 6   | 5   | 4   | 3   | 2   |
+
+# Calculation Example
+
+Given the first 17 digits:
+
+**51010519930731532**
+
+| i     | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  | 11  | 12  | 13  | 14  | 15  | 16  | 17  |
+| ----- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| aᵢ    | 5   | 1   | 0   | 1   | 0   | 5   | 1   | 9   | 9   | 3   | 0   | 7   | 3   | 1   | 5   | 3   | 2   |
+| wᵢ    | 7   | 9   | 10  | 5   | 8   | 4   | 2   | 1   | 6   | 3   | 7   | 9   | 10  | 5   | 8   | 4   | 2   |
+| aᵢ×wᵢ | 35  | 9   | 0   | 5   | 0   | 20  | 2   | 9   | 54  | 9   | 0   | 63  | 30  | 5   | 40  | 12  | 4   |
+
+Total:
+
+$$S = 297$$
+
+Then:
+
+$$r = 297 \bmod 11 = 0$$
+
+So the check code is **1**.
+
+# Conclusion
+
+Given ID number: **510105199307315327**
+This is **NOT a valid ID number.**
+
+Correct ID should be: **510105199307315321**
+
+# Basic Information
+
+- Address code: **510105** (Qingyang District, Chengdu, Sichuan)
+- Date of birth: **19930731** → July 31, 1993
+- Sequence code: **532**
+- Gender: **Female** (odd = male, even = female)

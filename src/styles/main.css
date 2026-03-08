@@ -1,0 +1,8 @@
+@import './base.css';
+@import './components.css';
+@import './utilities.css';
+@import './custom-components.css';
+@import './signature.css';
+@import 'rehype-callouts/dist/themes/obsidian/index.css';
+
+@plugin 'tailwindcss-animate';

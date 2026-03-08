@@ -1,0 +1,13 @@
+id: shibuya-tokyo-japan
+name: Shibuya
+coordinates:
+  latitude: 35.6618
+  longitude: 139.7041
+country: Japan
+region: Tokyo
+city: Tokyo
+status: visited
+tags:
+  - travel
+  - tokyo-district
+featured: false

@@ -1,0 +1,12 @@
+id: flagstaff-usa
+name: Flagstaff
+coordinates:
+  latitude: 35.1983
+  longitude: -111.6513
+country: United States
+region: Arizona
+city: Flagstaff
+status: visited
+tags:
+  - travel
+featured: false

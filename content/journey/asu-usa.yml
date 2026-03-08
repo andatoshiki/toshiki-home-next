@@ -1,0 +1,14 @@
+id: asu-usa
+name: Arizona State University
+coordinates:
+  latitude: 33.4212
+  longitude: -111.9337
+country: United States
+region: Arizona
+city: Tempe
+status: visited
+description: Visited Arizona State University
+tags:
+  - travel
+  - university
+featured: false

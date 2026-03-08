@@ -1,0 +1,12 @@
+id: hamilton-canada
+name: Hamilton
+coordinates:
+  latitude: 43.255721
+  longitude: -79.871102
+country: Canada
+region: Ontario
+city: Hamilton
+status: visited
+tags:
+  - travel
+featured: false

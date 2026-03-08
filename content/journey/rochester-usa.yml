@@ -1,0 +1,12 @@
+id: rochester-usa
+name: Rochester
+coordinates:
+  latitude: 43.1566
+  longitude: -77.6088
+country: United States
+region: New York
+city: Rochester
+status: visited
+tags:
+  - travel
+featured: false

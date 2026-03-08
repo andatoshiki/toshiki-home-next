@@ -1,0 +1,12 @@
+id: sedona-usa
+name: Sedona
+coordinates:
+  latitude: 34.8697
+  longitude: -111.7609
+country: United States
+region: Arizona
+city: Sedona
+status: visited
+tags:
+  - travel
+featured: false

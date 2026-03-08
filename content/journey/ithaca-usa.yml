@@ -1,0 +1,12 @@
+id: ithaca-usa
+name: Ithaca
+coordinates:
+  latitude: 42.4440
+  longitude: -76.5019
+country: United States
+region: New York
+city: Ithaca
+status: visited
+tags:
+  - travel
+featured: false

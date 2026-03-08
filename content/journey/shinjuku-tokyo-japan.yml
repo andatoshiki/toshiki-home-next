@@ -1,0 +1,13 @@
+id: shinjuku-tokyo-japan
+name: Shinjuku
+coordinates:
+  latitude: 35.6938
+  longitude: 139.7034
+country: Japan
+region: Tokyo
+city: Tokyo
+status: visited
+tags:
+  - travel
+  - tokyo-district
+featured: false

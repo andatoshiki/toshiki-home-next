@@ -1,0 +1,12 @@
+id: barcelona-spain
+name: Barcelona
+coordinates:
+  latitude: 41.3851
+  longitude: 2.1734
+country: Spain
+region: Catalonia
+city: Barcelona
+status: wishlist
+tags:
+  - wishlist
+featured: false

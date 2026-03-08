@@ -1,0 +1,12 @@
+id: chicago-ohare-usa
+name: Chicago O'Hare
+coordinates:
+  latitude: 41.9742
+  longitude: -87.9073
+country: United States
+region: Illinois
+city: Chicago
+status: airport
+tags:
+  - airport
+featured: false

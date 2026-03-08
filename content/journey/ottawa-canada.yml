@@ -1,0 +1,12 @@
+id: ottawa-canada
+name: Ottawa
+coordinates:
+  latitude: 45.421530
+  longitude: -75.697193
+country: Canada
+region: Ontario
+city: Ottawa
+status: visited
+tags:
+  - travel
+featured: false

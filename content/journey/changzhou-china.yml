@@ -1,0 +1,12 @@
+id: changzhou-china
+name: Changzhou
+coordinates:
+  latitude: 31.8107
+  longitude: 119.9737
+country: China
+region: Jiangsu
+city: Changzhou
+status: visited
+tags:
+  - travel
+featured: false

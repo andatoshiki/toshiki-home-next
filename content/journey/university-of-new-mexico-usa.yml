@@ -1,0 +1,15 @@
+id: university-of-new-mexico-usa
+name: University of New Mexico
+coordinates:
+  latitude: 35.0844
+  longitude: -106.6189
+country: United States
+region: New Mexico
+city: Albuquerque
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+  - education
+  - university
+featured: false

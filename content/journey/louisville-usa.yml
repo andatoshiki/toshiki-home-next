@@ -1,0 +1,12 @@
+id: louisville-usa
+name: Louisville
+coordinates:
+  latitude: 38.2527
+  longitude: -85.7585
+country: United States
+region: Kentucky
+city: Louisville
+status: wishlist
+tags:
+  - wishlist
+featured: false

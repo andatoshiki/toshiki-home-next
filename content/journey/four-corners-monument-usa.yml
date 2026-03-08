@@ -1,0 +1,13 @@
+id: four-corners-monument-usa
+name: Four Corners Monument
+coordinates:
+  latitude: 36.9989
+  longitude: -109.0452
+country: United States
+region: Arizona
+city: Teec Nos Pos
+status: visited
+date: 2026-01-02
+tags:
+  - visited
+featured: false

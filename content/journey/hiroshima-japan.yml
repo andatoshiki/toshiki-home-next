@@ -1,0 +1,12 @@
+id: hiroshima-japan
+name: Hiroshima
+coordinates:
+  latitude: 34.3853
+  longitude: 132.4553
+country: Japan
+region: Chugoku
+city: Hiroshima
+status: visited
+tags:
+  - travel
+featured: false

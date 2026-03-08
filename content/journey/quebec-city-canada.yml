@@ -1,0 +1,12 @@
+id: quebec-city-canada
+name: Quebec City
+coordinates:
+  latitude: 46.813878
+  longitude: -71.207981
+country: Canada
+region: Quebec
+city: Quebec City
+status: visited
+tags:
+  - travel
+featured: false

@@ -1,0 +1,11 @@
+id: youtube-music
+name: YouTube Music
+type: software
+description: A music streaming service by Google offering millions of songs, albums, and playlists with personalized recommendations, music videos, and seamless integration with YouTube.
+image: https://cdn.tosh1ki.de/assets/images/20260106004600.png
+url: https://music.youtube.com
+tags:
+  - music
+  - streaming
+  - google
+featured: false

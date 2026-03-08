@@ -1,0 +1,12 @@
+id: florence-italy
+name: Florence
+coordinates:
+  latitude: 43.7696
+  longitude: 11.2558
+country: Italy
+region: Tuscany
+city: Florence
+status: wishlist
+tags:
+  - wishlist
+featured: false

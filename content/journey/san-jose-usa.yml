@@ -1,0 +1,12 @@
+id: san-jose-usa
+name: San Jose
+coordinates:
+  latitude: 37.3382
+  longitude: -121.8863
+country: United States
+region: California
+city: San Jose
+status: wishlist
+tags:
+  - wishlist
+featured: false

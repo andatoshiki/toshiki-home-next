@@ -1,0 +1,12 @@
+id: stockholm-sweden
+name: Stockholm
+coordinates:
+  latitude: 59.3293
+  longitude: 18.0686
+country: Sweden
+region: Stockholm
+city: Stockholm
+status: wishlist
+tags:
+  - wishlist
+featured: false

@@ -1,0 +1,12 @@
+id: tucson-usa
+name: Tucson
+coordinates:
+  latitude: 32.2226
+  longitude: -110.9747
+country: United States
+region: Arizona
+city: Tucson
+status: visited
+tags:
+  - travel
+featured: false

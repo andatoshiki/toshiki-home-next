@@ -1,0 +1,12 @@
+id: page-usa
+name: Page
+coordinates:
+  latitude: 36.9147
+  longitude: -111.4558
+country: United States
+region: Arizona
+city: Page
+status: visited
+tags:
+  - travel
+featured: false

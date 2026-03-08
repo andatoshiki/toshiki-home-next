@@ -1,0 +1,12 @@
+id: huzhou-china
+name: Huzhou
+coordinates:
+  latitude: 30.8943
+  longitude: 120.0868
+country: China
+region: Zhejiang
+city: Huzhou
+status: visited
+tags:
+  - travel
+featured: false

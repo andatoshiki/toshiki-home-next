@@ -1,0 +1,12 @@
+id: perth-australia
+name: Perth
+coordinates:
+  latitude: -31.9505
+  longitude: 115.8605
+country: Australia
+region: Western Australia
+city: Perth
+status: wishlist
+tags:
+  - wishlist
+featured: false

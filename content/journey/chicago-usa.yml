@@ -1,0 +1,15 @@
+id: chicago-usa
+name: Chicago
+coordinates:
+  latitude: 41.8781
+  longitude: -87.6298
+country: United States
+region: Illinois
+city: Chicago
+status: residence
+description: Studied at Northwestern University, current residence
+tags:
+  - education
+  - university
+  - home
+featured: true

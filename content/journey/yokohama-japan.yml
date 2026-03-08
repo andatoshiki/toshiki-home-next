@@ -1,0 +1,12 @@
+id: yokohama-japan
+name: Yokohama
+coordinates:
+  latitude: 35.4437
+  longitude: 139.6380
+country: Japan
+region: Kanagawa
+city: Yokohama
+status: visited
+tags:
+  - travel
+featured: false

@@ -1,0 +1,10 @@
+id: Ghostty
+name: Ghostty
+type: software
+description: Beautiful and minimal terminal emulator with sleek dark theme and smooth animations.
+image: https://cdn.tosh1ki.de/assets/images/20260105175536.png
+url: https://github.com/jarun/nnn
+tags:
+  - development
+  - terminal
+featured: false

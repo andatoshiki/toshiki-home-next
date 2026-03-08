@@ -1,0 +1,12 @@
+id: seattle-usa
+name: Seattle
+coordinates:
+  latitude: 47.6062
+  longitude: -122.3321
+country: United States
+region: Washington
+city: Seattle
+status: visited
+tags:
+  - travel
+featured: false

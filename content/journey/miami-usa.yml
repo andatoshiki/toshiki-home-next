@@ -1,0 +1,12 @@
+id: miami-usa
+name: Miami
+coordinates:
+  latitude: 25.7617
+  longitude: -80.1918
+country: United States
+region: Florida
+city: Miami
+status: wishlist
+tags:
+  - wishlist
+featured: false

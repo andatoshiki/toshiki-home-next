@@ -1,0 +1,12 @@
+id: venice-italy
+name: Venice
+coordinates:
+  latitude: 45.4408
+  longitude: 12.3155
+country: Italy
+region: Veneto
+city: Venice
+status: wishlist
+tags:
+  - wishlist
+featured: false

@@ -1,0 +1,13 @@
+id: montrose-colorado-usa
+name: Montrose
+coordinates:
+  latitude: 38.4783
+  longitude: -107.8762
+country: United States
+region: Colorado
+city: Montrose
+status: visited
+date: 2026-01-02
+tags:
+  - visited
+featured: false

@@ -1,0 +1,14 @@
+id: big-blue-bear-usa
+name: Big Blue Bear
+coordinates:
+  latitude: 39.7436
+  longitude: -104.9954
+country: United States
+region: Colorado
+city: Denver
+status: visited
+date: 2026-01-04
+tags:
+  - travel
+  - landmark
+featured: false

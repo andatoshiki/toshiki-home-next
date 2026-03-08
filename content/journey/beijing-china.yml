@@ -1,0 +1,12 @@
+id: beijing-china
+name: Beijing
+coordinates:
+  latitude: 39.9042
+  longitude: 116.4074
+country: China
+region: Beijing
+city: Beijing
+status: visited
+tags:
+  - travel
+featured: false

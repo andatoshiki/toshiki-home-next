@@ -1,0 +1,12 @@
+id: charlotte-usa
+name: Charlotte
+coordinates:
+  latitude: 35.2271
+  longitude: -80.8431
+country: United States
+region: North Carolina
+city: Charlotte
+status: wishlist
+tags:
+  - wishlist
+featured: false

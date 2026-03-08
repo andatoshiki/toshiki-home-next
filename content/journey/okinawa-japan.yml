@@ -1,0 +1,12 @@
+id: okinawa-japan
+name: Okinawa
+coordinates:
+  latitude: 26.2124
+  longitude: 127.6809
+country: Japan
+region: Okinawa
+city: Naha
+status: visited
+tags:
+  - travel
+featured: false

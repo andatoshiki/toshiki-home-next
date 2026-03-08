@@ -1,0 +1,287 @@
+---
+title: 'Dummy 3'
+date: '2025-10-25'
+description: 'Dummy post for heatmap testing.'
+category: 'Test'
+tags: 'dummy, test'
+status: 'published'
+---
+
+# Dummy 3
+
+This is a dummy post for testing the heatmap.
+
+````java
+This is a dummy post for testing the heatmap.
+
+```java
+// [TODO] ligatyure text
+
+>=
+````
+
+This is a dummy post for testing the heatmap without ruby.
+
+This is a dummy post for testing the heatmap.
+
+- asdfasdfj
+  ```java
+  asdf
+  ```
+
+This is a dummy post for testing the heatmap.
+
+<Ruby base="紳士" text="へんたい" />
+
+```ts twoslash
+import rehypeShikiFromHighlighter from '@shikijs/rehype/core'
+import rehypeStringify from 'rehype-stringify'
+import remarkParse from 'remark-parse'
+import remarkRehype from 'remark-rehype'
+import { createHighlighterCore } from 'shiki/core'
+import { createOnigurumaEngine } from 'shiki/engine/oniguruma'
+
+import { unified } from 'unified'
+
+const highlighter = await createHighlighterCore({
+  themes: [import('@shikijs/themes/vitesse-light')],
+  langs: [import('@shikijs/langs/javascript')],
+  engine: createOnigurumaEngine(() => import('shiki/wasm'))
+})
+
+const raw = await fs.readFile('./input.md')
+const file = await unified()
+  .use(remarkParse)
+  .use(remarkRehype)
+  .use(rehypeShikiFromHighlighter, highlighter, {
+    // or `theme` for a single theme
+    themes: {
+      light: 'vitesse-light',
+      dark: 'vitesse-dark'
+    }
+  })
+  .use(rehypeStringify)
+  .processSync(raw) // it's also possible to process synchronously
+```
+
+$$
+\begin{aligned}
+\mathcal{F}(\theta) \;=\;&
+\overbrace{\sum_{i=1}^{N} w_i \,\log\!\left(\frac{\exp\!\left(-\tfrac{1}{2}\,(x_i-\mu)^{\top}\Sigma^{-1}(x_i-\mu)\right)}{\sqrt{(2\pi)^{d}\det(\Sigma)}}\right)}^{\text{Gaussian log-likelihood}}
+\;+\;
+\lambda_1\lVert \theta\rVert_1 \;+\; \tfrac{\lambda_2}{2}\lVert \theta\rVert_2^2
+\\[6pt]
+&\;+\;
+\underbrace{\int_{0}^{1}\!\!\left[
+\sqrt{1+\left(\frac{dy}{dx}\right)^{\!2}}
+\;+\;\alpha\,\sin(2\pi x)\;+\;\beta\,x(1-x)\right]\,dx}_{\text{regularized arc length functional}}
+\;+\;
+\sum_{k=1}^{K}\beta_k\,\mathbf{1}\!\left\{x\in\mathcal{S}_k\right\}
+\\[6pt]
+&\;+\;
+\left(\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n}\,z^{n}\right)
+\cdot
+\left(\prod_{m=1}^{M}\frac{1}{1-\gamma_m z}\right)
+\;+\;
+\lim_{T\to\infty}\frac{1}{T}\sum_{t=1}^{T}\Big(\phi^{\top}x_t - y_t\Big)^{2}
+\\[6pt]
+&\;+\;
+\iint_{\Omega}\left[
+\nabla u(x,y)^{\!\top}\!A(x,y)\,\nabla u(x,y)
+\;+\; \eta\,u(x,y)^{2}
+\;-\; f(x,y)\,u(x,y)
+\right]\,dx\,dy
+\\[6pt]
+&\;+\;
+\sum_{j=1}^{J}\Bigg\{
+\log\!\Big(1+\exp(-y_j\,\theta^{\top}x_j)\Big)
+\;+\;
+\sum_{r=1}^{R}\log\!\big(1+\exp(a_{jr})\big)
+\;+\;
+\frac{1}{2}\,(x_j-\mu)^{\top}\Lambda(x_j-\mu)
+\Bigg\}
+\\[6pt]
+&\;+\;
+\left\langle
+\begin{bmatrix}
+\theta_1 \\ \theta_2 \\ \vdots \\ \theta_p
+\end{bmatrix},
+\;
+\overbrace{
+\begin{bmatrix}
+\lambda & 1 & \cdots & 1 \\
+1 & \lambda & \cdots & 1 \\
+\vdots & \vdots & \ddots & \vdots \\
+1 & 1 & \cdots & \lambda
+\end{bmatrix}
+}^{\mathbf{K}_{\lambda}}
+\begin{bmatrix}
+\theta_1 \\ \theta_2 \\ \vdots \\ \theta_p
+\end{bmatrix}
+\right\rangle
+\;+\;
+\sum_{q=1}^{Q}\sum_{r=1}^{R}\frac{\left(\widehat{\mu}_{qr}-\mu_{qr}\right)^{2}}{\sigma_{qr}^{2}+ \epsilon}
+\\[6pt]
+&\;+\;
+\overbrace{\int_{-\infty}^{\infty}\!\!\int_{-\infty}^{\infty}
+\exp\!\left(-\frac{x^{2}}{2\sigma_x^{2}}-\frac{y^{2}}{2\sigma_y^{2}}-\rho\,xy\right)\,dx\,dy}^{\text{correlated Gaussian area}}
+\;+\;
+\sum_{l=0}^{L}\binom{L}{l}\,(-1)^{l}\,(1+\kappa l)^{\delta}
+\\[6pt]
+&\;+\;
+\Bigg[
+\underbrace{
+\frac{\Gamma\!\left(\tfrac{\nu+1}{2}\right)}{\sqrt{\nu\pi}\,\Gamma\!\left(\tfrac{\nu}{2}\right)}
+\left(1+\frac{t^{2}}{\nu}\right)^{-\frac{\nu+1}{2}}
+}_{\text{Student-$t$ pdf at }t}
+\;+\;
+\sum_{s=1}^{S}\frac{\zeta(s)}{(1+\omega s)^{\tau}}
+\Bigg]
+\\[6pt]
+&\;+\;
+\overbrace{
+\min_{\substack{A\in\mathbb{R}^{m\times k}\\B\in\mathbb{R}^{k\times n}}}
+\;\left\lVert X - AB \right\rVert_{F}^{2}
+\;+\; \gamma\left(\lVert A\rVert_{1}+\lVert B\rVert_{1}\right)
+}^{\text{low-rank sparse factorization}}
+\\[6pt]
+&\;+\;
+\max_{\lambda\ge 0}\;
+\min_{x\in\mathcal{X}}\Big\{
+f(x)+\lambda\,g(x)
+\Big\}
+\;+\;
+\arg\min_{y\in\mathbb{R}^{d}}
+\left\{
+\sum_{i=1}^{N}\lVert y - a_i\rVert_{2}
+\right\}
+\\[6pt]
+&\;+\;
+\sum_{n=1}^{\infty}\left(\frac{1}{n^{2}}-\frac{1}{(n+\delta)^{2}}\right)
+\;+\;
+\limsup_{n\to\infty}\left(
+\frac{1}{n}\sum_{k=1}^{n}\mathbf{1}\{S_k\le \tau\}
+\right)
+\;+\;
+\int_{0}^{\infty} e^{-\lambda t}\,\mathbb{E}\big[\lVert X_t\rVert_2^2\big]\,dt
+\\[8pt]
+&\;+\;
+\left[
+\begin{array}{ccc}
+x_1 & x_2 & \cdots \\
+x_3 & x_4 & \cdots \\
+\vdots & \vdots & \ddots
+\end{array}
+\right]
+\!\!
+\begin{bmatrix}
+\alpha_1 & & \\
+& \alpha_2 & \\
+& & \ddots
+\end{bmatrix}
+\!\!
+\begin{bmatrix}
+y_1 \\ y_2 \\ \vdots
+\end{bmatrix}
+\;-\;
+\sum_{i=1}^{N}\sum_{j=1}^{N}\kappa(x_i,x_j)\,c_i c_j
+\\[8pt]
+&\;+\;
+\left\{
+\begin{array}{ll}
+\displaystyle
+\sum_{r=1}^{R}\frac{\exp(\theta_r^{\top} z)}{\sum_{u=1}^{R}\exp(\theta_u^{\top} z)} & \text{if } z\in\mathcal{Z}, \\[10pt]
+\displaystyle
+\int_{\partial\mathcal{Z}}\nabla\!\cdot\!\big(D(z)\nabla v(z)\big)\,dS(z) & \text{otherwise.}
+\end{array}
+\right\}
+\\[10pt]
+&\;+\;
+\overbrace{
+\int_{0}^{2\pi}\!\!\int_{0}^{\infty}
+r \,\exp\!\left(-\tfrac{r^{2}}{2\sigma^{2}}\right)\!
+\left(1+\epsilon\cos(\omega\theta)\right)\,dr\,d\theta
+}^{\text{polar Gaussian with angular modulation}}
+\\[10pt]
+&\;+\;
+\frac{
+\displaystyle
+\sum_{i=1}^{N}\sum_{j=1}^{N} (x_i - \overline{x})(x_j - \overline{x})\,\exp\!\left(-\frac{\lVert s_i-s_j\rVert_2^{2}}{\ell^{2}}\right)
+}{
+\displaystyle
+\sqrt{\sum_{i=1}^{N}(x_i-\overline{x})^{2}}
+\;\sqrt{\sum_{j=1}^{N}(x_j-\overline{x})^{2}}
+}
+\\[10pt]
+&\;+\;
+\underbrace{
+\frac{d}{dx}\left[
+x^{\alpha}\,(1-x)^{\beta}\;
+{}_2F_1\!\left(a,b;c;\,x\right)
+\right]
+}_{\text{hypergeometric derivative}}
+\;+\;
+\sum_{n=0}^{\infty}\left(\frac{(-1)^n}{(2n+1)!}\right) x^{2n+1}
+\;+\;
+\prod_{k=1}^{K}\left(1+\frac{\rho}{k^{\sigma}}\right)
+\\[12pt]
+&\;+\;
+\overbrace{
+\exp\!\bigg[
+-\frac{1}{2}
+\Big(
+\theta^{\top}\!H\,\theta
+-2\,b^{\top}\theta
+\Big)
+\bigg]
+}^{\text{quadratic exponential}}
+\;+\;
+\left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}\right)
+\log\!\left(1+x^{2}+y^{2}\right)
+\\[12pt]
+&\;+\;
+\int_{0}^{1}
+\frac{\ln(1+\xi x)}{x}\,dx
+\;+\;
+\sum_{m=1}^{M}\sum_{n=1}^{N}
+\frac{\sin(\pi m x)\sin(\pi n y)}{m^{2}+n^{2}+\delta}
+\;+\;
+\operatorname*{arg\,min}_{\mathbf{u}\in\mathbb{R}^{d}}
+\left\{\lVert \mathbf{A}\mathbf{u}-\mathbf{b}\rVert_{2}^{2} + \tau\lVert\mathbf{u}\rVert_{1}\right\}.
+\end{aligned}
+$$
+
+# Jupiter
+
+Regular JavaScript (no highlighting - JS excluded from Shiki):
+
+```javascript
+const regularCode = 'No syntax highlighting'
+console.log(regularCode)
+```
+
+TypeScript with Twoslash (hover for type info):
+
+```ts twoslash
+const name = 'Jupiter'
+console.log('Hello, ' + name + '!')
+```
+
+Python (has Shiki highlighting):
+
+```python
+def hello():
+    print("This should have syntax highlighting")
+```
+
+```js twoslash
+const handler = {
+  get(target, name) {
+    return name in target ? target[name] : 42
+  }
+}
+
+const p = new Proxy({}, handler)
+p.a = 1
+console.log(p.a, p.b) // 1, 42
+```

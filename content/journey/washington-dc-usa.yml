@@ -1,0 +1,12 @@
+id: washington-dc-usa
+name: Washington D.C.
+coordinates:
+  latitude: 38.9072
+  longitude: -77.0369
+country: United States
+region: District of Columbia
+city: Washington D.C.
+status: wishlist
+tags:
+  - wishlist
+featured: false

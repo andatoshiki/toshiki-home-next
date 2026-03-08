@@ -1,0 +1,11 @@
+id: photoshop
+name: Adobe Photoshop
+type: software
+description: The industry-standard image editing and graphic design software for photo manipulation, compositing, digital painting, and creating stunning visual content.
+image: https://cdn.tosh1ki.de/assets/images/20260106010510.png
+url: https://www.adobe.com/products/photoshop.html
+tags:
+  - design
+  - photo-editing
+  - adobe
+featured: false

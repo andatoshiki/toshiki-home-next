@@ -1,0 +1,12 @@
+id: jfk-usa
+name: JFK International
+coordinates:
+  latitude: 40.6413
+  longitude: -73.7781
+country: United States
+region: New York
+city: New York City
+status: airport
+tags:
+  - airport
+featured: false

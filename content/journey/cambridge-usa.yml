@@ -1,0 +1,14 @@
+id: cambridge-usa
+name: Cambridge
+coordinates:
+  latitude: 42.3736
+  longitude: -71.1097
+country: United States
+region: Massachusetts
+city: Cambridge
+status: visited
+description: Visited MIT
+tags:
+  - travel
+  - university
+featured: false

@@ -1,0 +1,322 @@
+@tailwind utilities;
+
+/* View Transitions API */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(page-content),
+::view-transition-new(page-content) {
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+}
+
+::view-transition-old(page-content) {
+  animation-name: slide-out-up;
+}
+
+::view-transition-new(page-content) {
+  animation-name: slide-in-down;
+}
+
+@keyframes slide-out-up {
+  to {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-down {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .limits {
+    @apply border border-red-600;
+    @apply bg-blue-500;
+  }
+
+  .shine {
+    @apply absolute left-0 top-0 h-full w-1/3 -translate-x-full -skew-x-20;
+    @apply bg-white/0 bg-gradient-to-r from-white/0 via-white/30 to-white/0 text-white/0 dark:via-white/10;
+  }
+
+  .side-text {
+    @apply scale-flip [writing-mode:vertical-rl];
+  }
+}
+
+/* medium zoom blurred background */
+[data-rmiz-modal-img] {
+  border-radius: 0.5rem !important; /* Tailwind's rounded-lg */
+  overflow: hidden;
+}
+[data-rmiz-btn-unzoom] {
+  display: none !important;
+}
+
+.react-medium-zoom-overlay,
+.react-medium-zoom-image--zoomed {
+  border-radius: 0.5rem !important;
+  /* 0.5rem = rounded-lg */
+}
+
+/*
+.wave {
+  @apply relative;
+}
+.wave::before,
+.wave::after {
+  @apply absolute -top-20 left-1/2 aspect-square w-sm content-[''];
+}
+.wave::before {
+  --duration: 10s;
+  @apply animate-wave rounded-[45%] bg-white/40;
+}
+.wave::after {
+  --duration: 20s;
+  @apply animate-wave rounded-[40%] bg-white/20;
+}
+.wave-reverse::before,
+.wave-reverse::after {
+  animation-direction: reverse;
+}
+*/
+
+/* Cute Cat, https://codepen.io/AngelaVelasquez/pen/AWyNYb */
+/* Converted from @utility to standard CSS class */
+
+/* Always set base styles for .cute-cat */
+.cute-cat {
+  --cat-border: #ffb399;
+  --cat-bg-light: #5ddfe8;
+  --cat-bg-dark: #111;
+  --cat-sun: #ffee94;
+  --cat-moon: #eee;
+  --cat-body-light: #777;
+  --cat-body-dark: #444;
+
+  position: relative;
+  display: block;
+  height: var(--cat-size);
+  width: var(--cat-size);
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 9999px;
+  border-width: calc(var(--cat-size) * 0.034);
+  border-color: var(--cat-border);
+  background: var(--cat-bg-light);
+  box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  transition-property: background, border-color, color, fill, stroke;
+  transition-duration: 1000ms;
+}
+.cute-cat .the-sun,
+.cute-cat .the-moon {
+  position: absolute;
+  display: block;
+  border-radius: 9999px;
+  transition: top 0.5s ease-in-out;
+}
+.cute-cat .the-sun {
+  background: var(--cat-sun);
+  width: calc(var(--cat-size) * 0.17);
+  height: calc(var(--cat-size) * 0.17);
+  top: calc(var(--cat-size) * 0.077);
+  right: calc(var(--cat-size) * 0.255);
+  box-shadow: 0 0 calc(var(--cat-size) * 0.17) var(--cat-sun);
+}
+.cute-cat .the-moon {
+  background: var(--cat-moon);
+  height: calc(var(--cat-size) * 0.102);
+  width: calc(var(--cat-size) * 0.102);
+  top: calc(var(--cat-size) * 0.851);
+  left: calc(var(--cat-size) * 0.255);
+  box-shadow: 0 0 calc(var(--cat-size) * 0.085) var(--cat-moon);
+}
+.cute-cat .the-cat {
+  position: absolute;
+  display: block;
+  background: var(--cat-body-light);
+  transition: all 0.3s;
+  bottom: calc(var(--cat-size) * -0.085);
+  height: calc(var(--cat-size) * 0.596);
+  width: calc(var(--cat-size) * 0.574);
+  margin: 0 calc(var(--cat-size) * 0.179);
+}
+.cute-cat .the-cat::before,
+.cute-cat .the-cat::after {
+  position: absolute;
+  height: 0;
+  width: 0;
+  content: '';
+  top: calc(var(--cat-size) * -0.08);
+  border-bottom: calc(var(--cat-size) * 0.085) solid var(--cat-body-light);
+}
+.cute-cat .the-cat::before {
+  left: 0;
+  border-left: 0 solid transparent;
+  border-right: calc(var(--cat-size) * 0.128) solid transparent;
+}
+.cute-cat .the-cat::after {
+  right: 0;
+  border-right: 0 solid transparent;
+  border-left: calc(var(--cat-size) * 0.128) solid transparent;
+}
+.cute-cat .the-cat .eyes {
+  position: absolute;
+  display: block;
+  background: var(--cat-sun);
+  height: calc(var(--cat-size) * 0.17);
+  width: calc(var(--cat-size) * 0.17);
+  bottom: calc(var(--cat-size) * 0.34);
+  border-radius: 100%;
+}
+.cute-cat .the-cat .eyes.left {
+  left: calc(var(--cat-size) * 0.051);
+}
+.cute-cat .the-cat .eyes.right {
+  right: calc(var(--cat-size) * 0.051);
+}
+
+.cute-cat .the-cat .eyes .pupil {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  height: 100%;
+  background: var(--cat-border);
+  transition: all 0.5s;
+  width: calc(var(--cat-size) * 0.021);
+  border-radius: 100%;
+}
+.cute-cat .the-cat .nose {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border-radius: 9999px;
+  background: var(--cat-border);
+  height: calc(var(--cat-size) * 0.043);
+  width: calc(var(--cat-size) * 0.043);
+  top: calc(var(--cat-size) * 0.191);
+}
+@media (hover: hover) {
+  .cute-cat:hover .the-cat {
+    bottom: calc(var(--cat-size) * -0.17);
+  }
+  .cute-cat:hover .the-cat .eyes {
+    height: calc(var(--cat-size) * 0.034);
+    bottom: calc(var(--cat-size) * 0.426);
+  }
+}
+
+/* Tailwind dark mode for .cute-cat */
+.dark .cute-cat {
+  background: var(--cat-bg-dark);
+}
+.dark .cute-cat .the-sun {
+  top: calc(var(--cat-size) * 0.851);
+}
+.dark .cute-cat .the-moon {
+  top: calc(var(--cat-size) * 0.17);
+}
+.dark .cute-cat .the-cat {
+  background: var(--cat-body-dark);
+}
+.dark .cute-cat .the-cat::before,
+.dark .cute-cat .the-cat::after {
+  border-bottom: calc(var(--cat-size) * 0.085) solid var(--cat-body-dark);
+}
+.dark .cute-cat .the-cat .eyes .pupil {
+  height: 90%;
+  width: calc(var(--cat-size) * 0.145);
+  margin: 5% auto;
+}
+.dark .cute-cat:hover .the-cat .eyes {
+  height: calc(var(--cat-size) * 0.17);
+  bottom: calc(var(--cat-size) * 0.34);
+}
+
+/* Tailwind dark mode for .cute-cat */
+.dark .cute-cat {
+  background: var(--cat-bg-dark);
+}
+.dark .cute-cat .the-sun {
+  top: calc(var(--cat-size) * 0.851);
+}
+.dark .cute-cat .the-moon {
+  top: calc(var(--cat-size) * 0.17);
+}
+.dark .cute-cat .the-cat {
+  background: var(--cat-body-dark);
+}
+.dark .cute-cat .the-cat::before,
+.dark .cute-cat .the-cat::after {
+  border-bottom: calc(var(--cat-size) * 0.085) solid var(--cat-body-dark);
+}
+.dark .cute-cat .the-cat .eyes .pupil {
+  height: 90%;
+  width: calc(var(--cat-size) * 0.145);
+  margin: 5% auto;
+}
+.dark .cute-cat:hover .the-cat .eyes {
+  height: calc(var(--cat-size) * 0.17);
+  bottom: calc(var(--cat-size) * 0.34);
+}
+
+.atk-copyright {
+  display: none !important;
+}
+
+.atk-avatar {
+  transition: all 1s;
+}
+.atk-avatar.img {
+  border-radius: 20px;
+}
+
+.atk-avatar:hover {
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+}
+
+.atk-textarea {
+  background: url('https://blog.fufu.ink/images/wl-bg-mikuchan.gif') 100% 100%
+    no-repeat;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: right bottom !important;
+}
+
+.atk-textarea:focus {
+  background: url('https://blog.fufu.ink/images/wl-bg-mikuchan.gif') 100% 100%
+    no-repeat;
+  background-position-y: 78px !important;
+  transition: all 0.25s ease-in-out 0s;
+}
+
+html.dark .atk-textarea,
+html.dark .atk-editor,
+html.dark .atk-main-editor,
+html.dark .atk-bottom,
+html.dark .atk-editor .atk-textarea,
+.atk-layer-wrap.atk-dark-mode,
+html.dark .atk-editor .atk-textarea textarea {
+  background: #141414 !important;
+  color: #fff !important;
+  transition: none !important;
+}
+
+html.dark .atk-main-editor {
+  border: 1px solid #141414;
+}

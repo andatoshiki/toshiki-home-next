@@ -1,0 +1,15 @@
+id: millennium-park-usa
+name: Millennium Park
+coordinates:
+  latitude: 41.8826
+  longitude: -87.6226
+country: United States
+region: Illinois
+city: Chicago
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+  - landmark
+  - park
+featured: false

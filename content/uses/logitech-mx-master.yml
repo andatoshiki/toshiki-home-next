@@ -1,0 +1,11 @@
+id: mouse-logitech
+name: Logitech MX Master 3S
+type: hardware
+description: Premium wireless mouse with excellent ergonomics and gesture controls.
+image: https://cdn.tosh1ki.de/assets/images/20260105171536.png
+url: https://logitech.com
+
+tags:
+  - peripherals
+  - mouse
+featured: true

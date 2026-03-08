@@ -1,0 +1,12 @@
+id: new-york-usa
+name: New York City
+coordinates:
+  latitude: 40.7128
+  longitude: -74.0060
+country: United States
+region: New York
+city: New York City
+status: visited
+tags:
+  - travel
+featured: false

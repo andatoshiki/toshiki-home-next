@@ -1,0 +1,12 @@
+id: naples-italy
+name: Naples
+coordinates:
+  latitude: 40.8518
+  longitude: 14.2681
+country: Italy
+region: Campania
+city: Naples
+status: wishlist
+tags:
+  - wishlist
+featured: false

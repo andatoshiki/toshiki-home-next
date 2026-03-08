@@ -1,0 +1,13 @@
+id: bay-area-osaka-japan
+name: Bay Area (Osaka)
+coordinates:
+  latitude: 34.6545
+  longitude: 135.4286
+country: Japan
+region: Osaka
+city: Osaka
+status: visited
+tags:
+  - travel
+  - osaka-area
+featured: false

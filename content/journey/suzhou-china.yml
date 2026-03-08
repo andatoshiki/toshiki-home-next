@@ -1,0 +1,12 @@
+id: suzhou-china
+name: Suzhou
+coordinates:
+  latitude: 31.2990
+  longitude: 120.5853
+country: China
+region: Jiangsu
+city: Suzhou
+status: visited
+tags:
+  - travel
+featured: false

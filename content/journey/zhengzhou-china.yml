@@ -1,0 +1,12 @@
+id: zhengzhou-china
+name: Zhengzhou
+coordinates:
+  latitude: 34.7466
+  longitude: 113.6253
+country: China
+region: Henan
+city: Zhengzhou
+status: visited
+tags:
+  - travel
+featured: false

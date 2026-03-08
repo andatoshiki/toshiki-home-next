@@ -1,0 +1,13 @@
+id: sumida-tokyo-japan
+name: Sumida
+coordinates:
+  latitude: 35.7101
+  longitude: 139.8016
+country: Japan
+region: Tokyo
+city: Tokyo
+status: visited
+tags:
+  - travel
+  - tokyo-district
+featured: false

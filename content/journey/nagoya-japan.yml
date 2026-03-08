@@ -1,0 +1,12 @@
+id: nagoya-japan
+name: Nagoya
+coordinates:
+  latitude: 35.1815
+  longitude: 136.9066
+country: Japan
+region: Chubu
+city: Nagoya
+status: visited
+tags:
+  - travel
+featured: false

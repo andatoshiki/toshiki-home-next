@@ -1,0 +1,12 @@
+id: halifax-canada
+name: Halifax
+coordinates:
+  latitude: 44.648764
+  longitude: -63.575239
+country: Canada
+region: Nova Scotia
+city: Halifax
+status: visited
+tags:
+  - travel
+featured: false

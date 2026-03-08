@@ -1,0 +1,53 @@
+---
+title: 'Precision Loss When Converting double to BigDecimal'
+date: '2025-02-06'
+description: 'Explains why using the BigDecimal constructor with double can cause precision loss and how to avoid it with valueOf or String input.'
+tags:
+  - java
+  - bigdecimal
+  - precision
+  - programming
+---
+
+When converting a `double` to `BigDecimal`, precision loss can occur if you directly use the constructor:
+
+```java
+final BigDecimal b1 = new BigDecimal(0.48);
+final BigDecimal b2 = BigDecimal.valueOf(0.48);
+
+// 0.479999999999999982236431605997495353221893310546875
+System.out.println(b1);
+// 0.48
+System.out.println(b2);
+```
+
+- **Problem**: `0.48` cannot be represented exactly as a binary floating-point number.
+- **Result**: Using the constructor with `double` introduces tiny rounding errors.
+
+## 1: Use `valueOf`
+
+To avoid this, always use the official `valueOf` method:
+
+```java
+public static BigDecimal valueOf(double val) {
+    return new BigDecimal(Double.toString(val));
+}
+```
+
+This first converts the `double` into a `String`, then constructs a `BigDecimal` from that string, preserving precision.
+
+## 2: Use String Constructor
+
+You can also directly pass a string:
+
+```java
+final BigDecimal b3 = new BigDecimal("0.48");
+// 0.48
+System.out.println(b3);
+```
+
+## Summary
+
+- `new BigDecimal(double)` → precision loss.
+- `BigDecimal.valueOf(double)` → safe.
+- `new BigDecimal(String)` → safe.

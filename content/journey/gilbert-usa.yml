@@ -1,0 +1,13 @@
+id: gilbert-usa
+name: Gilbert
+coordinates:
+  latitude: 33.3528
+  longitude: -111.7890
+country: United States
+region: Arizona
+city: Gilbert
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+featured: false

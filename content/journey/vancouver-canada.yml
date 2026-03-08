@@ -1,0 +1,12 @@
+id: vancouver-canada
+name: Vancouver
+coordinates:
+  latitude: 49.282729
+  longitude: -123.120738
+country: Canada
+region: British Columbia
+city: Vancouver
+status: visited
+tags:
+  - travel
+featured: false

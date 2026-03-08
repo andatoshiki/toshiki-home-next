@@ -1,0 +1,12 @@
+id: portland-usa
+name: Portland
+coordinates:
+  latitude: 45.5051
+  longitude: -122.6750
+country: United States
+region: Oregon
+city: Portland
+status: wishlist
+tags:
+  - wishlist
+featured: false

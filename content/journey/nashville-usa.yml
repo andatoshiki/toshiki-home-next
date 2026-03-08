@@ -1,0 +1,12 @@
+id: nashville-usa
+name: Nashville
+coordinates:
+  latitude: 36.1627
+  longitude: -86.7816
+country: United States
+region: Tennessee
+city: Nashville
+status: wishlist
+tags:
+  - wishlist
+featured: false

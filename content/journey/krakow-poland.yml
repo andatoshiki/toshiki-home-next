@@ -1,0 +1,12 @@
+id: krakow-poland
+name: Krakow
+coordinates:
+  latitude: 50.0647
+  longitude: 19.9450
+country: Poland
+region: Lesser Poland
+city: Krakow
+status: wishlist
+tags:
+  - wishlist
+featured: false

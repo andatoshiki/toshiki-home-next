@@ -1,0 +1,12 @@
+id: mesa-usa
+name: Mesa
+coordinates:
+  latitude: 33.4152
+  longitude: -111.8315
+country: United States
+region: Arizona
+city: Mesa
+status: visited
+tags:
+  - travel
+featured: false

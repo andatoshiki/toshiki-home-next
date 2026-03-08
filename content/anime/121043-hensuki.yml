@@ -1,0 +1,27 @@
+id: 522752186
+mediaId: 121043
+status: COMPLETED
+score: 7
+progress: 12
+updatedAt: 1766474802
+createdAt: 1766474802
+title:
+  romaji: Hensuki▽
+  english: null
+  native: 変好き▽
+  userPreferred: Hensuki▽
+description: A short anime spin-off that ran after episodes of the main anime on AT-X and GYAO.
+coverImage:
+  extraLarge: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx121043-tKiAftJvnEaM.png'
+  large: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx121043-tKiAftJvnEaM.png'
+  medium: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/small/bx121043-tKiAftJvnEaM.png'
+  color: '#f1c9ae'
+episodes: 12
+chapters: null
+volumes: null
+format: TV_SHORT
+mediaStatus: FINISHED
+siteUrl: 'https://anilist.co/anime/121043'
+customNote:
+customTags: []
+featured: false

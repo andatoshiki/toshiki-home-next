@@ -1,0 +1,12 @@
+id: milan-malpensa-italy
+name: Milan Malpensa
+coordinates:
+  latitude: 45.6306
+  longitude: 8.7281
+country: Italy
+region: Lombardy
+city: Milan
+status: airport
+tags:
+  - airport
+featured: false

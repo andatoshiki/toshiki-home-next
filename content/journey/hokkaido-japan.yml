@@ -1,0 +1,12 @@
+id: hokkaido-japan
+name: Hokkaido
+coordinates:
+  latitude: 43.0642
+  longitude: 141.3469
+country: Japan
+region: Hokkaido
+city: Sapporo
+status: visited
+tags:
+  - travel
+featured: false

@@ -1,0 +1,12 @@
+id: syracuse-usa
+name: Syracuse
+coordinates:
+  latitude: 43.0481
+  longitude: -76.1474
+country: United States
+region: New York
+city: Syracuse
+status: visited
+tags:
+  - travel
+featured: false

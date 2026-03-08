@@ -1,0 +1,12 @@
+id: cologne-germany
+name: Cologne
+coordinates:
+  latitude: 50.9375
+  longitude: 6.9603
+country: Germany
+region: North Rhine-Westphalia
+city: Cologne
+status: wishlist
+tags:
+  - wishlist
+featured: false

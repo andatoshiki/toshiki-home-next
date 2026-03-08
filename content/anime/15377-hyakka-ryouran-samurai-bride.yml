@@ -1,0 +1,27 @@
+id: 522751178
+mediaId: 15377
+status: COMPLETED
+score: 6
+progress: 12
+updatedAt: 1766474615
+createdAt: 1766474615
+title:
+  romaji: 'Hyakka Ryouran: Samurai Bride'
+  english: Samurai Bride
+  native: 百花繚乱 サムライブライド
+  userPreferred: 'Hyakka Ryouran: Samurai Bride'
+description: 'Second season of Hyakka Ryoran: Samurai Girls. '
+coverImage:
+  extraLarge: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx15377-PHthXBKOeheF.png'
+  large: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx15377-PHthXBKOeheF.png'
+  medium: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/small/bx15377-PHthXBKOeheF.png'
+  color: '#f1d6bb'
+episodes: 12
+chapters: null
+volumes: null
+format: TV
+mediaStatus: FINISHED
+siteUrl: 'https://anilist.co/anime/15377'
+customNote:
+customTags: []
+featured: false

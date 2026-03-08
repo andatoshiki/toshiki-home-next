@@ -1,0 +1,12 @@
+id: milwaukee-usa
+name: Milwaukee
+coordinates:
+  latitude: 43.0389
+  longitude: -87.9065
+country: United States
+region: Wisconsin
+city: Milwaukee
+status: wishlist
+tags:
+  - wishlist
+featured: false

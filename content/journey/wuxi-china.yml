@@ -1,0 +1,12 @@
+id: wuxi-china
+name: Wuxi
+coordinates:
+  latitude: 31.4912
+  longitude: 120.3119
+country: China
+region: Jiangsu
+city: Wuxi
+status: visited
+tags:
+  - travel
+featured: false

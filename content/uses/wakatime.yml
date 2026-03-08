@@ -1,0 +1,11 @@
+id: wakatime
+name: WakaTime
+type: software
+description: A time tracking analytics platform for developers that automatically tracks your coding activity and provides detailed insights into your development habits and productivity.
+image: https://cdn.tosh1ki.de/assets/images/20260106180014.png
+url: https://wakatime.com
+tags:
+  - productivity
+  - analytics
+  - development
+featured: false

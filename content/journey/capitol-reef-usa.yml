@@ -1,0 +1,13 @@
+id: capitol-reef-usa
+name: Capitol Reef National Park
+coordinates:
+  latitude: 38.3670
+  longitude: -111.2615
+country: United States
+region: Utah
+city: Torrey
+status: visited
+tags:
+  - travel
+  - national-park
+featured: false

@@ -1,0 +1,12 @@
+id: milan-italy
+name: Milan
+coordinates:
+  latitude: 45.4642
+  longitude: 9.1900
+country: Italy
+region: Lombardy
+city: Milan
+status: visited
+tags:
+  - travel
+featured: false

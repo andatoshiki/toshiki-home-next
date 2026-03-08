@@ -1,0 +1,13 @@
+id: pueblo-usa
+name: Pueblo
+coordinates:
+  latitude: 38.2545
+  longitude: -104.6091
+country: United States
+region: Colorado
+city: Pueblo
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+featured: false

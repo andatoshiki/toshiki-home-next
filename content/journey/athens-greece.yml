@@ -1,0 +1,12 @@
+id: athens-greece
+name: Athens
+coordinates:
+  latitude: 37.9838
+  longitude: 23.7275
+country: Greece
+region: Attica
+city: Athens
+status: wishlist
+tags:
+  - wishlist
+featured: false

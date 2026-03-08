@@ -1,0 +1,15 @@
+id: magnificent-mile-usa
+name: Magnificent Mile
+coordinates:
+  latitude: 41.8949
+  longitude: -87.6244
+country: United States
+region: Illinois
+city: Chicago
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+  - landmark
+  - shopping
+featured: false

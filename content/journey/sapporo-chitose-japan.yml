@@ -1,0 +1,12 @@
+id: sapporo-chitose-japan
+name: New Chitose Airport
+coordinates:
+  latitude: 42.7752
+  longitude: 141.6925
+country: Japan
+region: Hokkaido
+city: Sapporo
+status: airport
+tags:
+  - airport
+featured: false

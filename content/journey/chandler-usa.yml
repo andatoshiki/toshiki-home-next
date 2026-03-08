@@ -1,0 +1,13 @@
+id: chandler-usa
+name: Chandler
+coordinates:
+  latitude: 33.3062
+  longitude: -111.8413
+country: United States
+region: Arizona
+city: Chandler
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+featured: false

@@ -1,0 +1,11 @@
+id: obsidian
+name: Obsidian
+type: software
+description: A powerful knowledge base and note-taking app that works on top of local Markdown files, featuring bidirectional linking, graph view, and extensive plugin ecosystem.
+image: https://cdn.tosh1ki.de/assets/images/20260105234358.png
+url: https://obsidian.md
+tags:
+  - productivity
+  - notes
+  - knowledge-base
+featured: false

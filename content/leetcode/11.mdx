@@ -1,0 +1,97 @@
+---
+title: 'Something Number'
+date: '2026-01-14'
+type: 'easy'
+description: 'Determine if an integer is a palindrome without converting to string'
+category: 'Notes'
+tags: 'leetcode/math, programming/practice, leetcode/problem, recursion, palindrome'
+status: 'published'
+---
+
+# 9: Palindrome Number
+
+## 1: Problem Statement
+
+Given an integer `x`, return `true`_ if _`x`_ is a _<span data-keyword="palindrome-integer">_palindrome_</span>_, and _`false`_ otherwise_.
+
+> [!Example]+ Example 1
+> **Input**: `x = 121` >**Output**: `true` >**Explanation**:
+> 121 reads as 121 from left to right and from right to left.
+
+> [!Example]+ Example 2
+> **Input**: `x = -121` >**Output**: `false` >**Explanation**:
+> From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+
+> [!Example]+ Example 3
+> **Input**: `x = 10` >**Output**: `false` >**Explanation**:
+> Reads 01 from right to left. Therefore it is not a palindrome.
+
+> [!warning]+ Constraints
+>
+> - `-2^31 <= x <= 2^31 - 1`
+
+> Follow up: Could you solve it without converting the integer to a string?
+
+## 2: Hints
+
+> [!Hint]- Hint 1
+> Beware of overflow when you reverse the integer.
+
+## 3: Approach
+
+### 3.1: Convert to String then Recursion
+
+- In the `main` method, convert the parameter argument to `String` via `String.valueOf()` method.
+- Create a second method named `palindromeRecursion` or `recursionHelper`
+  - Pass the converted `String` as the parameter argument into the method and apply recursion, alongside two other parameter, the `start` index and the `end` index both with the primitive data type of `int`.
+    - Base case of the recursion: if `start > end`, where the starting integer is greater than the ending integer, which indicates the recursion is over since there's no more character left to compare (simply put, the central index of the `String`).
+      - Return `true`.
+      - This also covers the case where the `String` might only have one single digit which should return `true`
+    - Case 1: if the starting character mismatches the ending character when specified, `y.chrAt(start) != y.charAt(end)`.
+      - Return `false` otherwise.
+    - Then return the method by calling itself via recursion, increment the starting index by 1, and decrement the ending index by 1 for each call via,
+      ```java
+      return palindromeHeleper(String y, start + 1, end - 1);
+      ```
+
+## 4: Solution
+
+### 4.1: Java
+
+#### 4.1.1: Recursion
+
+```java
+// solution
+class Solution {
+    public boolean isPalindrome(int x) {
+        String y = String.valueOf(x);
+        return palindromeRecursion(y, 0, y.length() - 1);
+    }
+
+    public boolean palindromeRecursion(String y, int start, int end) {
+        if (start > end) {
+            return true;
+        }
+        if (y.charAt(start) != y.charAt(end) ) {
+            return false;
+        }
+        return palindromeRecursion(y, start + 1, end - 1);
+    }
+}
+```
+
+## 5: Complexity Analysis
+
+### 5: Complexity Analysis
+
+#### 5.1: Time Complexity
+
+- The time complexity of the solution is $O(n)$, where n is the number of digits in the integer `x`. This is because the string conversion and the recursive comparison of the characters are all based on the length of the string.
+
+#### 5.2: Space Complexity
+
+- The space complexity is $O(n)$ due to the space required for the recursive call stack and the string created from the integer. Each recursive call adds a layer to the stack until the base case is reached, leading to a stack size proportional to the number of digits in `x`.
+
+## 6: Reflections
+
+- I accidentally flipped the argument passed to the final recursive return call by mistakenly swapping

@@ -1,0 +1,123 @@
+---
+title: 'Notes: Basic TCP/IP Networks'
+date: '2024-07-29T23:31:24.020Z'
+description: 'Notes from the Basic TCP/IP Networks course by Fiberschool offered by BrSuper Internet'
+category: 'Notes'
+tags: 'tcp/ip,brsuper,fiberschool,networks,internet,support'
+status: 'draft'
+---
+
+# Introduction to TCP/IP
+
+## Types of Computer Networks
+
+There are 4 levels of computer networks: **PAN**, **LAN**, **MAN**, and **WAN**. They differ in the coverage distance of the network.
+
+| Network                                           | Examples                                                                                                                                                                | Coverage  |
+| ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| **`PAN`** - **P**ersonal **A**rea **N**etwork     | Bluetooth, wireless keyboard                                                                                                                                            | <10m      |
+| **`LAN`** - **L**ocal **A**rea **N**etwork        | Home network, company network                                                                                                                                           | 10m - 1Km |
+| **`MAN`** - **M**etropolitan **A**rea **N**etwork | Interconnection of several buildings in a city, communication between headquarters and branch of a company, public transport networks (coordinate and monitor vehicles) | <10Km     |
+| **`WAN`** - **W**ide **A**rea **N**etwork         | Internet, telephone networks, television networks, communication between headquarters and branches of a company spread across several countries                         | >10Km     |
+
+### TCP/IP
+
+The TCP/IP stack is open-source, meaning it has no owner, allowing for wide adoption. "Stack" because it is a stack of protocols, where each protocol is responsible for a layer of the stack. A set of protocols.
+
+## OSI Model
+
+OSI - **O**pen **S**ystems **I**nterconnection, created by ISO (International Organization for Standardization) in 1984 with the objective of standardizing communication between computer systems.
+
+Before a standard model for standardization, each network equipment manufacturer had its own way of communication, which made communication between equipment from different manufacturers difficult and caused interoperability problems.
+
+The model established an architecture so that equipment from different manufacturers could communicate in a standardized way.
+
+OSI is a reference model, not a protocol itself. It is divided into 7 layers, each with a specific function.
+
+| Layer | Name               | Function                                                                                                                                                                             |
+| ----- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **7** | **`Application`**  | Data presentations are delivered to destination applications, which interpret and process the data according to their needs.                                                         |
+| **6** | **`Presentation`** | Sections are encapsulated in data representations, which can be formatted and transported according to the needs of the application.                                                 |
+| **5** | **`Session`**      | Segments are encapsulated in sessions, which contain information about how to establish, maintain, and terminate connections between applications.                                   |
+| **4** | **`Transport`**    | Packets are encapsulated in segments, containing information about source and destination ports, and other information necessary to ensure data is delivered correctly.              |
+| **3** | **`Network`**      | Frames are encapsulated in packets (datagrams) that contain IP addressing information (source and destination IP) and other information necessary to route data through the network. |
+| **2** | **`Data Link`**    | Bits are grouped into frames that have a header and a footer. The header contains information about the MAC address of the sender and recipient.                                     |
+| **1** | **`Physical`**     | Bits are transmitted over the network through electrical, optical, or radio signals.                                                                                                 |
+
+# IPv4 Addressing
+
+## IPv4 Address Structure
+
+- Fixed length of 32 bits
+- Smallest address: `0.0.0.0` | `0000.0000.0000.0000`
+- Largest address: `255.255.255.255` | `1111.1111.1111.1111`
+
+## Classes
+
+| Class   | Start       | End               |
+| ------- | ----------- | ----------------- |
+| **`A`** | `0.0.0.0`   | `127.255.255.255` |
+| **`B`** | `128.0.0.0` | `191.255.255.255` |
+| **`C`** | `192.0.0.0` | `223.255.255.255` |
+| **`D`** | `224.0.0.0` | `239.255.255.255` |
+| **`E`** | `240.0.0.0` | `247.255.255.255` |
+
+## Private/Public IP
+
+### Private IP
+
+Private IPs are those that are directly accessible within the local network. They are not directly connected to the internet (protected behind routers and firewalls).
+
+<Tip>**Example**: `192.168.0.1`</Tip>
+
+**Private IP Ranges:**
+
+- `10.0.0.0` to `10.255.255.255`
+- `172.16.0.0` to `172.31.255.255`
+- `192.168.0.0` to `192.168.255.255`
+
+### Public IP
+
+Public IP addresses are those that can be accessed by the public internet and are unique for each device connected to the internet. These addresses are provided by Internet Service Providers (ISPs) and are available in limited quantities.
+
+<Tip>**Example**: `157.240.222.35` (_facebook.com_)</Tip>
+
+# IPv4 to IPv6
+
+IPv4 supports about **4.3 billion** unique addresses. This quantity is considered low due to the large increase in globally connected devices.
+
+In 2011, IANA announced that it had allocated the last block of IPv4 addresses.
+
+<Tip>
+  **IANA** (**I**nternet **A**ssigned **N**umbers **A**uthority) is the
+  organization responsible for the global assignment of IP addresses, protocol
+  identifiers, port numbers, and other parameters related to the functioning of
+  the internet. IANA is a function performed by the **I**nternet **C**orporation
+  for **A**ssigned **N**ames and **N**umbers (**ICANN**).
+</Tip>
+
+### Understanding the numbers...
+
+| Reference        | Quantity        | Number                                          |
+| ---------------- | --------------- | ----------------------------------------------- |
+| People (08/2024) | 7.9 billion     | 007,900,000,000                                 |
+| IPv4 Addresses   | 4.3 billion     | 004,300,000,000                                 |
+| IPv6 Addresses   | 340 undecillion | 340,000,000,000,000,000,000,000,000,000,000,000 |
+
+IPv6 is like the number of stars in our galaxy, the Milky Way, which has about 400 billion stars. Now imagine 850 times more stars than that – that's the size of IPv6.
+
+IPv6 is like the number of grains of sand on 36 beaches, each 10 km long. It's hard to imagine, but it's an incredibly large quantity.
+
+# IPv6 Addressing
+
+## IPv6 Address Structure
+
+- Fixed length of 128 bits
+- Smallest address: `0000:0000:0000:0000:0000:0000:0000:0000`
+- Largest address: `FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF`
+
+It is divided into 8 blocks of 16 bits, separated by `:`, with the network address (prefix) and the host address.
+
+Example of IPv6 address: `2a03:2880:f048:0011:face:b00c:0000:0002`
+
+The IPv6 address is made using the hexadecimal system, which is a way of representing numbers in base 16. The hexadecimal system uses the numbers 0 to 9 and the letters A to F to represent the numbers 0 to 15.

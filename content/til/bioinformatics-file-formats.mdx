@@ -1,0 +1,97 @@
+---
+title: 'Common File Formats in Bioinformatics Analysis'
+date: '2025-01-28'
+description: 'Overview of frequently used file formats in bioinformatics workflows such as FASTQ, FASTA, GTF, BED, SAM/BAM, WIG, BigWig, and BedGraph, with examples of how to view and process them.'
+tags:
+  - bioinformatics
+  - sequencing
+  - genomics
+  - file-formats
+---
+
+In bioinformatics analysis, you often encounter many different file formats. Beyond raw sequencing data (`fastq`), you also need reference genome files (`fasta`) and gene annotation files (`gtf`). During processing, many intermediate files are generated such as `bed`, `bed12`, `sam`, `bam`, `wig`, `bigwig`, and `bedgraph`. Understanding what each column means helps decide which information to extract for the next analysis step.
+
+## 1: FASTQ Files
+
+- **Purpose**: Stores sequencing data, usually compressed as `.fq.gz`.
+- **Format**: Every 4 lines represent one read:
+
+  1. `@` header with sequencing instrument and coordinates
+  2. Nucleotide sequence (ATCGN)
+  3. `+` separator
+  4. Quality scores matching sequence length
+
+- **View**:
+
+  ```bash
+  zcat filename.fq.gz | head -n 8
+  ```
+
+- **Other Commands**: Count reads and bases
+  ```bash
+  echo "`zcat file.fq.gz | wc -l` / (4*1000000)" | bc -l
+  zcat file.fq.gz | awk '{if(FNR%4==0) base+=length}END{print base/10^9,"G";}'
+  ```
+
+## 2: FASTA Files
+
+- Stores DNA or protein sequences.
+- Header lines begin with `>`. Sequences may span multiple lines.
+- Soft-masked sequences use lowercase for repeats; `n` = unknown base.
+
+Example:
+
+```bash
+>chr1 dna_sm:chromosome:GRCh38:1:1:248956422:1 REF
+NNNNN...
+```
+
+## 3: GFF and GTF Annotation Files
+
+- **GFF** = General Feature Format, **GTF** = Gene Transfer Format.
+- Both have 9 columns describing genome features.
+- GTF is commonly used for gene annotation.
+- Preprocessing (remove `#` headers, add `chr` prefix):
+  ```bash
+  gunzip Homo_sapiens.GRCh38.gtf.gz -c | grep -v '^#' | sed '/^[^chr]/ s/^/chr/' > GRCh38.gtf
+  ```
+
+## 4: BED Files
+
+- Represent genomic regions (e.g., peaks, gene positions).
+- **3 required columns**: chrom, chromStart (0-based), chromEnd.
+- **Optional columns**: name, score, strand, thickStart, thickEnd, color, exon count, etc.
+
+## 5: SAM and BAM Files
+
+- **SAM**: Text format for sequence alignment results.
+- **BAM**: Binary compressed SAM for storage efficiency.
+- Convert:
+
+  ```bash
+  samtools view -b file.sam > file.bam
+  ```
+
+- **View**:
+
+  ```bash
+  samtools view file.bam | less -S
+  samtools view -h file.bam | less -S
+  ```
+
+- **Flag values**: Second column encodes read properties (paired, mapped, strand, etc.) using bitwise sums. Tools like [samformat.info](https://www.samformat.info/sam-format-flag) help decode them.
+
+## 6: WIG, BigWig, and BedGraph Files
+
+- Store coverage or signal intensity data for visualization.
+- **wig**: Text format showing density or probability scores.
+- **bedGraph**: Compact, 4-column format (Chr, start, end, value).
+- **bigWig**: Binary compressed wig for efficient visualization.
+
+Convert:
+
+```bash
+wigToBigWig input.wig genome.sizes output.bw
+```
+
+- UCSC docs: [WIG](https://genome.ucsc.edu/goldenPath/help/wiggle.html), [BedGraph](https://genome.ucsc.edu/goldenPath/help/bedgraph.html), [BigWig](http://genome.ucsc.edu/goldenPath/help/bigWig.html)

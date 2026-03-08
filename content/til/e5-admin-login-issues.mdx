@@ -1,0 +1,35 @@
+---
+title: 'Solving Microsoft E5 Admin Login Verification Issues'
+date: '2025-11-24'
+description: 'Explanation and workaround for Microsoft E5 admin and sub-account login issues requiring additional verification, including how to disable persistent verification prompts.'
+tags:
+  - microsoft
+  - e5
+  - azure
+  - security
+---
+
+# Issue Description
+
+When logging into an **E5 admin account**, the system required **more information to protect the account**, so a phone number was added. That worked fine.
+
+However, when logging into sub-accounts, the same prompt appears — but without the phone number option. Instead, it requires downloading the Microsoft Authenticator app, which sometimes fails to log in.
+
+# Solution
+
+Some administrators suggest the following:
+
+1. Go to the Microsoft Admin Center:  
+   [https://admin.microsoft.com/Adminportal/Home#/settings/security](https://admin.microsoft.com/Adminportal/Home#/settings/security)
+
+2. Change the policy to **"never expire"** to avoid repeated verification.
+
+3. Simply visiting:  
+   [https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)  
+   is only part of the process and may not be enough on its own.
+
+# Notes
+
+- The setup may vary depending on organization security requirements.
+- Adjusting the authentication method for sub-accounts may require admin-level policy changes.
+- Using conditional access and MFA policies allows customization, but disabling entirely could reduce security.

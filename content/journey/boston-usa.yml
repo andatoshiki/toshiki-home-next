@@ -1,0 +1,12 @@
+id: boston-usa
+name: Boston
+coordinates:
+  latitude: 42.3601
+  longitude: -71.0589
+country: United States
+region: Massachusetts
+city: Boston
+status: wishlist
+tags:
+  - wishlist
+featured: false

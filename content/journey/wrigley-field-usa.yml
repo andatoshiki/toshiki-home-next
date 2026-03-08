@@ -1,0 +1,15 @@
+id: wrigley-field-usa
+name: Wrigley Field
+coordinates:
+  latitude: 41.9484
+  longitude: -87.6553
+country: United States
+region: Illinois
+city: Chicago
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+  - landmark
+  - sports
+featured: false

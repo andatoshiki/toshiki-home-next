@@ -1,0 +1,15 @@
+id: sitgreaves-national-forest-usa
+name: Sitgreaves National Forest
+coordinates:
+  latitude: 34.2500
+  longitude: -110.1500
+country: United States
+region: Arizona
+city: Sitgreaves National Forest
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+  - nature
+  - national-forest
+featured: false

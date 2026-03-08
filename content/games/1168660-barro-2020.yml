@@ -1,0 +1,25 @@
+appid: 1168660
+name: 'Barro 2020'
+playtimeMinutes: 1139
+playtimeHours: 19
+playtime2Weeks: null
+lastPlayed: 1756598664
+iconUrl: 'https://media.steampowered.com/steamcommunity/public/images/apps/1168660/5294729fcd35c09f5499a64309f5fa311c96b1f1.jpg'
+headerImage: 'https://steamcdn-a.akamaihd.net/steam/apps/1168660/header.jpg'
+capsuleImage: 'https://steamcdn-a.akamaihd.net/steam/apps/1168660/capsule_231x87.jpg'
+developers:
+  - 'SC Jogos'
+publishers:
+  - 'SC Jogos'
+genres:
+  - 'Casual'
+  - 'Indie'
+  - 'Racing'
+  - 'Simulation'
+  - 'Sports'
+releaseDate: 'Nov 1, 2019'
+shortDescription: 'Try not to fall!'
+metacriticScore: null
+storeUrl: 'https://store.steampowered.com/app/1168660'
+isFree: false
+priceCents: 49

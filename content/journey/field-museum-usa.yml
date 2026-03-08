@@ -1,0 +1,15 @@
+id: field-museum-usa
+name: Field Museum of Natural History
+coordinates:
+  latitude: 41.8663
+  longitude: -87.6170
+country: United States
+region: Illinois
+city: Chicago
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+  - landmark
+  - museum
+featured: false

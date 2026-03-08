@@ -1,0 +1,12 @@
+id: helsinki-finland
+name: Helsinki
+coordinates:
+  latitude: 60.1699
+  longitude: 24.9384
+country: Finland
+region: Uusimaa
+city: Helsinki
+status: wishlist
+tags:
+  - wishlist
+featured: false

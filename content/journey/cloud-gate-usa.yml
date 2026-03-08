@@ -1,0 +1,15 @@
+id: cloud-gate-usa
+name: Cloud Gate (The Bean)
+coordinates:
+  latitude: 41.8827
+  longitude: -87.6233
+country: United States
+region: Illinois
+city: Chicago
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+  - landmark
+  - art
+featured: false

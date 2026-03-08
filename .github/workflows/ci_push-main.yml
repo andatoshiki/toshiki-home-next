@@ -1,0 +1,20 @@
+name: '[CI] Push Main'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  call-release:
+    name: Call release.yml
+    uses: mateusfg7/mateusf.com/.github/workflows/release.yml@main
+    secrets: inherit
+
+  call-lint:
+    name: Call lint.yml
+    uses: mateusfg7/mateusf.com/.github/workflows/lint.yml@main
+
+  call-sync-dev:
+    name: Call sync-dev-branch.yml
+    uses: mateusfg7/mateusf.com/.github/workflows/sync-dev-branch.yml@main

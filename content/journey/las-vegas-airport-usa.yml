@@ -1,0 +1,12 @@
+id: las-vegas-airport-usa
+name: Harry Reid International
+coordinates:
+  latitude: 36.0840
+  longitude: -115.1537
+country: United States
+region: Nevada
+city: Las Vegas
+status: airport
+tags:
+  - airport
+featured: false

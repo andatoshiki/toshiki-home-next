@@ -1,0 +1,12 @@
+id: osaka-japan
+name: Osaka
+coordinates:
+  latitude: 34.6937
+  longitude: 135.5023
+country: Japan
+region: Kansai
+city: Osaka
+status: visited
+tags:
+  - travel
+featured: false

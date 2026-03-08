@@ -1,0 +1,13 @@
+id: kita-osaka-japan
+name: Kita
+coordinates:
+  latitude: 34.7055
+  longitude: 135.5007
+country: Japan
+region: Osaka
+city: Osaka
+status: visited
+tags:
+  - travel
+  - osaka-area
+featured: false

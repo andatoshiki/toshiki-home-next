@@ -1,0 +1,14 @@
+id: phoenix-usa
+name: Phoenix
+coordinates:
+  latitude: 33.4484
+  longitude: -112.0740
+country: United States
+region: Arizona
+city: Phoenix
+status: visited
+description: Studied at Arizona State University
+tags:
+  - education
+  - university
+featured: false

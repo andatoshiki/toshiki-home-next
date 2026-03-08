@@ -1,0 +1,13 @@
+id: tennoji-osaka-japan
+name: Tennoji
+coordinates:
+  latitude: 34.6455
+  longitude: 135.5138
+country: Japan
+region: Osaka
+city: Osaka
+status: visited
+tags:
+  - travel
+  - osaka-area
+featured: false

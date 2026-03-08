@@ -1,0 +1,12 @@
+id: phoenix-sky-harbor-usa
+name: Phoenix Sky Harbor
+coordinates:
+  latitude: 33.4373
+  longitude: -112.0078
+country: United States
+region: Arizona
+city: Phoenix
+status: airport
+tags:
+  - airport
+featured: false

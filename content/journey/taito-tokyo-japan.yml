@@ -1,0 +1,13 @@
+id: taito-tokyo-japan
+name: Taito
+coordinates:
+  latitude: 35.7121
+  longitude: 139.7802
+country: Japan
+region: Tokyo
+city: Tokyo
+status: visited
+tags:
+  - travel
+  - tokyo-district
+featured: false

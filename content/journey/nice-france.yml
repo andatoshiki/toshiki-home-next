@@ -1,0 +1,12 @@
+id: nice-france
+name: Nice
+coordinates:
+  latitude: 43.7102
+  longitude: 7.2620
+country: France
+region: Provence-Alpes-Côte d'Azur
+city: Nice
+status: wishlist
+tags:
+  - wishlist
+featured: false

@@ -1,0 +1,12 @@
+id: copenhagen-denmark
+name: Copenhagen
+coordinates:
+  latitude: 55.6761
+  longitude: 12.5683
+country: Denmark
+region: Capital Region
+city: Copenhagen
+status: wishlist
+tags:
+  - wishlist
+featured: false

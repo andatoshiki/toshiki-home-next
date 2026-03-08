@@ -1,0 +1,12 @@
+id: abu-dhabi-uae
+name: Abu Dhabi
+coordinates:
+  latitude: 24.4539
+  longitude: 54.3773
+country: United Arab Emirates
+region: Abu Dhabi
+city: Abu Dhabi
+status: wishlist
+tags:
+  - wishlist
+featured: false

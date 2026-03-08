@@ -1,0 +1,13 @@
+#atk-textarea {
+  background: url('https://blog.fufu.ink/images/wl-bg-mikuchan.gif') 100% 100%
+    no-repeat;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: right bottom !important;
+}
+
+/* #atk-textarea-wrap textarea:focus {
+    background: url("./artalk-bg.gif") 100% 100% no-repeat;
+    background-position-y: 78px !important;
+    transition: all 0.25s ease-in-out 0s;
+} */

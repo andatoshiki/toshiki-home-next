@@ -1,0 +1,46 @@
+---
+title: 'Build a Random Image API with PHP'
+date: '2025-05-30'
+description: 'Step-by-step guide to creating a self-hosted random image API using PHP and local image storage with optional CDN acceleration.'
+tags:
+  - php
+  - api
+  - tutorial
+  - selfhost
+---
+
+# Introduction
+
+Previously, I built a random image API, but it essentially worked by redirecting to external links. All images were hosted on GitHub, which risked being blocked. This tutorial provides a new solution: hosting images locally to create a random image API.
+
+# Steps
+
+## 1: Prepare Images
+
+First, gather suitable images. You can use [Wallhaven](https://wallhaven.cc/), [Pixiv](https://www.pixiv.net/), or other APIs. If you know Python, you can even use a crawler to fetch them. **Download the images**.
+
+## 2: Store in a Folder
+
+Place the downloaded images into a folder and name it `img`.
+
+## 3: Write the Source Code
+
+Put the following PHP code into your server’s root directory:
+
+```php
+<?php
+$img_array = glob('img/*.{gif,jpg,png,jpeg,webp,bmp}', GLOB_BRACE);
+if (count($img_array) == 0) {
+    die('No image files found. Please upload some images to ' . dirname(__FILE__) . '/img/ folder');
+}
+header('Content-Type: image/png');
+echo file_get_contents($img_array[array_rand($img_array)]);
+```
+
+You can then access it at `https://yourdomain.com/random.php`.
+
+**At this point, the random image API setup is complete.**
+
+# Extra Notes
+
+Since the images are stored locally, speed may not be very fast. It’s recommended to use **CDN acceleration** to improve performance.

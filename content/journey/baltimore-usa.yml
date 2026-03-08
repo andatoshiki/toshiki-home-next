@@ -1,0 +1,12 @@
+id: baltimore-usa
+name: Baltimore
+coordinates:
+  latitude: 39.2904
+  longitude: -76.6122
+country: United States
+region: Maryland
+city: Baltimore
+status: wishlist
+tags:
+  - wishlist
+featured: false

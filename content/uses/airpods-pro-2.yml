@@ -1,0 +1,11 @@
+id: airpods-pro-2
+name: AirPods Pro 2
+type: hardware
+description: Apple's premium wireless earbuds featuring active noise cancellation, adaptive audio, personalized spatial audio, and seamless integration with Apple devices.
+image: https://cdn.tosh1ki.de/assets/images/20260106180939.png
+url: https://www.apple.com/airpods-pro
+tags:
+  - audio
+  - wireless
+  - apple
+featured: false

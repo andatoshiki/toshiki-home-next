@@ -1,0 +1,93 @@
+---
+title: 'Co-localizaçao'
+date: '2023-06-05'
+description: 'Princípio da co-localização na organização de bases de código, de Kent C. Dodds.'
+category: 'Article'
+tags: 'patterns, architecture, code, Clean Code, javascript, react, html, tradução'
+author: 'mateusfg7'
+status: 'published'
+---
+
+# Introdução
+
+> Esta é uma tradução da postagem original [Colocation](https://kentcdodds.com/blog/colocation) de [Kent C. Dodds](https://kentcdodds.com/).
+
+Todos nós queremos ter bases de código fáceis de manter, então começamos com a melhor das intenções para tornar nossa base de código (ou nosso canto da base de código) sustentável e fácil de entender. Com o tempo, à medida que uma base de código cresce, pode se tornar cada vez mais difícil gerenciar dependências (JS, CSS, imagens, etc.). À medida que os projetos crescem, uma quantidade crescente de sua base de código se torna "conhecimento tribal" (conhecimento do qual apenas você ou alguns outros têm acesso) e esse tipo de conhecimento contribui para a "dívida técnica" (seja esse termo preciso [ou não](https://twitter.com/ryanflorence/status/747983065738153985)).
+
+Eu gosto de manter minhas bases de código gerenciáveis não apenas para mim (aquele que o escreveu), mas também para meus colegas de equipe, futuros mantenedores e para mim mesmo em 6 meses. Acho que todos podemos concordar que esse é um grande ideal pelo qual devemos nos esforçar em nossas bases de código. Existem muitas ferramentas e técnicas diferentes à nossa disposição para realizar isso.
+
+# Vamos falar sobre comentários de código
+
+Não quero discutir se deve comentar seu código (você deveria) e sobre o que seus comentários devem ser (você explica por que está fazendo algo inesperado nos comentários para que as pessoas que vêm depois possam entender as decisões que foram tomadas que resultaram em o código inesperado ou estranho). (Ok, talvez eu queira falar um pouco sobre isso). Em vez disso, quero me concentrar em onde esses comentários de código são colocados. Geralmente "co-localizamos" esses comentários com o código que eles estão explicando, colocando-os o mais próximo possível do código relevante.
+
+Considere por um minuto, se fizéssemos isso de forma diferente. E se colocarmos esses comentários em um arquivo totalmente separado. Um enorme arquivo `DOCUMENTATION.md` ou talvez até mesmo um diretório `docs/` que mapeia de volta para o nosso diretório `src/`. Parece divertido para você? Sim, para mim também não. Haveria alguns problemas sérios que encontraríamos ao não co-localizar nossos comentários com o código que está explicando.
+
+- **Manutenibilidade**: eles ficariam fora de sincronia ou desatualizados mais rapidamente (do que já estão). Moveríamos ou excluiríamos um arquivo `src/` sem atualizar o arquivo `docs/` correspondente.
+- **Aplicabilidade**: as pessoas que olham para o código em `src/` podem perder um comentário importante em `docs/` ou não comentar seu próprio código porque não percebem que existe um arquivo `docs/` para o arquivo `src/` que estão editando.
+- **Facilidade de uso**: a troca de contexto de um local para outro também seria um desafio com esse tipo de configuração. Ter que lidar com vários locais para arquivos pode tornar difícil garantir que você tenha tudo o que precisa para manter um componente.
+
+Definitivamente, poderíamos criar uma convenção para esse tipo de estilo de comentário de código, mas por que iríamos querer? Não é mais simples manter os comentários co-localizados com o código que estão explicando?
+
+# E daí?
+
+Agora, você provavelmente está pensando consigo mesmo: "Sim, claro, é por isso que ninguém faz essa coisa de `docs/` e todo mundo apenas co-localiza seus comentários com o código. Isso é óbvio. Qual é o seu ponto?" Meu ponto é que os benefícios da co-localização estão em toda parte.
+
+# HTML/Visualização
+
+Tome HTML, por exemplo. Todos os benefícios de co-localizar nossos comentários também se traduzem em nossos modelos. Antes de estruturas modernas como o React, você teria sua lógica de visualização e seus modelos de visualização em diretórios totalmente separados. Isso é vítima dos mesmos problemas descritos acima. Hoje em dia é muito mais comum colocar essas coisas **exatamente no mesmo arquivo** com React e Vue, por exemplo. Com Angular, se não estiver no mesmo arquivo, o arquivo de modelo está pelo menos próximo ao arquivo JS ao qual está associado.
+
+# CSS
+
+Outro conceito ao qual isso se aplica bem é o CSS. Não vou discutir com você sobre os méritos do CSS-in-JS (é fantástico), mas os benefícios são de outro mundo. [Saiba mais aqui](https://medium.com/seek-blog/a-unified-styling-language-d0c208de2660).
+
+# Testes
+
+Esse conceito de co-localização de arquivos também se aplica muito bem a testes de unidade. Quão comum é encontrar um projeto com um diretório `src/` e um diretório `test/` preenchido com testes de unidade que tentam espelhar o diretório `src/`? Todas as armadilhas descritas acima também se aplicam aqui. Eu provavelmente não iria tão longe a ponto de colocar os testes de unidade exatamente no mesmo arquivo, mas também não descarto totalmente isso como uma ideia interessante (a implementação é deixada como um exercício para o leitor).
+
+Para ajudar a permitir uma base de código mais sustentável, devemos co-localizar nossos arquivos de teste com o arquivo ou grupo de arquivos que estão testando. Isso garante que, quando novas pessoas (ou eu mesmo em 6 meses) chegarem ao código, elas possam ver imediatamente que o módulo foi testado e usar esses testes como referência para aprender sobre o módulo. Quando eles fazem alterações, ele os lembra de atualizar (adicionar/remover/modificar) os testes para contabilizar suas alterações.
+
+# Estado
+
+O estado do aplicativo/componente apresenta os mesmos benefícios. Quanto mais desconectado/indireto for seu estado da IU que o está usando, mais difícil será mantê-lo. A localização do estado tem ainda mais benefícios do que a capacidade de manutenção, mas também melhora o desempenho do seu aplicativo. Uma alteração de estado em um canto da árvore de componentes do aplicativo renderizará muito menos componentes do que uma alteração de estado no topo da árvore. Localize seu estado.
+
+# Arquivos utilitários "reutilizáveis"
+
+Isso também se aplica a arquivos e funções "utilitárias". Imagine que você está escrevendo um componente e vê um bom pedaço de código que pode ser extraído em sua própria função. Você extrai e pensa: "Ah... aposto que muita gente poderia usar isso." Então você o retira e coloca no diretório `utils/` do seu aplicativo e segue em frente com sua vida.
+
+Posteriormente, seu componente é excluído, mas o utilitário que você escreveu está fora de vista, fora da mente e permanece (junto com seus testes) porque a pessoa que o excluiu presumiu que era mais usado. Ao longo dos anos, os engenheiros trabalharam duro para garantir que a função e seus testes continuem a funcionar corretamente, mesmo sem perceber que não são mais necessários. Esforço desperdiçado e carga cognitiva.
+
+Se, em vez disso, você tivesse deixado essa função diretamente no arquivo que a utilizou, a história seria completamente diferente. Não estou dizendo para não se incomodar com o teste de unidade de funções utilitárias complexas (por favor, faça), mas mantê-las mais perto de onde são necessárias ajuda a evitar problemas.
+
+<Warn>
+  E, pelo amor de Deus, [APAGUE ESTA REGRA
+  ESLINT](https://github.com/yannickcr/eslint-plugin-react/blob/e6b4c33a1db4cc94c3e9223b09fb92b1dbddc00d/docs/rules/no-multi-comp.md)
+  e todas as regras semelhantes.
+</Warn>
+
+# O princípio
+
+**O conceito de co-localizaçao pode ser resumido a este princípio fundamental:**
+
+<Tip>Coloque o código o mais próximo possível de onde é relevante</Tip>
+
+Você também pode dizer: "As coisas que mudam juntas devem ser localizadas o mais próximo possível." ([Dan Abramov](https://twitter.com/dan_abramov) disse algo assim para mim uma vez).
+
+# Código aberto facilita
+
+Além de evitar os problemas discutidos anteriormente, há outros benefícios em estruturar seus projetos dessa maneira. Pegar um componente e transformá-lo em um projeto de código aberto geralmente é tão simples quanto copiar/colar a pasta para outro projeto e publicá-lo no npm. Em seguida, basta instalá-lo em seu projeto e atualizar suas instruções de `require`/`import` e pronto.
+
+# Exceções
+
+Claro que há um bom argumento para a documentação que abrange todo ou parte de um sistema e como as coisas se integram. E onde você colocaria a integração ou os testes de ponta a ponta que abrangem os componentes? _Você pode pensar que essas são exceções_, mas na verdade elas podem se encaixar perfeitamente no princípio mencionado acima
+
+Se eu tiver uma parte do meu aplicativo associada à autenticação do usuário e quiser documentar esse fluxo, posso colocar um arquivo `README.md` na pasta que contém todos os módulos associados à autenticação do usuário. Se eu precisar escrever testes de integração para esse fluxo, posso colocar o arquivo desses testes na mesma pasta.
+
+Para testes de ponta a ponta, geralmente faz mais sentido ir na raiz do projeto. Eles vão além do próprio projeto e em outras partes do sistema, então faz sentido para mim que estejam em um diretório separado. Eles realmente não mapeiam para os arquivos `src/`. Na verdade, os testes E2E realmente não se importam com a forma como o `src/` está organizado. A refatoração e a movimentação de arquivos no diretório `src/` não devem exigir a alteração dos testes E2E.
+
+# Conclusão
+
+Nosso objetivo aqui é construir um software que seja o mais simples possível de manter. Os mesmos benefícios de **manutenibilidade**, **aplicabilidade** e **facilidade** de uso que obtemos com a colocalização de nossos comentários, também obtemos com a colocalização de outras coisas. Se você nunca experimentou, recomendo que experimente.
+
+P.S. Se você está preocupado em violar a "separação de preocupações", recomendo que verifique [esta palestra](https://youtu.be/x7cQ3mrcKaY) de [Pete Hunt](https://twitter.com/floydophone) e reavalie o que isso significa 😀.
+
+P.P.S. Também devo observar que isso se aplica muito bem a imagens e a qualquer outro recurso também. E quando você usa uma ferramenta como o [webpack](https://webpack.js.org/), co-localizar esses recursos também é muito fácil. Honestamente, esta é uma das principais propostas de valor do webpack IMO.

@@ -1,0 +1,14 @@
+---
+title: 'What is the preferred Bash shebang?'
+description: 'The preferred format of bash shebang from StackOverflow'
+date: '2025-09-30'
+tags:
+  - readwise
+  - highlight
+  - clipping
+  - knowledge
+  - reference
+  - saves
+---
+
+You should use **`#!/usr/bin/env bash`** for [portability](<https://en.wikipedia.org/wiki/Shebang_(Unix)#Portability>): Different \*nixes put `bash` in different places, and using `/usr/bin/env` is a workaround to run the first `bash` found on the `PATH`.

@@ -1,0 +1,14 @@
+id: ustb-beijing-china
+name: University of Science and Technology Beijing
+coordinates:
+  latitude: 39.9886
+  longitude: 116.3609
+country: China
+region: Beijing
+city: Beijing
+status: visited
+description: Visited University of Science and Technology Beijing (北京科技大学)
+tags:
+  - travel
+  - university
+featured: false

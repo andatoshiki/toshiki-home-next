@@ -1,0 +1,12 @@
+id: albuquerque-usa
+name: Albuquerque
+coordinates:
+  latitude: 35.0844
+  longitude: -106.6504
+country: United States
+region: New Mexico
+city: Albuquerque
+status: visited
+tags:
+  - travel
+featured: false

@@ -1,0 +1,11 @@
+id: sony-xm4
+name: Sony WH-1000XM4
+type: hardware
+description: Premium wireless noise-cancelling headphones featuring industry-leading ANC, 30-hour battery life, multipoint connectivity, and exceptional sound quality.
+image: https://cdn.tosh1ki.de/assets/images/20260106180356.webp
+url: https://www.sony.com/electronics/headband-headphones/wh-1000xm4
+tags:
+  - audio
+  - headphones
+  - wireless
+featured: false

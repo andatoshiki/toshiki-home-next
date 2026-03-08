@@ -1,0 +1,12 @@
+id: naha-airport-japan
+name: Naha Airport
+coordinates:
+  latitude: 26.1958
+  longitude: 127.6459
+country: Japan
+region: Okinawa
+city: Naha
+status: airport
+tags:
+  - airport
+featured: false

@@ -1,0 +1,12 @@
+id: haneda-airport-japan
+name: Haneda Airport
+coordinates:
+  latitude: 35.5494
+  longitude: 139.7798
+country: Japan
+region: Tokyo
+city: Tokyo
+status: airport
+tags:
+  - airport
+featured: false

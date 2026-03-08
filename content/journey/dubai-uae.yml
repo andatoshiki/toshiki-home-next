@@ -1,0 +1,12 @@
+id: dubai-uae
+name: Dubai
+coordinates:
+  latitude: 25.2048
+  longitude: 55.2708
+country: United Arab Emirates
+region: Dubai
+city: Dubai
+status: wishlist
+tags:
+  - wishlist
+featured: false

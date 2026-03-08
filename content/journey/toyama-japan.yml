@@ -1,0 +1,12 @@
+id: toyama-japan
+name: Toyama
+coordinates:
+  latitude: 36.6953
+  longitude: 137.2113
+country: Japan
+region: Chubu
+city: Toyama
+status: visited
+tags:
+  - travel
+featured: false

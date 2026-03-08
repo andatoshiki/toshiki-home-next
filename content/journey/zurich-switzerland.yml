@@ -1,0 +1,12 @@
+id: zurich-switzerland
+name: Zurich
+coordinates:
+  latitude: 47.3769
+  longitude: 8.5417
+country: Switzerland
+region: Zurich
+city: Zurich
+status: visited
+tags:
+  - travel
+featured: false

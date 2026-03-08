@@ -1,0 +1,12 @@
+id: zurich-airport-switzerland
+name: Zurich Airport
+coordinates:
+  latitude: 47.4647
+  longitude: 8.5492
+country: Switzerland
+region: Zurich
+city: Zurich
+status: airport
+tags:
+  - airport
+featured: false

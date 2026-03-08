@@ -1,0 +1,12 @@
+id: hangzhou-china
+name: Hangzhou
+coordinates:
+  latitude: 30.2741
+  longitude: 120.1551
+country: China
+region: Zhejiang
+city: Hangzhou
+status: visited
+tags:
+  - travel
+featured: false

@@ -1,0 +1,13 @@
+id: colorado-springs-usa
+name: Colorado Springs
+coordinates:
+  latitude: 38.8339
+  longitude: -104.8214
+country: United States
+region: Colorado
+city: Colorado Springs
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+featured: false

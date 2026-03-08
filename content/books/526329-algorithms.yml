@@ -1,0 +1,35 @@
+bookId: 526329
+userBookId: 11737869
+title: 'Algorithms'
+subtitle: null
+slug: 'algorithms'
+description: 'Essential Information about Algorithms and Data Structures A Classic Reference The latest version of Sedgewick, s best-selling series, reflecting an indispensable body of knowledge developed over the past several decades. Broad Coverage Full treatment of data structures and algorithms for sorting, searching, graph processing, and string processing, including fifty algorithms every programmer should know. See'
+authors:
+  - 'Robert Sedgewick'
+  - 'Kevin Wayne'
+coverImage: 'https://assets.hardcover.app/edition/30480543/content.jpeg'
+pages: 955
+releaseDate: '2011-01-01'
+releaseYear: 2011
+status: 'READ'
+statusDisplay: 'Read'
+rating: null
+dateAdded: '2026-01-07'
+firstReadDate: null
+lastReadDate: null
+readCount: 1
+owned: false
+starred: false
+review: null
+communityRating: 4.25
+ratingsCount: 8
+reviewsCount: 0
+seriesName: null
+seriesPosition: null
+editionId: 30480543
+editionFormat: null
+isbn10: '032157351X'
+isbn13: '9780321573513'
+publisher: null
+hardcoverUrl: 'https://hardcover.app/books/algorithms'
+updatedAt: '2026-01-07T03:01:50.377954+00:00'

@@ -1,0 +1,12 @@
+id: shanghai-pudong-china
+name: Shanghai Pudong (PVG)
+coordinates:
+  latitude: 31.1443
+  longitude: 121.8083
+country: China
+region: Shanghai
+city: Shanghai
+status: airport
+tags:
+  - airport
+featured: false

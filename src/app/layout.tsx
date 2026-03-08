@@ -1,0 +1,119 @@
+import type { Metadata, Viewport } from 'next'
+import Script from 'next/script'
+import { Inter, Caveat, Crimson_Text } from 'next/font/google'
+
+import { config } from 'global-config'
+import { Header } from './_components/header/nav'
+import { Footer } from './_components/footer'
+import { Providers } from './providers'
+import PageTransition from '~/components/layout-transition'
+import CdLinks from '~/components/ui/cd'
+
+// @ts-ignore
+import '~/styles/main.css'
+
+export const metadata: Metadata = {
+  ...config.metadata,
+  metadataBase: new URL(config.webserver.host),
+  title: {
+    default: config.metadata.title,
+    template: `%s • ${config.metadata.title}`
+  },
+  applicationName: config.metadata.title,
+  authors: [
+    { name: 'Mateus Felipe Gonçalves', url: 'https://github.com/andatoshiki' }
+  ],
+  category: 'Personal Website',
+  keywords: [
+    'personal',
+    'blog',
+    'homepage',
+    'portfolio',
+    'about',
+    'me',
+    'tech',
+    'programming',
+    'knowledge'
+  ],
+  robots: {
+    follow: true,
+    index: true
+  },
+  openGraph: {
+    ...config.metadata,
+    siteName: config.metadata.title,
+    type: 'website',
+    url: '/',
+    emails: [
+      'contact@mateusf.com',
+      'contato@mateusf.com',
+      'mateusfelipefg77@gmail.com',
+      'mateusfg7@protonmail.com'
+    ]
+  },
+  twitter: {
+    ...config.metadata,
+    card: 'summary_large_image'
+  }
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#060606' },
+    { media: '(prefers-color-scheme: light)', color: '#fafafa' }
+  ],
+  colorScheme: 'dark light',
+  width: 'device-width',
+  initialScale: 1
+}
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '600', '700', '900'],
+  variable: '--font-inter',
+  display: 'swap'
+})
+
+const dancingScript = Caveat({
+  subsets: ['latin'],
+  weight: ['700'],
+  variable: '--font-caveat',
+  display: 'swap'
+})
+
+const crimsonText = Crimson_Text({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-crimson-text',
+  display: 'block'
+})
+
+export default function RootLayout({
+  children
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en" className="scroll-smooth">
+      <body
+        className={`flex min-h-screen flex-col scroll-smooth ${inter.variable} ${dancingScript.variable} ${crimsonText.variable}`}
+      >
+        <Providers>
+          <div className="relative flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-1">
+              <PageTransition>{children}</PageTransition>
+            </main>
+            <Footer />
+          </div>
+        </Providers>
+        <Script
+          src="https://umami.toshiki.dev/script.js"
+          data-website-id="37ddff4a-35af-4438-a9e3-c47124512bc5"
+          strategy="afterInteractive"
+          defer
+        />
+      </body>
+    </html>
+  )
+}

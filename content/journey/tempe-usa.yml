@@ -1,0 +1,12 @@
+id: tempe-usa
+name: Tempe
+coordinates:
+  latitude: 33.4255
+  longitude: -111.9400
+country: United States
+region: Arizona
+city: Tempe
+status: visited
+tags:
+  - travel
+featured: false

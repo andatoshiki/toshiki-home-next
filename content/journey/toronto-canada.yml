@@ -1,0 +1,12 @@
+id: toronto-canada
+name: Toronto
+coordinates:
+  latitude: 43.651070
+  longitude: -79.347015
+country: Canada
+region: Ontario
+city: Toronto
+status: visited
+tags:
+  - travel
+featured: false

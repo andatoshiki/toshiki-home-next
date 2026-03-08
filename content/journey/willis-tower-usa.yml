@@ -1,0 +1,15 @@
+id: willis-tower-usa
+name: Willis Tower (Sears Tower)
+coordinates:
+  latitude: 41.8789
+  longitude: -87.6359
+country: United States
+region: Illinois
+city: Chicago
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+  - landmark
+  - skyscraper
+featured: false

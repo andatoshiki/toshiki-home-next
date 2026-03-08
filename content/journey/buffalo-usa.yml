@@ -1,0 +1,12 @@
+id: buffalo-usa
+name: Buffalo
+coordinates:
+  latitude: 42.8864
+  longitude: -78.8784
+country: United States
+region: New York
+city: Buffalo
+status: visited
+tags:
+  - travel
+featured: false

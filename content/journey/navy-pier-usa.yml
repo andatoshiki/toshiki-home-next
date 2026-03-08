@@ -1,0 +1,15 @@
+id: navy-pier-usa
+name: Navy Pier
+coordinates:
+  latitude: 41.8917
+  longitude: -87.6086
+country: United States
+region: Illinois
+city: Chicago
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+  - landmark
+  - entertainment
+featured: false

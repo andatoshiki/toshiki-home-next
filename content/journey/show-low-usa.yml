@@ -1,0 +1,13 @@
+id: show-low-usa
+name: Show Low
+coordinates:
+  latitude: 34.2542
+  longitude: -110.0298
+country: United States
+region: Arizona
+city: Show Low
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+featured: false

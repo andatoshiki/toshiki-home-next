@@ -1,0 +1,12 @@
+id: glendale-usa
+name: Glendale
+coordinates:
+  latitude: 33.5387
+  longitude: -112.1860
+country: United States
+region: Arizona
+city: Glendale
+status: visited
+tags:
+  - travel
+featured: false

@@ -1,0 +1,10 @@
+id: vscode
+name: Visual Studio Code
+type: software
+description: A lightweight but powerful source code editor with built-in support for JavaScript, TypeScript, and Node.js with a rich ecosystem of extensions.
+image: https://cdn.tosh1ki.de/assets/images/20260105183119.png
+url: https://code.visualstudio.com
+tags:
+  - development
+  - editor
+featured: true

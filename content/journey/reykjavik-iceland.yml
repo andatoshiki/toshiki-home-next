@@ -1,0 +1,12 @@
+id: reykjavik-iceland
+name: Reykjavik
+coordinates:
+  latitude: 64.1466
+  longitude: -21.9426
+country: Iceland
+region: Capital Region
+city: Reykjavik
+status: wishlist
+tags:
+  - wishlist
+featured: false

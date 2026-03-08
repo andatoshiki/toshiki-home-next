@@ -1,0 +1,12 @@
+id: anhui-china
+name: Anhui
+coordinates:
+  latitude: 31.8257
+  longitude: 117.2264
+country: China
+region: Anhui
+city: Hefei
+status: wishlist
+tags:
+  - wishlist
+featured: false

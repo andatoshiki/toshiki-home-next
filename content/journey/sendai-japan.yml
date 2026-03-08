@@ -1,0 +1,12 @@
+id: sendai-japan
+name: Sendai
+coordinates:
+  latitude: 38.2682
+  longitude: 140.8694
+country: Japan
+region: Tohoku
+city: Sendai
+status: visited
+tags:
+  - travel
+featured: false

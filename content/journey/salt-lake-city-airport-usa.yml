@@ -1,0 +1,12 @@
+id: salt-lake-city-airport-usa
+name: Salt Lake City International
+coordinates:
+  latitude: 40.7899
+  longitude: -111.9791
+country: United States
+region: Utah
+city: Salt Lake City
+status: airport
+tags:
+  - airport
+featured: false

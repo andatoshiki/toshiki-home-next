@@ -1,0 +1,15 @@
+id: union-station-denver-usa
+name: Union Station
+coordinates:
+  latitude: 39.7528
+  longitude: -105.0008
+country: United States
+region: Colorado
+city: Denver
+status: visited
+date: 2026-01-04
+tags:
+  - travel
+  - landmark
+  - transit
+featured: false

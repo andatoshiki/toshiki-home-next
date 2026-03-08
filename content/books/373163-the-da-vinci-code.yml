@@ -1,0 +1,34 @@
+bookId: 373163
+userBookId: 11052986
+title: 'The Da Vinci Code'
+subtitle: 'Library Edition'
+slug: 'the-da-vinci-code'
+description: "The Da Vinci Code is a 2003 mystery thriller novel by Dan Brown. It is Brown's second novel to include the character Robert Langdon: the first was his 2000 novel Angels & Demons. \n\nThe Da Vinci Code follows \"symbologist\" Robert Langdon and cryptologist Sophie Neveu after a murder in the Louvre Museum in Paris causes them to become involved in a battle between the Priory of Sion and Opus Dei over the possibility of Jesus Christ and Mary Magdalene having had a child together."
+authors:
+  - 'Dan Brown'
+coverImage: 'https://assets.hardcover.app/editions/30400169/2520023766251547.jpeg'
+pages: 489
+releaseDate: '2003-01-01'
+releaseYear: 2003
+status: 'READ'
+statusDisplay: 'Read'
+rating: null
+dateAdded: '2025-12-24'
+firstReadDate: null
+lastReadDate: null
+readCount: 1
+owned: false
+starred: false
+review: null
+communityRating: 3.586514522821577
+ratingsCount: 2410
+reviewsCount: 66
+seriesName: 'Robert Langdon'
+seriesPosition: 2
+editionId: 30400169
+editionFormat: 'Hardcover'
+isbn10: '5550155184'
+isbn13: '9785550155189'
+publisher: 'Random House Large Print'
+hardcoverUrl: 'https://hardcover.app/books/the-da-vinci-code'
+updatedAt: '2025-12-24T07:10:52.728657+00:00'

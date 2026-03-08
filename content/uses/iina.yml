@@ -1,0 +1,10 @@
+id: iina
+name: IINA
+type: software
+description: The modern media player for macOS with a sleek interface, Picture-in-Picture support, and extensive format compatibility.
+image: https://cdn.tosh1ki.de/assets/images/20260105183257.png
+url: https://iina.io
+tags:
+  - media
+  - video
+featured: false

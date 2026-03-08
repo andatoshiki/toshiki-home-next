@@ -1,0 +1,12 @@
+id: manchester-uk
+name: Manchester
+coordinates:
+  latitude: 53.4808
+  longitude: -2.2426
+country: United Kingdom
+region: England
+city: Manchester
+status: wishlist
+tags:
+  - wishlist
+featured: false

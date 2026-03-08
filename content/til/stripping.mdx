@@ -1,0 +1,23 @@
+---
+title: 'Stripping Environment File Content from the CLI'
+description: 'A quick note on the use and behavior of the strip or stripping function in programming, highlighting how it removes whitespace or specified characters from the beginning and end of strings.'
+date: '2025-07-27'
+tags:
+  - nodejs
+  - env
+  - webdev
+  - cli
+---
+
+# Stripping Environment File Content from the CLI
+
+```bash
+sed -E 's/^([A-Za-z_][A-Za-z0-9_]*)=.*/\1/; /^#|^$/!s/ //g' .env | pbcopy
+```
+
+## Explanation
+
+- `sed -E` → enable extended regex.
+- `^([A-Za-z_][A-Za-z0-9_]*)=.*` → matches variable assignments; replaces them with just the variable name (`\1`).
+- `^#|^$` → comments or empty lines → left as-is.
+- `pbcopy` → pipes the final output to your macOS clipboard.

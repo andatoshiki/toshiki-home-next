@@ -1,0 +1,14 @@
+id: tongji-china
+name: Tongji University
+coordinates:
+  latitude: 31.2826
+  longitude: 121.5086
+country: China
+region: Shanghai
+city: Shanghai
+status: visited
+description: Visited Tongji University (同济大学)
+tags:
+  - travel
+  - university
+featured: false

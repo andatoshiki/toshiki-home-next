@@ -1,0 +1,12 @@
+id: shanghai-china
+name: Shanghai
+coordinates:
+  latitude: 31.2304
+  longitude: 121.4737
+country: China
+region: Shanghai
+city: Shanghai
+status: visited
+tags:
+  - travel
+featured: false

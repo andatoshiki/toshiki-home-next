@@ -1,0 +1,12 @@
+id: rome-italy
+name: Rome
+coordinates:
+  latitude: 41.9028
+  longitude: 12.4964
+country: Italy
+region: Lazio
+city: Rome
+status: wishlist
+tags:
+  - wishlist
+featured: false

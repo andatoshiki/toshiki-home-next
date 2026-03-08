@@ -1,0 +1,12 @@
+id: edinburgh-scotland
+name: Edinburgh
+coordinates:
+  latitude: 55.9533
+  longitude: -3.1883
+country: United Kingdom
+region: Scotland
+city: Edinburgh
+status: wishlist
+tags:
+  - wishlist
+featured: false

@@ -1,0 +1,11 @@
+id: davinci-resolve
+name: DaVinci Resolve
+type: software
+description: A professional video editing, color correction, visual effects, and audio post-production application, combining editing, color grading, Fusion VFX, and Fairlight audio in one tool.
+image: https://cdn.tosh1ki.de/assets/images/20260106010436.png
+url: https://www.blackmagicdesign.com/products/davinciresolve
+tags:
+  - video
+  - editing
+  - production
+featured: false

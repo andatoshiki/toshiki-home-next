@@ -1,0 +1,11 @@
+id: aseprite
+name: Aseprite
+type: software
+description: A powerful pixel art tool for creating animated sprites, game graphics, and retro-style artwork with an intuitive interface and comprehensive animation features.
+image: https://cdn.tosh1ki.de/assets/images/20260106010546.png
+url: https://www.aseprite.org
+tags:
+  - design
+  - pixel-art
+  - animation
+featured: false

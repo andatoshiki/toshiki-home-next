@@ -1,0 +1,12 @@
+id: macau-china
+name: Macau
+coordinates:
+  latitude: 22.1987
+  longitude: 113.5439
+country: China
+region: Macau
+city: Macau
+status: visited
+tags:
+  - travel
+featured: false

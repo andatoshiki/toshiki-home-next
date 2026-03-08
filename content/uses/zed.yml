@@ -1,0 +1,10 @@
+id: zed
+name: Zed
+type: software
+description: A high-performance, multiplayer code editor built in Rust with native support for AI assistance, real-time collaboration, and lightning-fast responsiveness.
+image: https://cdn.tosh1ki.de/assets/images/20260106004222.png
+url: https://zed.dev
+tags:
+  - development
+  - editor
+featured: false

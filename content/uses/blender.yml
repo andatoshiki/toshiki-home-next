@@ -1,0 +1,11 @@
+id: blender
+name: Blender
+type: software
+description: A free and open-source 3D creation suite supporting the entire 3D pipeline including modeling, rigging, animation, simulation, rendering, compositing, and video editing.
+image: https://cdn.tosh1ki.de/assets/images/20260105185332.png
+url: https://www.blender.org
+tags:
+  - 3d
+  - design
+  - animation
+featured: false

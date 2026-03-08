@@ -1,0 +1,10 @@
+.react-medium-zoom-overlay {
+  backdrop-filter: blur(8px);
+  background: rgba(24, 24, 27, 0.85) !important;
+}
+
+.react-medium-zoom-overlay,
+.react-medium-zoom-image--zoomed {
+  /* border-radius: 0.5rem !important; */
+  /* 0.5rem = rounded-lg */
+}

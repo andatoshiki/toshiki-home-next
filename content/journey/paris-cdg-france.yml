@@ -1,0 +1,12 @@
+id: paris-cdg-france
+name: Paris Charles de Gaulle
+coordinates:
+  latitude: 49.0097
+  longitude: 2.5479
+country: France
+region: Île-de-France
+city: Paris
+status: airport
+tags:
+  - airport
+featured: false

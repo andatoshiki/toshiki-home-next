@@ -1,0 +1,11 @@
+id: filen
+name: Filen
+type: software
+description: A German-based, GDPR-compliant cloud storage provider offering end-to-end encryption, zero-knowledge privacy, and secure file synchronization across all your devices.
+image: https://cdn.tosh1ki.de/assets/images/20260106004701.png
+url: https://filen.io
+tags:
+  - cloud-storage
+  - privacy
+  - security
+featured: false

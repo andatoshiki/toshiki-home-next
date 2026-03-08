@@ -1,0 +1,14 @@
+id: south-pole
+name: South Pole
+coordinates:
+  latitude: -90.0000
+  longitude: 0.0000
+country: Antarctica
+region: Antarctica
+city: South Pole
+status: wishlist
+tags:
+  - travel
+  - adventure
+  - polar
+featured: false

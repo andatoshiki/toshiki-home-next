@@ -1,0 +1,48 @@
+---
+title: 'Mapeamento MER vs MR'
+date: '2024-04-02T13:33:59.980Z'
+lastUpdate: '2024-04-03'
+description: 'Mapeamento e tradução do Modelo de Entidade-Relacionamento para o ModeloRelacional. Transcrição do conteúdo passado em aula no curso de GTI 1º período, na FAPAM,pelo professor Gabriel Ribeiro Diniz.'
+category: 'Article'
+tags: 'mr,mer,fapam,database,definições,gti,modelo,relacionamento,entidade,modelo-relacionaltabelas,mapeamento'
+status: 'published'
+---
+
+# Creating a New User on MySQL Server
+
+First, to MySQL server as root, and once you have access to the MySQL prompt, you can create a new user with a `CREATE USER` statement. These follow this general syntax,
+
+```sql
+CREATE USER 'username'@'host' IDENTIFIED WITH authentication_plugin BY 'password';
+```
+
+After `CREATE USER`, you specify a username. This is immediately followed by an `@` sign and then the hostname from which this user will connect. If you only plan to access this user locally from your Ubuntu server, you can specify `localhost`. Wrapping both the username and host in single quotes isn’t always necessary, but doing so can help to prevent errors.
+
+You have several options when it comes to choosing your user’s authentication plugin. The `auth_socket` plugin mentioned previously can be convenient, as it provides strong security without requiring valid users to enter a password to access the database. But it also prevents remote connections, which can complicate things when external programs need to interact with MySQL.
+
+As an alternative, you can leave out the `WITH authentication_plugin` portion of the syntax entirely to have the user authenticate with MySQL’s default plugin, `caching_sha2_password`. for users who want to log in with a password due to its strong security features.
+
+Run the following command to create a user that authenticates with `caching_sha2_password`. Be sure to change `sammy` to your preferred username and `password` to a strong password of your choosing:
+
+> [!note] Reference
+>
+> - [How to Create a MySQL User and Grant Privileges (Step-by-Step) | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql)
+
+```sql
+CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+```
+
+> [!faq] Note
+> There is a known issue with some versions of PHP that causes problems with `caching_sha2_password`. If you plan to use this database with a PHP application — phpMyAdmin, for example — you may want to create a user that will authenticate with the older, though still secure, `mysql_native_password` plugin instead:
+>
+> ```sql
+> CREATE USER 'sammy'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+> ```
+>
+> If you aren’t sure, you can always create a user that authenticates with `caching_sha2_plugin` and then `ALTER` it later on with this command:
+>
+> ```sql
+> ALTER USER 'sammy'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+> ```
+
+Next, consider

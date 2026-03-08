@@ -1,0 +1,419 @@
+@tailwind components;
+
+@layer components {
+  .common-badge {
+    @apply flex items-center gap-1 p-1;
+    @apply rounded-lg border;
+    @apply text-xs leading-none;
+  }
+
+  .keyboard {
+    @apply bg-neutral-100 p-1 dark:bg-neutral-950;
+    @apply rounded-lg border border-neutral-300 dark:border-neutral-700;
+    @apply text-neutral-600 dark:text-neutral-500;
+    @apply leading-none;
+  }
+
+  .post-content {
+    @apply leading-6;
+
+    nav.toc {
+      @apply my-10 rounded-lg border border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950;
+
+      ol {
+        @apply list-none;
+
+        a {
+          @apply text-neutral-900 hover:no-underline dark:text-neutral-300;
+          @apply rounded-lg;
+          @apply px-2 py-1;
+          @apply hover:bg-neutral-200 dark:hover:bg-neutral-800;
+        }
+      }
+    }
+
+    kbd {
+      @apply keyboard;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply mx-0 my-5 w-full whitespace-pre-wrap font-medium md:w-max md:text-left;
+
+      a {
+        @apply text-neutral-900 hover:no-underline dark:text-neutral-100;
+        @apply -ml-5 pl-5 before:absolute before:-ml-5 before:text-black/0 before:content-['#'] hover:before:text-neutral-300 dark:hover:before:text-gray-600;
+      }
+    }
+
+    strong {
+      @apply font-semibold text-neutral-800 dark:text-neutral-200;
+    }
+
+    /* h2 & h3 underline and border removed */
+    h2 {
+      @apply pr-6 text-3xl;
+    }
+    h3 {
+      @apply pr-6 text-2xl;
+    }
+
+    h4 {
+      @apply text-2xl;
+    }
+    h5 {
+      @apply text-xl;
+    }
+    h6 {
+      @apply text-lg;
+    }
+
+    p {
+      @apply my-4 text-left text-neutral-700 dark:text-neutral-300;
+      a {
+        @apply border-b border-neutral-400/30 font-normal text-neutral-600 no-underline transition-colors duration-300 dark:text-neutral-400;
+      }
+
+      a:hover {
+        @apply border-neutral-700 dark:border-neutral-300;
+      }
+    }
+
+    img {
+      @apply m-auto max-w-full rounded-lg md:m-0;
+    }
+
+    video {
+      @apply m-auto rounded-lg;
+    }
+
+    iframe {
+      @apply aspect-video w-full max-w-full rounded-lg md:h-[26rem];
+    }
+
+    table {
+      @apply my-1 w-max border-separate border-spacing-0 overflow-hidden rounded-lg md:max-w-full;
+      /*@apply bg-neutral-100 dark:bg-neutral-950;*/
+
+      th,
+      td {
+        @apply p-2;
+      }
+
+      th {
+        @apply bg-neutral-100 font-medium dark:bg-neutral-900;
+        @apply text-center;
+
+        strong {
+          @apply font-normal;
+        }
+      }
+
+      thead tr:first-of-type th {
+        @apply border-y border-neutral-200 first:rounded-l-lg first:border-l last:rounded-r-lg last:border-r dark:border-neutral-800;
+      }
+
+      tbody {
+        tr {
+          td {
+            /*@apply even:bg-neutral-200/40 even:dark:bg-neutral-900/40;*/
+            @apply border-t border-neutral-200 dark:border-neutral-800;
+          }
+
+          &:first-of-type td {
+            @apply border-0;
+          }
+        }
+      }
+    }
+
+    hr {
+      @apply my-8 h-[2px]  bg-black/40;
+    }
+
+    blockquote {
+      @apply relative my-3 w-max max-w-full overflow-hidden px-4 py-1;
+      @apply border-l-[4px] border-l-neutral-300 dark:border-l-neutral-600;
+      @apply text-base leading-tight;
+      /*@apply bg-neutral-50 dark:bg-neutral-1000;*/
+
+      strong {
+        @apply text-neutral-500 dark:text-neutral-400;
+      }
+
+      p {
+        @apply m-0 mb-3 text-neutral-400 last:mb-0 dark:text-neutral-500;
+      }
+
+      .icon {
+        @apply absolute inset-0 -z-20 flex items-center justify-end rounded-lg px-[5%] text-5xl opacity-10;
+      }
+    }
+
+    input[type='checkbox'] {
+      @apply form-checkbox;
+      @apply bg-transparent;
+      @apply rounded border-neutral-400 dark:border-neutral-700;
+
+      &[checked=''] {
+        @apply bg-neutral-700 dark:bg-neutral-500;
+        @apply border-neutral-800 dark:border-neutral-600;
+      }
+    }
+
+    ol {
+      @apply list-inside list-decimal text-justify md:text-left;
+
+      li::marker {
+        @apply font-black;
+      }
+    }
+
+    ul {
+      @apply list-inside list-disc text-justify md:text-left;
+
+      &.contains-task-list {
+        @apply list-none;
+      }
+
+      li {
+        ul {
+          @apply px-6;
+        }
+
+        code {
+          @apply leading-none;
+        }
+      }
+    }
+
+    code {
+      @apply font-mono text-sm leading-[1.4] text-neutral-800 dark:text-neutral-300;
+      @apply text-ellipsis break-words rounded-lg bg-black/5 px-1 py-[0.16rem] backdrop-blur-3xl dark:bg-white/5;
+    }
+
+    /*only affect inline code, not code blocks */
+    :not(pre) > code {
+      @apply overflow-visible whitespace-nowrap break-keep align-baseline;
+    }
+
+    figure[data-rehype-pretty-code-figure=''] {
+      @apply overflow-hidden rounded-lg;
+      @apply bg-neutral-100 dark:bg-[#141414];
+      @apply my-4 space-y-1;
+      @apply border border-neutral-200 dark:border-neutral-900;
+
+      /* @apply backdrop-blur; */
+
+      pre {
+        @apply overflow-auto;
+
+        & > code {
+          @apply grid;
+          @apply px-0 py-2;
+          @apply bg-transparent dark:bg-transparent;
+          @apply backdrop-blur-0;
+
+          &[data-line-numbers=''] {
+            counter-reset: line;
+
+            & > span[data-line='']::before {
+              counter-increment: line;
+              content: counter(line);
+
+              @apply mr-5 inline-block w-4;
+              @apply text-right text-neutral-500;
+            }
+          }
+
+          span[data-line=''] {
+            @apply px-3;
+
+            &[data-highlighted-line=''] {
+              @apply border-l-2 border-neutral-500 bg-neutral-300/40 dark:border-neutral-500 dark:bg-neutral-700/30;
+            }
+
+            mark[data-highlighted-chars=''] {
+              @apply rounded-lg bg-neutral-300/50 px-[0.45rem] py-[0.14rem] dark:bg-neutral-700/40;
+
+              &[data-chars-id='r'] {
+                @apply bg-red-300/30 dark:bg-red-700/30;
+              }
+              &[data-chars-id='g'] {
+                @apply bg-green-300/30 dark:bg-green-700/30;
+              }
+              &[data-chars-id='b'] {
+                @apply bg-blue-300/30 dark:bg-blue-700/30;
+              }
+              &[data-chars-id='y'] {
+                @apply bg-yellow-300/30 dark:bg-yellow-700/30;
+              }
+            }
+          }
+        }
+      }
+
+      figcaption[data-rehype-pretty-code-title=''],
+      div[data-rehype-pretty-code-title=''] {
+        @apply bg-neutral-300/40 p-2 dark:bg-neutral-800/60;
+        @apply text-sm text-neutral-700 dark:text-neutral-400;
+        @apply font-mono;
+        @apply rounded-t-lg border-b border-solid border-neutral-300 dark:border-neutral-600/40;
+      }
+
+      figcaption[data-rehype-pretty-code-caption=''] {
+        @apply p-2;
+        @apply text-sm italic text-neutral-500 dark:text-neutral-400;
+        @apply bg-neutral-300/20 p-2 dark:bg-white/[.02];
+        @apply border-t border-solid border-neutral-300 dark:border-neutral-600/40;
+      }
+    }
+
+    div.hint {
+      @apply relative my-4 w-max max-w-full overflow-hidden rounded-lg p-3 backdrop-blur-lg;
+
+      p {
+        @apply m-0;
+      }
+
+      a {
+        @apply font-medium underline;
+      }
+
+      &.tip {
+        @apply text-blue-800 dark:text-blue-500;
+        @apply bg-blue-500/10;
+
+        a {
+          @apply text-blue-800 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-400;
+        }
+      }
+      &.warn {
+        @apply text-yellow-800 dark:text-yellow-500;
+        @apply bg-yellow-600/10;
+
+        a {
+          @apply text-yellow-800 hover:text-yellow-700 dark:text-yellow-500 dark:hover:text-yellow-400;
+        }
+      }
+      &.error {
+        @apply text-red-800 dark:text-red-500;
+        @apply bg-red-500/10;
+
+        a {
+          @apply text-red-800 hover:text-red-700 dark:text-red-500 dark:hover:text-red-400;
+        }
+      }
+
+      .icon {
+        @apply absolute inset-0 -z-20 flex items-center justify-end rounded-lg px-[5%] text-7xl opacity-10;
+      }
+    }
+
+    div.answear {
+      @apply relative my-4 w-max max-w-full overflow-hidden rounded-lg backdrop-blur-lg;
+
+      .content {
+        @apply p-4;
+      }
+
+      .message {
+        @apply block border-t border-solid border-neutral-400 p-1 px-4 text-sm text-neutral-400 dark:border-neutral-500 dark:text-neutral-500;
+      }
+
+      p {
+        @apply m-0;
+      }
+
+      &.correct {
+        @apply border border-green-800 dark:border-green-500;
+
+        .icon {
+          @apply absolute right-0 top-0 p-1;
+          /*@apply rounded-bl-md border-b border-l border-green-800 dark:border-green-500;*/
+          @apply text-xs text-green-800 dark:text-green-500;
+        }
+
+        .message {
+          @apply border-green-700/50 text-green-700;
+        }
+      }
+      &.wrong {
+        @apply border border-red-800 dark:border-red-500;
+
+        .icon {
+          @apply absolute right-0 top-0 p-1;
+          /*@apply rounded-bl-md border-b border-l border-red-800 dark:border-red-500;*/
+          @apply text-xs text-red-800 dark:text-red-500;
+        }
+
+        .message {
+          @apply border-red-700/50 text-red-700;
+        }
+      }
+    }
+
+    div.math-display {
+      @apply m-auto w-fit p-6 md:m-0;
+
+      span.katex-display {
+        @apply m-0;
+      }
+    }
+
+    section.footnotes[data-footnotes='true'] {
+      ol li p {
+        @apply inline;
+      }
+    }
+  }
+
+  .til-content {
+    nav {
+      &.toc {
+        @apply hidden;
+      }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply m-0;
+    }
+
+    h2 {
+      @apply pb-1 text-2xl underline-offset-2;
+    }
+    h3 {
+      @apply pb-0 text-xl underline-offset-2;
+    }
+    h4 {
+      @apply text-xl;
+    }
+    h5 {
+      @apply text-lg;
+    }
+    h6 {
+      @apply text-base;
+    }
+
+    p {
+      @apply my-4 border-red-600 last:mb-0 [&:nth-child(2)]:mt-0;
+    }
+  }
+
+  article {
+    div {
+      svg {
+        @apply w-full;
+      }
+    }
+  }
+}

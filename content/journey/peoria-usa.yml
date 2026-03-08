@@ -1,0 +1,12 @@
+id: peoria-usa
+name: Peoria
+coordinates:
+  latitude: 33.5806
+  longitude: -112.2374
+country: United States
+region: Arizona
+city: Peoria
+status: visited
+tags:
+  - travel
+featured: false

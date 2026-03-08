@@ -1,0 +1,14 @@
+id: north-pole
+name: North Pole
+coordinates:
+  latitude: 90.0000
+  longitude: 0.0000
+country: International Waters
+region: Arctic
+city: North Pole
+status: wishlist
+tags:
+  - travel
+  - adventure
+  - polar
+featured: false

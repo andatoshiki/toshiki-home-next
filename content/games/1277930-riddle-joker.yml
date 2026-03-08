@@ -1,0 +1,23 @@
+appid: 1277930
+name: 'Riddle Joker'
+playtimeMinutes: 1159
+playtimeHours: 19.3
+playtime2Weeks: null
+lastPlayed: 1756610558
+iconUrl: 'https://media.steampowered.com/steamcommunity/public/images/apps/1277930/28db420c6e5a1278095860727b9d33ddd21c90e5.jpg'
+headerImage: 'https://steamcdn-a.akamaihd.net/steam/apps/1277930/header.jpg'
+capsuleImage: 'https://steamcdn-a.akamaihd.net/steam/apps/1277930/capsule_231x87.jpg'
+developers:
+  - 'YUZUSOFT'
+publishers:
+  - 'NekoNyan Ltd.'
+  - 'HIKARI FIELD'
+genres:
+  - 'Adventure'
+  - 'Casual'
+releaseDate: 'Dec 18, 2020'
+shortDescription: 'For decades, superpowers and psychic abilities were thought to be mere science fiction, but the discovery of a certain particle called the &quot;Astron&quot; at the end of the 20th century proved to the world that these wondrous phenomena were real.'
+metacriticScore: null
+storeUrl: 'https://store.steampowered.com/app/1277930'
+isFree: false
+priceCents: 1994

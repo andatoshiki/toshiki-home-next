@@ -1,0 +1,11 @@
+id: steam-deck
+name: Steam Deck
+type: hardware
+description: A portable gaming handheld by Valve running SteamOS that allows you to play your entire Steam library on the go with impressive performance and customization.
+image: https://cdn.tosh1ki.de/assets/images/20260106180637.png
+url: https://www.steampowered.com/steamdeck
+tags:
+  - gaming
+  - portable
+  - handheld
+featured: false

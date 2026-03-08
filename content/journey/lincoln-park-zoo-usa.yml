@@ -1,0 +1,15 @@
+id: lincoln-park-zoo-usa
+name: Lincoln Park Zoo
+coordinates:
+  latitude: 41.9211
+  longitude: -87.6340
+country: United States
+region: Illinois
+city: Chicago
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+  - landmark
+  - zoo
+featured: false

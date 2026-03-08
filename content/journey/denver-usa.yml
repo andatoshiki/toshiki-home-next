@@ -1,0 +1,12 @@
+id: denver-usa
+name: Denver
+coordinates:
+  latitude: 39.7392
+  longitude: -104.9903
+country: United States
+region: Colorado
+city: Denver
+status: visited
+tags:
+  - travel
+featured: false

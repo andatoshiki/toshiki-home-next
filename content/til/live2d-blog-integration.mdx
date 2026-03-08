@@ -1,0 +1,101 @@
+---
+title: 'Add Live2D Character to Your Blog'
+date: '2025-04-27'
+description: 'Step-by-step tutorial on integrating a Live2D assistant character into your blog using HTML, CSS, and JavaScript.'
+tags:
+  - live2d
+  - blog
+  - tutorial
+  - javascript
+---
+
+# Introduction
+
+Many people are interested in adding Live2D characters to their blogs. This guide walks through the setup process.
+
+# Preparation
+
+Download the organized Live2D code from [GitHub](https://github.com/galnetwen/Live2D).  
+After downloading, extract the files into your blog’s root directory (folder name: `live2d`).
+
+# Implementation
+
+## 1: Add CSS in the `<head>`
+
+```html
+<link rel="stylesheet" href="/live2d/css/live2d.css" />
+```
+
+## 2: Add HTML in the `<body>`
+
+```html
+<div id="landlord">
+  <div class="message" style="opacity:0"></div>
+  <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+  <div class="hide-button">Hide</div>
+</div>
+```
+
+## 3: Add Scripts before `</body>`
+
+```html
+<script type="text/javascript">
+  var message_Path = '/live2d/'
+  var home_Path = 'https://yourdomain.com/' // replace with your domain
+</script>
+<script type="text/javascript" src="/live2d/js/live2d.js"></script>
+<script type="text/javascript" src="/live2d/js/message.js"></script>
+<script type="text/javascript">
+  loadlive2d('live2d', '/live2d/model/tia/model.json')
+</script>
+```
+
+## 4: Configure `message.json`
+
+Example configuration:
+
+```json
+{
+  "mouseover": [
+    {
+      "selector": ".title a",
+      "text": ["Want to check out {text}?"]
+    },
+    {
+      "selector": "#searchbox",
+      "text": ["Looking for something? Need help?"]
+    }
+  ],
+  "click": [
+    {
+      "selector": "#landlord #live2d",
+      "text": [
+        "Don’t touch me!",
+        "That’s embarrassing!",
+        "Hentai!",
+        "Keep it up and I’ll call the police!",
+        "Calling 110, there’s a pervert here!"
+      ]
+    }
+  ]
+}
+```
+
+# Model Notes
+
+Live2D is not advanced technology; it uses translation, rotation, transparency, and surface deformation. The effect heavily depends on textures, and each action requires careful manual tuning. High-quality models are rare and often copyrighted in games.
+
+The model used in this tutorial was extracted from the mobile game [Potion Maker](https://play.google.com/store/apps/details?id=com.sinsiroad.potionmaker), all rights belong to the official developers.
+
+# Update Log
+
+**2025.12.30**
+
+- Updated to latest version with cross-domain canvas support.
+- Clothing field supports absolute URLs (e.g., CDN with SSL).
+- Modified details in message system.
+- Added hide button for Live2D element (requires page refresh to show again).
+
+# References
+
+- Wikimoe: [Add Live2D Assistant to Your Blog](https://www.wikimoe.com/?tag=Live2d)

@@ -1,0 +1,12 @@
+id: daxing-airport-china
+name: Beijing Daxing International Airport
+coordinates:
+  latitude: 39.5099
+  longitude: 116.4108
+country: China
+region: Beijing
+city: Beijing
+status: airport
+tags:
+  - airport
+featured: false

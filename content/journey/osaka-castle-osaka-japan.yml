@@ -1,0 +1,13 @@
+id: osaka-castle-osaka-japan
+name: Osaka Castle Area
+coordinates:
+  latitude: 34.6873
+  longitude: 135.5259
+country: Japan
+region: Osaka
+city: Osaka
+status: visited
+tags:
+  - travel
+  - osaka-area
+featured: false

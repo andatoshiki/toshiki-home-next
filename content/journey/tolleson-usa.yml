@@ -1,0 +1,12 @@
+id: tolleson-usa
+name: Tolleson
+coordinates:
+  latitude: 33.4506
+  longitude: -112.2590
+country: United States
+region: Arizona
+city: Tolleson
+status: visited
+tags:
+  - travel
+featured: false

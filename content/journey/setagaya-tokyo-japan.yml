@@ -1,0 +1,13 @@
+id: setagaya-tokyo-japan
+name: Setagaya
+coordinates:
+  latitude: 35.6467
+  longitude: 139.6539
+country: Japan
+region: Tokyo
+city: Tokyo
+status: visited
+tags:
+  - travel
+  - tokyo-district
+featured: false

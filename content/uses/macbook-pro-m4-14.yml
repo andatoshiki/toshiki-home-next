@@ -1,0 +1,11 @@
+id: macbook-pro-m4-14
+name: MacBook Pro 14" M4
+type: hardware
+description: MacBook Pro 14" with Apple M4 chip, 24GB unified memory, and 1TB SSD. My primary development machine with exceptional performance for coding and creative work.
+image: https://cdn.tosh1ki.de/assets/images/20260105175426.png
+url: https://apple.com/macbook-pro
+tags:
+  - hardware
+  - laptop
+  - development
+featured: true

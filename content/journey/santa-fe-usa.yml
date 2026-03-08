@@ -1,0 +1,13 @@
+id: santa-fe-usa
+name: Santa Fe
+coordinates:
+  latitude: 35.6870
+  longitude: -105.9378
+country: United States
+region: New Mexico
+city: Santa Fe
+status: visited
+date: 2026-01-05
+tags:
+  - travel
+featured: false

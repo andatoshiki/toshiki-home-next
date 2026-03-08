@@ -1,0 +1,12 @@
+id: london-uk
+name: London
+coordinates:
+  latitude: 51.5074
+  longitude: -0.1278
+country: United Kingdom
+region: England
+city: London
+status: wishlist
+tags:
+  - wishlist
+featured: false

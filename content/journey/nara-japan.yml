@@ -1,0 +1,12 @@
+id: nara-japan
+name: Nara
+coordinates:
+  latitude: 34.6851
+  longitude: 135.8048
+country: Japan
+region: Kansai
+city: Nara
+status: visited
+tags:
+  - travel
+featured: false

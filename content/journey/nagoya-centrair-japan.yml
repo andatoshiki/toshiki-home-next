@@ -1,0 +1,12 @@
+id: nagoya-centrair-japan
+name: Chubu Centrair
+coordinates:
+  latitude: 34.8584
+  longitude: 136.8124
+country: Japan
+region: Chubu
+city: Nagoya
+status: airport
+tags:
+  - airport
+featured: false

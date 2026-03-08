@@ -1,0 +1,12 @@
+id: dublin-ireland
+name: Dublin
+coordinates:
+  latitude: 53.3498
+  longitude: -6.2603
+country: Ireland
+region: Leinster
+city: Dublin
+status: wishlist
+tags:
+  - wishlist
+featured: false

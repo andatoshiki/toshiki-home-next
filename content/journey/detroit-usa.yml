@@ -1,0 +1,12 @@
+id: detroit-usa
+name: Detroit
+coordinates:
+  latitude: 42.3314
+  longitude: -83.0458
+country: United States
+region: Michigan
+city: Detroit
+status: wishlist
+tags:
+  - wishlist
+featured: false

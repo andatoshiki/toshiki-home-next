@@ -1,0 +1,11 @@
+id: intellij-idea
+name: IntelliJ IDEA
+type: software
+description: A powerful integrated development environment by JetBrains for Java, Kotlin, and other JVM languages with intelligent code completion and advanced refactoring tools.
+image: https://cdn.tosh1ki.de/assets/images/20260105235800.png
+url: https://www.jetbrains.com/idea
+tags:
+  - development
+  - ide
+  - java
+featured: false
