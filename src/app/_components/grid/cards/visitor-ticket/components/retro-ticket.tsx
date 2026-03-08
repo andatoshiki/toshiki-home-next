@@ -24,7 +24,7 @@ export function RetroTicket({
       <div
         className={`relative flex w-full min-w-[6rem] cursor-pointer flex-col overflow-hidden rounded-sm bg-gradient-to-br from-amber-50 to-amber-100 shadow-2xl transition-all duration-300 ${
           isReady
-            ? 'hover:shadow-3xl hover:scale-[1.02] cursor-pointer'
+            ? 'hover:shadow-3xl cursor-pointer hover:scale-[1.02]'
             : 'cursor-not-allowed opacity-90'
         } dark:from-amber-950/50 dark:to-amber-900/50`}
         onClick={isReady ? onClose : undefined}
@@ -32,7 +32,7 @@ export function RetroTicket({
         role="button"
         tabIndex={isReady ? 0 : -1}
         aria-label={isReady ? 'Click to close ticket' : 'Ticket generating'}
-        onKeyDown={(e) => {
+        onKeyDown={e => {
           if (isReady && (e.key === 'Enter' || e.key === ' ')) {
             e.preventDefault()
             onClose()
@@ -58,7 +58,11 @@ export function RetroTicket({
         </div>
 
         {/* Main Ticket */}
-        <RetroTicketMain visitorInfo={visitorInfo} visitorId={visitorId} isReady={isReady} />
+        <RetroTicketMain
+          visitorInfo={visitorInfo}
+          visitorId={visitorId}
+          isReady={isReady}
+        />
 
         {/* Bottom Perforated Edge */}
         <PerforatedEdge position="bottom" />

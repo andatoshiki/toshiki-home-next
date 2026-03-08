@@ -34,7 +34,6 @@ export function Header() {
           href="/"
           className="px-4 py-3 font-handwrite text-2xl font-bold drop-shadow-lg md:px-0"
         >
-
           {/* >= */}
           <Signature className="h-10 w-10 transition-transform duration-150 hover:-rotate-[15deg]" />
         </Link>

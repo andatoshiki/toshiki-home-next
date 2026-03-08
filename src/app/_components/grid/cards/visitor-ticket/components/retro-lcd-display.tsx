@@ -14,11 +14,7 @@ export function RetroLCDDisplay({
   visitorId,
   onRamblingDone
 }: RetroLCDDisplayProps) {
-  const lcdState = isPrinting
-    ? 'rambling'
-    : visitorId
-      ? 'id'
-      : 'ready'
+  const lcdState = isPrinting ? 'rambling' : visitorId ? 'id' : 'ready'
 
   return (
     <div className="flex w-full items-center">
@@ -26,7 +22,7 @@ export function RetroLCDDisplay({
       <div className="relative flex w-full flex-col rounded border border-neutral-300 bg-neutral-100 px-3 py-2 dark:border-neutral-700 dark:bg-neutral-900">
         {/* Status Indicator - inside on the left */}
         <div
-          className={`absolute left-2 top-1/2 -translate-y-1/2 h-1.5 w-1.5 rounded-full transition-all ${
+          className={`absolute left-2 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full transition-all ${
             isPrinting
               ? 'animate-pulse bg-amber-400 dark:bg-amber-500'
               : 'bg-green-500 dark:bg-green-400'
@@ -51,7 +47,9 @@ export function RetroLCDDisplay({
                 onDone={onRamblingDone}
               />
             ) : lcdState === 'id' && visitorId ? (
-              <span style={{ fontFamily: 'monospace', letterSpacing: '0.15em' }}>
+              <span
+                style={{ fontFamily: 'monospace', letterSpacing: '0.15em' }}
+              >
                 {visitorId}
               </span>
             ) : (

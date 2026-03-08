@@ -12,10 +12,7 @@ function generateRandomCode(): string {
   ).join('')
 }
 
-export function DisplayPanel({
-  isPrinting,
-  visitorId
-}: DisplayPanelProps) {
+export function DisplayPanel({ isPrinting, visitorId }: DisplayPanelProps) {
   const [displayCode, setDisplayCode] = useState<string>('------')
 
   useEffect(() => {

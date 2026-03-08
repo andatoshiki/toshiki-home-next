@@ -19,8 +19,10 @@ export function LCDDisplay({
       <div className="relative flex w-full flex-col rounded border border-neutral-300 bg-neutral-100 px-2 py-1 dark:border-neutral-700 dark:bg-neutral-900">
         {/* Status Indicator - inside on the left */}
         <div
-          className={`absolute left-2 top-1/2 -translate-y-1/2 h-1.5 w-1.5 rounded-full transition-all ${
-            isPrinting ? 'animate-pulse bg-amber-400 dark:bg-amber-500' : 'bg-green-500 dark:bg-green-400'
+          className={`absolute left-2 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full transition-all ${
+            isPrinting
+              ? 'animate-pulse bg-amber-400 dark:bg-amber-500'
+              : 'bg-green-500 dark:bg-green-400'
           }`}
           aria-label={isPrinting ? 'Printing' : 'Ready'}
         />

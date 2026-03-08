@@ -3,7 +3,10 @@ import { forwardRef } from 'react'
 const PaperFeedAreaComponent = forwardRef<HTMLDivElement>(
   function PaperFeedArea(_, ref) {
     return (
-      <div ref={ref} className="relative flex w-full flex-col items-center gap-0.5">
+      <div
+        ref={ref}
+        className="relative flex w-full flex-col items-center gap-0.5"
+      >
         <div className="flex w-[85%] justify-center gap-[2px]">
           {[...Array(10)].map((_, i) => (
             <div
