@@ -3,7 +3,6 @@ import { type Metadata } from 'next'
 import Link, { LinkProps } from 'next/link'
 import { Icon as PhosphorIcon } from '@phosphor-icons/react'
 import { FolderOpen, Tag, Notebook } from '@phosphor-icons/react/dist/ssr'
-import CdLinks from '~/components/ui/cd'
 
 import { getSortedPosts } from '~/lib/get-sorted-posts'
 
@@ -52,7 +51,6 @@ export default function Page() {
         <TopLink Icon={Notebook} href="/blog/til" title="T.I.L" />
       </div>
       <PostList posts={sortedPosts} separateByYear />
-      <CdLinks />
     </div>
   )
 }
