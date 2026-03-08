@@ -18,19 +18,32 @@ interface Props {
   hideYear?: boolean
 }
 
-const TitleIcon = ({ category }: { category: string }) => {
-  if (category === 'How To') return <CompassTool size="1em" weight="duotone" />
-  if (category === 'Article')
-    return <TextAlignLeft size="1em" weight="duotone" />
-  if (category === 'Notes') return <NoteBlank size="1em" weight="duotone" />
-  if (category === 'List') return <ListBullets size="1em" weight="duotone" />
+const getTitleIcon = (category: string): React.ReactNode => {
+  const normalizedCategory = category?.trim().toLowerCase()
 
-  return <></>
+  if (normalizedCategory === 'how to') {
+    return <CompassTool size="1em" weight="duotone" />
+  }
+
+  if (normalizedCategory === 'article') {
+    return <TextAlignLeft size="1em" weight="duotone" />
+  }
+
+  if (normalizedCategory === 'notes') {
+    return <NoteBlank size="1em" weight="duotone" />
+  }
+
+  if (normalizedCategory === 'list') {
+    return <ListBullets size="1em" weight="duotone" />
+  }
+
+  return null
 }
 
 export function PostLink({ post, hideYear = false }: Props) {
   const showDate = !post.test
   const showReadingTime = !post.test
+  const titleIcon = getTitleIcon(post.category)
 
   if (post.status === 'planned') {
     return (
@@ -79,9 +92,7 @@ export function PostLink({ post, hideYear = false }: Props) {
         <section>
           <div className="flex items-center justify-between gap-2 md:justify-start">
             <h2 className="flex items-center gap-1 text-lg font-bold text-neutral-700 group-hover:text-blue-700 group-active:text-blue-700 dark:text-neutral-500 dark:group-hover:text-blue-500 group-active:dark:text-blue-500 md:text-xl">
-              <span className="text-xl">
-                <TitleIcon category={post.category} />
-              </span>
+              {titleIcon && <span className="text-xl">{titleIcon}</span>}
               {post.title}
             </h2>
             {post.test && <TestBadge />}
