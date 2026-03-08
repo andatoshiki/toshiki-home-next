@@ -49,6 +49,7 @@ function getVisitorInfo() {
 
 export function ReceiptCard() {
   const [isPrinting, setIsPrinting] = useState(false)
+  const [isInteractionLocked, setIsInteractionLocked] = useState(false)
   const [showReceipt, setShowReceipt] = useState(false)
   const [visitorInfo, setVisitorInfo] = useState(getVisitorInfo())
   const [disintegrate, setDisintegrate] = useState(false)
@@ -62,7 +63,8 @@ export function ReceiptCard() {
   }, [])
 
   const handlePrint = () => {
-    if (isPrinting) return
+    if (isPrinting || isInteractionLocked) return
+    setIsInteractionLocked(true)
     setIsPrinting(true)
     setLcdState('rambling')
     setShowReceipt(true)
@@ -70,6 +72,9 @@ export function ReceiptCard() {
     setTimeout(() => {
       setIsPrinting(false)
     }, 2000)
+    setTimeout(() => {
+      setIsInteractionLocked(false)
+    }, 5000)
   }
 
   const handleRamblingDone = (id: string) => {
@@ -78,6 +83,7 @@ export function ReceiptCard() {
   }
 
   const handleClose = () => {
+    if (isInteractionLocked) return
     setDisintegrate(true)
     setTimeout(() => {
       setShowReceipt(false)
@@ -88,7 +94,7 @@ export function ReceiptCard() {
   }
 
   return (
-    <div className="group relative flex aspect-square min-h-[8rem] w-full flex-col items-center justify-between overflow-visible rounded-2xl border border-neutral-200 bg-white p-3 shadow-sm transition-all duration-500 hover:shadow-md dark:border-neutral-800 dark:bg-neutral-950">
+    <div className="group relative flex aspect-square min-h-[8rem] w-full flex-col items-center justify-between overflow-visible rounded-2xl border border-neutral-200 bg-white p-3 shadow-sm transition-all duration-500 dark:border-neutral-800 dark:bg-neutral-950">
       {/* Receipt - comes out from paper slot (moved outside main flex column) */}
       {showReceipt && (
         <div
@@ -199,7 +205,7 @@ export function ReceiptCard() {
         <div className="flex w-full items-center justify-between">
           <div className="h-2 w-2 rounded-full bg-neutral-400 shadow-sm dark:bg-neutral-600" />
           <div className="font-mono text-[7px] font-bold uppercase tracking-widest text-neutral-600 dark:text-neutral-400">
-            TOSHIKI
+            PRINTER
           </div>
           <div className="h-2 w-2 rounded-full bg-neutral-400 shadow-sm dark:bg-neutral-600" />
         </div>
@@ -265,8 +271,8 @@ export function ReceiptCard() {
         {/* Print Button */}
         <button
           onClick={handlePrint}
-          disabled={isPrinting}
-          className="w-full rounded border border-neutral-300 bg-neutral-200 px-3 py-2 font-mono text-[9px] font-bold uppercase tracking-wide text-neutral-700 shadow-sm transition-all hover:scale-[1.02] hover:border-neutral-400 hover:bg-neutral-300 hover:shadow-md active:scale-[0.98] active:shadow-sm disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:border-neutral-600 dark:hover:bg-neutral-700"
+          disabled={isPrinting || isInteractionLocked}
+          className="w-full rounded border border-neutral-300 bg-neutral-200 px-3 py-2 font-mono text-[9px] font-bold uppercase tracking-wide text-neutral-700 shadow-sm transition-all hover:border-neutral-400 hover:bg-neutral-300 active:scale-[0.98] active:shadow-sm disabled:cursor-not-allowed disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:border-neutral-600 dark:hover:bg-neutral-700"
         >
           <div className="flex items-center justify-center gap-1">
             <Receipt size={10} weight="bold" />
