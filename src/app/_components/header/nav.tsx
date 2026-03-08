@@ -9,7 +9,7 @@ import { Signature } from '../../../components/signature'
 
 export function Header() {
   return (
-    <header className="mt-10 w-full">
+    <header className="relative z-[120] mt-10 w-full">
       <div className="content-container m-auto flex items-center justify-between">
         <Link
           href="/"
