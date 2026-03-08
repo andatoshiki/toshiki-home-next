@@ -1,21 +1,21 @@
 appid: 472870
-name: "Higurashi When They Cry Hou - Ch.3 Tatarigoroshi"
+name: 'Higurashi When They Cry Hou - Ch.3 Tatarigoroshi'
 playtimeMinutes: 1603
 playtimeHours: 26.7
 playtime2Weeks: null
 lastPlayed: 1756699585
-iconUrl: "https://media.steampowered.com/steamcommunity/public/images/apps/472870/6e917df25d1caad0f9edabc5d7e93ae121ef0130.jpg"
-headerImage: "https://steamcdn-a.akamaihd.net/steam/apps/472870/header.jpg"
-capsuleImage: "https://steamcdn-a.akamaihd.net/steam/apps/472870/capsule_231x87.jpg"
+iconUrl: 'https://media.steampowered.com/steamcommunity/public/images/apps/472870/6e917df25d1caad0f9edabc5d7e93ae121ef0130.jpg'
+headerImage: 'https://steamcdn-a.akamaihd.net/steam/apps/472870/header.jpg'
+capsuleImage: 'https://steamcdn-a.akamaihd.net/steam/apps/472870/capsule_231x87.jpg'
 developers:
-  - "07th Expansion"
+  - '07th Expansion'
 publishers:
-  - "MangaGamer"
+  - 'MangaGamer'
 genres:
-  - "Adventure"
-releaseDate: "Jun 17, 2016"
-shortDescription: "Higurashi When They Cry is a sound novel. The music, backgrounds and characters work together to create a world that is the stage of a novel for the user to read. They laugh and cry and get angry. The user takes the point of view of the protagonist to experience the story."
+  - 'Adventure'
+releaseDate: 'Jun 17, 2016'
+shortDescription: 'Higurashi When They Cry is a sound novel. The music, backgrounds and characters work together to create a world that is the stage of a novel for the user to read. They laugh and cry and get angry. The user takes the point of view of the protagonist to experience the story.'
 metacriticScore: null
-storeUrl: "https://store.steampowered.com/app/472870"
+storeUrl: 'https://store.steampowered.com/app/472870'
 isFree: false
 priceCents: 799

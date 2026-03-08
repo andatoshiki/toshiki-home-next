@@ -1,13 +1,13 @@
-steamId: "76561199848389213"
-personaName: "Anda Toshiki"
-profileUrl: "https://steamcommunity.com/id/andatoshiki/"
-avatar: "https://avatars.steamstatic.com/9693f45821359e00e74e56280535e863c753bf87.jpg"
-avatarMedium: "https://avatars.steamstatic.com/9693f45821359e00e74e56280535e863c753bf87_medium.jpg"
-avatarFull: "https://avatars.steamstatic.com/9693f45821359e00e74e56280535e863c753bf87_full.jpg"
+steamId: '76561199848389213'
+personaName: 'Anda Toshiki'
+profileUrl: 'https://steamcommunity.com/id/andatoshiki/'
+avatar: 'https://avatars.steamstatic.com/9693f45821359e00e74e56280535e863c753bf87.jpg'
+avatarMedium: 'https://avatars.steamstatic.com/9693f45821359e00e74e56280535e863c753bf87_medium.jpg'
+avatarFull: 'https://avatars.steamstatic.com/9693f45821359e00e74e56280535e863c753bf87_full.jpg'
 level: 5
 createdAt: 1745208773
-country: "US"
-realName: "Anda Toshiki"
+country: 'US'
+realName: 'Anda Toshiki'
 totalGames: 22
 totalPlaytimeHours: 992.6
 gamesPlayed: 16

@@ -1,22 +1,22 @@
 appid: 1174180
-name: "Red Dead Redemption 2"
+name: 'Red Dead Redemption 2'
 playtimeMinutes: 14345
 playtimeHours: 239.1
 playtime2Weeks: null
 lastPlayed: 1761911583
-iconUrl: "https://media.steampowered.com/steamcommunity/public/images/apps/1174180/5106abd9c1187a97f23295a0ba9470c94804ec6c.jpg"
-headerImage: "https://steamcdn-a.akamaihd.net/steam/apps/1174180/header.jpg"
-capsuleImage: "https://steamcdn-a.akamaihd.net/steam/apps/1174180/capsule_231x87.jpg"
+iconUrl: 'https://media.steampowered.com/steamcommunity/public/images/apps/1174180/5106abd9c1187a97f23295a0ba9470c94804ec6c.jpg'
+headerImage: 'https://steamcdn-a.akamaihd.net/steam/apps/1174180/header.jpg'
+capsuleImage: 'https://steamcdn-a.akamaihd.net/steam/apps/1174180/capsule_231x87.jpg'
 developers:
-  - "Rockstar Games"
+  - 'Rockstar Games'
 publishers:
-  - "Rockstar Games"
+  - 'Rockstar Games'
 genres:
-  - "Action"
-  - "Adventure"
-releaseDate: "5 Dec, 2019"
-shortDescription: "Arthur Morgan and the Van der Linde Gang are outlaws on the run. With federal agents and bounty hunters massing on their heels, the gang must rob, steal, and fight their way across the rugged heartland in order to survive."
+  - 'Action'
+  - 'Adventure'
+releaseDate: '5 Dec, 2019'
+shortDescription: 'Arthur Morgan and the Van der Linde Gang are outlaws on the run. With federal agents and bounty hunters massing on their heels, the gang must rob, steal, and fight their way across the rugged heartland in order to survive.'
 metacriticScore: 93
-storeUrl: "https://store.steampowered.com/app/1174180"
+storeUrl: 'https://store.steampowered.com/app/1174180'
 isFree: false
 priceCents: 22900

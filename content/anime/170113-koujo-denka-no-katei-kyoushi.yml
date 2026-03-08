@@ -16,14 +16,14 @@ description: |
   (Source: Crunchyroll)<br><br>
   <i>Note: Each episode streamed 1 week early on ABEMA and dAnimeStore. The original TV broadcast started on July 6, 2025.</i>
 coverImage:
-  extraLarge: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx170113-dk9h9ybZnGnZ.jpg"
-  large: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx170113-dk9h9ybZnGnZ.jpg"
-  medium: "https://s4.anilist.co/file/anilistcdn/media/anime/cover/small/bx170113-dk9h9ybZnGnZ.jpg"
-  color: "#e4bb43"
+  extraLarge: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx170113-dk9h9ybZnGnZ.jpg'
+  large: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx170113-dk9h9ybZnGnZ.jpg'
+  medium: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/small/bx170113-dk9h9ybZnGnZ.jpg'
+  color: '#e4bb43'
 episodes: 12
 format: ONA
 mediaStatus: FINISHED
-siteUrl: "https://anilist.co/anime/170113"
-customNote: 
+siteUrl: 'https://anilist.co/anime/170113'
+customNote:
 customTags: []
 featured: false

@@ -1,23 +1,23 @@
 appid: 1325860
-name: "VTube Studio"
+name: 'VTube Studio'
 playtimeMinutes: 1321
 playtimeHours: 22
 playtime2Weeks: null
 lastPlayed: 1756710242
-iconUrl: "https://media.steampowered.com/steamcommunity/public/images/apps/1325860/afd5c41656a67009dd4ffd7919acdcfb9844bd2a.jpg"
-headerImage: "https://steamcdn-a.akamaihd.net/steam/apps/1325860/header.jpg"
-capsuleImage: "https://steamcdn-a.akamaihd.net/steam/apps/1325860/capsule_231x87.jpg"
+iconUrl: 'https://media.steampowered.com/steamcommunity/public/images/apps/1325860/afd5c41656a67009dd4ffd7919acdcfb9844bd2a.jpg'
+headerImage: 'https://steamcdn-a.akamaihd.net/steam/apps/1325860/header.jpg'
+capsuleImage: 'https://steamcdn-a.akamaihd.net/steam/apps/1325860/capsule_231x87.jpg'
 developers:
-  - "DenchiSoft"
+  - 'DenchiSoft'
 publishers:
-  - "DenchiSoft"
+  - 'DenchiSoft'
 genres:
-  - "Indie"
-  - "Animation & Modeling"
-  - "Video Production"
-releaseDate: "Mar 12, 2021"
+  - 'Indie'
+  - 'Animation & Modeling'
+  - 'Video Production'
+releaseDate: 'Mar 12, 2021'
 shortDescription: "VTube Studio is all you'll ever need to become a Live2D VTuber, with innovative features such as pinning props to your model and many more still to come."
 metacriticScore: null
-storeUrl: "https://store.steampowered.com/app/1325860"
+storeUrl: 'https://store.steampowered.com/app/1325860'
 isFree: true
 priceCents: null

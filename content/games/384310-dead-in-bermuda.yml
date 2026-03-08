@@ -1,25 +1,25 @@
 appid: 384310
-name: "Dead In Bermuda"
+name: 'Dead In Bermuda'
 playtimeMinutes: 0
 playtimeHours: 0
 playtime2Weeks: null
 lastPlayed: 0
-iconUrl: "https://media.steampowered.com/steamcommunity/public/images/apps/384310/477e57c98ce82c2be8efa35cbdc0ed8cf1c8437a.jpg"
-headerImage: "https://steamcdn-a.akamaihd.net/steam/apps/384310/header.jpg"
-capsuleImage: "https://steamcdn-a.akamaihd.net/steam/apps/384310/capsule_231x87.jpg"
+iconUrl: 'https://media.steampowered.com/steamcommunity/public/images/apps/384310/477e57c98ce82c2be8efa35cbdc0ed8cf1c8437a.jpg'
+headerImage: 'https://steamcdn-a.akamaihd.net/steam/apps/384310/header.jpg'
+capsuleImage: 'https://steamcdn-a.akamaihd.net/steam/apps/384310/capsule_231x87.jpg'
 developers:
-  - "Ishtar Games"
+  - 'Ishtar Games'
 publishers:
-  - "Ishtar Games"
+  - 'Ishtar Games'
 genres:
-  - "Adventure"
-  - "Indie"
-  - "RPG"
-  - "Simulation"
-  - "Strategy"
-releaseDate: "Aug 27, 2015"
-shortDescription: "DEAD IN BERMUDA is a survival management game with RPG and adventure elements. Lead a team of 8 survivors from a plane crash. Assign them to tasks, gain experience, develop your survival skills, research and craft new items, explore the island and solve its mysteries."
+  - 'Adventure'
+  - 'Indie'
+  - 'RPG'
+  - 'Simulation'
+  - 'Strategy'
+releaseDate: 'Aug 27, 2015'
+shortDescription: 'DEAD IN BERMUDA is a survival management game with RPG and adventure elements. Lead a team of 8 survivors from a plane crash. Assign them to tasks, gain experience, develop your survival skills, research and craft new items, explore the island and solve its mysteries.'
 metacriticScore: null
-storeUrl: "https://store.steampowered.com/app/384310"
+storeUrl: 'https://store.steampowered.com/app/384310'
 isFree: false
 priceCents: 1499

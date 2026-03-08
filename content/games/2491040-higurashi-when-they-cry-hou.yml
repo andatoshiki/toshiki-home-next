@@ -1,22 +1,22 @@
 appid: 2491040
-name: "Higurashi When They Cry Hou+"
+name: 'Higurashi When They Cry Hou+'
 playtimeMinutes: 0
 playtimeHours: 0
 playtime2Weeks: null
 lastPlayed: 0
-iconUrl: "https://media.steampowered.com/steamcommunity/public/images/apps/2491040/c62eb8c63e621102fd427ac482951538d6b3dbd8.jpg"
-headerImage: "https://steamcdn-a.akamaihd.net/steam/apps/2491040/header.jpg"
-capsuleImage: "https://steamcdn-a.akamaihd.net/steam/apps/2491040/capsule_231x87.jpg"
+iconUrl: 'https://media.steampowered.com/steamcommunity/public/images/apps/2491040/c62eb8c63e621102fd427ac482951538d6b3dbd8.jpg'
+headerImage: 'https://steamcdn-a.akamaihd.net/steam/apps/2491040/header.jpg'
+capsuleImage: 'https://steamcdn-a.akamaihd.net/steam/apps/2491040/capsule_231x87.jpg'
 developers:
-  - "07th Expansion"
+  - '07th Expansion'
 publishers:
-  - "MangaGamer"
+  - 'MangaGamer'
 genres:
-  - "Adventure"
-  - "Indie"
-releaseDate: "Nov 9, 2023"
-shortDescription: "The tragedy of Hinamizawa is over. Those held captive within its grip are free from the fate that bound them to June 1983. Yet the tale of Hinamizawa is not truly complete. There are many worlds not yet explored."
+  - 'Adventure'
+  - 'Indie'
+releaseDate: 'Nov 9, 2023'
+shortDescription: 'The tragedy of Hinamizawa is over. Those held captive within its grip are free from the fate that bound them to June 1983. Yet the tale of Hinamizawa is not truly complete. There are many worlds not yet explored.'
 metacriticScore: null
-storeUrl: "https://store.steampowered.com/app/2491040"
+storeUrl: 'https://store.steampowered.com/app/2491040'
 isFree: false
 priceCents: 799
