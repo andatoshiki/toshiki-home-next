@@ -417,13 +417,43 @@
     }
   }
 
-  .year-watermark {
-    color: transparent;
-    -webkit-text-stroke-width: 8px;
-    -webkit-text-stroke-color: rgb(212 212 212 / 0.4);
+  .year-block {
+    @apply relative isolate z-0 overflow-hidden pb-2 pt-12;
   }
 
-  .dark .year-watermark {
-    -webkit-text-stroke-color: rgb(115 115 115 / 0.28);
+  .year-block::before {
+    content: attr(data-year);
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+    z-index: -10;
+    pointer-events: none;
+    user-select: none;
+    font-size: 6rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: rgb(163 163 163 / 0.22);
+  }
+
+  @media (min-width: 768px) {
+    .year-block::before {
+      top: 1rem;
+      font-size: 9rem;
+    }
+  }
+
+  .dark .year-block::before {
+    color: rgb(115 115 115 / 0.24);
+  }
+
+  @media (max-width: 768px) {
+    .year-block::before {
+      color: rgb(163 163 163 / 0.18);
+    }
+
+    .dark .year-block::before {
+      color: rgb(115 115 115 / 0.2);
+    }
   }
 }
