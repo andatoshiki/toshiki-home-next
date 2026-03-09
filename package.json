@@ -1,9 +1,9 @@
 {
-  "name": "mateusf.com",
-  "version": "9.5.2",
-  "homepage": "https://mateusf.com",
+  "name": "toshiki-home-next",
+  "version": "0.0.1",
+  "homepage": "https://toshiki.dev",
   "license": "GPL-3.0",
-  "author": "Mateus Felipe Gonçalves <contact@mateusf.com>",
+  "author": "Anda Toshiki <hi@tosh1ki.de>",
   "private": true,
   "scripts": {
     "dev:turbo": "next dev",
