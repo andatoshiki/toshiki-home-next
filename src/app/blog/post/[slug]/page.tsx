@@ -9,7 +9,6 @@ import {
   CalendarBlank,
   Clock,
   Tag,
-  TextAlignLeft,
   Lightbulb,
   Warning,
   WarningOctagon,
@@ -159,28 +158,6 @@ const mdxComponents = {
   )
 }
 
-const exampleToc = posts[0].toc[0]
-type TocEntry = typeof exampleToc
-const TocItem = ({
-  toc,
-  ...rest
-}: { toc: TocEntry } & ComponentProps<'li'>) => (
-  <li {...rest}>
-    <a href={toc.url}>{toc.title}</a>
-    {toc.items.length > 0 && (
-      <ol className="space-y-2">
-        {toc.items.map(childToc => (
-          <TocItem
-            toc={childToc}
-            key={childToc.url}
-            className="space-y-2 pl-3"
-          />
-        ))}
-      </ol>
-    )}
-  </li>
-)
-
 export default function Page({ params }: Props) {
   const post = posts.find(post => post.slug === params.slug)
 
@@ -238,22 +215,15 @@ export default function Page({ params }: Props) {
         </div>
       </div>
       <div className="my-6 h-px w-full bg-neutral-500/50" />
-      <div className="post-content">
-        {/*{post.toc.length > 0 && (
-          <nav className="toc">
-            <div className="flex items-center justify-between rounded-lg border-b border-neutral-200 bg-neutral-100 p-4 leading-none dark:border-neutral-800 dark:bg-neutral-900">
-              <span>Table of content</span>
-              <TextAlignLeft className="text-2xl" size="1em" />
-            </div>
-            <ol className="space-y-2 p-4">
-              {post.toc.map(toc => (
-                <TocItem toc={toc} key={toc.url} className="space-y-2" />
-              ))}
-            </ol>
-          </nav>
-        )}*/}
-        <Toc toc={post.toc} />
-        <MDXContent code={post.content} components={mdxComponents} />
+      <div className="relative">
+        <aside className="absolute left-full top-0 z-10 ml-6 hidden h-full w-52 min-[1320px]:block">
+          <div className="sticky top-20">
+            <Toc toc={post.toc} mode="sidebar" />
+          </div>
+        </aside>
+        <div className="post-content">
+          <MDXContent code={post.content} components={mdxComponents} />
+        </div>
       </div>
       <div className="pt-12">
         <ArtalkComment

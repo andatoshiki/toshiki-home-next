@@ -7,20 +7,29 @@ import Slideshow from 'yet-another-react-lightbox/plugins/slideshow'
 
 export default function BlogImageLightbox(props) {
   const [open, setOpen] = useState(false)
-  const { src, alt, ...rest } = props
+  const { src, alt, style, width, ...rest } = props
 
   return (
     <figure className="my-6 flex flex-col items-center">
       <span
         onClick={() => setOpen(true)}
         className="cursor-zoom-in"
-        style={{ display: 'inline-block' }}
+        style={{ display: 'block', width: '100%' }}
       >
         <img
           src={src}
           alt={alt}
+          width={width}
           {...rest}
-          style={{ maxWidth: '100%', borderRadius: '0.5rem' }}
+          style={{
+            width: width ?? '100%',
+            maxWidth: width ? '100%' : '48rem',
+            height: 'auto',
+            display: 'block',
+            margin: '0 auto',
+            borderRadius: '0.5rem',
+            ...style
+          }}
         />
       </span>
       {alt ? (

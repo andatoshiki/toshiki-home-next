@@ -15,7 +15,7 @@
   }
 
   .post-content {
-    @apply leading-6;
+    @apply leading-6 text-neutral-600 dark:text-neutral-400;
 
     nav.toc {
       @apply my-10 rounded-lg border border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950;
@@ -51,7 +51,7 @@
     }
 
     strong {
-      @apply font-semibold text-neutral-800 dark:text-neutral-200;
+      @apply font-semibold text-neutral-700 dark:text-neutral-300;
     }
 
     /* h2 & h3 underline and border removed */
@@ -73,7 +73,7 @@
     }
 
     p {
-      @apply my-4 text-left text-neutral-700 dark:text-neutral-300;
+      @apply my-4 text-left;
       a {
         @apply border-b border-neutral-400/30 font-normal text-neutral-600 no-underline transition-colors duration-300 dark:text-neutral-400;
       }
