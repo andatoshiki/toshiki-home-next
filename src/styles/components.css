@@ -416,4 +416,14 @@
       }
     }
   }
+
+  .year-watermark {
+    color: transparent;
+    -webkit-text-stroke-width: 8px;
+    -webkit-text-stroke-color: rgb(212 212 212 / 0.4);
+  }
+
+  .dark .year-watermark {
+    -webkit-text-stroke-color: rgb(115 115 115 / 0.28);
+  }
 }

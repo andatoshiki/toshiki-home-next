@@ -44,11 +44,18 @@ export function PostList({ posts, separateByYear = false }: Props) {
         )}
 
         {postsByYear.map(postsOfYear => (
-          <div key={postsOfYear.year}>
-            <h1 className="mb-5 rounded-xl bg-neutral-100 p-3 text-center text-2xl font-bold dark:bg-neutral-950 md:text-left">
+          <div
+            key={postsOfYear.year}
+            className="relative overflow-hidden pb-2 pt-12"
+          >
+            <span
+              aria-hidden="true"
+              className="year-watermark pointer-events-none absolute left-0 top-3 z-0 select-none text-[6rem] font-black leading-none tracking-tight md:top-4 md:text-[9rem]"
+            >
               {postsOfYear.year}
-            </h1>
-            <div className="my-5 flex flex-col gap-4 md:my-0 md:gap-3">
+            </span>
+            <h1 className="sr-only">{postsOfYear.year}</h1>
+            <div className="relative z-10 my-5 flex flex-col gap-4 pt-8 md:my-0 md:gap-3 md:pt-10">
               {getSortedPosts(postsOfYear.posts).map((post, key) => (
                 <PostLink key={key} post={post} hideYear />
               ))}
