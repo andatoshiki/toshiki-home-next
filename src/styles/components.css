@@ -425,15 +425,20 @@
     content: attr(data-year);
     position: absolute;
     left: 0;
-    top: 0.25rem;
-    z-index: -10;
+    top: 1.5rem;
+    z-index: 0;
     pointer-events: none;
     user-select: none;
-    font-size: 6rem;
+    font-size: 8rem;
     font-weight: 900;
     line-height: 1;
     letter-spacing: -0.025em;
     color: rgb(163 163 163 / 0.22);
+  }
+
+  .year-block > * {
+    position: relative;
+    z-index: 1;
   }
 
   @media (min-width: 768px) {
@@ -447,13 +452,4 @@
     color: rgb(92 92 92 / 0.22);
   }
 
-  @media (max-width: 768px) {
-    .year-block::before {
-      color: rgb(163 163 163 / 0.18);
-    }
-
-    .dark .year-block::before {
-      color: rgb(92 92 92 / 0.18);
-    }
-  }
 }
