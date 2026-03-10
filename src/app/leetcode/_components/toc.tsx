@@ -36,7 +36,7 @@ export function Toc({ toc }: TocProps) {
   if (toc.length === 0) return null
 
   return (
-    <nav className="toc">
+    <nav className="toc text-[0.85rem] leading-snug">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center justify-between rounded-lg border-b border-neutral-200 bg-neutral-100 p-4 leading-none transition-colors hover:bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 dark:hover:bg-neutral-800"

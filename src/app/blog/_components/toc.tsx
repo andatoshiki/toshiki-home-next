@@ -186,7 +186,7 @@ export function Toc({ toc, mode = 'collapsible' }: TocProps) {
 
   if (mode === 'sidebar') {
     return (
-      <nav className="toc text-[0.9rem] leading-snug text-neutral-600 dark:text-neutral-400">
+      <nav className="toc text-[0.85rem] leading-snug text-neutral-600 dark:text-neutral-400">
         <div className="flex items-center gap-2 px-2 py-1 font-semibold leading-none">
           <List className="text-xl" />
           <span>{progress}%</span>
@@ -197,7 +197,7 @@ export function Toc({ toc, mode = 'collapsible' }: TocProps) {
   }
 
   return (
-    <nav className="toc text-[0.9rem] leading-snug text-neutral-600 dark:text-neutral-400">
+    <nav className="toc text-[0.85rem] leading-snug text-neutral-600 dark:text-neutral-400">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex w-full items-center justify-between px-2 py-1 leading-none transition-colors hover:text-neutral-700 dark:hover:text-neutral-300"
