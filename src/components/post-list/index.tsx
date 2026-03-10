@@ -50,7 +50,7 @@ export function PostList({ posts, separateByYear = false }: Props) {
             className="year-block"
           >
             <h1 className="sr-only">{postsOfYear.year}</h1>
-            <div className="relative z-10 my-5 flex flex-col gap-4 pt-8 md:my-0 md:gap-3 md:pt-10">
+            <div className="relative z-10 my-5 flex flex-col gap-4 pt-12 md:my-0 md:gap-3 md:pt-10">
               {getSortedPosts(postsOfYear.posts).map((post, key) => (
                 <PostLink key={key} post={post} hideYear />
               ))}
@@ -59,7 +59,7 @@ export function PostList({ posts, separateByYear = false }: Props) {
         ))}
         <div data-year="Others" className="year-block">
           <h1 className="sr-only">Others</h1>
-          <div className="relative z-10 my-5 flex flex-col gap-3 pt-8 md:my-0 md:pt-10">
+          <div className="relative z-10 my-5 flex flex-col gap-3 pt-12 md:my-0 md:pt-10">
             {plannedPosts.map((post, key) => (
               <PostLink key={key} post={post} />
             ))}
