@@ -49,7 +49,7 @@ export function PostLink({ post, hideYear = false }: Props) {
     return (
       <section className="group cursor-pointer space-y-1">
         <div className="flex items-center justify-between gap-2 md:justify-start">
-          <h2 className="text-xl font-bold text-neutral-700 dark:text-neutral-500">
+          <h2 className="text-xl font-bold text-neutral-900 dark:text-neutral-200">
             {post.title}
           </h2>
           <span className="relative overflow-hidden rounded-lg">
@@ -57,14 +57,14 @@ export function PostLink({ post, hideYear = false }: Props) {
             <PlannedBadge />
           </span>
         </div>
-        <span className="hidden text-neutral-500 md:inline">
+        <span className="hidden text-neutral-600 dark:text-neutral-500 md:inline">
           {post.description}
         </span>
       </section>
     )
   } else {
     const Metadata = () => (
-      <span className="flex items-center gap-4 whitespace-nowrap leading-none text-neutral-600 group-hover:text-neutral-700 dark:group-hover:text-neutral-400 md:flex-col md:items-end md:justify-center md:gap-2">
+      <span className="flex items-center gap-4 whitespace-nowrap leading-none text-neutral-600 transition-colors duration-200 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 md:flex-col md:items-end md:justify-center md:gap-2">
         {showDate && (
           <span className="inline-flex items-center gap-1 md:flex-row-reverse">
             <CalendarBlank size="1em" />
@@ -87,11 +87,11 @@ export function PostLink({ post, hideYear = false }: Props) {
     return (
       <Link
         href={`/leetcode/${post.slug}`}
-        className="group flex flex-col justify-between gap-1 md:flex-row md:gap-3"
+        className="group flex flex-col justify-between gap-1 transition-colors duration-200 md:flex-row md:gap-3"
       >
         <section>
           <div className="flex items-center justify-between gap-2 md:justify-start">
-            <h2 className="flex items-center gap-1 text-lg font-bold text-neutral-700 group-hover:text-blue-700 group-active:text-blue-700 dark:text-neutral-500 dark:group-hover:text-blue-500 group-active:dark:text-blue-500 md:text-xl">
+            <h2 className="flex items-center gap-1 text-lg font-bold text-neutral-900 transition-colors duration-200 group-hover:text-neutral-900 group-active:text-neutral-900 dark:text-neutral-200 dark:group-hover:text-neutral-100 group-active:dark:text-neutral-100 md:text-xl">
               <span className="text-xl">
                 <TitleIcon category={post.category} />
               </span>
@@ -101,7 +101,7 @@ export function PostLink({ post, hideYear = false }: Props) {
             {post.test && <TestBadge />}
             {post.status === 'draft' && !post.test && <DraftBadge />}
           </div>
-          <span className="hidden items-center gap-3 text-neutral-500 group-hover:text-neutral-700 group-active:text-neutral-700 dark:group-hover:text-neutral-400 group-active:dark:text-neutral-400 md:inline-flex">
+          <span className="hidden items-center gap-3 text-neutral-600 transition-colors duration-200 group-hover:text-neutral-700 group-active:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 group-active:dark:text-neutral-400 md:inline-flex">
             {post.description}
           </span>
         </section>

@@ -57,11 +57,9 @@ export function PostList({ posts, separateByYear = false }: Props) {
             </div>
           </div>
         ))}
-        <div>
-          <h1 className="mb-5 rounded-xl bg-neutral-100 p-3 text-center text-2xl font-bold dark:bg-neutral-950 md:text-left">
-            Others
-          </h1>
-          <div className="flex flex-col gap-3">
+        <div data-year="Others" className="year-block">
+          <h1 className="sr-only">Others</h1>
+          <div className="relative z-10 my-5 flex flex-col gap-3 pt-8 md:my-0 md:pt-10">
             {plannedPosts.map((post, key) => (
               <PostLink key={key} post={post} />
             ))}

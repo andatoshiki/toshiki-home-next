@@ -444,7 +444,7 @@
   }
 
   .dark .year-block::before {
-    color: rgb(115 115 115 / 0.24);
+    color: rgb(92 92 92 / 0.22);
   }
 
   @media (max-width: 768px) {
@@ -453,7 +453,7 @@
     }
 
     .dark .year-block::before {
-      color: rgb(115 115 115 / 0.2);
+      color: rgb(92 92 92 / 0.18);
     }
   }
 }
