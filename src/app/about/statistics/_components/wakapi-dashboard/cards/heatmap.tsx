@@ -1,7 +1,7 @@
 'use client'
 
 import { Fire } from '@phosphor-icons/react/dist/ssr'
-import WakatimeHeatmap from '~/components/heatmap/wakatime-heatmap'
+import WakatimeHeatmapShadcn from '~/components/heatmap/wakatime-heatmap-shadcn'
 
 export function WakatimeHeatmapCard() {
   return (
@@ -15,7 +15,7 @@ export function WakatimeHeatmapCard() {
           contribution heatmap
         </span>
       </div>
-      <WakatimeHeatmap />
+      <WakatimeHeatmapShadcn />
     </div>
   )
 }
