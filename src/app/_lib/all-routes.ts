@@ -2,7 +2,7 @@ import { getUniqueCategoryList } from '~/lib/categories'
 import { slug } from '~/lib/slug'
 import { getUniqueTagList } from '~/lib/tags'
 import { config } from 'global-config'
-import { leetcode, posts } from '#content'
+import { posts } from '#content'
 
 const commonPaths = [
   '',
@@ -16,8 +16,6 @@ const commonPaths = [
   'guestbook',
   'donation',
   'album',
-  'leetcode',
-  'leetcode/feed', // ensure leetcode feed is included
   'songs',
   'library'
 ]
@@ -26,12 +24,10 @@ const categoryPaths = getUniqueCategoryList().map(
   category => `blog/categories/${slug(category)}`
 )
 const postPaths = posts.map(post => `blog/post/${post.slug}`)
-const leetCodePath = leetcode.map(leetcode => `leetcode/${leetcode.slug}`)
 
 export const allRoutes = [
   ...commonPaths,
   ...tagPaths,
   ...categoryPaths,
-  ...postPaths,
-  ...leetCodePath
+  ...postPaths
 ].map(paths => `${config.webserver.host}/${paths}`)

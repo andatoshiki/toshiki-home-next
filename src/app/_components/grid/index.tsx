@@ -16,7 +16,6 @@ import { LastTrack } from '~/app/about/statistics/_components/spotify-dashboard/
 import { MoecounterCard } from './cards/moecounter-card'
 import { MbtiCard } from './cards/mbti-card'
 import { ReceiptCard } from './cards/ticket-printer/receipt-card'
-import { getAllBlogPosts } from '~/components/heatmap/get-all-blogs'
 import { LongTextCard } from './cards/currently-card/long-text-card'
 
 const BooksCard = () => (

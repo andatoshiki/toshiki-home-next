@@ -1,7 +1,6 @@
 import {
   Notebook,
   Scroll,
-  TerminalWindow,
   ArrowUpRight
 } from '@phosphor-icons/react/dist/ssr'
 
@@ -62,13 +61,6 @@ export function AnalysisCard() {
       value: 3,
       href: '/blog/snippets',
       className: 'pl-4'
-    },
-    {
-      icon: <TerminalWindow size="1em" weight="duotone" />,
-      label: 'Leetcode',
-      value: 2,
-      href: '/blog/leetcode',
-      className: 'pl-8'
     }
   ]
 
@@ -81,7 +73,6 @@ export function AnalysisCard() {
       <div className="absolute bottom-0 right-0 z-20 flex h-full w-2/3 flex-col items-end justify-center gap-1 pr-8 font-bold">
         <Stat {...stats[0]} className="" />
         <Stat {...stats[1]} className="" />
-        <Stat {...stats[2]} className="" />
       </div>
     </div>
   )

@@ -8,7 +8,6 @@ import { aboutMe } from './content/collections/about-me'
 import { works } from './content/collections/work'
 import { courses } from './content/collections/courses'
 import { donation } from './content/collections/donation'
-import { leetcode } from './content/collections/leetcode'
 import { album } from 'content/collections/album'
 import { mansory } from 'content/collections/mansory'
 import { animeList, mangaList } from './content/collections/anime'
@@ -28,7 +27,6 @@ const config = defineConfig({
     works,
     courses,
     donation,
-    leetcode,
     album,
     mansory,
     animeList,
