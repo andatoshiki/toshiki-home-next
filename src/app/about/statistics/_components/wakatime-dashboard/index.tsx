@@ -4,7 +4,6 @@ import { WakatimeLanguagesChart } from './cards/languages'
 import { WakatimeDailyBarChart } from './cards/daily'
 import { WakatimeProjectsTreemap } from './cards/projects'
 import { WakatimeHeatmapCard } from './cards/heatmap'
-
 export function WakatimeDashboard() {
   return (
     <ErrorBoundary fallback={<div>Failed to load WakaTime stats.</div>}>

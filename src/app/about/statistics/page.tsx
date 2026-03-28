@@ -13,8 +13,6 @@ import { WritingDashboard } from './_components/writing-dashboard'
 import { WakapiDashboard } from './_components/wakapi-dashboard'
 import { RenderDate } from './_components/date'
 
-import CdLinks from '~/components/ui/cd'
-
 export const metadata: Metadata = {
   title: 'Statistics',
   description:
