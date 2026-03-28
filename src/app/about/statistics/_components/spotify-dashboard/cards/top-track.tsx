@@ -3,14 +3,22 @@ import { MusicNotes } from '@phosphor-icons/react/dist/ssr'
 
 import { placeholder } from '~/lib/placeholder'
 import { getLastFmTopTracks } from '~/lib/api/lastfm/lasfm'
-import { getAlbumCover } from '~/lib/api/lastfm/get-album-cover'
+import {
+  createTrackArtworkPlaceholder,
+  getAlbumCover
+} from '~/lib/api/lastfm/get-album-cover'
 
 export async function TopTrack() {
   const track = await getLastFmTopTracks('1month').then(tracks => tracks[0])
 
-  const imageUrl = await getAlbumCover(
-    `${track.name} - ${track.artist.name}`
-  ).then(data => data.url)
+  if (!track) {
+    return null
+  }
+
+  const imageUrl =
+    (await getAlbumCover(`${track.name} - ${track.artist.name}`, track.image)) ??
+    createTrackArtworkPlaceholder(track.name, track.artist.name)
+  const isGeneratedCover = imageUrl.startsWith('data:image/')
 
   return (
     <div className="flex h-full w-full items-center justify-between gap-2 rounded-3xl border border border-neutral-200 bg-white p-4 leading-none dark:border-neutral-800 dark:bg-neutral-950 md:p-7">
@@ -26,23 +34,22 @@ export async function TopTrack() {
           <a
             href={track.url}
             target="_blank"
-            title={`${track.name} - ${track.artist['#text']}`}
+            title={`${track.name} - ${track.artist.name}`}
             className="block w-full overflow-hidden text-ellipsis whitespace-nowrap text-xl hover:underline md:text-3xl"
           >
             {track.name} - {track.artist.name}
           </a>
         </span>
       </div>
-      {imageUrl && (
-        <Image
-          src={imageUrl}
-          alt="Artist Image"
-          width={300}
-          height={300}
-          placeholder={placeholder(96, 96) as `data:image/${string}`}
-          className="w-11 rounded-xl md:w-24 md:rounded-3xl"
-        />
-      )}
+      <Image
+        src={imageUrl}
+        alt={`${track.name} cover art`}
+        width={300}
+        height={300}
+        placeholder={placeholder(96, 96) as `data:image/${string}`}
+        className="w-11 rounded-xl md:w-24 md:rounded-3xl"
+        unoptimized={isGeneratedCover}
+      />
     </div>
   )
 }

@@ -1,16 +1,29 @@
 import { LastfmLogo } from '@phosphor-icons/react/dist/ssr'
 import Image from 'next/image'
-import { getAlbumCover } from '~/lib/api/lastfm/get-album-cover'
+import {
+  createTrackArtworkPlaceholder,
+  getAlbumCover
+} from '~/lib/api/lastfm/get-album-cover'
 import { getLastFmTopTracks } from '~/lib/api/lastfm/lasfm'
 
 export async function MostListenedMusic() {
+  const track = await getLastFmTopTracks('1month').then(tracks => tracks[0])
+
+  if (!track) {
+    return null
+  }
+
   const {
     name: title,
     artist,
-    url
-  } = await getLastFmTopTracks('1month').then(tracks => tracks[0])
+    url,
+    image
+  } = track
 
-  const cover = await getAlbumCover(`${title} - ${artist.name}`)
+  const coverUrl =
+    (await getAlbumCover(`${title} - ${artist.name}`, image)) ??
+    createTrackArtworkPlaceholder(title, artist.name)
+  const isGeneratedCover = coverUrl.startsWith('data:image/')
 
   return (
     <a
@@ -33,25 +46,23 @@ export async function MostListenedMusic() {
           </div>
         </div>
       </div>
-      {cover?.url && (
-        <>
-          <Image
-            src={cover.url}
-            alt={title!}
-            className="absolute -bottom-10 -left-14 -z-10 rounded-full blur-2xl"
-            width={200}
-            height={200}
-          />
-          <Image
-            src={cover.url}
-            alt={title!}
-            className="absolute -bottom-12 -left-16 animate-spin overflow-hidden rounded-full animate-duration-[65s]"
-            placeholder="empty"
-            width={200}
-            height={200}
-          />
-        </>
-      )}
+      <Image
+        src={coverUrl}
+        alt={`${title} cover art`}
+        className="absolute -bottom-10 -left-14 -z-10 rounded-full blur-2xl"
+        width={200}
+        height={200}
+        unoptimized={isGeneratedCover}
+      />
+      <Image
+        src={coverUrl}
+        alt={`${title} cover art`}
+        className="absolute -bottom-12 -left-16 animate-spin overflow-hidden rounded-full animate-duration-[65s]"
+        placeholder="empty"
+        width={200}
+        height={200}
+        unoptimized={isGeneratedCover}
+      />
     </a>
   )
 }
