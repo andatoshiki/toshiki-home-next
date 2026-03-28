@@ -9,22 +9,17 @@ type TocEntry = typeof exampleToc
 const TocItem = ({
   toc,
   activeUrl,
-  registerItemRef,
   ...rest
 }: {
   toc: TocEntry
   activeUrl: string
-  registerItemRef: (url: string, element: HTMLLIElement | null) => void
 } & ComponentProps<'li'>) => (
-  <li
-    {...rest}
-    ref={(element: HTMLLIElement | null) => registerItemRef(toc.url, element)}
-  >
+  <li {...rest}>
     <a
       href={toc.url}
       className={`block transition-colors ${
         activeUrl === toc.url
-          ? 'font-semibold text-neutral-800 dark:text-neutral-200'
+          ? 'text-neutral-800 dark:text-neutral-200'
           : 'text-neutral-500 hover:text-neutral-700 dark:text-neutral-500 dark:hover:text-neutral-300'
       }`}
     >
@@ -37,7 +32,6 @@ const TocItem = ({
             toc={childToc}
             key={childToc.url}
             activeUrl={activeUrl}
-            registerItemRef={registerItemRef}
             className="space-y-2 pl-0"
           />
         ))}
@@ -54,14 +48,7 @@ interface TocProps {
 export function Toc({ toc, mode = 'collapsible' }: TocProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [activeUrl, setActiveUrl] = useState('')
-  const [indicator, setIndicator] = useState({
-    top: 0,
-    height: 0,
-    visible: false
-  })
   const contentRef = useRef<HTMLDivElement>(null)
-  const listRef = useRef<HTMLOListElement>(null)
-  const itemRefs = useRef<Record<string, HTMLLIElement | null>>({})
   const [height, setHeight] = useState('0px')
 
   const tocUrls = useMemo(() => {
@@ -125,46 +112,16 @@ export function Toc({ toc, mode = 'collapsible' }: TocProps) {
     }
   }, [tocUrls])
 
-  React.useEffect(() => {
-    const listElement = listRef.current
-    const activeElement = itemRefs.current[activeUrl]
-
-    if (!listElement || !activeElement) {
-      setIndicator(prev => ({ ...prev, visible: false }))
-      return
-    }
-
-    const listRect = listElement.getBoundingClientRect()
-    const activeRect = activeElement.getBoundingClientRect()
-
-    setIndicator({
-      top: activeRect.top - listRect.top,
-      height: activeRect.height,
-      visible: true
-    })
-  }, [activeUrl, isOpen, tocUrls])
-
-  const registerItemRef = (url: string, element: HTMLLIElement | null) => {
-    itemRefs.current[url] = element
-  }
-
   if (toc.length === 0) return null
 
   const renderList = (listClassName: string) => (
-    <ol ref={listRef} className={`relative ${listClassName}`}>
-      {indicator.visible ? (
-        <span
-          className="pointer-events-none absolute -left-2 w-[2px] rounded-full bg-neutral-700/80 transition-all duration-200 dark:bg-neutral-300/80"
-          style={{ top: indicator.top, height: indicator.height }}
-        />
-      ) : null}
+    <ol className={listClassName}>
       {toc.map(tocItem => (
         <TocItem
           toc={tocItem}
           key={tocItem.url}
           activeUrl={activeUrl}
-          registerItemRef={registerItemRef}
-          className="relative space-y-2 pl-0"
+          className="space-y-2 pl-0"
         />
       ))}
     </ol>
