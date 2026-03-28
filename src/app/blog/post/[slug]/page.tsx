@@ -165,62 +165,62 @@ export default function Page({ params }: Props) {
 
   return (
     <div className="content-container m-auto">
-      <div className="flex flex-col gap-4 leading-6">
-        <div>
-          <h1 className="text-left text-4xl font-bold md:text-left">
-            {post.title}
-          </h1>
-        </div>
-        <div className="space-y-3">
-          <div>
-            <div className="flex items-center gap-1">
-              <span className="inline-flex items-center gap-1">
-                <CalendarBlank size="1em" />
-                <Date dateString={post.date} />
-              </span>
-              {post.lastUpdate && (
-                <span
-                  className="inline-flex items-center gap-1 text-neutral-500"
-                  title="Last Update"
-                >
-                  <ArrowsHorizontal /> <Date dateString={post.lastUpdate} />
-                </span>
-              )}
-            </div>
-            <div className="flex items-center gap-1">
-              <span className="group inline-flex items-center gap-1">
-                <Folder size="1em" />
-                <Link
-                  href={`/blog/categories/${slug(post.category)}`}
-                  className="group-dark:hover:text-blue-400 group-hover:text-blue-500"
-                >
-                  {post.category}
-                </Link>
-              </span>
-              <span className="group inline-flex items-center gap-1">
-                <Clock size="1em" />
-                <span>{post.metadata.readingTime} min read</span>
-              </span>
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-3 gap-y-2">
-            {post.tags.map((tag, index) => (
-              <Link href={`/blog/tag/${slug(tag)}`} key={index}>
-                <span className="flex items-center justify-center gap-1 rounded-md bg-neutral-500/5 p-1 leading-none text-neutral-500 transition-colors duration-200 hover:text-neutral-900 dark:hover:text-neutral-100 md:bg-transparent md:p-0">
-                  {tag} <Tag size={15} className="hidden md:inline" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-      <div className="my-6 h-px w-full bg-neutral-500/50" />
       <div className="relative">
-        <aside className="absolute left-full top-0 z-10 ml-6 hidden h-full w-52 min-[1320px]:block">
+        <aside className="absolute right-full top-0 z-10 mr-6 hidden h-full w-52 min-[1320px]:block">
           <div className="sticky top-20">
             <Toc toc={post.toc} mode="sidebar" />
           </div>
         </aside>
+        <div className="flex flex-col gap-4 leading-6">
+          <div>
+            <h1 className="text-left text-4xl font-bold md:text-left">
+              {post.title}
+            </h1>
+          </div>
+          <div className="space-y-3">
+            <div>
+              <div className="flex items-center gap-1">
+                <span className="inline-flex items-center gap-1">
+                  <CalendarBlank size="1em" />
+                  <Date dateString={post.date} />
+                </span>
+                {post.lastUpdate && (
+                  <span
+                    className="inline-flex items-center gap-1 text-neutral-500"
+                    title="Last Update"
+                  >
+                    <ArrowsHorizontal /> <Date dateString={post.lastUpdate} />
+                  </span>
+                )}
+              </div>
+              <div className="flex items-center gap-1">
+                <span className="group inline-flex items-center gap-1">
+                  <Folder size="1em" />
+                  <Link
+                    href={`/blog/categories/${slug(post.category)}`}
+                    className="group-dark:hover:text-blue-400 group-hover:text-blue-500"
+                  >
+                    {post.category}
+                  </Link>
+                </span>
+                <span className="group inline-flex items-center gap-1">
+                  <Clock size="1em" />
+                  <span>{post.metadata.readingTime} min read</span>
+                </span>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-3 gap-y-2">
+              {post.tags.map((tag, index) => (
+                <Link href={`/blog/tag/${slug(tag)}`} key={index}>
+                  <span className="flex items-center justify-center gap-1 rounded-md bg-neutral-500/5 p-1 leading-none text-neutral-500 transition-colors duration-200 hover:text-neutral-900 dark:hover:text-neutral-100 md:bg-transparent md:p-0">
+                    {tag} <Tag size={15} className="hidden md:inline" />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="my-6 h-px w-full bg-neutral-500/50" />
         <div className="post-content">
           <MDXContent code={post.content} components={mdxComponents} />
         </div>

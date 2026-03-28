@@ -1,6 +1,7 @@
 'use client'
+import Link from 'next/link'
 import React, { ComponentProps, useMemo, useRef, useState } from 'react'
-import { List, CaretDown } from '@phosphor-icons/react'
+import { List, CaretDown, ArrowUDownLeft } from '@phosphor-icons/react'
 
 const exampleToc = { url: '', title: '', items: [] as any[] }
 type TocEntry = typeof exampleToc
@@ -52,7 +53,6 @@ interface TocProps {
 
 export function Toc({ toc, mode = 'collapsible' }: TocProps) {
   const [isOpen, setIsOpen] = useState(false)
-  const [progress, setProgress] = useState(0)
   const [activeUrl, setActiveUrl] = useState('')
   const [indicator, setIndicator] = useState({
     top: 0,
@@ -86,26 +86,12 @@ export function Toc({ toc, mode = 'collapsible' }: TocProps) {
   }, [isOpen, toc])
 
   React.useEffect(() => {
-    const updateProgressAndSection = () => {
+    const updateActiveSection = () => {
       const contentElement = document.querySelector(
         '.post-content'
       ) as HTMLElement | null
 
       if (!contentElement) return
-
-      const rect = contentElement.getBoundingClientRect()
-      const scrollY = window.scrollY || window.pageYOffset
-      const contentTop = scrollY + rect.top
-      const viewportHeight = window.innerHeight
-      const end = Math.max(
-        contentTop + contentElement.scrollHeight - viewportHeight,
-        contentTop + 1
-      )
-      const percent = Math.round(
-        ((scrollY - contentTop) / (end - contentTop)) * 100
-      )
-
-      setProgress(Math.min(100, Math.max(0, percent)))
 
       const headings = tocUrls
         .map(url => document.getElementById(url.replace(/^#/, '')))
@@ -127,15 +113,15 @@ export function Toc({ toc, mode = 'collapsible' }: TocProps) {
       setActiveUrl(prev => (prev === nextActiveUrl ? prev : nextActiveUrl))
     }
 
-    updateProgressAndSection()
-    window.addEventListener('scroll', updateProgressAndSection, {
+    updateActiveSection()
+    window.addEventListener('scroll', updateActiveSection, {
       passive: true
     })
-    window.addEventListener('resize', updateProgressAndSection)
+    window.addEventListener('resize', updateActiveSection)
 
     return () => {
-      window.removeEventListener('scroll', updateProgressAndSection)
-      window.removeEventListener('resize', updateProgressAndSection)
+      window.removeEventListener('scroll', updateActiveSection)
+      window.removeEventListener('resize', updateActiveSection)
     }
   }, [tocUrls])
 
@@ -184,13 +170,20 @@ export function Toc({ toc, mode = 'collapsible' }: TocProps) {
     </ol>
   )
 
+  const indexLink = (
+    <Link
+      href="/blog"
+      className="inline-flex items-center gap-1 px-2 py-1 font-semibold leading-none text-neutral-500 transition-colors hover:text-neutral-700 dark:text-neutral-500 dark:hover:text-neutral-300"
+    >
+      <ArrowUDownLeft size={16} />
+      <span>index</span>
+    </Link>
+  )
+
   if (mode === 'sidebar') {
     return (
       <nav className="toc text-[0.85rem] leading-snug text-neutral-600 dark:text-neutral-400">
-        <div className="flex items-center gap-2 px-2 py-1 font-semibold leading-none">
-          <List className="text-xl" />
-          <span>{progress}%</span>
-        </div>
+        {indexLink}
         {renderList('space-y-2 px-2 py-3')}
       </nav>
     )
@@ -198,21 +191,23 @@ export function Toc({ toc, mode = 'collapsible' }: TocProps) {
 
   return (
     <nav className="toc text-[0.85rem] leading-snug text-neutral-600 dark:text-neutral-400">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center justify-between px-2 py-1 leading-none transition-colors hover:text-neutral-700 dark:hover:text-neutral-300"
-      >
-        <span className="flex items-center gap-2">
+      <div className="flex items-center justify-between gap-2 px-2 py-1">
+        {indexLink}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="inline-flex items-center gap-1 leading-none transition-colors hover:text-neutral-700 dark:hover:text-neutral-300"
+          aria-expanded={isOpen}
+          aria-label={isOpen ? 'Collapse table of contents' : 'Expand table of contents'}
+        >
           <List className="text-xl" />
-          <span className="font-semibold">{progress}%</span>
-        </span>
-        <CaretDown
-          className={`text-xl transition-transform duration-200 ${
-            isOpen ? 'rotate-180' : ''
-          }`}
-          size="1em"
-        />
-      </button>
+          <CaretDown
+            className={`text-xl transition-transform duration-200 ${
+              isOpen ? 'rotate-180' : ''
+            }`}
+            size="1em"
+          />
+        </button>
+      </div>
       <div
         ref={contentRef}
         style={{
