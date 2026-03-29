@@ -14,6 +14,23 @@
     @apply leading-none;
   }
 
+  .blog-meta-row {
+    @apply flex flex-wrap items-center gap-x-6 gap-y-3;
+    @apply text-[0.95rem] leading-none text-neutral-500 dark:text-neutral-500;
+  }
+
+  .blog-meta-item {
+    @apply inline-flex items-center gap-2;
+  }
+
+  .blog-meta-taxonomy {
+    @apply inline-flex flex-wrap items-center gap-y-2;
+  }
+
+  .blog-meta-separator {
+    @apply mx-1 text-neutral-300 dark:text-neutral-700;
+  }
+
   .post-content {
     @apply leading-6 text-neutral-600 dark:text-neutral-400;
 
@@ -51,7 +68,7 @@
     }
 
     strong {
-      @apply font-semibold text-neutral-700 dark:text-neutral-300;
+      @apply font-medium text-neutral-700 dark:text-neutral-300;
     }
 
     /* h2 & h3 underline and border removed */
@@ -74,13 +91,17 @@
 
     p {
       @apply my-4 text-left;
-      a {
-        @apply border-b border-neutral-400/30 font-normal text-neutral-600 no-underline transition-colors duration-300 dark:text-neutral-400;
-      }
+    }
 
-      a:hover {
-        @apply border-neutral-700 dark:border-neutral-300;
-      }
+    p a,
+    li:not(nav.toc li):not(.toc li) a,
+    blockquote a,
+    table a {
+      @apply border-b border-neutral-400/30 font-normal text-neutral-500 no-underline transition-colors duration-200 ease-out;
+      @apply hover:border-neutral-700/50 hover:text-neutral-700;
+      @apply active:border-neutral-900/60 active:text-neutral-900;
+      @apply dark:border-neutral-600/40 dark:text-neutral-400 dark:hover:border-neutral-300/50 dark:hover:text-neutral-300;
+      @apply dark:active:border-neutral-100/50 dark:active:text-neutral-100;
     }
 
     img {
@@ -167,10 +188,6 @@
 
     ol {
       @apply list-inside list-decimal text-justify md:text-left;
-
-      li::marker {
-        @apply font-black;
-      }
     }
 
     ul {
@@ -193,7 +210,7 @@
 
     code {
       @apply font-mono text-sm leading-[1.4] text-neutral-800 dark:text-neutral-300;
-      @apply text-ellipsis break-words rounded-lg bg-black/5 px-1 py-[0.16rem] backdrop-blur-3xl dark:bg-white/5;
+      @apply text-ellipsis break-words rounded-sm bg-black/5 px-1 py-[0.16rem] backdrop-blur-3xl dark:bg-white/5;
     }
 
     /*only affect inline code, not code blocks */

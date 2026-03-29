@@ -7,7 +7,7 @@ import { Toc } from '../../_components/toc'
 import {
   Folder,
   CalendarBlank,
-  Clock,
+  Eye,
   Tag,
   Lightbulb,
   Warning,
@@ -172,55 +172,75 @@ export default function Page({ params }: Props) {
           </div>
         </aside>
         <div className="flex flex-col gap-4 leading-6">
-          <div>
-            <h1 className="text-left text-4xl font-bold md:text-left">
-              {post.title}
-            </h1>
+          <div className="blog-meta-row">
+            <span className="inline-flex items-center gap-2">
+              <span className="blog-meta-item">
+                <CalendarBlank size={18} className="shrink-0" />
+                <Date dateString={post.date} />
+              </span>
+              {post.lastUpdate && (
+                <span
+                  className="inline-flex items-center gap-1"
+                  title="Last Update"
+                >
+                  <ArrowsHorizontal size={16} className="shrink-0" />
+                  <span>updated</span>
+                  <Date dateString={post.lastUpdate} />
+                </span>
+              )}
+            </span>
+            <span className="blog-meta-item">
+              <Folder size={18} className="shrink-0" />
+              <Link
+                href={`/blog/categories/${slug(post.category)}`}
+                className="text-neutral-500 no-underline transition-colors duration-200 ease-out hover:text-neutral-700 active:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-300 dark:active:text-neutral-100"
+              >
+                {post.category}
+              </Link>
+            </span>
+            {post.tags.length > 0 && (
+              <span className="blog-meta-item">
+                <Tag size={18} className="shrink-0" />
+                <span className="blog-meta-taxonomy">
+                  {post.tags.map((tag, index) => (
+                    <React.Fragment key={tag}>
+                      <Link
+                        href={`/blog/tag/${slug(tag)}`}
+                        className="text-neutral-500 no-underline transition-colors duration-200 ease-out hover:text-neutral-700 active:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-300 dark:active:text-neutral-100"
+                      >
+                        {tag}
+                      </Link>
+                      {index < post.tags.length - 1 ? (
+                        <span
+                          className="blog-meta-separator"
+                          aria-hidden="true"
+                        >
+                          -
+                        </span>
+                      ) : null}
+                    </React.Fragment>
+                  ))}
+                </span>
+              </span>
+            )}
+            <span className="blog-meta-item">
+              <Eye size={18} className="shrink-0" />
+              <span>{Math.ceil(post.metadata.readingTime)} minutes</span>
+            </span>
           </div>
           <div className="space-y-3">
             <div>
-              <div className="flex items-center gap-1">
-                <span className="inline-flex items-center gap-1">
-                  <CalendarBlank size="1em" />
-                  <Date dateString={post.date} />
-                </span>
-                {post.lastUpdate && (
-                  <span
-                    className="inline-flex items-center gap-1 text-neutral-500"
-                    title="Last Update"
-                  >
-                    <ArrowsHorizontal /> <Date dateString={post.lastUpdate} />
-                  </span>
-                )}
-              </div>
-              <div className="flex items-center gap-1">
-                <span className="group inline-flex items-center gap-1">
-                  <Folder size="1em" />
-                  <Link
-                    href={`/blog/categories/${slug(post.category)}`}
-                    className="group-dark:hover:text-blue-400 group-hover:text-blue-500"
-                  >
-                    {post.category}
-                  </Link>
-                </span>
-                <span className="group inline-flex items-center gap-1">
-                  <Clock size="1em" />
-                  <span>{post.metadata.readingTime} min read</span>
-                </span>
-              </div>
+              <h1 className="text-left text-4xl font-bold md:text-left">
+                {post.title}
+              </h1>
             </div>
-            <div className="flex flex-wrap gap-3 gap-y-2">
-              {post.tags.map((tag, index) => (
-                <Link href={`/blog/tag/${slug(tag)}`} key={index}>
-                  <span className="flex items-center justify-center gap-1 rounded-md bg-neutral-500/5 p-1 leading-none text-neutral-500 transition-colors duration-200 hover:text-neutral-900 dark:hover:text-neutral-100 md:bg-transparent md:p-0">
-                    {tag} <Tag size={15} className="hidden md:inline" />
-                  </span>
-                </Link>
-              ))}
-            </div>
+            {post.description ? (
+              <p className="w-full text-[0.95rem] leading-relaxed text-neutral-500 dark:text-neutral-400">
+                {post.description}
+              </p>
+            ) : null}
           </div>
         </div>
-        <div className="my-6 h-px w-full bg-neutral-500/50" />
         <div className="post-content">
           <MDXContent code={post.content} components={mdxComponents} />
         </div>
