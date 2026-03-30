@@ -15,9 +15,7 @@ export function WakatimeHeatmapCard() {
           contribution heatmap
         </span>
       </div>
-      <div className="w-full overflow-x-auto">
-        <WakatimeHeatmapShadcn />
-      </div>
+      <WakatimeHeatmapShadcn />
     </div>
   )
 }

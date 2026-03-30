@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { cn } from '~/lib/utils'
 import { getWakatimeHeatmapData } from '~/lib/api/wakatime-heatmap'
@@ -108,6 +108,8 @@ export default function WakatimeHeatmapShadcn({
   const [data, setData] = useState<HeatmapDatum[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [availableWidth, setAvailableWidth] = useState(0)
+  const heatmapViewportRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     let cancelled = false
@@ -244,6 +246,37 @@ export default function WakatimeHeatmapShadcn({
     [cellGap, cellSize, columns.length]
   )
 
+  const labelColumnWidth = 40
+  const labelGap = 8
+  const monthLabelHeight = 18
+  const gridHeight = 7 * cellSize + 6 * cellGap
+  const contentWidth = labelColumnWidth + labelGap + gridWidth
+  const contentHeight = monthLabelHeight + gridHeight
+  const heatmapScale =
+    availableWidth > 0 ? Math.min(1, availableWidth / contentWidth) : 1
+
+  useEffect(() => {
+    const viewport = heatmapViewportRef.current
+
+    if (!viewport) return
+
+    const updateWidth = () => {
+      setAvailableWidth(viewport.clientWidth)
+    }
+
+    updateWidth()
+
+    const observer = new ResizeObserver(() => {
+      updateWidth()
+    })
+
+    observer.observe(viewport)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
   return (
     <div className={cn('flex flex-col gap-4', className)}>
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -302,94 +335,109 @@ export default function WakatimeHeatmapShadcn({
       )}
 
       <TooltipProvider delayDuration={80}>
-        <div className="w-full overflow-x-auto">
-          <div className="min-w-fit">
-            <div className="flex items-end pl-11">
+        <div ref={heatmapViewportRef} className="w-full overflow-hidden">
+          <div style={{ height: contentHeight * heatmapScale }}>
+            <div
+              style={{
+                width: contentWidth,
+                transform: `scale(${heatmapScale})`,
+                transformOrigin: 'top left'
+              }}
+            >
               <div
-                className="relative"
-                style={{
-                  height: 18,
-                  width: gridWidth
-                }}
+                className="flex items-end"
+                style={{ paddingLeft: labelColumnWidth + labelGap }}
               >
-                {monthLabels.map(label => (
-                  <div
-                    key={`${label.colIndex}-${label.text}`}
-                    className="absolute text-xs text-neutral-500 dark:text-neutral-400"
-                    style={{
-                      left: label.colIndex * (cellSize + cellGap),
-                      top: 0
-                    }}
-                  >
-                    {label.text}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex">
-              <div
-                className="mr-2 flex flex-col"
-                style={{ gap: `${cellGap}px` }}
-                aria-hidden="true"
-              >
-                {Array.from({ length: 7 }).map((_, rowIndex) => (
-                  <div
-                    key={rowIndex}
-                    className="flex items-center justify-end text-xs text-neutral-500 dark:text-neutral-400"
-                    style={{ width: 40, height: cellSize }}
-                  >
-                    {weekdayIndices.includes(rowIndex)
-                      ? weekdayLabelForIndex(rowIndex, weekStartsOn)
-                      : ''}
-                  </div>
-                ))}
+                <div
+                  className="relative"
+                  style={{
+                    height: monthLabelHeight,
+                    width: gridWidth
+                  }}
+                >
+                  {monthLabels.map(label => (
+                    <div
+                      key={`${label.colIndex}-${label.text}`}
+                      className="absolute text-xs text-neutral-500 dark:text-neutral-400"
+                      style={{
+                        left: label.colIndex * (cellSize + cellGap),
+                        top: 0
+                      }}
+                    >
+                      {label.text}
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <div
-                className="flex"
-                style={{ gap: `${cellGap}px` }}
-                role="grid"
-                aria-label="WakaTime heatmap"
-              >
-                {columns.map((column, columnIndex) => (
-                  <div
-                    key={columnIndex}
-                    className="flex flex-col"
-                    style={{ gap: `${cellGap}px` }}
-                    role="rowgroup"
-                  >
-                    {column.map(cell => (
-                      <Tooltip key={`${cell.key}-${columnIndex}`}>
-                        <TooltipTrigger asChild>
-                          <button
-                            type="button"
-                            disabled={cell.disabled}
-                            className={cn(
-                              'rounded-[3px] outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
-                              levelClassNames[cell.level],
-                              cell.disabled &&
-                                'pointer-events-none cursor-default opacity-35'
-                            )}
-                            style={{
-                              width: cellSize,
-                              height: cellSize
-                            }}
-                            aria-label={
-                              cell.disabled
-                                ? 'Outside range'
-                                : `${cell.label}: ${cell.value.toFixed(1)} hours`
-                            }
-                            role="gridcell"
-                          />
-                        </TooltipTrigger>
-                        <TooltipContent side="top" sideOffset={6}>
-                          {cell.value.toFixed(1)} hrs on {cell.label}
-                        </TooltipContent>
-                      </Tooltip>
-                    ))}
-                  </div>
-                ))}
+              <div className="flex">
+                <div
+                  className="flex flex-col"
+                  style={{
+                    width: labelColumnWidth,
+                    marginRight: labelGap,
+                    gap: `${cellGap}px`
+                  }}
+                  aria-hidden="true"
+                >
+                  {Array.from({ length: 7 }).map((_, rowIndex) => (
+                    <div
+                      key={rowIndex}
+                      className="flex items-center justify-end text-xs text-neutral-500 dark:text-neutral-400"
+                      style={{ width: labelColumnWidth, height: cellSize }}
+                    >
+                      {weekdayIndices.includes(rowIndex)
+                        ? weekdayLabelForIndex(rowIndex, weekStartsOn)
+                        : ''}
+                    </div>
+                  ))}
+                </div>
+
+                <div
+                  className="flex"
+                  style={{ gap: `${cellGap}px` }}
+                  role="grid"
+                  aria-label="WakaTime heatmap"
+                >
+                  {columns.map((column, columnIndex) => (
+                    <div
+                      key={columnIndex}
+                      className="flex flex-col"
+                      style={{ gap: `${cellGap}px` }}
+                      role="rowgroup"
+                    >
+                      {column.map(cell => (
+                        <Tooltip key={`${cell.key}-${columnIndex}`}>
+                          <TooltipTrigger asChild>
+                            <button
+                              type="button"
+                              disabled={cell.disabled}
+                              className={cn(
+                                'rounded-[3px] outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+                                levelClassNames[cell.level],
+                                cell.disabled &&
+                                  'pointer-events-none cursor-default opacity-35'
+                              )}
+                              style={{
+                                width: cellSize,
+                                height: cellSize
+                              }}
+                              aria-label={
+                                cell.disabled
+                                  ? 'Outside range'
+                                  : `${cell.label}: ${cell.value.toFixed(1)} hours`
+                              }
+                              role="gridcell"
+                            />
+                          </TooltipTrigger>
+                          <TooltipContent side="top" sideOffset={6}>
+                            {cell.value.toFixed(1)} hrs on {cell.label}
+                          </TooltipContent>
+                        </Tooltip>
+                      ))}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
