@@ -163,6 +163,9 @@ export default function Page({ params }: Props) {
 
   if (!post) return notFound()
 
+  const footerDate = post.lastUpdate ?? post.date
+  const footerDateLabel = post.lastUpdate ? 'updated on' : 'published on'
+
   return (
     <div className="content-container m-auto">
       <div className="relative">
@@ -241,9 +244,32 @@ export default function Page({ params }: Props) {
             ) : null}
           </div>
         </div>
+        <div
+          className="blog-section-divider blog-section-divider-near-hero"
+          aria-hidden="true"
+        />
         <div className="post-content">
           <MDXContent code={post.content} components={mdxComponents} />
         </div>
+        <div className="blog-footer-note blog-footer-note-near-outro">
+          <div className="blog-footer-note-meta">
+            <span>
+              {footerDateLabel} <Date dateString={footerDate} />
+            </span>
+          </div>
+          <a
+            href="https://github.com/andatoshiki/toshiki-home-next/blob/master/LICENSE"
+            className="blog-footer-note-link"
+            rel="license"
+            target="_blank"
+          >
+            license
+          </a>
+        </div>
+        <div
+          className="blog-section-divider blog-section-divider-near-footer"
+          aria-hidden="true"
+        />
       </div>
       <div className="pt-12">
         <ArtalkComment

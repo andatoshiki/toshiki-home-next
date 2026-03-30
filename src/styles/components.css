@@ -31,6 +31,36 @@
     @apply mx-1 text-neutral-300 dark:text-neutral-700;
   }
 
+  .blog-section-divider {
+    @apply my-8 h-px w-full bg-neutral-200/80 dark:bg-neutral-800/80;
+  }
+
+  .blog-section-divider-near-hero {
+    @apply mb-8 mt-4;
+  }
+
+  .blog-section-divider-near-footer {
+    @apply mt-4;
+  }
+
+  .blog-footer-note {
+    @apply flex flex-col gap-3 text-[0.95rem] leading-none text-neutral-500 dark:text-neutral-500 md:flex-row md:items-center md:justify-between;
+  }
+
+  .blog-footer-note-near-outro {
+    @apply mt-8;
+  }
+
+  .blog-footer-note-meta {
+    @apply flex flex-wrap items-center gap-x-3 gap-y-2;
+  }
+
+  .blog-footer-note-link {
+    @apply no-underline transition-colors duration-200 ease-out;
+    @apply text-neutral-500 hover:text-neutral-700 active:text-neutral-900;
+    @apply dark:text-neutral-500 dark:hover:text-neutral-300 dark:active:text-neutral-100;
+  }
+
   .post-content {
     @apply leading-6 text-neutral-600 dark:text-neutral-400;
 
@@ -468,5 +498,4 @@
   .dark .year-block::before {
     color: rgb(92 92 92 / 0.22);
   }
-
 }
