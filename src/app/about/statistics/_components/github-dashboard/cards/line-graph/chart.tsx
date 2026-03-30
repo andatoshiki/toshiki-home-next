@@ -14,10 +14,12 @@ import {
 } from 'recharts/types/component/DefaultTooltipContent'
 
 import { useAbsoluteTheme } from '~/hooks/use-absolute-theme'
-import { ContributionDay } from '~/lib/api/github'
+import { GithubContributionActivityDay } from '~/lib/api/github'
 
-export function Chart({ data }: { data: ContributionDay[] }) {
+export function Chart({ data }: { data: GithubContributionActivityDay[] }) {
   const isDarkMode = useAbsoluteTheme() === 'dark'
+  const strokeColor = isDarkMode ? '#f5f5f5' : '#171717'
+  const gradientColor = isDarkMode ? '#f5f5f5' : '#171717'
 
   return (
     <AreaChart
@@ -29,8 +31,8 @@ export function Chart({ data }: { data: ContributionDay[] }) {
     >
       <defs>
         <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="5%" stopColor="#26a64160" stopOpacity={0.8} />
-          <stop offset="95%" stopColor="#26a64160" stopOpacity={0} />
+          <stop offset="5%" stopColor={gradientColor} stopOpacity={0.35} />
+          <stop offset="95%" stopColor={gradientColor} stopOpacity={0} />
         </linearGradient>
       </defs>
       <XAxis
@@ -42,15 +44,15 @@ export function Chart({ data }: { data: ContributionDay[] }) {
         strokeDasharray="2 3"
         stroke={isDarkMode ? '#ffffff20' : '#00000030'}
       />
-      <Tooltip content={<ContributionsToolTip />} />
+      <Tooltip cursor={false} content={<ContributionsToolTip />} />
       <Area
-        dot
-        activeDot
+        dot={false}
+        activeDot={false}
         strokeWidth={3}
-        type="monotone"
+        type="linear"
         dataKey="contributionCount"
         aria-label="count"
-        stroke="#26a641"
+        stroke={strokeColor}
         fillOpacity={1}
         fill="url(#colorUv)"
       />
@@ -62,15 +64,18 @@ const ContributionsToolTip = ({
   active,
   payload
 }: TooltipProps<ValueType, NameType>) => {
-  if (active && payload && payload.length) {
+  const day = payload?.[0]?.payload as GithubContributionActivityDay | undefined
+
+  if (active && day && day.contributionCount > 0) {
     return (
       <div className="w-fit max-w-[250px] rounded-md bg-neutral-100 p-5 text-sm text-black shadow-lg dark:bg-neutral-950 dark:text-gray-200">
         <p className="label">
           <span className="font-medium">Date :</span>{' '}
-          {new Date(payload[0].payload.date).toDateString()}
+          {new Date(`${day.date}T12:00:00`).toDateString()}
         </p>
         <p className="desc">
-          <span className="font-medium">Commit Count :</span> {payload[0].value}
+          <span className="font-medium">Contributions :</span>{' '}
+          {day.contributionCount}
         </p>
       </div>
     )

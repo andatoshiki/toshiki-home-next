@@ -1,246 +1,136 @@
-import { ApiError } from '~/errors/api-error'
-import { add, sub } from 'date-fns'
+import { eachDayOfInterval, startOfDay, subDays } from 'date-fns'
 
-const gh_api_url = process.env.GITHUB_API_ENDPOINT || 'api.github.com'
-const username = process.env.GITHUB_USERNAME || 'andatoshiki'
-
-type User = {
+export interface GithubUserData {
+  login: string
   followers: number
   public_repos: number
+  name?: string
+  avatar_url?: string
 }
 
-export async function getGithubUserData() {
-  const githubUserRequest = await fetch(
-    `https://${gh_api_url}/users/${username}`
-  )
-
-  if (!githubUserRequest.ok) {
-    console.log(githubUserRequest)
-    throw new ApiError({
-      message: githubUserRequest.statusText,
-      status: githubUserRequest.status,
-      url: githubUserRequest.url
-    })
-  }
-
-  const result: User = await githubUserRequest.json()
-
-  return result
-}
-
-export async function getGithubCommits() {
-  const username = process.env.GITHUB_USERNAME || 'mateusfg7'
-  const githubApiRequest = await fetch(
-    `https://${gh_api_url}/search/commits?q=author:${username}`
-  )
-
-  if (!githubApiRequest.ok) {
-    console.log(githubApiRequest)
-    throw new ApiError({
-      message: githubApiRequest.statusText,
-      status: githubApiRequest.status,
-      url: githubApiRequest.url
-    })
-  }
-
-  const response: {
-    total_count: number
-  } = await githubApiRequest.json()
-
-  return response
-}
-
-type Follower = {
+export interface GithubFollower {
   login: string
   avatar_url: string
   html_url: string
 }
 
-export async function getGithubFollowers() {
-  const { followers: followersNumber } = await getGithubUserData()
-
-  const numberOfPages = Math.ceil(followersNumber / 100)
-
-  let followers: Follower[] = []
-
-  const username = process.env.GITHUB_USERNAME || 'mateusfg7'
-  for (let index = 1; index <= numberOfPages; index++) {
-    const githubFollowersRequest = await fetch(
-      `https://${gh_api_url}/users/${username}/followers?per_page=100&page=${index}`
-    )
-
-    if (!githubFollowersRequest.ok) {
-      console.log(githubFollowersRequest)
-      throw new ApiError({
-        message: githubFollowersRequest.statusText,
-        status: githubFollowersRequest.status,
-        url: githubFollowersRequest.url
-      })
-    }
-
-    const list: Follower[] = await githubFollowersRequest.json()
-
-    followers = [...followers, ...list]
-  }
-
-  return followers
-}
-
-type Repository = {
-  language?: string
+export interface GithubRepository {
+  name: string
+  full_name: string
+  html_url: string
+  language: string | null
   stargazers_count: number
   fork: boolean
 }
 
-export async function getGithubRepositories() {
-  const { public_repos: reposNumber } = await getGithubUserData()
-
-  const numberOfPages = Math.ceil(reposNumber / 100)
-
-  let repositories: Repository[] = []
-
-  const username = process.env.GITHUB_USERNAME || 'mateusfg7'
-  for (let index = 1; index <= numberOfPages; index++) {
-    const githubRepositoriesRequest = await fetch(
-      `https://${gh_api_url}/users/${username}/repos?per_page=100&page=${index}`
-    )
-
-    if (!githubRepositoriesRequest.ok) {
-      console.log(githubRepositoriesRequest)
-      throw new ApiError({
-        message: githubRepositoriesRequest.statusText,
-        status: githubRepositoriesRequest.status,
-        url: githubRepositoriesRequest.url
-      })
-    }
-
-    const list: Repository[] = await githubRepositoriesRequest.json()
-
-    repositories = [...repositories, ...list]
-  }
-
-  return repositories
+export interface GithubContributionCalendarDay {
+  date: string
+  count: number
+  level: number
 }
 
-// Function to calculate the productive data by days
-function calculateMostProductiveDayOfWeek(contributionCalendar: {
-  weeks: Week[]
-}): { day: string; count: number }[] {
-  const daysOfWeek = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
-  ]
-  const contributionCountByDayOfWeek: {
-    [day: string]: number
-  } = {
-    Sunday: 0,
-    Monday: 0,
-    Tuesday: 0,
-    Wednesday: 0,
-    Thursday: 0,
-    Friday: 0,
-    Saturday: 0
-  }
-
-  for (const week of contributionCalendar.weeks) {
-    for (const day of week.contributionDays) {
-      const date = new Date(day.date)
-      const dayOfWeek = daysOfWeek[date.getUTCDay()]
-      contributionCountByDayOfWeek[dayOfWeek] += day.contributionCount
-    }
-  }
-
-  const sortedData = Object.entries(contributionCountByDayOfWeek)
-    .sort((a, b) => daysOfWeek.indexOf(a[0]) - daysOfWeek.indexOf(b[0]))
-    .map(([day, count]) => ({ day, count }))
-
-  const sunday = sortedData.shift()
-
-  if (sunday) {
-    sortedData.push(sunday)
-  }
-
-  return sortedData
+export interface GithubPublicSnapshot {
+  user: GithubUserData
+  followers: GithubFollower[]
+  repositories: GithubRepository[]
+  contributions: GithubContributionCalendarDay[]
+  totalContributionsLastYear: number
 }
 
-export type ContributionDay = {
-  contributionCount: number
+export interface GithubContributionActivityDay {
   date: string
   shortDate: string
+  contributionCount: number
 }
 
-type Week = {
-  contributionDays: ContributionDay[]
+export interface GithubPublicMetrics {
+  username: string
+  followersCount: number
+  repositoryCount: number
+  stars: number
+  languages: number
+  contributionCount: number
+  contributionSeries: GithubContributionActivityDay[]
+  totalContributionsLastYear: number
 }
 
-export async function getGithubContribution() {
-  const now = new Date()
-  const from = sub(now, { days: 30 })
-  // also include the next day in case our server is behind in time with respect to GitHub
-  const to = add(now, { days: 1 })
-  const query = {
-    query: `
-      query userInfo($LOGIN: String!, $FROM: DateTime!, $TO: DateTime!) {
-        user(login: $LOGIN) {
-          name
-          contributionsCollection(from: $FROM, to: $TO) {
-            contributionCalendar {
-              weeks {
-                contributionDays {
-                  contributionCount
-                  date
-                }
-              }
-            }
-          }
-        }
-      }
-    `,
-    variables: {
-      LOGIN: process.env.GITHUB_USERNAME || 'mateusfg7',
-      FROM: from.toISOString(),
-      TO: to.toISOString()
+export const githubContributionWindowDays = 31
+
+function toDateKey(date: Date) {
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+
+  return `${year}-${month}-${day}`
+}
+
+function getGithubStarsTotal(repositories: GithubRepository[]) {
+  return repositories.reduce(
+    (total, repository) => total + repository.stargazers_count,
+    0
+  )
+}
+
+function getGithubLanguageCount(repositories: GithubRepository[]) {
+  const languages = repositories
+    .map(repository => repository.language)
+    .filter((language): language is string => Boolean(language))
+
+  return new Set(languages).size
+}
+
+function getGithubContributionSeries(
+  contributions: GithubContributionCalendarDay[],
+  days = githubContributionWindowDays
+): GithubContributionActivityDay[] {
+  const end = startOfDay(new Date())
+  const start = subDays(end, Math.max(days - 1, 0))
+  const counts = new Map<string, number>()
+
+  contributions.forEach(day => {
+    const contributionDate = startOfDay(new Date(`${day.date}T12:00:00`))
+
+    if (contributionDate < start || contributionDate > end) {
+      return
     }
-  }
 
-  const headers = new Headers({
-    Authorization: `token ${process.env.GITHUB_TOKEN}`
+    const dateKey = toDateKey(contributionDate)
+    counts.set(dateKey, Math.max(0, day.count ?? 0))
   })
 
-  const response = await fetch(`https://${gh_api_url}/graphql`, {
-    method: 'POST',
-    body: JSON.stringify(query),
-    headers
+  return eachDayOfInterval({ start, end }).map(date => {
+    const dateKey = toDateKey(date)
+
+    return {
+      date: dateKey,
+      shortDate: String(date.getDate()),
+      contributionCount: counts.get(dateKey) ?? 0
+    }
   })
-  const apiResponse = await response.json()
+}
 
-  const userData: {
-    contributions: ContributionDay[]
-    name: string
-  } = {
-    contributions: [],
-    name: apiResponse.data.user.name
+function getGithubContributionSeriesTotal(
+  series: GithubContributionActivityDay[]
+) {
+  return series.reduce((total, day) => total + day.contributionCount, 0)
+}
+
+export function getGithubPublicMetrics(
+  snapshot: GithubPublicSnapshot
+): GithubPublicMetrics {
+  const contributionSeries = getGithubContributionSeries(
+    snapshot.contributions,
+    githubContributionWindowDays
+  )
+
+  return {
+    username: snapshot.user.login,
+    followersCount: snapshot.user.followers,
+    repositoryCount: snapshot.repositories.length,
+    stars: getGithubStarsTotal(snapshot.repositories),
+    languages: getGithubLanguageCount(snapshot.repositories),
+    contributionCount: getGithubContributionSeriesTotal(contributionSeries),
+    contributionSeries,
+    totalContributionsLastYear: snapshot.totalContributionsLastYear
   }
-
-  const weeks =
-    apiResponse.data.user.contributionsCollection.contributionCalendar.weeks
-  weeks.map((week: Week) =>
-    week.contributionDays.map((contributionDay: ContributionDay) => {
-      contributionDay.shortDate = new Date(contributionDay.date)
-        .getDate()
-        .toString()
-      userData.contributions.push(contributionDay)
-    })
-  )
-
-  const contributionCountByDayOfWeek = calculateMostProductiveDayOfWeek(
-    apiResponse.data.user.contributionsCollection.contributionCalendar
-  )
-
-  return { ...userData, contributionCountByDayOfWeek }
 }

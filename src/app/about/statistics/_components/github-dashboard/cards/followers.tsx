@@ -1,17 +1,25 @@
+'use client'
+
+import { useMemo } from 'react'
 import Image from 'next/image'
 
 import { Heart } from '@phosphor-icons/react/dist/ssr'
 import { placeholder } from '~/lib/placeholder'
 import { shuffleArray } from '~/lib/shuffleArray'
-import { getGithubFollowers, getGithubUserData } from '~/lib/api/github'
+import { GithubFollower } from '~/lib/api/github'
 
 const AVATAR_COUNT = 71
 
-export async function Followers() {
-  const { followers: followersNumber } = await getGithubUserData()
-  const followers = await getGithubFollowers()
+interface FollowersProps {
+  followers: GithubFollower[]
+  followersCount: number
+}
 
-  const slicedFollowers = shuffleArray(followers).slice(0, AVATAR_COUNT)
+export function Followers({ followers, followersCount }: FollowersProps) {
+  const slicedFollowers = useMemo(
+    () => shuffleArray([...followers]).slice(0, AVATAR_COUNT),
+    [followers]
+  )
 
   return (
     <div className="flex h-full w-full flex-col justify-between gap-2 rounded-3xl border border border-neutral-200 bg-white p-4 leading-none dark:border-neutral-800 dark:bg-neutral-950 md:p-7">
@@ -22,7 +30,12 @@ export async function Followers() {
       <span className="text-xl">
         <div className="grid grid-cols-12 gap-1">
           {slicedFollowers.map(follower => (
-            <a href={follower.html_url} key={follower.login} target="_blank">
+            <a
+              href={follower.html_url}
+              key={follower.login}
+              target="_blank"
+              rel="noreferrer"
+            >
               <Image
                 src={follower.avatar_url}
                 title={follower.login}
@@ -37,9 +50,10 @@ export async function Followers() {
           <a
             href="https://github.com/andatoshiki?tab=followers&ref=https://toshiki.dev"
             target="_blank"
+            rel="noreferrer"
             className="flex items-center justify-center text-sm leading-none transition-colors hover:underline"
           >
-            +{followersNumber - AVATAR_COUNT}
+            +{Math.max(followersCount - AVATAR_COUNT, 0)}
           </a>
         </div>
       </span>

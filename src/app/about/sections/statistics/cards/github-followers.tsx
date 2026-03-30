@@ -1,17 +1,34 @@
+'use client'
+
+import { useMemo } from 'react'
 import Image from 'next/image'
 import { GithubLogo } from '@phosphor-icons/react/dist/ssr'
 
-import { getGithubFollowers } from '~/lib/api/github'
 import { shuffleArray } from '~/lib/shuffleArray'
 import { placeholder } from '~/lib/placeholder'
+import { useGithubData } from '~/hooks/use-github-data'
 
 import { Card } from '../card'
 
-export async function GithubFollowers() {
-  const AVATAR_COUNT = 8
+const avatarCount = 8
 
-  const followersList = await getGithubFollowers()
-  const slicedFollowers = shuffleArray(followersList).slice(0, AVATAR_COUNT)
+export function GithubFollowers() {
+  const { snapshot, metrics, isLoading } = useGithubData()
+  const followersList = snapshot?.followers ?? []
+  const slicedFollowers = useMemo(
+    () => shuffleArray([...followersList]).slice(0, avatarCount),
+    [followersList]
+  )
+
+  if (!snapshot || !metrics) {
+    return (
+      <Card
+        title="Github Followers"
+        icon={<GithubLogo size="1em" weight="duotone" />}
+        content={isLoading ? '...' : '-'}
+      />
+    )
+  }
 
   return (
     <>
@@ -26,6 +43,7 @@ export async function GithubFollowers() {
                   href={follower.html_url}
                   key={follower.login}
                   target="_blank"
+                  rel="noreferrer"
                   className="-ml-3 last:m-0"
                 >
                   <Image
@@ -43,9 +61,10 @@ export async function GithubFollowers() {
             <a
               href="https://github.com/andatoshiki?tab=followers&ref=https://toshiki.dev"
               target="_blank"
+              rel="noreferrer"
               className="text-base transition-colors hover:text-black dark:hover:text-white"
             >
-              +{followersList.length - AVATAR_COUNT}
+              +{Math.max(metrics.followersCount - avatarCount, 0)}
             </a>
           </div>
         }

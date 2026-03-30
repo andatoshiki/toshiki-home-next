@@ -2,7 +2,7 @@ import { FollowersSkeleton } from './follower'
 import { StarsSkeleton } from './stars'
 import { LanguagesSkeleton } from './languages'
 import { ReposSkeleton } from './repos'
-import { CommitsSkeleton } from './commits'
+import { ContributionsSkeleton } from './contributions'
 import { GraphSkeleton } from './graph'
 import { LineGraphSkeleton } from '../cards/line-graph/skeleton'
 
@@ -17,7 +17,7 @@ export function GithubStatsSkeleton() {
       <LanguagesSkeleton />
       <ReposSkeleton />
 
-      <CommitsSkeleton />
+      <ContributionsSkeleton />
 
       <div className="col-span-4">
         <GraphSkeleton />

@@ -1,19 +1,18 @@
+'use client'
+
 import { GithubLogo } from '@phosphor-icons/react/dist/ssr'
-import { getGithubRepositories } from '~/lib/api/github'
+import { useGithubData } from '~/hooks/use-github-data'
 
 import { Card } from '../card'
 
-export async function GithubStars() {
-  const repos = await getGithubRepositories()
-
-  const mine = repos.filter(repo => !repo.fork)
-  const stars = mine.reduce((acc, curr) => acc + curr.stargazers_count, 0)
+export function GithubStars() {
+  const { metrics, isLoading } = useGithubData()
 
   return (
     <Card
       title="Github Stars"
       icon={<GithubLogo size="1em" weight="duotone" />}
-      content={String(stars)}
+      content={metrics ? String(metrics.stars) : isLoading ? '...' : '-'}
     />
   )
 }
