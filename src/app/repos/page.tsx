@@ -125,8 +125,7 @@ async function fetchRepos(): Promise<Repository[]> {
     'shikiology'
   ]
   const res = await fetch(
-    'https://gh-api.toshiki.dev/users/andatoshiki/repos?per_page=100',
-    { next: { revalidate: 3600 } }
+    'https://gh-api.toshiki.dev/users/andatoshiki/repos?per_page=100'
   )
   const data = await res.json()
   if (!Array.isArray(data)) {

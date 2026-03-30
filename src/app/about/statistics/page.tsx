@@ -20,8 +20,6 @@ export const metadata: Metadata = {
   keywords: ['about', 'statistics', 'data']
 }
 
-export const revalidate = 3600 // 1h
-
 export default function Page() {
   const date = new Date()
 

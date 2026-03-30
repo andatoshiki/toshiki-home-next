@@ -13,16 +13,12 @@ export const metadata: Metadata = {
   keywords: ['music', 'songs', 'lastfm', 'listening', 'activity']
 }
 
-export const revalidate = 3600 // 1 hour
-
 async function getLastFmData(): Promise<LastFmResponse> {
   const url =
     'https://toshiki-home-nuxt3.netlify.app/.netlify/functions/getLastFmSongs'
 
   try {
-    const response = await fetch(url, {
-      next: { revalidate: 3600 } // Cache for 1 hour
-    })
+    const response = await fetch(url)
 
     if (!response.ok) {
       throw new Error('Failed to fetch LastFM data')
