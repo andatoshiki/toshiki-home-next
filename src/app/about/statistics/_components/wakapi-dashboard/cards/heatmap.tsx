@@ -1,9 +1,16 @@
 'use client'
 
+import { useMemo, useState } from 'react'
 import { Fire } from '@phosphor-icons/react/dist/ssr'
-import WakatimeHeatmapShadcn from '~/components/heatmap/wakatime-heatmap-shadcn'
+import WakapiHeatmap from '~/components/heatmap/wakapi-heatmap'
+import { getCurrentWakapiYear, getWakapiHeatmapData } from '~/lib/api/wakapi'
+import { useWakapiYearSummaries } from '../data/provider'
 
-export function WakatimeHeatmapCard() {
+export function WakapiHeatmapCard() {
+  const [year, setYear] = useState(getCurrentWakapiYear())
+  const { data: summaries, error, isLoading } = useWakapiYearSummaries(year)
+  const data = useMemo(() => getWakapiHeatmapData(summaries), [summaries])
+
   return (
     <div className="flex h-full w-full flex-col justify-center gap-3 overflow-hidden rounded-3xl border border-neutral-200 bg-white p-4 leading-none dark:border-neutral-800 dark:bg-neutral-950 md:p-7">
       <div className="flex flex-col leading-none">
@@ -15,7 +22,13 @@ export function WakatimeHeatmapCard() {
           contribution heatmap
         </span>
       </div>
-      <WakatimeHeatmapShadcn />
+      <WakapiHeatmap
+        data={data}
+        year={year}
+        onYearChange={setYear}
+        loading={isLoading}
+        error={error}
+      />
     </div>
   )
 }

@@ -10,7 +10,6 @@ import { StacksCard } from './cards/stacks-card'
 import { CatCard } from './cards/cat-card'
 import { AnalysisCard } from './cards/analysis'
 import { BlogHeatmap } from '~/components/heatmap/heatmap'
-import { WakatimeStats } from './cards/wakatime-card'
 import { GithubStatsCard } from './cards/github-stats-card'
 import { LastTrack } from '~/app/about/statistics/_components/spotify-dashboard/cards/last-track'
 import { MoecounterCard } from './cards/moecounter-card'
@@ -69,7 +68,6 @@ export function Grid() {
 
       <div className="mt-3 grid grid-cols-3 gap-3 gap-y-3 md:grid-cols-6">
         <div className="col-span-2 md:col-span-4 lg:col-span-3">
-          {/* <WakatimeStats /> */}
           <GithubStatsCard />
         </div>
         <div className="col-span-1 md:col-span-2 lg:col-span-1">

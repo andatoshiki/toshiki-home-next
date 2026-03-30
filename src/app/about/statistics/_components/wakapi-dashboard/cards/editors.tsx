@@ -1,49 +1,51 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { Desktop, CaretDown } from '@phosphor-icons/react/dist/ssr'
-import {
-  getWakapiSummaries,
-  aggregateEditors,
-  WakapiDaySummary
-} from '~/lib/api/wakapi'
+import { useEffect, useMemo, useState } from 'react'
+import { Desktop } from '@phosphor-icons/react/dist/ssr'
+import { aggregateEditors } from '~/lib/api/wakapi'
 import { EditorsChart } from '../charts/editors-chart'
 import { EditorsSkeleton } from '../skeleton/editors-skeleton'
+import { useWakapiRecentSummaries } from '../data/provider'
+import { DropdownSelect } from '../components/dropdown-select'
 
 const LIMIT_OPTIONS = [3, 5, 8]
 
+function getLimitOptions(totalItems: number) {
+  const options = LIMIT_OPTIONS.filter(
+    option => option <= totalItems || option === 3
+  ).map(option => ({
+    value: option,
+    label: `Top ${option}`
+  }))
+
+  if (totalItems > 8) {
+    options.push({
+      value: totalItems,
+      label: `All (${totalItems})`
+    })
+  }
+
+  return options
+}
+
 export function WakapiEditors() {
-  const [data, setData] = useState<{ name: string; value: number }[]>([])
   const [limit, setLimit] = useState(5)
-  const [showDropdown, setShowDropdown] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const { data: summaries, error, isLoading } = useWakapiRecentSummaries(30)
+  const data = useMemo(() => aggregateEditors(summaries), [summaries])
+  const limitOptions = useMemo(
+    () => getLimitOptions(data.length),
+    [data.length]
+  )
 
   useEffect(() => {
-    let mounted = true
-
-    async function fetchData() {
-      try {
-        const summaries = await getWakapiSummaries(30)
-        const editors = aggregateEditors(summaries)
-        if (mounted) {
-          setData(editors)
-          setIsLoading(false)
-        }
-      } catch (e) {
-        console.error('Failed to load Wakapi editors:', e)
-        if (mounted) {
-          setError('Failed to load data')
-          setIsLoading(false)
-        }
-      }
+    if (limitOptions.length === 0) {
+      return
     }
 
-    fetchData()
-    return () => {
-      mounted = false
+    if (!limitOptions.some(option => option.value === limit)) {
+      setLimit(limitOptions[0].value)
     }
-  }, [])
+  }, [limit, limitOptions])
 
   if (isLoading) {
     return <EditorsSkeleton />
@@ -70,57 +72,12 @@ export function WakapiEditors() {
           <span>Editors</span>
           <Desktop size="1em" weight="duotone" />
         </span>
-        {data.length > 3 && (
-          <div className="relative">
-            <button
-              onClick={() => setShowDropdown(!showDropdown)}
-              className="inline-flex items-center gap-1 rounded-md bg-neutral-100 px-2 py-1 text-xs text-neutral-600 transition-colors hover:bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-700"
-            >
-              Top {limit}
-              <CaretDown
-                size={12}
-                weight="bold"
-                className={`transition-transform ${showDropdown ? 'rotate-180' : ''}`}
-              />
-            </button>
-            {showDropdown && (
-              <div className="absolute right-0 top-full z-10 mt-1 rounded-md border border-neutral-200 bg-white py-1 shadow-lg dark:border-neutral-700 dark:bg-neutral-800">
-                {LIMIT_OPTIONS.filter(
-                  opt => opt <= data.length || opt === 3
-                ).map(opt => (
-                  <button
-                    key={opt}
-                    onClick={() => {
-                      setLimit(opt)
-                      setShowDropdown(false)
-                    }}
-                    className={`block w-full px-3 py-1 text-left text-xs transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-700 ${
-                      limit === opt
-                        ? 'text-blue-600 dark:text-blue-400'
-                        : 'text-neutral-600 dark:text-neutral-400'
-                    }`}
-                  >
-                    Top {opt}
-                  </button>
-                ))}
-                {data.length > 8 && (
-                  <button
-                    onClick={() => {
-                      setLimit(data.length)
-                      setShowDropdown(false)
-                    }}
-                    className={`block w-full px-3 py-1 text-left text-xs transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-700 ${
-                      limit === data.length
-                        ? 'text-blue-600 dark:text-blue-400'
-                        : 'text-neutral-600 dark:text-neutral-400'
-                    }`}
-                  >
-                    All ({data.length})
-                  </button>
-                )}
-              </div>
-            )}
-          </div>
+        {data.length > 3 && limitOptions.length > 0 && (
+          <DropdownSelect
+            value={limit}
+            options={limitOptions}
+            onChange={setLimit}
+          />
         )}
       </div>
       <div className="flex h-full items-center justify-center">

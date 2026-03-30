@@ -9,7 +9,7 @@ export function DailySkeleton() {
           <ChartLine size="1em" weight="duotone" />
         </span>
         <span className="text-xs text-neutral-600/50 dark:text-neutral-400/50">
-          from last 30 days
+          showing full available range
         </span>
       </div>
       <div className="flex h-[220px] w-full items-center justify-center">

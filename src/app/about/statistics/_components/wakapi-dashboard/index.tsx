@@ -1,14 +1,11 @@
 'use client'
 
-import { Suspense } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { WakapiLanguages } from './cards/languages'
 import { WakapiEditors } from './cards/editors'
 import { WakapiDaily } from './cards/daily'
-import { WakatimeHeatmapCard } from './cards/heatmap'
-import { LanguagesSkeleton } from './skeleton/languages-skeleton'
-import { EditorsSkeleton } from './skeleton/editors-skeleton'
-import { DailySkeleton } from './skeleton/daily-skeleton'
+import { WakapiHeatmapCard } from './cards/heatmap'
+import { WakapiDataProvider } from './data/provider'
 
 function FallbackError({ error }: { error: Error }) {
   return (
@@ -21,25 +18,18 @@ function FallbackError({ error }: { error: Error }) {
 export function WakapiDashboard() {
   return (
     <ErrorBoundary FallbackComponent={FallbackError}>
-      {/* Two small cards in a row */}
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-        <Suspense fallback={<LanguagesSkeleton />}>
+      <WakapiDataProvider>
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
           <WakapiLanguages />
-        </Suspense>
-        <Suspense fallback={<EditorsSkeleton />}>
           <WakapiEditors />
-        </Suspense>
-      </div>
-      {/* Large spanning chart */}
-      <div className="mt-3">
-        <Suspense fallback={<DailySkeleton />}>
+        </div>
+        <div className="mt-3">
           <WakapiDaily />
-        </Suspense>
-      </div>
-      {/* Heatmap */}
-      <div className="mt-3">
-        <WakatimeHeatmapCard />
-      </div>
+        </div>
+        <div className="mt-3">
+          <WakapiHeatmapCard />
+        </div>
+      </WakapiDataProvider>
     </ErrorBoundary>
   )
 }

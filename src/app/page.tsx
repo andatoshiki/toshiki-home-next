@@ -8,9 +8,6 @@ import { HeroPagesCards } from '~/components/ui/hero-cards'
 import GalleryShowcase from '~/components/ui/gallery/gallery-showcase'
 import { HeroTitle } from '~/components/ui/section-title'
 import { HeroMeCards } from '~/components/ui/hero-cards'
-// import WakatimeHeatmap from '~/components/heatmap/github-heatmap'
-import GithubHeatmap from '~/components/heatmap/github-heatmap'
-import WakatimeHeatmap from '~/components/heatmap/wakatime-heatmap'
 
 export default function Page() {
   return (
@@ -31,8 +28,6 @@ export default function Page() {
       <AboutMe />
       {/* <GalleryShowcase /> */}
       <Grid />
-      {/* <WakatimeHeatmap /> */}
-      {/* <GithubHeatmap /> */}
     </div>
   )
 }

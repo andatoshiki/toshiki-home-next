@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { cn } from '~/lib/utils'
-import { getWakatimeHeatmapData } from '~/lib/api/wakatime-heatmap'
 import {
   Tooltip,
   TooltipContent,
@@ -27,7 +26,12 @@ type HeatmapCell = {
   meta?: unknown
 }
 
-interface WakatimeHeatmapShadcnProps {
+interface WakapiHeatmapProps {
+  data: HeatmapDatum[]
+  year: number
+  onYearChange: (year: number) => void
+  loading?: boolean
+  error?: string | null
   className?: string
   cellSize?: number
   cellGap?: number
@@ -35,11 +39,11 @@ interface WakatimeHeatmapShadcnProps {
 }
 
 const levelClassNames = [
-  'bg-neutral-200 dark:bg-neutral-800',
-  'bg-emerald-200 dark:bg-emerald-900/60',
-  'bg-emerald-300 dark:bg-emerald-800',
-  'bg-emerald-500 dark:bg-emerald-600',
-  'bg-emerald-600 dark:bg-emerald-500'
+  'bg-neutral-200 dark:bg-neutral-900',
+  'bg-neutral-300 dark:bg-neutral-800',
+  'bg-neutral-400 dark:bg-neutral-700',
+  'bg-neutral-600 dark:bg-neutral-500',
+  'bg-neutral-800 dark:bg-neutral-200'
 ]
 
 const weekdayIndices = [1, 3, 5]
@@ -98,49 +102,19 @@ function weekdayLabelForIndex(index: number, weekStartsOn: 0 | 1) {
   return base.toLocaleDateString(undefined, { weekday: 'short' }).toUpperCase()
 }
 
-export default function WakatimeHeatmapShadcn({
+export default function WakapiHeatmap({
+  data,
+  year,
+  onYearChange,
+  loading = false,
+  error = null,
   className,
   cellSize = 12,
   cellGap = 3,
   weekStartsOn = 1
-}: WakatimeHeatmapShadcnProps) {
-  const [year, setYear] = useState(currentYear)
-  const [data, setData] = useState<HeatmapDatum[]>([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+}: WakapiHeatmapProps) {
   const [availableWidth, setAvailableWidth] = useState(0)
   const heatmapViewportRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    let cancelled = false
-
-    setLoading(true)
-    setError(null)
-
-    getWakatimeHeatmapData(year)
-      .then(res => {
-        if (cancelled) return
-        setData(
-          res.map(item => ({
-            date: item.date,
-            value: item.value
-          }))
-        )
-      })
-      .catch(() => {
-        if (cancelled) return
-        setError('Failed to load WakaTime heatmap')
-        setData([])
-      })
-      .finally(() => {
-        if (cancelled) return
-        setLoading(false)
-      })
-
-    return () => {
-      cancelled = true
-    }
-  }, [year])
 
   const valueMap = useMemo(() => {
     const map = new Map<string, { value: number; meta?: unknown }>()
@@ -284,7 +258,7 @@ export default function WakatimeHeatmapShadcn({
           <button
             type="button"
             className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-neutral-300 text-neutral-700 transition-colors hover:bg-neutral-100 dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-900"
-            onClick={() => setYear(prev => prev - 1)}
+            onClick={() => onYearChange(year - 1)}
             aria-label="View previous year"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -292,7 +266,7 @@ export default function WakatimeHeatmapShadcn({
           <button
             type="button"
             className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-neutral-300 text-neutral-700 transition-colors hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-50 dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-900"
-            onClick={() => setYear(prev => Math.min(currentYear, prev + 1))}
+            onClick={() => onYearChange(Math.min(currentYear, year + 1))}
             disabled={year >= currentYear}
             aria-label="View next year"
           >

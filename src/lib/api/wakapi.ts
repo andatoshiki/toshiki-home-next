@@ -1,12 +1,13 @@
 import { ApiError } from '~/errors/api-error'
 
-const wakapi_endpoint =
-  process.env.WAKATIME_API_ENDPOINT || 'wakatime.tosh1ki.de'
-const wakapi_proxy_endpoint =
-  process.env.WAKATIME_API_PROXY_ENDPOINT || 'wakatime.api.tosh1ki.de'
-const wakapi_api_key = process.env.WAKATIME_API_KEY || ''
-const wakapi_username = process.env.WAKATIME_USERNAME || 'andatoshiki'
-const encodedApiKey = Buffer.from(wakapi_api_key).toString('base64')
+const wakapiProxyEndpoint =
+  process.env.NEXT_PUBLIC_WAKAPI_PROXY_ENDPOINT ||
+  process.env.NEXT_PUBLIC_WAKATIME_API_PROXY_ENDPOINT ||
+  'wakatime.api.tosh1ki.de'
+const wakapiUsername =
+  process.env.NEXT_PUBLIC_WAKAPI_USERNAME ||
+  process.env.NEXT_PUBLIC_WAKATIME_USERNAME ||
+  'andatoshiki'
 const headers = new Headers({
   Accept: 'application/json'
 })
@@ -55,26 +56,40 @@ export interface WakapiSummariesResponse {
   data: WakapiDaySummary[]
 }
 
-/**
- * Fetch Wakapi daily summaries for a date range
- * @param days - Number of days to fetch (default 30)
- * @returns Array of WakapiDaySummary
- */
-export async function getWakapiSummaries(
-  days: number = 30
+export interface WakapiHeatmapDatum {
+  date: string
+  value: number
+}
+
+export interface WakapiDailyDatum {
+  date: string
+  shortDate: string
+  totalSeconds: number
+  hours: number
+  text: string
+}
+
+function toDateString(date: Date) {
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+
+  return `${year}-${month}-${day}`
+}
+
+function parseDisplayDate(dateString: string) {
+  return new Date(`${dateString}T12:00:00`)
+}
+
+async function fetchWakapiSummariesRange(
+  start: string,
+  end: string
 ): Promise<WakapiDaySummary[]> {
-  const end = new Date()
-  const start = new Date()
-  start.setDate(end.getDate() - days)
-
-  const startStr = start.toISOString().slice(0, 10)
-  const endStr = end.toISOString().slice(0, 10)
-
-  const url = `https://${wakapi_proxy_endpoint}/api/compat/wakatime/v1/users/${wakapi_username}/summaries?start=${startStr}&end=${endStr}`
+  const url = `https://${wakapiProxyEndpoint}/api/compat/wakatime/v1/users/${wakapiUsername}/summaries?start=${start}&end=${end}`
 
   let response
   try {
-    response = await fetch(url, { headers, next: { revalidate: 3600 } })
+    response = await fetch(url, { headers })
   } catch (err) {
     console.error('Wakapi fetch error:', err)
     throw new ApiError({
@@ -102,54 +117,44 @@ export async function getWakapiSummaries(
   return result.data || []
 }
 
+export function getCurrentWakapiYear() {
+  return new Date().getFullYear()
+}
+
+export function getAvailableWakapiYears(startYear = 2022) {
+  const currentYear = getCurrentWakapiYear()
+
+  return Array.from(
+    { length: currentYear - startYear + 1 },
+    (_, index) => currentYear - index
+  )
+}
+
+/**
+ * Fetch Wakapi daily summaries for a date range
+ */
+export async function fetchWakapiSummariesForDays(days = 30) {
+  const end = new Date()
+  const start = new Date()
+  start.setDate(end.getDate() - days)
+
+  return fetchWakapiSummariesRange(toDateString(start), toDateString(end))
+}
+
 /**
  * Fetch Wakapi daily summaries for a specific year
- * @param year - The year to fetch data for
- * @returns Array of WakapiDaySummary
  */
-export async function getWakapiSummariesByYear(
+export async function fetchWakapiSummariesForYear(
   year: number
 ): Promise<WakapiDaySummary[]> {
   const currentDate = new Date()
-  const currentYear = currentDate.getFullYear()
+  const currentYear = getCurrentWakapiYear()
 
   const startStr = `${year}-01-01`
-  // If it's the current year, only fetch up to today
   const endStr =
-    year === currentYear
-      ? currentDate.toISOString().slice(0, 10)
-      : `${year}-12-31`
+    year === currentYear ? toDateString(currentDate) : `${year}-12-31`
 
-  const url = `https://${wakapi_proxy_endpoint}/api/compat/wakatime/v1/users/${wakapi_username}/summaries?start=${startStr}&end=${endStr}`
-
-  let response
-  try {
-    response = await fetch(url, { headers, next: { revalidate: 3600 } })
-  } catch (err) {
-    console.error('Wakapi fetch error:', err)
-    throw new ApiError({
-      message: 'Network error',
-      status: 0,
-      url
-    })
-  }
-
-  if (!response.ok) {
-    console.error(
-      'Wakapi API error:',
-      response.status,
-      response.statusText,
-      url
-    )
-    throw new ApiError({
-      message: response.statusText,
-      status: response.status,
-      url: response.url
-    })
-  }
-
-  const result: WakapiSummariesResponse = await response.json()
-  return result.data || []
+  return fetchWakapiSummariesRange(startStr, endStr)
 }
 
 /**
@@ -193,66 +198,46 @@ export function aggregateEditors(summaries: WakapiDaySummary[]) {
 }
 
 /**
- * Aggregate operating systems from summaries
+ * Aggregate heatmap data from summaries
  */
-export function aggregateOperatingSystems(summaries: WakapiDaySummary[]) {
-  const osTotals: Record<string, number> = {}
+export function getWakapiHeatmapData(
+  summaries: WakapiDaySummary[]
+): WakapiHeatmapDatum[] {
+  return summaries.map(summary => {
+    const totalSeconds = Math.max(0, summary.grand_total.total_seconds || 0)
 
-  summaries.forEach(summary => {
-    if (Array.isArray(summary.operating_systems)) {
-      summary.operating_systems.forEach(os => {
-        if (!osTotals[os.name]) osTotals[os.name] = 0
-        osTotals[os.name] += os.total_seconds
-      })
+    return {
+      date: summary.range.start.slice(0, 10),
+      value: Math.round((totalSeconds / 3600) * 10) / 10
     }
   })
-
-  return Object.entries(osTotals)
-    .map(([name, value]) => ({ name, value }))
-    .sort((a, b) => b.value - a.value)
-}
-
-/**
- * Aggregate projects from summaries
- */
-export function aggregateProjects(summaries: WakapiDaySummary[]) {
-  const projectTotals: Record<string, number> = {}
-
-  summaries.forEach(summary => {
-    if (Array.isArray(summary.projects)) {
-      summary.projects.forEach(project => {
-        if (!projectTotals[project.name]) projectTotals[project.name] = 0
-        projectTotals[project.name] += project.total_seconds
-      })
-    }
-  })
-
-  return Object.entries(projectTotals)
-    .map(([name, value]) => ({ name, value }))
-    .sort((a, b) => b.value - a.value)
 }
 
 /**
  * Get daily coding time data for charts
  */
-export function getDailyCodingData(summaries: WakapiDaySummary[]) {
-  return summaries.map(summary => {
-    // Ensure total_seconds is positive (API might return negative values)
-    const totalSeconds = Math.max(0, summary.grand_total.total_seconds || 0)
-    const hours = Math.round((totalSeconds / 3600) * 10) / 10
+export function getDailyCodingData(
+  summaries: WakapiDaySummary[]
+): WakapiDailyDatum[] {
+  return summaries
+    .map(summary => {
+      const totalSeconds = Math.max(0, summary.grand_total.total_seconds || 0)
+      const hours = Math.round((totalSeconds / 3600) * 10) / 10
+      const date = summary.range.start.slice(0, 10)
 
-    return {
-      date: summary.range.start.slice(0, 10),
-      shortDate: new Date(summary.range.start).toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric'
-      }),
-      totalSeconds,
-      hours,
-      // Generate text from calculated values, not from API
-      text: formatDuration(totalSeconds)
-    }
-  })
+      return {
+        date,
+        shortDate: parseDisplayDate(date).toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric'
+        }),
+        totalSeconds,
+        hours,
+        // Generate text from calculated values, not from API
+        text: formatDuration(totalSeconds)
+      }
+    })
+    .sort((left, right) => left.date.localeCompare(right.date))
 }
 
 /**
