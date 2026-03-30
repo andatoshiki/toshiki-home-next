@@ -1,22 +1,15 @@
 'use client'
 
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  Tooltip,
-  TooltipProps,
-  XAxis,
-  YAxis
-} from 'recharts'
-import {
-  NameType,
-  ValueType
-} from 'recharts/types/component/DefaultTooltipContent'
+import { useId, useState } from 'react'
+import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from 'recharts'
 
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent
+} from '~/components/ui/chart'
 import { useAbsoluteTheme } from '~/hooks/use-absolute-theme'
-import { formatHours } from '../utils/format-time'
 
 interface DailyData {
   date: string
@@ -30,68 +23,80 @@ interface DailyChartProps {
   data: DailyData[]
 }
 
-export function DailyChart({ data }: DailyChartProps) {
-  const isDarkMode = useAbsoluteTheme() === 'dark'
+const highlightConfig = {
+  glowWidth: 180
+}
 
-  // Filter to show only entries with ticks based on data length
-  const tickInterval = data.length > 14 ? Math.floor(data.length / 7) : 1
-
-  // Calculate max hours for Y-axis domain
-  const maxHours = Math.max(...data.map(d => d.hours), 1)
-  const yAxisMax = Math.ceil(maxHours / 2) * 2 // Round up to nearest even number
-
-  // Find peak indices (local maxima)
-  const peakIndices = new Set<number>()
-  for (let i = 1; i < data.length - 1; i++) {
-    if (
-      data[i].hours > data[i - 1].hours &&
-      data[i].hours > data[i + 1].hours &&
-      data[i].hours > 0
-    ) {
-      peakIndices.add(i)
+const chartConfig = {
+  hours: {
+    label: 'Coding Time',
+    theme: {
+      light: '#171717',
+      dark: '#f5f5f5'
     }
   }
-  // Also mark global max
-  const globalMaxIdx = data.reduce(
-    (maxIdx, curr, idx, arr) => (curr.hours > arr[maxIdx].hours ? idx : maxIdx),
-    0
-  )
-  if (data[globalMaxIdx]?.hours > 0) peakIndices.add(globalMaxIdx)
+} satisfies ChartConfig
 
-  // Custom dot renderer - only show dots on peaks
-  const renderDot = (props: any) => {
-    const { cx, cy, index } = props
-    if (!peakIndices.has(index)) return null
-    return (
-      <circle
-        key={`dot-${index}`}
-        cx={cx}
-        cy={cy}
-        r={4}
-        fill="#3b82f6"
-        stroke={isDarkMode ? '#171717' : '#ffffff'}
-        strokeWidth={2}
-      />
-    )
-  }
+export function DailyChart({ data }: DailyChartProps) {
+  const [hoverX, setHoverX] = useState<number | null>(null)
+  const isDarkMode = useAbsoluteTheme() === 'dark'
+  const gradientId = useId().replace(/:/g, '')
+  const maskGradientId = useId().replace(/:/g, '')
+  const maskId = useId().replace(/:/g, '')
+
+  const tickInterval = data.length > 14 ? Math.floor(data.length / 7) : 1
+  const maxHours = Math.max(...data.map(d => d.hours), 1)
+  const yAxisMax = Math.ceil(maxHours / 2) * 2
 
   return (
-    <ResponsiveContainer width="100%" height={220}>
+    <ChartContainer
+      config={chartConfig}
+      className="!aspect-auto h-[220px] w-full"
+    >
       <AreaChart
         data={data}
         className="cursor-pointer"
         margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+        onMouseMove={event => {
+          setHoverX(typeof event?.chartX === 'number' ? event.chartX : null)
+        }}
+        onMouseLeave={() => setHoverX(null)}
       >
         <defs>
-          <linearGradient id="colorCoding" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.6} />
-            <stop offset="50%" stopColor="#3b82f6" stopOpacity={0.2} />
-            <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
+          <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+            <stop
+              offset="5%"
+              stopColor="var(--color-hours)"
+              stopOpacity={0.34}
+            />
+            <stop
+              offset="55%"
+              stopColor="var(--color-hours)"
+              stopOpacity={0.14}
+            />
+            <stop offset="95%" stopColor="var(--color-hours)" stopOpacity={0} />
           </linearGradient>
+          <linearGradient id={maskGradientId} x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="transparent" />
+            <stop offset="50%" stopColor="white" />
+            <stop offset="100%" stopColor="transparent" />
+          </linearGradient>
+          {hoverX !== null && (
+            <mask id={maskId}>
+              <rect
+                x={hoverX - highlightConfig.glowWidth / 2}
+                y={0}
+                width={highlightConfig.glowWidth}
+                height="100%"
+                fill={`url(#${maskGradientId})`}
+              />
+            </mask>
+          )}
         </defs>
         <XAxis
           dataKey="shortDate"
           interval={tickInterval}
+          tickMargin={8}
           tick={{
             strokeWidth: 0.5,
             fontSize: '0.75rem',
@@ -112,59 +117,69 @@ export function DailyChart({ data }: DailyChartProps) {
           width={35}
         />
         <CartesianGrid
+          vertical={false}
           strokeDasharray="2 3"
           stroke={isDarkMode ? '#ffffff20' : '#00000020'}
         />
-        <Tooltip content={<CodingTimeTooltip />} />
+        <ChartTooltip
+          cursor={false}
+          content={
+            <ChartTooltipContent
+              hideLabel
+              hideIndicator
+              indicator="dot"
+              formatter={(value, _name, item) => {
+                const point = item?.payload as DailyData | undefined
+
+                if (!point) {
+                  return null
+                }
+
+                return (
+                  <div className="grid w-full gap-1.5">
+                    <div className="font-medium text-foreground">
+                      {new Date(`${point.date}T12:00:00`).toLocaleDateString(
+                        'en-US',
+                        {
+                          weekday: 'short',
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric'
+                        }
+                      )}
+                    </div>
+                    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 leading-none">
+                      <span className="text-muted-foreground">Hours coded</span>
+                      <span className="font-mono font-medium tabular-nums text-foreground">
+                        {Number(value).toLocaleString(undefined, {
+                          maximumFractionDigits: 1
+                        })}
+                        <span className="ml-1">h</span>
+                      </span>
+                    </div>
+                  </div>
+                )
+              }}
+            />
+          }
+        />
         <Area
-          dot={renderDot}
           activeDot={{
             r: 5,
-            stroke: '#3b82f6',
+            stroke: 'var(--color-hours)',
             strokeWidth: 2,
             fill: isDarkMode ? '#171717' : '#ffffff'
           }}
-          strokeWidth={2}
-          type="monotone"
+          strokeWidth={1.25}
+          type="natural"
           dataKey="hours"
           aria-label="hours"
-          stroke="#3b82f6"
+          stroke="var(--color-hours)"
           fillOpacity={1}
-          fill="url(#colorCoding)"
+          fill={`url(#${gradientId})`}
+          mask={hoverX !== null ? `url(#${maskId})` : undefined}
         />
       </AreaChart>
-    </ResponsiveContainer>
+    </ChartContainer>
   )
-}
-
-const CodingTimeTooltip = ({
-  active,
-  payload
-}: TooltipProps<ValueType, NameType>) => {
-  if (active && payload && payload.length) {
-    const data = payload[0].payload as DailyData
-    // Always calculate display text from hours to avoid API data issues
-    const displayTime =
-      data.hours >= 1
-        ? `${data.hours.toFixed(1)} hrs`
-        : `${Math.round(data.hours * 60)} mins`
-
-    return (
-      <div className="w-fit max-w-[250px] rounded-lg border border-neutral-200 bg-white p-3 text-sm shadow-lg dark:border-neutral-800 dark:bg-neutral-900 dark:text-gray-200">
-        <p className="font-medium text-neutral-800 dark:text-neutral-100">
-          {new Date(data.date).toLocaleDateString('en-US', {
-            weekday: 'short',
-            month: 'short',
-            day: 'numeric',
-            year: 'numeric'
-          })}
-        </p>
-        <p className="mt-1 text-blue-600 dark:text-blue-400">
-          <span className="font-semibold">{displayTime}</span>
-        </p>
-      </div>
-    )
-  }
-
-  return null
 }
