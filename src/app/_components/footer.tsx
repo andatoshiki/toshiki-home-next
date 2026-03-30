@@ -1,5 +1,5 @@
 import { ComponentProps } from 'react'
-import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr'
+import { Link as LinkIcon } from '@phosphor-icons/react/dist/ssr'
 
 const Link = ({ children, ...props }: ComponentProps<'a'>) => (
   <a
@@ -11,7 +11,7 @@ const Link = ({ children, ...props }: ComponentProps<'a'>) => (
   </a>
 )
 
-const ArrowIcon = () => <ArrowUpRight size="1em" className="text-xs" />
+const FooterLinkIcon = () => <LinkIcon size="1em" className="text-xs" />
 
 export function Footer() {
   return (
@@ -23,22 +23,22 @@ export function Footer() {
             rel="license"
           >
             <span>License</span>
-            <ArrowIcon />
+            <FooterLinkIcon />
           </Link>
           <Link href="/sitemap" rel="noreferrer">
             <span>Sitemap</span>
-            <ArrowIcon />
+            <FooterLinkIcon />
           </Link>
           <Link href="/blog/feed" rel="noreferrer">
             <span>RSS</span>
-            <ArrowIcon />
+            <FooterLinkIcon />
           </Link>
           <Link
             href="https://github.com/andatoshiki/mateusf.com/?ref=https://toshiki.dev"
             rel="external"
           >
             <span>Github</span>
-            <ArrowIcon />
+            <FooterLinkIcon />
           </Link>
         </div>
         <div className="text-center text-sm text-neutral-400 dark:text-neutral-500 md:text-right">

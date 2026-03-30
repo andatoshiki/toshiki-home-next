@@ -1,6 +1,6 @@
 import { AnchorHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react'
 
-import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr'
+import { Link as LinkIcon } from '@phosphor-icons/react/dist/ssr'
 
 interface Props
   extends DetailedHTMLProps<
@@ -19,7 +19,7 @@ export function Anchor({ children, href, ...props }: Props) {
       target="_blank"
     >
       <span>{children}</span>
-      <ArrowUpRight size="1em" className="text-xs" />
+      <LinkIcon size="1em" className="text-xs" />
     </a>
   )
 }
