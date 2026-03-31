@@ -48,7 +48,7 @@ export function GithubDashboard() {
         </div>
 
         <div className="col-span-4">
-          <LineGraph data={metrics.contributionSeries} />
+          <LineGraph />
         </div>
       </div>
     </ErrorBoundary>

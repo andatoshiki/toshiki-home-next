@@ -199,8 +199,13 @@ export function GithubContributionCalendar({
   const gridHeight = 7 * cellSize + 6 * cellGap
   const contentWidth = labelColumnWidth + labelGap + gridWidth
   const contentHeight = monthLabelHeight + gridHeight
-  const heatmapScale =
-    availableWidth > 0 ? Math.min(1, availableWidth / contentWidth) : 1
+  const enableHorizontalScroll =
+    availableWidth > 0 && availableWidth < 768 && contentWidth > availableWidth
+  const heatmapScale = enableHorizontalScroll
+    ? 1
+    : availableWidth > 0
+      ? Math.min(1, availableWidth / contentWidth)
+      : 1
   const scaledContentWidth = Math.ceil(contentWidth * heatmapScale) + 2
   const scaledContentHeight = Math.ceil(contentHeight * heatmapScale) + 2
 
@@ -248,9 +253,15 @@ export function GithubContributionCalendar({
       </div>
 
       <TooltipProvider delayDuration={80}>
-        <div ref={heatmapViewportRef} className="w-full overflow-hidden">
+        <div
+          ref={heatmapViewportRef}
+          className="w-full overflow-x-auto overflow-y-hidden md:overflow-x-hidden"
+        >
           <div
-            style={{ width: scaledContentWidth, height: scaledContentHeight }}
+            style={{
+              width: enableHorizontalScroll ? contentWidth : scaledContentWidth,
+              height: scaledContentHeight
+            }}
           >
             <div
               style={{

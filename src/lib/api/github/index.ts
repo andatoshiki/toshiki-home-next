@@ -21,6 +21,8 @@ export interface GithubRepository {
   language: string | null
   stargazers_count: number
   fork: boolean
+  created_at: string
+  updated_at: string
 }
 
 export interface GithubContributionCalendarDay {
@@ -54,7 +56,7 @@ export interface GithubPublicMetrics {
   totalContributionsLastYear: number
 }
 
-export const githubContributionWindowDays = 31
+export const githubContributionWindowDays = 30
 
 function toDateKey(date: Date) {
   const year = date.getFullYear()
@@ -79,7 +81,7 @@ function getGithubLanguageCount(repositories: GithubRepository[]) {
   return new Set(languages).size
 }
 
-function getGithubContributionSeries(
+export function getGithubContributionSeries(
   contributions: GithubContributionCalendarDay[],
   days = githubContributionWindowDays
 ): GithubContributionActivityDay[] {
@@ -103,13 +105,23 @@ function getGithubContributionSeries(
 
     return {
       date: dateKey,
-      shortDate: String(date.getDate()),
+      shortDate: date.toLocaleDateString(
+        'en-US',
+        days <= 7
+          ? {
+              weekday: 'short'
+            }
+          : {
+              month: 'short',
+              day: 'numeric'
+            }
+      ),
       contributionCount: counts.get(dateKey) ?? 0
     }
   })
 }
 
-function getGithubContributionSeriesTotal(
+export function getGithubContributionSeriesTotal(
   series: GithubContributionActivityDay[]
 ) {
   return series.reduce((total, day) => total + day.contributionCount, 0)
