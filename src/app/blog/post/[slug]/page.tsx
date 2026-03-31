@@ -169,7 +169,7 @@ export default function Page({ params }: Props) {
   return (
     <div className="content-container m-auto">
       <div className="relative">
-        <aside className="absolute right-full top-0 z-10 mr-6 hidden h-full w-52 min-[1320px]:block">
+        <aside className="absolute right-full top-0 z-10 mr-[calc((100vw-78rem)/4)] hidden h-full w-52 min-[1320px]:block">
           <div className="sticky top-20">
             <Toc toc={post.toc} mode="sidebar" />
           </div>

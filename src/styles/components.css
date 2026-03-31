@@ -201,7 +201,7 @@
       }
 
       .icon {
-        @apply absolute inset-0 -z-20 flex items-center justify-end rounded-lg px-[5%] text-5xl opacity-10;
+        @apply absolute right-3 top-1 -z-20 flex items-start justify-end text-7xl leading-none opacity-10;
       }
     }
 
