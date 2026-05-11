@@ -56,8 +56,8 @@ export function Grid() {
           </div>
         </div>
 
-        <div className="col-span-3 gap-3 md:ml-3">
-          <div className="flex gap-3">
+        <div className="col-span-3 gap-3">
+          <div className="flex items-stretch gap-3">
             <DiscordStatus />
 
             <LatestPost />
@@ -66,27 +66,27 @@ export function Grid() {
         </div>
       </div>
 
-      <div className="mt-3 grid grid-cols-3 gap-3 gap-y-3 md:grid-cols-6">
+      <div className="mt-3 grid grid-cols-3 gap-3 gap-y-3 md:grid-cols-6 lg:items-stretch">
         <div className="col-span-2 md:col-span-4 lg:col-span-3">
           <GithubStatsCard />
         </div>
-        <div className="col-span-1 md:col-span-2 lg:col-span-1">
+        <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
           <CatCard />
         </div>
-        <div className="col-span-3 md:col-span-6 lg:col-span-2">
+        <div className="col-span-3 flex md:col-span-6 lg:col-span-2">
           <StacksCard />
         </div>
       </div>
 
       {/* MBTI Card */}
-      <div className="mt-3 grid grid-cols-3 gap-3 md:grid-cols-6">
-        <div className="col-span-3 md:col-span-2">
+      <div className="mt-3 grid grid-cols-3 gap-3 md:flex md:items-stretch">
+        <div className="col-span-3 flex md:min-w-0 md:flex-[1.55_1_0%]">
           <MbtiCard />
         </div>
-        <div className="col-span-1 md:col-span-1">
+        <div className="col-span-1 flex justify-center md:flex-none">
           <ReceiptCard />
         </div>
-        <div className="col-span-2 flex items-stretch md:col-span-3">
+        <div className="col-span-2 flex items-stretch md:min-w-0 md:flex-[1.75_1_0%]">
           <LongTextCard />
         </div>
       </div>

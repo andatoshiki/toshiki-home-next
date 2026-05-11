@@ -7,6 +7,7 @@ type MarqueeProps = {
   pauseOnHover?: boolean
   reverse?: boolean
   fade?: boolean
+  duration?: string
 }
 
 const range = (start: number, end: number): number[] =>
@@ -18,7 +19,8 @@ function Marquee(props: MarqueeProps) {
     direction = 'left',
     pauseOnHover = false,
     reverse = false,
-    fade = false
+    fade = false,
+    duration
   } = props
 
   const ifToRightOrToBottom = (direction: string) => {
@@ -31,9 +33,10 @@ function Marquee(props: MarqueeProps) {
 
   return (
     <div
-      className='group flex flex-col gap-4 overflow-hidden data-[direction="left"]:flex-row'
+      className='group flex min-h-0 flex-1 flex-col gap-4 overflow-hidden data-[direction="left"]:flex-row'
       data-direction={direction}
       style={{
+        ['--duration' as string]: duration,
         maskImage: fade
           ? `linear-gradient(${ifToRightOrToBottom(
               direction
@@ -80,14 +83,14 @@ const IconElement = ({
 
 export const StacksCard = () => {
   return (
-    <div className="flex h-full flex-col gap-3 overflow-hidden rounded-xl p-1">
+    <div className="flex h-full w-full flex-col justify-between gap-3 overflow-hidden rounded-xl p-1">
       <Marquee fade pauseOnHover>
         {stackLines.top.map(data => (
           <IconElement key={data.title} data={data} />
         ))}
       </Marquee>
 
-      <Marquee reverse fade pauseOnHover>
+      <Marquee reverse fade pauseOnHover duration="19s">
         {stackLines.middle.map(data => (
           <IconElement key={data.title} data={data} />
         ))}

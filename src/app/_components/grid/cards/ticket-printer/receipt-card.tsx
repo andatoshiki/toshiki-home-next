@@ -94,7 +94,7 @@ export function ReceiptCard() {
   }
 
   return (
-    <div className="group relative flex aspect-square min-h-[8rem] w-full flex-col items-center justify-between overflow-visible rounded-2xl border border-neutral-200 bg-white p-3 shadow-sm transition-all duration-500 dark:border-neutral-800 dark:bg-neutral-950">
+    <div className="group relative flex aspect-square h-full min-h-36 w-auto max-w-full flex-col items-center justify-between overflow-visible rounded-2xl border border-neutral-200 bg-white p-3 shadow-sm transition-all duration-500 dark:border-neutral-800 dark:bg-neutral-950">
       {/* Receipt - comes out from paper slot (moved outside main flex column) */}
       {showReceipt && (
         <div

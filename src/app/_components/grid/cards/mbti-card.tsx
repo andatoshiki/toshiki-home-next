@@ -19,11 +19,11 @@ export function MbtiCard() {
       href="https://www.16personalities.com/intp-personality"
       target="_blank"
       rel="noopener noreferrer"
-      className="relative flex h-36 w-full items-center justify-between gap-4 overflow-hidden rounded-xl border border-neutral-200 bg-white px-4 py-3 transition-all duration-500 hover:scale-[.97] dark:border-neutral-800 dark:bg-neutral-950"
+      className="relative flex h-full min-h-36 w-full items-center justify-between gap-3 overflow-hidden rounded-xl border border-neutral-200 bg-white px-4 py-3 transition-all duration-500 hover:scale-[.97] dark:border-neutral-800 dark:bg-neutral-950 md:gap-4"
     >
       {/* Left Section */}
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-2">
+      <div className="flex min-w-0 flex-1 flex-col gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <span className="text-sm font-bold text-neutral-900 dark:text-neutral-100">
             INTP
           </span>
@@ -32,7 +32,7 @@ export function MbtiCard() {
           </span>
         </div>
         {/* Word Cloud */}
-        <div className="flex max-w-[140px] flex-wrap gap-x-2 gap-y-1">
+        <div className="flex min-w-0 flex-wrap gap-x-2 gap-y-1">
           {INTP_TRAITS.map((trait, index) => (
             <span
               key={trait.text}
@@ -50,9 +50,9 @@ export function MbtiCard() {
         <Image
           src="https://cdn.tosh1ki.de/assets/images/20260106201703.svg"
           alt="INTP Character"
-          width={125}
-          height={125}
-          className="object-contain"
+          width={112}
+          height={112}
+          className="h-24 w-24 object-contain md:h-28 md:w-28"
         />
       </div>
     </Link>

@@ -52,13 +52,13 @@ export function DiscordStatus() {
 
   return (
     <div
-      className="flex h-36 w-fit items-center justify-center overflow-hidden rounded-xl p-2"
+      className="flex h-36 w-32 flex-none items-center justify-center overflow-hidden rounded-xl p-2"
       style={{ background: '#5865F2' }}
     >
       <div className="relative flex -rotate-12 items-center justify-center gap-[0.35rem]">
         <DiscordLogo
           size="1em"
-          className="absolute -bottom-6 -z-50 h-40 w-40 -rotate-45"
+          className="absolute -bottom-10 -z-50 h-40 w-40 -rotate-45"
           style={{ color: getLogoColor(status ?? 'offline') }}
         />
         <p className="flex flex-col items-start text-xl font-semibold text-white">
