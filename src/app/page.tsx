@@ -26,9 +26,9 @@ export default function Page() {
         <HeroTitle className="pb-3">ME</HeroTitle>
         <HeroMeCards />
       </div>
-      <AboutMe />
-      {/* <GalleryShowcase /> */}
       <GithubDataProvider>
+        <AboutMe />
+        {/* <GalleryShowcase /> */}
         <Grid />
       </GithubDataProvider>
     </div>

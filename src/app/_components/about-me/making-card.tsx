@@ -1,3 +1,5 @@
+'use client'
+
 import {
   ArrowUpRight,
   Coffee,
@@ -7,42 +9,15 @@ import {
   Star
 } from '@phosphor-icons/react/dist/ssr'
 import Link from 'next/link'
+import type { ReactNode } from 'react'
 import { GithubLogo } from '~/app/about/sections/contact/icons'
 import { Date } from '~/components/date'
+import { useGithubData } from '~/hooks/use-github-data'
+import type { GithubRepository } from '~/lib/api/github'
 
-type Repo = {
-  name: string // 'mateusf.com'
-  full_name: string //'mateusfg7/mateusf.com'
-  html_url: string // 'https://github.com/andatoshiki/mateusf.com'
-  description: string //'🏡 My corner of internet, a.k.a Personal Homepage & Portfolio.'
-  created_at: string //'2020-12-07T18:21:19Z'
-  updated_at: string // '2024-05-24T17:26:40Z'
-  homepage: string // 'https://mateusf.com'
-  size: number // 58928
-  stargazers_count: number // 30
-  language: string // 'TypeScript'
-  forks_count: number // 7
-  license: {
-    key: string // 'gpl-3.0'
-    name: string // 'GNU General Public License v3.0'
-    spdx_id: string // 'GPL-3.0'
-    url: string // 'https://api.github.com/licenses/gpl-3.0'
-  }
-  topics: string[]
-}
+const preferredRepositoryName = 'toshiki-home-next'
 
-async function getRepoData({ user, repo }: { user: string; repo: string }) {
-  const res: Repo = await fetch(
-    `https://gh-api.toshiki.dev/repos/${user}/${repo}`
-  ).then(data => data.json())
-
-  return res
-}
-export async function MakingCard() {
-  const repoData = await getRepoData({
-    user: 'andatoshiki',
-    repo: 'toshiki-home-nuxt'
-  })
+function CardShell({ children }: { children: ReactNode }) {
   return (
     <div className="w-full space-y-4 rounded-xl border border-neutral-200 p-5 text-sm shadow-md dark:border-neutral-800">
       <header className="flex justify-between gap-3">
@@ -54,49 +29,7 @@ export async function MakingCard() {
           see projects
         </Link>
       </header>
-      <div className="space-y-3 rounded-xl border border-neutral-200 p-2 dark:border-neutral-800">
-        <div>
-          <div className="flex items-start justify-between gap-1">
-            <div>
-              <div className="font-medium">{repoData.name}</div>
-              <div className="text-xs opacity-80">
-                <Date dateString={repoData.updated_at} />
-              </div>
-            </div>
-            <div className="inline-flex items-center text-base">
-              <a
-                href={repoData.html_url}
-                target="_blank"
-                className="rounded p-1 transition hover:bg-neutral-200 dark:hover:bg-neutral-800"
-              >
-                <GithubLogo size="1em" />
-              </a>
-              <a
-                href={repoData.homepage}
-                target="_blank"
-                className="rounded p-1 transition hover:bg-neutral-200 dark:hover:bg-neutral-800"
-              >
-                <Globe size="1em" />
-              </a>
-            </div>
-          </div>
-        </div>
-        <div>{repoData.description}</div>
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1">
-            <span>
-              <Star size="1em" />
-            </span>
-            <span>{repoData.stargazers_count}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <span>
-              <GitFork size="1em" />
-            </span>
-            <span>{repoData.forks_count}</span>
-          </div>
-        </div>
-      </div>
+      {children}
       <div className="flex gap-4">
         <a
           className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-neutral-700/10 p-3 leading-none text-neutral-700 transition hover:bg-neutral-700 hover:text-white dark:bg-neutral-400/10 dark:text-neutral-400 dark:hover:bg-neutral-400 dark:hover:text-black"
@@ -116,4 +49,106 @@ export async function MakingCard() {
       </div>
     </div>
   )
+}
+
+function LoadingState() {
+  return (
+    <CardShell>
+      <div className="space-y-3 rounded-xl border border-neutral-200 p-2 dark:border-neutral-800">
+        <div className="space-y-2">
+          <div className="h-5 w-32 animate-pulse rounded bg-neutral-200 dark:bg-neutral-800" />
+          <div className="h-4 w-24 animate-pulse rounded bg-neutral-100 dark:bg-neutral-900" />
+        </div>
+        <div className="h-10 animate-pulse rounded bg-neutral-100 dark:bg-neutral-900" />
+        <div className="flex gap-3">
+          <div className="h-4 w-12 animate-pulse rounded bg-neutral-100 dark:bg-neutral-900" />
+          <div className="h-4 w-12 animate-pulse rounded bg-neutral-100 dark:bg-neutral-900" />
+        </div>
+      </div>
+    </CardShell>
+  )
+}
+
+function EmptyState() {
+  return (
+    <CardShell>
+      <div className="rounded-xl border border-dashed border-neutral-200 p-4 text-neutral-500 dark:border-neutral-800 dark:text-neutral-400">
+        repository details are unavailable right now
+      </div>
+    </CardShell>
+  )
+}
+
+function RepoCard({ repository }: { repository: GithubRepository }) {
+  return (
+    <CardShell>
+      <div className="space-y-3 rounded-xl border border-neutral-200 p-2 dark:border-neutral-800">
+        <div>
+          <div className="flex items-start justify-between gap-1">
+            <div>
+              <div className="font-medium">{repository.name}</div>
+              <div className="text-xs opacity-80">
+                <Date dateString={repository.updated_at} />
+              </div>
+            </div>
+            <div className="inline-flex items-center text-base">
+              <a
+                href={repository.html_url}
+                target="_blank"
+                className="rounded p-1 transition hover:bg-neutral-200 dark:hover:bg-neutral-800"
+              >
+                <GithubLogo size="1em" />
+              </a>
+              {repository.homepage ? (
+                <a
+                  href={repository.homepage}
+                  target="_blank"
+                  className="rounded p-1 transition hover:bg-neutral-200 dark:hover:bg-neutral-800"
+                >
+                  <Globe size="1em" />
+                </a>
+              ) : null}
+            </div>
+          </div>
+        </div>
+        <div>
+          {repository.description || 'recent public repository activity'}
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1">
+            <span>
+              <Star size="1em" />
+            </span>
+            <span>{repository.stargazers_count}</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <span>
+              <GitFork size="1em" />
+            </span>
+            <span>{repository.forks_count}</span>
+          </div>
+        </div>
+      </div>
+    </CardShell>
+  )
+}
+
+export function MakingCard() {
+  const { snapshot, isLoading } = useGithubData()
+  const repository =
+    snapshot?.repositories.find(
+      repo => repo.name === preferredRepositoryName
+    ) ??
+    snapshot?.repositories[0] ??
+    null
+
+  if (isLoading && !repository) {
+    return <LoadingState />
+  }
+
+  if (!repository) {
+    return <EmptyState />
+  }
+
+  return <RepoCard repository={repository} />
 }
