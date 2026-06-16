@@ -1,7 +1,6 @@
 'use client'
 import { Title } from '~/components/title'
 import { CryptoCard } from '~/components/crypto-card'
-// import CryptoBalance from '~/components/crypto-balance'
 import CryptoBalance from '~/components/ui/usdt-balance'
 import { useState } from 'react'
 import { MDXContent } from '~/components/mdx-content'
@@ -36,7 +35,7 @@ const accounts = [
 
 export default function DonationPage() {
   return (
-    <div className="content-container content-vertical-spaces m-auto space-y-12 overflow-hidden">
+    <div className="content-container m-auto space-y-12 overflow-hidden">
       <div className="sm-center-balance flex flex-col gap-2 md:flex-col md:items-center lg:flex-row lg:items-end lg:justify-between">
         <Title text="Donation" />
         <CryptoBalance address="0x1060d8d8a9a1Ec477fdeE79215d5136a9dAC2C20" />
