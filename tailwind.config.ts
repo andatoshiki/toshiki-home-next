@@ -133,7 +133,9 @@ const config: Config = {
         'background-fade': 'background-fade 20s linear infinite',
 
         ping: 'ping 1s cubic-bezier(0, 0, 0.2, 1) infinite',
-        ripple: 'ripple 1.5s ease-out infinite'
+        ripple: 'ripple 1.5s ease-out infinite',
+
+        equalize: 'equalize 1.1s ease-in-out infinite'
       },
 
       /* =========================
@@ -226,6 +228,11 @@ const config: Config = {
           '0%': { transform: 'scale(0.8)', opacity: '1' },
           '70%': { transform: 'scale(2.5)', opacity: '0' },
           '100%': { transform: 'scale(2.5)', opacity: '0' }
+        },
+
+        equalize: {
+          '0%, 100%': { transform: 'scaleY(0.35)' },
+          '50%': { transform: 'scaleY(1)' }
         }
       }
     }

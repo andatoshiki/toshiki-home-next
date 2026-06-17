@@ -29,16 +29,17 @@ export function LoadingSongs() {
       {Array.from({ length: 3 }).map((_, sectionIndex) => (
         <section key={sectionIndex} className="space-y-4">
           <div className="h-4 w-32 animate-pulse rounded bg-neutral-200 dark:bg-neutral-800" />
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-x-4 gap-y-2 md:grid-cols-2">
             {Array.from({ length: 6 }).map((_, cardIndex) => (
               <div
                 key={cardIndex}
-                className="flex h-28 items-center gap-4 rounded-2xl border border-neutral-200 bg-white px-6 py-4 dark:border-neutral-800 dark:bg-neutral-950"
+                className="flex min-h-20 overflow-hidden rounded-xl border border-neutral-200 bg-white dark:border-neutral-800/70 dark:bg-neutral-950"
               >
-                <div className="h-12 w-12 animate-pulse rounded-lg bg-neutral-200 dark:bg-neutral-800" />
-                <div className="flex flex-1 flex-col space-y-2">
-                  <div className="h-4 w-32 animate-pulse rounded bg-neutral-200 dark:bg-neutral-800" />
-                  <div className="h-3 w-24 animate-pulse rounded bg-neutral-200 dark:bg-neutral-800" />
+                <div className="w-20 flex-shrink-0 animate-pulse self-stretch border-r border-neutral-200 bg-neutral-200 dark:border-neutral-800/70 dark:bg-neutral-900" />
+                <div className="flex flex-1 flex-col py-2.5 pl-3.5 pr-3">
+                  <div className="h-3.5 w-3/5 animate-pulse rounded bg-neutral-200 dark:bg-neutral-800" />
+                  <div className="mt-1.5 h-3 w-2/5 animate-pulse rounded bg-neutral-200 dark:bg-neutral-800" />
+                  <div className="mt-auto h-2.5 w-16 animate-pulse rounded bg-neutral-200 dark:bg-neutral-800" />
                 </div>
               </div>
             ))}
