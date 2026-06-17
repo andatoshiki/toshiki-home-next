@@ -1,4 +1,6 @@
-import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr'
+'use client'
+
+import { ArrowUpRight, At } from '@phosphor-icons/react'
 import {
   ArchLinuxLogo,
   CodepenLogo,
@@ -10,15 +12,43 @@ import {
   StackOverflowLogo,
   TwitterLogo
 } from './icons'
+import { MenuTooltip } from '~/components/ui/tooltip'
 
 type Contact = {
-  user: string
+  id: string
+  user: string | (() => JSX.Element)
   title: () => JSX.Element
   link: () => JSX.Element
 }
+
+function EmailUserDisplay() {
+  return (
+    <span className="inline-flex items-center gap-0.5 text-neutral-500">
+      <span>hello</span>
+      <MenuTooltip
+        label="The @ symbol is shown as an icon to reduce automated email harvesting by bots"
+        side="top"
+      >
+        <span
+          className="group inline-flex cursor-help align-middle"
+          aria-label="at symbol hidden from bots"
+        >
+          <At
+            size="1em"
+            weight="bold"
+            className="translate-y-px text-neutral-400 transition-colors duration-150 group-hover:text-brand-email dark:text-neutral-300 dark:group-hover:text-brand-email"
+          />
+        </span>
+      </MenuTooltip>
+      <span>toshiki.dev</span>
+    </span>
+  )
+}
+
 const contacts: Contact[] = [
   {
-    user: 'contact@mateusf.com',
+    id: 'email',
+    user: () => <EmailUserDisplay />,
     title: () => (
       <div className="contact-line contact-line-title text-brand-email">
         <span className="rounded bg-brand-email/10 p-1 text-2xl">
@@ -31,18 +61,17 @@ const contacts: Contact[] = [
       <div className="contact-line">
         <a
           className="inline-flex items-end gap-px hover:underline"
-          href="mailto:contact@mateusf.com"
-          target="_blank"
-          rel="external"
+          href="/blog/post/why-i-replace-the-at-symbol-in-my-email-address"
         >
-          <span className="leading-none">Send e-mail</span>
+          <span className="leading-none">Why @?</span>
           <ArrowUpRight size="1em" className="text-sm" />
         </a>
       </div>
     )
   },
   {
-    user: 'mateusfg7',
+    id: 'github',
+    user: 'andatoshiki',
     title: () => (
       <div className="contact-line contact-line-title text-brand-github">
         <span className="rounded bg-brand-github/10 p-1">
@@ -66,7 +95,8 @@ const contacts: Contact[] = [
     )
   },
   {
-    user: 'mateusfg',
+    id: 'linkedin',
+    user: 'andatoshiki',
     title: () => (
       <div className="contact-line contact-line-title text-brand-linkedin">
         <span className="rounded bg-brand-linkedin/10 p-1 ">
@@ -79,7 +109,7 @@ const contacts: Contact[] = [
       <div className="contact-line">
         <a
           className="inline-flex items-end gap-px hover:underline"
-          href="https://www.linkedin.com/in/mateusfg/?ref=https://toshiki.dev"
+          href="https://www.linkedin.com/in/andatoshiki/?ref=https://toshiki.dev"
           target="_blank"
           rel="external"
         >
@@ -90,7 +120,8 @@ const contacts: Contact[] = [
     )
   },
   {
-    user: 'mateusfg7',
+    id: 'stackoverflow',
+    user: 'andatoshiki',
     title: () => (
       <div className="contact-line contact-line-title text-brand-stack-overflow">
         <span className="rounded bg-brand-stack-overflow/10 p-1">
@@ -103,7 +134,7 @@ const contacts: Contact[] = [
       <div className="contact-line">
         <a
           className="inline-flex items-end gap-px hover:underline"
-          href="https://stackoverflow.com/users/15445504/mateusfg7/?ref=https://toshiki.dev"
+          href="https://stackoverflow.com/users/andatoshiki/?ref=https://toshiki.dev"
           target="_blank"
           rel="external"
         >
@@ -114,7 +145,8 @@ const contacts: Contact[] = [
     )
   },
   {
-    user: 'mateusfg7',
+    id: 'codepen',
+    user: 'andatoshiki',
     title: () => (
       <div className="contact-line contact-line-title text-brand-codepen">
         <span className="rounded bg-brand-codepen/10 p-1">
@@ -127,7 +159,7 @@ const contacts: Contact[] = [
       <div className="contact-line">
         <a
           className="inline-flex items-end gap-px hover:underline"
-          href="https://codepen.io/mateusfg7/?ref=https://toshiki.dev"
+          href="https://codepen.io/andatoshiki/?ref=https://toshiki.dev"
           target="_blank"
           rel="external"
         >
@@ -138,7 +170,8 @@ const contacts: Contact[] = [
     )
   },
   {
-    user: 'u/mateusfg7',
+    id: 'reddit',
+    user: 'u/andatoshiki',
     title: () => (
       <div className="contact-line contact-line-title text-brand-reddit">
         <span className="rounded bg-brand-reddit/10 p-1">
@@ -151,7 +184,7 @@ const contacts: Contact[] = [
       <div className="contact-line">
         <a
           className="inline-flex items-end gap-px hover:underline"
-          href="https://www.reddit.com/user/mateusfg7/?ref=https://toshiki.dev"
+          href="https://www.reddit.com/user/andatoshiki/?ref=https://toshiki.dev"
           target="_blank"
           rel="external"
         >
@@ -162,7 +195,8 @@ const contacts: Contact[] = [
     )
   },
   {
-    user: '@mateusfg77',
+    id: 'twitter',
+    user: '@andatoshiki',
     title: () => (
       <div className="contact-line contact-line-title text-brand-twitter">
         <span className="rounded bg-brand-twitter/10 p-1">
@@ -175,7 +209,7 @@ const contacts: Contact[] = [
       <div className="contact-line">
         <a
           className="inline-flex items-end gap-px hover:underline"
-          href="https://twitter.com/mateusfg77/?ref=https://toshiki.dev"
+          href="https://twitter.com/andatoshiki/?ref=https://toshiki.dev"
           target="_blank"
           rel="external"
         >
@@ -186,7 +220,8 @@ const contacts: Contact[] = [
     )
   },
   {
-    user: '@mateusfg7',
+    id: 'instagram',
+    user: '@andatoshiki',
     title: () => (
       <div className="contact-line contact-line-title text-brand-instagram">
         <span className="rounded bg-brand-instagram/10 p-1">
@@ -199,7 +234,7 @@ const contacts: Contact[] = [
       <div className="contact-line">
         <a
           className="inline-flex items-end gap-px hover:underline"
-          href="https://www.instagram.com/mateusfg7/?ref=https://toshiki.dev"
+          href="https://www.instagram.com/andatoshiki/?ref=https://toshiki.dev"
           target="_blank"
           rel="external"
         >
@@ -210,7 +245,8 @@ const contacts: Contact[] = [
     )
   },
   {
-    user: 'mateus',
+    id: 'arch',
+    user: 'andatoshiki',
     title: () => (
       <div className="contact-line contact-line-title text-brand-arch">
         <span className="rounded bg-brand-arch/10 p-1">
@@ -223,7 +259,7 @@ const contacts: Contact[] = [
       <div className="contact-line">
         <a
           className="inline-flex items-end gap-px hover:underline"
-          href="https://aur.archlinux.org/account/mateus/?ref=https://toshiki.dev"
+          href="https://aur.archlinux.org/account/andatoshiki/?ref=https://toshiki.dev"
           target="_blank"
           rel="external"
         >
@@ -235,14 +271,18 @@ const contacts: Contact[] = [
   }
 ]
 
+function renderUser(user: Contact['user']) {
+  return typeof user === 'function' ? user() : user
+}
+
 export function Contact() {
   return (
     <div className="flex justify-between text-lg md:text-2xl">
       <div className="flex-1">{contacts.map(contact => contact.title())}</div>
       <div className="hidden flex-1 text-neutral-500 lg:block">
         {contacts.map(contact => (
-          <div key={contact.user} className="contact-line">
-            {contact.user}
+          <div key={contact.id} className="contact-line">
+            {renderUser(contact.user)}
           </div>
         ))}
       </div>

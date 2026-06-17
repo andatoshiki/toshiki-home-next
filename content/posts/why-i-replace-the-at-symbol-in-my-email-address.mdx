@@ -1,0 +1,29 @@
+---
+title: 'Why I replace the at symbol in my email address'
+date: '2026-06-17'
+description: 'How email harvesting bots scrape public pages and why replacing the at symbol with an icon is a deliberate anti-bot choice on this site'
+category: 'Article'
+tags: 'email, security, privacy, web, anti-bot, spam'
+status: 'published'
+---
+
+# Why I replace the at symbol in my email address
+> A practical note on email harvesting bots and why replacing @ with an icon on a contact page is intentional
+
+## 1: Why plain email addresses on the web get harvested
+
+If you publish `contact@example.com` as plain text or inside a `mailto:` link on a public page, you are not just sharing contact information. You are publishing a string that automated systems can copy, store, and resell at scale. Email harvesting is the automated collection of addresses from public sources. Harvesters build lists used for spam, phishing, newsletter abuse, credential-stuffing targets, and low-quality marketing. The process is cheap because crawlers do not need to understand your page design. They only need to find strings that look like email addresses and store them.
+
+Most harvesters combine regex matching for patterns like `local-part@domain.tld`, direct parsing of `href="mailto:..."` attributes, scanning rendered text after JavaScript runs, and crawling sitemaps, RSS feeds, about pages, footers, and comment sections. A `mailto:` link is especially easy to scrape because the full address sits in a predictable machine-readable attribute. Even without a link, plain visible text with a literal `@` is often enough. Once an address is indexed, it rarely leaves spammer lists. Exposure is cumulative.
+
+## 2: What I changed on this site
+
+On the [About contact section](/about), the email row now shows `contact`, a Phosphor `At` icon, and `example.com` instead of a literal `@`, and I removed the direct `mailto:` action from the contact table. The icon keeps the address readable for humans while breaking the simple `@` pattern that naive scrapers target. A tooltip on hover explains that this is intentional. If you want to reach me, you can still compose the address manually from the visible parts.
+
+This is not encryption and not security through obscurity on its own. It is a lightweight friction layer. It helps against basic regex scrapers, bulk `mailto:` extraction, and low-effort list building from static HTML. It does not stop a motivated human, OCR-based scrapers, addresses already leaked elsewhere, or advanced bots that reconstruct context. Treat it as spam reduction, not identity protection.
+
+## 3: What else helps if you run a public site
+
+If you care about inbox noise, combine small changes instead of relying on one trick. Server-side contact forms avoid publishing a full address but add operational overhead. Other obfuscation patterns include splitting the address across elements, rendering `@` via CSS or SVG, or using provider aliases like `hello+site@domain` with filtering rules so compromised aliases can be rotated. Each approach has tradeoffs in accessibility, maintenance, and complexity.
+
+Hiding or replacing `@` will not make an email address secret. It reduces automated collection pressure and makes intentional contact slightly more human. That is why the [About page](/about) shows the icon, explains it on hover, and links here instead of exposing a plain `mailto:` target.
