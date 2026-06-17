@@ -33,7 +33,7 @@ export const AccordionTrigger = React.forwardRef(
   ) => (
     <Accordion.Header className="flex">
       <Accordion.Trigger
-        className="group flex flex-1 cursor-default items-center justify-between py-7 text-lg leading-none outline-none transition-colors hover:cursor-pointer hover:text-neutral-900 hover:underline dark:hover:text-neutral-300"
+        className="group flex flex-1 cursor-default items-center justify-between py-7 text-lg leading-none outline-none transition-colors hover:cursor-pointer hover:text-neutral-900 dark:hover:text-neutral-300"
         {...props}
         ref={forwardedRef}
       >
