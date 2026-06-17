@@ -33,15 +33,6 @@ pre {
   font-weight: 500;
   z-index: 50;
   user-select: none;
-  transition: all 0.2s ease-in-out;
-}
-.menu-tooltip-content[data-state='open'] {
-  opacity: 1 !important;
-  transform: scale3d(1, 1, 1) !important;
-}
-.menu-tooltip-content[data-state='closed'] {
-  opacity: 0 !important;
-  transform: scale3d(0.2, 0.2, 1) !important;
 }
 .menu-tooltip-arrow {
   fill: #222;

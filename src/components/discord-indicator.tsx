@@ -104,10 +104,12 @@ export function DiscordStatus() {
           className={`animate-bubble absolute inset-0 scale-75 rounded-full opacity-60 ${statusColor}`}
         />
       </span>
-      {/* Status Text with MenuTooltip */}
+      {/* Status Text with animated tooltip (shared MenuTooltip style) */}
       <MenuTooltip label="Discord Status">
-        <div
-          className="cursor-help truncate text-sm leading-tight"
+        <button
+          type="button"
+          aria-label={`Discord status: ${statusDetails}`}
+          className="cursor-help truncate rounded-sm text-sm leading-tight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/50"
           dangerouslySetInnerHTML={{ __html: safeHtml }}
         />
       </MenuTooltip>
