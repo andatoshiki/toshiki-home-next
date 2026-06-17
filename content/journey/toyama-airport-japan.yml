@@ -1,0 +1,12 @@
+id: toyama-airport-japan
+name: Toyama Airport
+coordinates:
+  latitude: 36.6483
+  longitude: 137.1875
+country: Japan
+region: Chubu
+city: Toyama
+status: airport
+tags:
+  - airport
+featured: false
