@@ -15,7 +15,10 @@ export function markdownToHtml(markdown: string) {
     .use(remarkMath)
     .use(remarkBreaks)
     .use(remarkRehype)
-    .use(rehypeKatex)
+    .use(rehypeKatex, {
+      strict: errorCode =>
+        errorCode === 'unknownSymbol' ? 'ignore' : 'warn'
+    })
     .use(rehypeStringify)
     .processSync(markdown)
 

@@ -51,7 +51,13 @@ const addRawCodeToPrettyCodeFragment = () => tree => {
 export const remarkPlugins = [remarkBreaks, remarkMath]
 export const rehypePlugins = [
   rehypeSlug,
-  rehypeKatex,
+  [
+    rehypeKatex,
+    {
+      strict: (errorCode: string) =>
+        errorCode === 'unknownSymbol' ? 'ignore' : 'warn'
+    }
+  ],
   // rehypeGithubAlerts,
   rehypeCallouts,
   rehypeAutolinkHeadings,
