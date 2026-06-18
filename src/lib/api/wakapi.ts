@@ -1,9 +1,16 @@
 import { ApiError } from '~/errors/api-error'
 
-const wakapiProxyEndpoint =
-  process.env.NEXT_PUBLIC_WAKAPI_PROXY_ENDPOINT ||
-  process.env.NEXT_PUBLIC_WAKATIME_API_PROXY_ENDPOINT ||
-  'wakatime.api.tosh1ki.de'
+function normalizeApiEndpoint(endpoint: string) {
+  const value = endpoint.trim().replace(/\/+$/, '')
+  return /^https?:\/\//.test(value) ? value : `https://${value}`
+}
+
+const wakapiProxyEndpoint = normalizeApiEndpoint(
+  process.env.NEXT_PUBLIC_WAKAPI_API_ENDPOINT ||
+    process.env.NEXT_PUBLIC_WAKAPI_PROXY_ENDPOINT ||
+    process.env.NEXT_PUBLIC_WAKATIME_API_PROXY_ENDPOINT ||
+    'https://wakatime.api.tosh1ki.de'
+)
 const wakapiUsername =
   process.env.NEXT_PUBLIC_WAKAPI_USERNAME ||
   process.env.NEXT_PUBLIC_WAKATIME_USERNAME ||
@@ -85,7 +92,7 @@ async function fetchWakapiSummariesRange(
   start: string,
   end: string
 ): Promise<WakapiDaySummary[]> {
-  const url = `https://${wakapiProxyEndpoint}/api/compat/wakatime/v1/users/${wakapiUsername}/summaries?start=${start}&end=${end}`
+  const url = `${wakapiProxyEndpoint}/api/compat/wakatime/v1/users/${wakapiUsername}/summaries?start=${start}&end=${end}`
 
   let response
   try {

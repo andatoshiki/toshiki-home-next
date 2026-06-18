@@ -39,11 +39,12 @@ interface WakapiHeatmapProps {
 }
 
 const levelClassNames = [
-  'bg-neutral-200 dark:bg-neutral-900',
-  'bg-neutral-300 dark:bg-neutral-800',
-  'bg-neutral-400 dark:bg-neutral-700',
-  'bg-neutral-600 dark:bg-neutral-500',
-  'bg-neutral-800 dark:bg-neutral-200'
+  'bg-neutral-200 dark:bg-neutral-950',
+  'bg-neutral-300 dark:bg-neutral-900',
+  'bg-neutral-400 dark:bg-neutral-800',
+  'bg-neutral-500 dark:bg-neutral-700',
+  'bg-neutral-700 dark:bg-neutral-500',
+  'bg-neutral-900 dark:bg-neutral-200'
 ]
 
 const weekdayIndices = [1, 3, 5]
@@ -78,10 +79,11 @@ function startOfWeek(date: Date, weekStartsOn: 0 | 1) {
 
 function getHourLevel(value: number) {
   if (value <= 0) return 0
-  if (value <= 0.5) return 1
-  if (value <= 1.5) return 2
-  if (value <= 3) return 3
-  return 4
+  if (value <= 1.5) return 1
+  if (value <= 3) return 2
+  if (value <= 6) return 3
+  if (value <= 9) return 4
+  return 5
 }
 
 function clampLevel(level: number, levelCount: number) {
@@ -226,8 +228,15 @@ export default function WakapiHeatmap({
   const gridHeight = 7 * cellSize + 6 * cellGap
   const contentWidth = labelColumnWidth + labelGap + gridWidth
   const contentHeight = monthLabelHeight + gridHeight
-  const heatmapScale =
-    availableWidth > 0 ? Math.min(1, availableWidth / contentWidth) : 1
+  const enableHorizontalScroll =
+    availableWidth > 0 && availableWidth < 768 && contentWidth > availableWidth
+  const heatmapScale = enableHorizontalScroll
+    ? 1
+    : availableWidth > 0
+      ? Math.min(1, availableWidth / contentWidth)
+      : 1
+  const scaledContentWidth = Math.ceil(contentWidth * heatmapScale) + 2
+  const scaledContentHeight = Math.ceil(contentHeight * heatmapScale) + 2
 
   useEffect(() => {
     const viewport = heatmapViewportRef.current
@@ -309,8 +318,16 @@ export default function WakapiHeatmap({
       )}
 
       <TooltipProvider delayDuration={80}>
-        <div ref={heatmapViewportRef} className="w-full overflow-hidden">
-          <div style={{ height: contentHeight * heatmapScale }}>
+        <div
+          ref={heatmapViewportRef}
+          className="w-full overflow-x-auto overflow-y-hidden md:overflow-x-hidden"
+        >
+          <div
+            style={{
+              width: enableHorizontalScroll ? contentWidth : scaledContentWidth,
+              height: scaledContentHeight
+            }}
+          >
             <div
               style={{
                 width: contentWidth,

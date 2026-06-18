@@ -27,10 +27,19 @@ import {
   type GithubActivityType
 } from '~/lib/api/github/activity'
 
-const GITHUB_USERNAME = 'andatoshiki'
-const GITHUB_REST_API_URL = 'https://api.github.com'
-const GITHUB_CONTRIBUTIONS_API_URL =
-  'https://github-contributions-api.jogruber.de/v4'
+function normalizeApiEndpoint(endpoint: string) {
+  const value = endpoint.trim().replace(/\/+$/, '')
+  return /^https?:\/\//.test(value) ? value : `https://${value}`
+}
+
+const GITHUB_USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME || 'andatoshiki'
+const GITHUB_REST_API_URL = normalizeApiEndpoint(
+  process.env.NEXT_PUBLIC_GITHUB_API_ENDPOINT || 'https://api.github.com'
+)
+const GITHUB_CONTRIBUTIONS_API_URL = normalizeApiEndpoint(
+  process.env.NEXT_PUBLIC_GITHUB_CONTRIBUTIONS_API_ENDPOINT ||
+    'https://github-contributions-api.jogruber.de/v4'
+)
 const GITHUB_CACHE_TTL_MS = 30 * 60 * 1000
 const GITHUB_FOLLOWER_PREVIEW_LIMIT = 100
 const GITHUB_PAGE_SIZE = 100
