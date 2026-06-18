@@ -1,8 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Receipt } from '@phosphor-icons/react'
-import { ParticleDisintegrate } from '~/app/_components/grid/cards/ticket-printer/particle-disintegrate'
+import { PeelOff } from '~/app/_components/grid/cards/ticket-printer/peel-off'
 import { TicketRamblingId } from '~/app/_components/grid/cards/ticket-printer/ticket-rambling'
 import Ramble from '~/app/_components/grid/cards/ticket-printer/ticket-rambling'
 
@@ -103,7 +102,7 @@ export function ReceiptCard() {
             animation: 'rollOut 3s ease-out forwards'
           }}
         >
-          <ParticleDisintegrate
+          <PeelOff
             trigger={disintegrate}
             onComplete={() => {
               setShowReceipt(false)
@@ -195,7 +194,7 @@ export function ReceiptCard() {
                 }}
               />
             </div>
-          </ParticleDisintegrate>
+          </PeelOff>
         </div>
       )}
 
@@ -204,14 +203,11 @@ export function ReceiptCard() {
         {/* Top section with brand and screws */}
         <div className="flex w-full items-center justify-between">
           <div className="h-2 w-2 rounded-full bg-neutral-400 shadow-sm dark:bg-neutral-600" />
-          <div className="font-mono text-[7px] font-bold uppercase tracking-widest text-neutral-600 dark:text-neutral-400">
-            PRINTER
-          </div>
           <div className="h-2 w-2 rounded-full bg-neutral-400 shadow-sm dark:bg-neutral-600" />
         </div>
 
         {/* Retro LCD Screen with status indicator */}
-        <div className="w-full rounded border border-neutral-300 bg-neutral-200 px-2.5 py-1.5 shadow-inner transition-all dark:border-neutral-700 dark:bg-neutral-800">
+        <div className="w-full rounded bg-neutral-200 px-2.5 py-1.5 shadow-inner transition-all dark:bg-neutral-800">
           <div className="flex items-center justify-between gap-2">
             {/* Status indicator LED inside LCD - uptime style */}
             <div className="relative h-1.5 w-1.5 flex-shrink-0">
@@ -265,18 +261,17 @@ export function ReceiptCard() {
             ))}
           </div>
           {/* Paper slot */}
-          <div className="h-2 w-full rounded-sm bg-neutral-900/90 shadow-inner dark:bg-neutral-600/50" />
+          <div className="h-2 w-full rounded-sm bg-neutral-200 shadow-inner dark:bg-neutral-800" />
         </div>
 
         {/* Print Button */}
         <button
           onClick={handlePrint}
           disabled={isPrinting || isInteractionLocked}
-          className="w-full rounded border border-neutral-300 bg-neutral-200 px-3 py-2 font-mono text-[9px] font-bold uppercase tracking-wide text-neutral-700 shadow-sm transition-all hover:border-neutral-400 hover:bg-neutral-300 active:scale-[0.98] active:shadow-sm disabled:cursor-not-allowed disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:border-neutral-600 dark:hover:bg-neutral-700"
+          className="w-full rounded bg-neutral-200 px-3 py-2 text-[11px] font-normal uppercase tracking-wide text-neutral-700 shadow-sm transition-all hover:bg-neutral-300 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700"
         >
-          <div className="flex items-center justify-center gap-1">
-            <Receipt size={10} weight="bold" />
-            <span>Print</span>
+          <div className="flex items-center justify-center">
+            <span>Click me!</span>
           </div>
         </button>
 
