@@ -7,7 +7,7 @@ import { AgeCard } from './cards/age'
 import { GithubFollowers } from './cards/github-followers'
 import { GithubStars } from './cards/github-stars'
 import { BlogPosts } from './cards/posts'
-import { SpotifyPlays } from './cards/spotify-plays'
+import { LastFmPlays } from './cards/lastfm-plays'
 import { TopArtist } from './cards/top-artist'
 
 import { GridSkeleton } from './grid-skeleton'
@@ -22,7 +22,7 @@ export function StatisticsGrid() {
             <GithubStars />
             <GithubFollowers />
             <BlogPosts />
-            <SpotifyPlays />
+            <LastFmPlays />
             <TopArtist />
           </div>
           {/* <div className="flex justify-center md:justify-end"> */}

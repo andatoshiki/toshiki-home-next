@@ -17,10 +17,10 @@ export function TopTracksSkeleton() {
         {[...Array(10)].map((_, i) => (
           <div key={i} className="flex items-center justify-between gap-3 py-2">
             <div className="flex flex-1 animate-pulse flex-col space-y-[2px]">
-              <span className="h-7 w-5/6 rounded-3xl bg-neutral-400 dark:bg-neutral-800" />
-              <span className="h-5 w-2/5 rounded-3xl bg-neutral-400 text-sm leading-tight dark:bg-neutral-800" />
+              <span className="h-7 w-5/6 rounded-3xl bg-neutral-200 dark:bg-neutral-800" />
+              <span className="h-5 w-2/5 rounded-3xl bg-neutral-200 text-sm leading-tight dark:bg-neutral-800" />
             </div>
-            <span className="h-5 w-14 animate-pulse rounded-3xl bg-neutral-400 dark:bg-neutral-800" />
+            <span className="h-5 w-14 animate-pulse rounded-3xl bg-neutral-200 dark:bg-neutral-800" />
           </div>
         ))}
       </div>

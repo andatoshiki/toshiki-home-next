@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
+  "name": "toshiki-lastfm-api",
+  "main": "lastfm.js",
+  "compatibility_date": "2026-06-19",
+  "workers_dev": true,
+  "observability": {
+    "enabled": true
+  },
+  "secrets": {
+    "required": ["LASTFM_API_KEY"]
+  }
+}

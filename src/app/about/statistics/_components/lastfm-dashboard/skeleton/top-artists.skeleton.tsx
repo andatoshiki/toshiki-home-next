@@ -16,8 +16,8 @@ export function TopArtistsSkeleton() {
       <div>
         {[...Array(10)].map((_, i) => (
           <div key={i} className="flex items-center justify-between gap-3 py-4">
-            <span className="h-7 w-2/3 animate-pulse rounded-3xl bg-neutral-400 dark:bg-neutral-800" />
-            <span className="h-5 w-14 animate-pulse rounded-3xl bg-neutral-400 dark:bg-neutral-800" />
+            <span className="h-7 w-2/3 animate-pulse rounded-3xl bg-neutral-200 dark:bg-neutral-800" />
+            <span className="h-5 w-14 animate-pulse rounded-3xl bg-neutral-200 dark:bg-neutral-800" />
           </div>
         ))}
       </div>

@@ -10,10 +10,10 @@ export function TopTrackSkeleton() {
         </span>
 
         <div className="flex h-full items-center">
-          <div className="h-9 w-2/3 animate-pulse rounded-3xl bg-neutral-400 dark:bg-neutral-800" />
+          <div className="h-9 w-2/3 animate-pulse rounded-3xl bg-neutral-200 dark:bg-neutral-800" />
         </div>
       </div>
-      <div className="h-11 w-14 animate-pulse rounded-xl bg-neutral-400 dark:bg-neutral-800 md:h-24 md:w-28 md:rounded-3xl" />
+      <div className="h-11 w-14 animate-pulse rounded-xl bg-neutral-200 dark:bg-neutral-800 md:h-24 md:w-28 md:rounded-3xl" />
     </div>
   )
 }

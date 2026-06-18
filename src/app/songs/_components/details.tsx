@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Fire, Calendar } from '@phosphor-icons/react/dist/ssr'
 import { LinkV2 } from '~/components/ui/link-v2'
-import { LastFmUser } from '../types'
+import type { LastFmUser } from '~/lib/api/lastfm/types'
 
 interface DetailsProps {
   user: LastFmUser
