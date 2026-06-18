@@ -93,7 +93,7 @@
 
       a {
         @apply text-neutral-900 hover:no-underline dark:text-neutral-100;
-        @apply -ml-5 pl-5 before:absolute before:-ml-5 before:text-black/0 before:content-['#'] hover:before:text-neutral-300 dark:hover:before:text-gray-600;
+        @apply -ml-5 pl-5 before:absolute before:-ml-5 before:text-black/0 before:transition-colors before:duration-200 before:content-['#'] hover:before:text-neutral-300 dark:hover:before:text-gray-600;
       }
     }
 

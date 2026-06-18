@@ -26,6 +26,7 @@ import { Date } from '~/components/date'
 import { MDXContent } from '~/components/mdx-content'
 
 import { TopButton } from './_components/top-button'
+import { TocDrawer } from './_components/toc-drawer'
 import { Anchor } from './_components/anchor'
 import { PrettyCodeElement } from './_components/pretty-code-element'
 // import { VitePressStyledCopyCode } from './_components/vitepress-styled-copy-code'
@@ -279,6 +280,7 @@ export default function Page({ params }: Props) {
         />
       </div>
       <TopButton />
+      <TocDrawer toc={post.toc} />
     </div>
   )
 }
