@@ -12,7 +12,6 @@ import { Repos } from './cards/repos'
 import { Stars } from './cards/stars'
 import { Contributions } from './cards/contributions'
 import { ContributionCalendar } from './cards/contribution-calendar'
-import { LineGraph } from './cards/line-graph'
 
 export function GithubDashboard() {
   const { snapshot, metrics, error, isLoading } = useGithubData()
@@ -45,10 +44,6 @@ export function GithubDashboard() {
             contributions={snapshot.contributions}
             totalContributions={metrics.totalContributionsLastYear}
           />
-        </div>
-
-        <div className="col-span-4">
-          <LineGraph />
         </div>
       </div>
     </ErrorBoundary>
