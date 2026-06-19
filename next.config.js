@@ -3,7 +3,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')()
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // [TODO] craete a branch for ssg dedicated
-  // output: 'export',
+  output: 'export',
   reactStrictMode: true,
   // ignore build config for faster compilation and avoid formatting issue
   // [WARNING] set value to false upon completion of initial project
