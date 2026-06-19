@@ -15,7 +15,7 @@ const hiddenRepositoryNames = new Set([
 
 function LoadingGrid() {
   return (
-    <div className="grid gap-4 md:grid-cols-2">
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
       {Array.from({ length: 6 }, (_, index) => (
         <div
           key={index}
@@ -82,7 +82,7 @@ export function ReposPageClient() {
       ) : null}
 
       {!isLoading && repositories.length ? (
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {repositories.map((repository, index) => (
             <RepositoryCard
               key={repository.full_name}

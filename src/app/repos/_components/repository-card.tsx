@@ -26,14 +26,17 @@ export function RepositoryCard({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        'flex h-full flex-col rounded-2xl border border-neutral-200 bg-white p-5 transition-colors duration-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:border-neutral-700 dark:hover:bg-neutral-900',
+        'flex h-full min-w-0 flex-col rounded-2xl border border-neutral-200 bg-white p-5 transition-colors duration-200 hover:border-neutral-300 hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:border-neutral-700 dark:hover:bg-neutral-900',
         top && 'ring-2 ring-yellow-400/60'
       )}
     >
       <div
-        className={cn('mb-2 flex items-center justify-between', top && 'mb-4')}
+        className={cn(
+          'mb-2 flex min-w-0 items-center justify-between',
+          top && 'mb-4'
+        )}
       >
-        <h3 className="flex items-center gap-1 truncate text-base font-semibold text-black/90 dark:text-white/90">
+        <h3 className="flex min-w-0 items-center gap-1 truncate text-base font-semibold text-black/90 dark:text-white/90">
           <span className="text-black/50 dark:text-white/30">
             @andatoshiki/
           </span>
@@ -41,7 +44,7 @@ export function RepositoryCard({
         </h3>
         {top && (
           <svg
-            className="h-6 w-6 text-yellow-600"
+            className="h-6 w-6 shrink-0 text-yellow-600"
             fill="currentColor"
             viewBox="0 0 20 20"
           >
