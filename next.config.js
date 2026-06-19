@@ -14,6 +14,7 @@ const nextConfig = {
     ignoreBuildErrors: true
   },
   images: {
+    unoptimized: true,
     domains: [
       'raw.githubusercontent.com',
       'avatars.githubusercontent.com',
