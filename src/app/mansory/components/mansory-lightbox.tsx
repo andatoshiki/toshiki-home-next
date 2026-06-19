@@ -35,6 +35,18 @@ export default function MansoryLightbox({
   const [loadedBytes, setLoadedBytes] = useState(0)
   const [totalBytes, setTotalBytes] = useState<number | null>(null)
 
+  const slides = useMemo(
+    () =>
+      photos.map(img => ({
+        src: img.src,
+        alt: img.alt,
+        date: img.date,
+        width: img.width,
+        height: img.height
+      })),
+    [photos]
+  )
+
   useEffect(() => {
     setCurrentIndex(index)
   }, [index])
@@ -105,13 +117,7 @@ export default function MansoryLightbox({
     <Lightbox
       open={index >= 0}
       close={onClose}
-      slides={photos.map(img => ({
-        src: img.src,
-        alt: img.alt,
-        date: img.date,
-        width: img.width,
-        height: img.height
-      }))}
+      slides={slides}
       plugins={[Download, Slideshow]}
       index={index}
       on={{

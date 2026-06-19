@@ -1,7 +1,9 @@
 import * as runtime from 'react/jsx-runtime'
 import { MenuTooltip } from './ui/tooltip'
 import { ImageCard } from '~/app/about/_components/image-card'
-import BlogImageLightbox from '~/app/blog/post/[slug]/_components/lightbox'
+import BlogImageLightbox, {
+  BlogLightboxGallery
+} from '~/app/blog/post/[slug]/_components/lightbox'
 
 interface MdxProps {
   code: string
@@ -16,14 +18,16 @@ const useMDXComponent = (code: string) => {
 export function MDXContent({ code, components }: MdxProps) {
   const Component = useMDXComponent(code)
   return (
-    <Component
-      components={{
-        Image: BlogImageLightbox,
-        img: BlogImageLightbox,
-        MenuTooltip,
-        ImageCard,
-        ...components
-      }}
-    />
+    <BlogLightboxGallery>
+      <Component
+        components={{
+          Image: BlogImageLightbox,
+          img: BlogImageLightbox,
+          MenuTooltip,
+          ImageCard,
+          ...components
+        }}
+      />
+    </BlogLightboxGallery>
   )
 }
