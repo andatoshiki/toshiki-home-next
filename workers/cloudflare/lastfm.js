@@ -9,6 +9,7 @@ const CONFIG = {
     'http://127.0.0.1:3000'
   ],
   maxLimit: 50,
+  imageEnrichmentLimit: 10,
   cacheSeconds: {
     summary: 60,
     user: 1800,
@@ -125,6 +126,20 @@ function getImage(images = []) {
   )
 }
 
+function getAlbum(album) {
+  if (!album || typeof album === 'string') return undefined
+
+  const name = album.title ?? album.name ?? album['#text'] ?? ''
+  const url = album.url ?? ''
+
+  if (!name && !url) return undefined
+
+  return {
+    ...(name ? { name } : {}),
+    ...(url ? { url } : {})
+  }
+}
+
 function mapTrack(track) {
   const artist =
     typeof track.artist === 'string'
@@ -133,11 +148,14 @@ function mapTrack(track) {
   const plays = toNumber(track.playcount, Number.NaN)
   const date = toNumber(track.date?.uts, Number.NaN)
 
+  const album = getAlbum(track.album)
+
   return {
     name: track.name ?? '',
     artist,
     image: getImage(track.image),
     url: track.url ?? '',
+    ...(album ? { album } : {}),
     ...(Number.isFinite(date) ? { date } : {}),
     ...(Number.isFinite(plays) ? { plays } : {}),
     nowPlaying:
@@ -172,8 +190,7 @@ function mapUser(user) {
 async function lastFmRequest(apiKey, method, params = {}) {
   const url = new URL(LASTFM_API_URL)
   url.search = new URLSearchParams({
-    method: `user.${method}`,
-    user: CONFIG.username,
+    method,
     api_key: apiKey,
     format: 'json',
     ...params
@@ -190,32 +207,136 @@ async function lastFmRequest(apiKey, method, params = {}) {
   return body
 }
 
+async function lastFmUserRequest(apiKey, method, params = {}) {
+  return lastFmRequest(apiKey, `user.${method}`, {
+    user: CONFIG.username,
+    ...params
+  })
+}
+
+async function getTrackDetails(apiKey, track) {
+  if (!track.name || !track.artist) return {}
+
+  try {
+    const { track: details } = await lastFmRequest(apiKey, 'track.getInfo', {
+      artist: track.artist,
+      track: track.name,
+      autocorrect: '1',
+      username: CONFIG.username
+    })
+    const album = getAlbum(details?.album)
+    const image = getImage(details?.album?.image) || getImage(details?.image)
+
+    return {
+      ...(image ? { image } : {}),
+      ...(album ? { album } : {})
+    }
+  } catch {
+    return {}
+  }
+}
+
+async function getArtistDetails(apiKey, artist) {
+  const name =
+    typeof artist === 'string'
+      ? artist
+      : artist?.name ?? artist?.['#text'] ?? ''
+  const mbid = typeof artist === 'object' ? artist?.mbid ?? '' : ''
+
+  if (!name && !mbid) return {}
+
+  try {
+    const { artist: details } = await lastFmRequest(apiKey, 'artist.getInfo', {
+      ...(mbid ? { mbid } : { artist: name }),
+      autocorrect: '1',
+      username: CONFIG.username
+    })
+    const image = getImage(details?.image)
+    const url = details?.url ?? ''
+
+    return {
+      ...(image ? { image } : {}),
+      ...(url ? { url } : {})
+    }
+  } catch {
+    return {}
+  }
+}
+
+async function enrichTracks(apiKey, tracks) {
+  const mappedTracks = tracks.map(mapTrack)
+  const tracksToEnrich = new Set(
+    mappedTracks
+      .filter(track => !track.image)
+      .slice(0, CONFIG.imageEnrichmentLimit)
+  )
+
+  return Promise.all(
+    mappedTracks.map(async track => {
+      if (!tracksToEnrich.has(track)) return track
+
+      const details = await getTrackDetails(apiKey, track)
+
+      return {
+        ...track,
+        ...(details.image ? { image: details.image } : {}),
+        ...(details.album ? { album: details.album } : {})
+      }
+    })
+  )
+}
+
+async function enrichArtists(apiKey, artists) {
+  const mappedArtists = artists.map(mapArtist)
+  const artistIndexesToEnrich = new Set(
+    mappedArtists
+      .map((artist, index) => ({ artist, index }))
+      .filter(({ artist }) => !artist.image)
+      .slice(0, CONFIG.imageEnrichmentLimit)
+      .map(({ index }) => index)
+  )
+
+  return Promise.all(
+    mappedArtists.map(async (artist, index) => {
+      if (!artistIndexesToEnrich.has(index)) return artist
+
+      const details = await getArtistDetails(apiKey, artists[index])
+
+      return {
+        ...artist,
+        ...(details.image ? { image: details.image } : {}),
+        ...(details.url ? { url: details.url } : {})
+      }
+    })
+  )
+}
+
 async function getUser(apiKey) {
-  const { user } = await lastFmRequest(apiKey, 'getinfo')
+  const { user } = await lastFmUserRequest(apiKey, 'getinfo')
   return mapUser(user)
 }
 
 async function getRecentTracks(apiKey, limit) {
-  const { recenttracks } = await lastFmRequest(apiKey, 'getrecenttracks', {
+  const { recenttracks } = await lastFmUserRequest(apiKey, 'getrecenttracks', {
     limit: String(limit)
   })
-  return (recenttracks.track ?? []).map(mapTrack)
+  return enrichTracks(apiKey, recenttracks.track ?? [])
 }
 
 async function getTopTracks(apiKey, period, limit) {
-  const { toptracks } = await lastFmRequest(apiKey, 'gettoptracks', {
+  const { toptracks } = await lastFmUserRequest(apiKey, 'gettoptracks', {
     period,
     limit: String(limit)
   })
-  return (toptracks.track ?? []).map(mapTrack)
+  return enrichTracks(apiKey, toptracks.track ?? [])
 }
 
 async function getTopArtists(apiKey, period, limit) {
-  const { topartists } = await lastFmRequest(apiKey, 'gettopartists', {
+  const { topartists } = await lastFmUserRequest(apiKey, 'gettopartists', {
     period,
     limit: String(limit)
   })
-  return (topartists.artist ?? []).map(mapArtist)
+  return enrichArtists(apiKey, topartists.artist ?? [])
 }
 
 async function getData(resource, url, apiKey) {
