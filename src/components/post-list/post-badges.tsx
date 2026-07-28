@@ -1,5 +1,3 @@
-'use client'
-
 import {
   Code,
   FileDashed,
@@ -9,24 +7,24 @@ import {
 
 export const DraftBadge = () => (
   <div className="common-badge border-amber-600/20 bg-amber-600/5 text-amber-600">
-    <FileDashed size="1em" /> Draft
+    <FileDashed aria-hidden="true" size="1em" /> Draft
   </div>
 )
 
 export const PlannedBadge = () => (
   <div className="common-badge border-sky-600/20 bg-sky-600/5 text-sky-600">
-    <PencilSimpleLine size="1em" /> Planned
+    <PencilSimpleLine aria-hidden="true" size="1em" /> Planned
   </div>
 )
 
 export const TestBadge = () => (
   <div className="common-badge border-green-600/20 bg-green-600/5 text-green-600">
-    <Code size="1em" /> Test
+    <Code aria-hidden="true" size="1em" /> Test
   </div>
 )
 
 export const LanguageBadge = ({ lang }: { lang: string }) => (
   <div className="common-badge border-cyan-600/20 bg-cyan-600/5 text-cyan-600">
-    <Globe size="1em" /> {lang}
+    <Globe aria-hidden="true" size="1em" /> {lang}
   </div>
 )

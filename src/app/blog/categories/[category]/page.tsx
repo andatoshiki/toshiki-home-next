@@ -32,12 +32,15 @@ export default function Page({ params }: Props) {
   return (
     <div className="content-container m-auto">
       <h1 className="mb-5 flex justify-center gap-2 text-2xl font-bold md:justify-start">
-        <FolderOpen size="1em" weight="duotone" className="text-3xl" />
+        <FolderOpen
+          aria-hidden="true"
+          size="1em"
+          weight="duotone"
+          className="text-3xl"
+        />
         {getNormalCategoryString(category)}
       </h1>
-      <main>
-        <PostList posts={postList} />
-      </main>
+      <PostList posts={postList} />
     </div>
   )
 }

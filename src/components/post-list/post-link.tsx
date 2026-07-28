@@ -8,7 +8,7 @@ import {
   CalendarBlank,
   Clock
 } from '@phosphor-icons/react/dist/ssr'
-import { Post } from '#content'
+import type { Post } from '#content'
 
 import { Date } from '~/components/date'
 import {
@@ -21,6 +21,7 @@ import {
 interface Props {
   post: Post
   hideYear?: boolean
+  headingLevel?: 2 | 3
 }
 
 const getTitleIcon = (category: string): React.ReactNode => {
@@ -45,7 +46,8 @@ const getTitleIcon = (category: string): React.ReactNode => {
   return null
 }
 
-export function PostLink({ post, hideYear = false }: Props) {
+export function PostLink({ post, hideYear = false, headingLevel = 2 }: Props) {
+  const Heading = headingLevel === 3 ? 'h3' : 'h2'
   const showDate = !post.test
   const showReadingTime = !post.test
   const titleIcon = getTitleIcon(post.category)
@@ -56,16 +58,13 @@ export function PostLink({ post, hideYear = false }: Props) {
 
   if (post.status === 'planned') {
     return (
-      <section className="group relative z-20 cursor-pointer space-y-1">
+      <section className="space-y-1">
         <div className="flex items-center justify-between gap-2 md:justify-start">
-          <h2 className="text-xl font-bold text-neutral-600 dark:text-neutral-300">
+          <Heading className="text-xl font-bold text-neutral-600 dark:text-neutral-300">
             {post.title}
-          </h2>
+          </Heading>
           <div className="flex items-center gap-2">
-            <span className="relative overflow-hidden rounded-lg">
-              <span className="shine group-hover:animate-shine group-hover:animate-duration-[1.5s]" />
-              <PlannedBadge />
-            </span>
+            <PlannedBadge />
             {showLanguageBadge && <LanguageBadge lang={rawLanguage!} />}
           </div>
         </div>
@@ -79,7 +78,7 @@ export function PostLink({ post, hideYear = false }: Props) {
       <span className="flex items-center gap-4 whitespace-nowrap leading-none text-neutral-600 transition-colors duration-200 group-hover:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 md:flex-col md:items-end md:justify-center md:gap-2">
         {showDate && (
           <span className="inline-flex items-center gap-1 md:flex-row-reverse">
-            <CalendarBlank size="1em" />
+            <CalendarBlank aria-hidden="true" size="1em" />
             <Date
               dateString={post.date}
               dateFormat={hideYear ? 'LLL d' : 'LLL d, yyyy'}
@@ -89,7 +88,7 @@ export function PostLink({ post, hideYear = false }: Props) {
 
         {showReadingTime && (
           <span className="inline-flex items-center gap-1 md:flex-row-reverse">
-            <Clock size="1em" />
+            <Clock aria-hidden="true" size="1em" />
             <span>{Math.ceil(post.metadata.readingTime)} min read</span>
           </span>
         )}
@@ -99,14 +98,18 @@ export function PostLink({ post, hideYear = false }: Props) {
     return (
       <Link
         href={`/blog/post/${post.slug}`}
-        className="group relative z-20 flex flex-col justify-between gap-1 transition-colors duration-200 md:flex-row md:gap-3"
+        className="group flex flex-col justify-between gap-1 rounded-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-400 dark:focus-visible:ring-offset-neutral-950 md:flex-row md:gap-3"
       >
         <section>
           <div className="flex items-center justify-between gap-2 md:justify-start">
-            <h2 className="flex items-center gap-1 text-lg font-bold text-neutral-600 transition-colors duration-200 group-hover:text-neutral-900 group-active:text-neutral-900 dark:text-neutral-400 dark:group-hover:text-neutral-300 group-active:dark:text-neutral-300 md:text-xl">
-              {titleIcon && <span className="text-xl">{titleIcon}</span>}
+            <Heading className="flex items-center gap-1 text-lg font-bold text-neutral-600 transition-colors duration-200 group-hover:text-neutral-900 group-active:text-neutral-900 dark:text-neutral-400 dark:group-hover:text-neutral-300 group-active:dark:text-neutral-300 md:text-xl">
+              {titleIcon && (
+                <span aria-hidden="true" className="text-xl">
+                  {titleIcon}
+                </span>
+              )}
               {post.title}
-            </h2>
+            </Heading>
             {post.test && <TestBadge />}
             {post.status === 'draft' && !post.test && <DraftBadge />}
             {showLanguageBadge && <LanguageBadge lang={rawLanguage!} />}

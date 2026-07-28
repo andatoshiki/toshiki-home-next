@@ -1,33 +1,12 @@
-import * as runtime from 'react/jsx-runtime'
-import { MenuTooltip } from './ui/tooltip'
 import { ImageCard } from '~/app/about/_components/image-card'
-import BlogImageLightbox, {
-  BlogLightboxGallery
-} from '~/app/blog/post/[slug]/_components/lightbox'
+import { MenuTooltip } from './ui/tooltip'
+import { MdxRuntime, type MdxRuntimeProps } from './mdx-runtime'
 
-interface MdxProps {
-  code: string
-  components?: Record<string, React.ComponentType>
-}
-
-const useMDXComponent = (code: string) => {
-  const fn = new Function(code)
-  return fn({ ...runtime }).default
-}
-
-export function MDXContent({ code, components }: MdxProps) {
-  const Component = useMDXComponent(code)
+export function MDXContent({ code, components }: MdxRuntimeProps) {
   return (
-    <BlogLightboxGallery>
-      <Component
-        components={{
-          Image: BlogImageLightbox,
-          img: BlogImageLightbox,
-          MenuTooltip,
-          ImageCard,
-          ...components
-        }}
-      />
-    </BlogLightboxGallery>
+    <MdxRuntime
+      code={code}
+      components={{ MenuTooltip, ImageCard, ...components }}
+    />
   )
 }

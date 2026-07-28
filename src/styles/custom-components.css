@@ -180,58 +180,6 @@ pre {
   animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
 }
 
-/* List alignment fix - scoped to post content, excluding TOC */
-.post-content ul:not(nav.toc ul):not(nav.toc ol):not(.toc ul):not(.toc ol) {
-  list-style-position: outside !important;
-  padding-left: 1.5rem !important;
-  margin-left: 0 !important;
-  list-style-type: disc !important;
-}
-
-.post-content ol:not(nav.toc ol):not(.toc ol) {
-  list-style-position: outside !important;
-  padding-left: 1.5rem !important;
-  margin-left: 0 !important;
-  list-style-type: decimal !important;
-}
-
-.post-content li:not(nav.toc li):not(.toc li) {
-  position: relative !important;
-  line-height: 1.6 !important;
-  margin-bottom: 0.25rem !important;
-  text-align: left !important;
-  display: list-item !important;
-}
-
-/* TOC specific styling - preserve original structure */
-.post-content nav.toc ol {
-  list-style: none !important;
-  list-style-type: none !important;
-  /* Preserve padding from the p-4 class */
-}
-
-.post-content nav.toc li {
-  list-style: none !important;
-  list-style-type: none !important;
-  /* Reset margins for clean TOC appearance */
-  margin-bottom: 0 !important;
-  line-height: normal !important;
-}
-
-/* Force proper alignment for text content */
-.post-content li > span,
-.post-content li > p,
-.post-content li > text {
-  vertical-align: baseline !important;
-  line-height: inherit !important;
-}
-
-/* .dark .post-content :not(pre) > code {
-  background: #161b22 !important;
-  border: 1px solid #30363d !important;
-  color: #f85149 !important;
-} */
-
 .katex {
   font-size: 1.05em;
   direction: ltr;

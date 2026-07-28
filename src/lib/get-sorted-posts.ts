@@ -1,7 +1,7 @@
-import { Post } from '#content'
+import type { Post } from '#content'
 
-export function getSortedPosts(posts: Post[]) {
-  return posts.sort(
+export function getSortedPosts(posts: readonly Post[]) {
+  return [...posts].sort(
     (a, b) => Number(new Date(b.date)) - Number(new Date(a.date))
   )
 }

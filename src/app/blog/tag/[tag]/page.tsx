@@ -36,17 +36,17 @@ export default function Page({ params }: Props) {
     <div className="content-container m-auto space-y-7">
       <h1 className="mb-5 flex items-end justify-center gap-2 text-2xl font-bold md:justify-start">
         {getNormalTagString(tag)}
-        <Tag size="1em" weight="duotone" />
+        <Tag aria-hidden="true" size="1em" weight="duotone" />
       </h1>
       {postList.length > 0 && (
         <div className="space-y-4">
-          <Title text="Blog Posts" />
+          <Title as="h2" text="Blog Posts" />
           <PostList posts={postList} />
         </div>
       )}
       {tilList.length > 0 && (
         <div className="space-y-4">
-          <Title text="T.I.L." />
+          <Title as="h2" text="T.I.L." />
           <TilList tils={tilList} />
         </div>
       )}

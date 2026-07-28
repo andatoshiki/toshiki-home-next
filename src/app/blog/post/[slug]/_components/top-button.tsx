@@ -4,54 +4,51 @@ import { CaretUp } from '@phosphor-icons/react/dist/ssr'
 import { useEffect, useState } from 'react'
 
 export function TopButton() {
-  const [percentScrollPosition, setPercentScrollPosition] = useState(0)
-  const [scrollPosition, setScrollPosition] = useState(0)
-  const [maxScrollValue, setMaxScrollValue] = useState(0)
-
-  function handleScroll() {
-    if (window) {
-      setScrollPosition(window.scrollY)
-    }
-    if (document) {
-      setMaxScrollValue(
-        document.documentElement.scrollHeight -
-          document.documentElement.clientHeight
-      )
-    }
-  }
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    handleScroll()
+    let animationFrame = 0
 
-    if (window) {
-      window.addEventListener('scroll', handleScroll, { passive: true })
+    const updateVisibility = () => {
+      cancelAnimationFrame(animationFrame)
+      animationFrame = requestAnimationFrame(() => {
+        setIsVisible(window.scrollY > 0)
+      })
+    }
+
+    updateVisibility()
+    window.addEventListener('scroll', updateVisibility, { passive: true })
+
+    return () => {
+      cancelAnimationFrame(animationFrame)
+      window.removeEventListener('scroll', updateVisibility)
     }
   }, [])
 
-  useEffect(() => {
-    setPercentScrollPosition(
-      Math.round((scrollPosition / maxScrollValue) * 100)
-    )
-  }, [scrollPosition, maxScrollValue])
-
-  const isNotOnTop = percentScrollPosition > 0
-
   const scrollToTop = () => {
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches
+
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: reduceMotion ? 'auto' : 'smooth'
     })
   }
 
   return (
     <button
+      type="button"
       onClick={scrollToTop}
       title="Go to top"
-      className={`fixed bottom-7 right-7 hidden items-center justify-center rounded-full p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 md:flex ${
-        isNotOnTop ? 'opacity-100' : 'opacity-0'
+      aria-label="Go to top"
+      aria-hidden={!isVisible}
+      tabIndex={isVisible ? 0 : -1}
+      className={`fixed bottom-7 right-7 hidden touch-manipulation items-center justify-center rounded-full p-2 transition-[background-color,opacity] hover:bg-neutral-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 motion-reduce:transition-none dark:hover:bg-neutral-800 dark:focus-visible:ring-neutral-400 md:flex ${
+        isVisible ? 'opacity-100' : 'pointer-events-none opacity-0'
       }`}
     >
-      <CaretUp className="text-2xl" />
+      <CaretUp aria-hidden="true" className="text-2xl" />
     </button>
   )
 }

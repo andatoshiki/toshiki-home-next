@@ -62,22 +62,7 @@
   }
 
   .post-content {
-    @apply leading-6 text-neutral-600 dark:text-neutral-400;
-
-    nav.toc {
-      @apply my-10 rounded-lg border border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950;
-
-      ol {
-        @apply list-none;
-
-        a {
-          @apply text-neutral-900 hover:no-underline dark:text-neutral-300;
-          @apply rounded-lg;
-          @apply px-2 py-1;
-          @apply hover:bg-neutral-200 dark:hover:bg-neutral-800;
-        }
-      }
-    }
+    @apply min-w-0 leading-6 text-neutral-600 dark:text-neutral-400;
 
     kbd {
       @apply keyboard;
@@ -89,7 +74,7 @@
     h4,
     h5,
     h6 {
-      @apply mx-0 my-5 w-full whitespace-pre-wrap font-medium md:w-max md:text-left;
+      @apply mx-0 my-5 w-full scroll-mt-24 whitespace-pre-wrap font-medium md:w-max md:text-left;
 
       a {
         @apply text-neutral-900 hover:no-underline dark:text-neutral-100;
@@ -101,7 +86,6 @@
       @apply font-medium text-neutral-700 dark:text-neutral-300;
     }
 
-    /* h2 & h3 underline and border removed */
     h2 {
       @apply pr-6 text-3xl;
     }
@@ -124,7 +108,7 @@
     }
 
     p a,
-    li:not(nav.toc li):not(.toc li) a,
+    li a,
     blockquote a,
     table a {
       @apply border-b border-neutral-400/30 font-normal text-neutral-500 no-underline transition-colors duration-200 ease-out;
@@ -132,6 +116,7 @@
       @apply active:border-neutral-900/60 active:text-neutral-900;
       @apply dark:border-neutral-600/40 dark:text-neutral-400 dark:hover:border-neutral-300/50 dark:hover:text-neutral-300;
       @apply dark:active:border-neutral-100/50 dark:active:text-neutral-100;
+      overflow-wrap: anywhere;
     }
 
     img {
@@ -148,7 +133,6 @@
 
     table {
       @apply my-1 w-max border-separate border-spacing-0 overflow-hidden rounded-lg md:max-w-full;
-      /*@apply bg-neutral-100 dark:bg-neutral-950;*/
 
       th,
       td {
@@ -171,7 +155,6 @@
       tbody {
         tr {
           td {
-            /*@apply even:bg-neutral-200/40 even:dark:bg-neutral-900/40;*/
             @apply border-t border-neutral-200 dark:border-neutral-800;
           }
 
@@ -183,14 +166,13 @@
     }
 
     hr {
-      @apply my-8 h-[2px]  bg-black/40;
+      @apply my-8 h-[2px] bg-black/40;
     }
 
     blockquote {
       @apply relative my-3 w-max max-w-full overflow-hidden px-4 py-1;
       @apply border-l-[4px] border-l-neutral-300 dark:border-l-neutral-600;
       @apply text-base leading-tight;
-      /*@apply bg-neutral-50 dark:bg-neutral-1000;*/
 
       strong {
         @apply text-neutral-500 dark:text-neutral-400;
@@ -216,12 +198,16 @@
       }
     }
 
+    li {
+      @apply relative mb-1 list-item text-left leading-relaxed;
+    }
+
     ol {
-      @apply list-inside list-decimal text-justify md:text-left;
+      @apply list-outside list-decimal pl-6 text-left;
     }
 
     ul {
-      @apply list-inside list-disc text-justify md:text-left;
+      @apply list-outside list-disc pl-6 text-left;
 
       &.contains-task-list {
         @apply list-none;
@@ -243,9 +229,9 @@
       @apply text-ellipsis break-words rounded-sm bg-black/5 px-1 py-[0.16rem] backdrop-blur-3xl dark:bg-white/5;
     }
 
-    /*only affect inline code, not code blocks */
+    /* Only affect inline code, not code blocks. */
     :not(pre) > code {
-      @apply overflow-visible whitespace-nowrap break-keep align-baseline;
+      @apply whitespace-normal break-words align-baseline;
     }
 
     figure[data-rehype-pretty-code-figure=''] {
@@ -253,8 +239,6 @@
       @apply bg-neutral-100 dark:bg-[#141414];
       @apply my-4 space-y-1;
       @apply border border-neutral-200 dark:border-neutral-900;
-
-      /* @apply backdrop-blur; */
 
       pre {
         @apply overflow-auto;
@@ -361,7 +345,7 @@
       }
     }
 
-    div.answear {
+    div.answer {
       @apply relative my-4 w-max max-w-full overflow-hidden rounded-lg backdrop-blur-lg;
 
       .content {
@@ -381,7 +365,6 @@
 
         .icon {
           @apply absolute right-0 top-0 p-1;
-          /*@apply rounded-bl-md border-b border-l border-green-800 dark:border-green-500;*/
           @apply text-xs text-green-800 dark:text-green-500;
         }
 
@@ -394,7 +377,6 @@
 
         .icon {
           @apply absolute right-0 top-0 p-1;
-          /*@apply rounded-bl-md border-b border-l border-red-800 dark:border-red-500;*/
           @apply text-xs text-red-800 dark:text-red-500;
         }
 
@@ -420,12 +402,6 @@
   }
 
   .til-content {
-    nav {
-      &.toc {
-        @apply hidden;
-      }
-    }
-
     h1,
     h2,
     h3,
@@ -454,48 +430,5 @@
     p {
       @apply my-4 border-red-600 last:mb-0 [&:nth-child(2)]:mt-0;
     }
-  }
-
-  article {
-    div {
-      svg {
-        @apply w-full;
-      }
-    }
-  }
-
-  .year-block {
-    @apply relative isolate z-0 overflow-hidden pb-2 pt-12;
-  }
-
-  .year-block::before {
-    content: attr(data-year);
-    position: absolute;
-    left: 0;
-    top: 1.5rem;
-    z-index: 0;
-    pointer-events: none;
-    user-select: none;
-    font-size: 8rem;
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: -0.025em;
-    color: rgb(163 163 163 / 0.22);
-  }
-
-  .year-block > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  @media (min-width: 768px) {
-    .year-block::before {
-      top: 1rem;
-      font-size: 9rem;
-    }
-  }
-
-  .dark .year-block::before {
-    color: rgb(92 92 92 / 0.22);
   }
 }

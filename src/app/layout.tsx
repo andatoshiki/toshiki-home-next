@@ -94,9 +94,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth motion-reduce:scroll-auto">
       <body
-        className={`flex min-h-screen flex-col scroll-smooth ${inter.variable} ${dancingScript.variable} ${crimsonText.variable}`}
+        className={`flex min-h-screen flex-col scroll-smooth motion-reduce:scroll-auto ${inter.variable} ${dancingScript.variable} ${crimsonText.variable}`}
       >
         <Providers>
           <div className="relative flex min-h-screen flex-col">

@@ -1,20 +1,17 @@
-import { Post } from '#content'
+import type { Post } from '#content'
 
-export function categorizePostsByYear(posts: Post[]) {
-  const filteredPosts = posts.filter(post => !post.test)
-  const listOfAllYears = filteredPosts.map(post =>
-    new Date(post.date).getFullYear()
-  )
-  const listOfUniqueYears = [...new Set(listOfAllYears)]
+export function categorizePostsByYear(posts: readonly Post[]) {
+  const postsByYear = new Map<number, Post[]>()
 
-  const postsByYear = listOfUniqueYears.map(year => {
-    return {
-      year,
-      posts: filteredPosts.filter(
-        post => new Date(post.date).getFullYear() === year
-      )
-    }
-  })
+  for (const post of posts) {
+    const year = new Date(post.date).getFullYear()
+    const postsForYear = postsByYear.get(year)
 
-  return postsByYear.sort((a, b) => b.year - a.year)
+    if (postsForYear) postsForYear.push(post)
+    else postsByYear.set(year, [post])
+  }
+
+  return [...postsByYear]
+    .map(([year, postsForYear]) => ({ year, posts: postsForYear }))
+    .sort((a, b) => b.year - a.year)
 }

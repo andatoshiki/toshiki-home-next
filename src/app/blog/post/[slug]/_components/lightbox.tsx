@@ -9,17 +9,19 @@ import React, {
   useRef,
   useState
 } from 'react'
-import Lightbox from 'yet-another-react-lightbox'
-import 'yet-another-react-lightbox/styles.css'
-import Download from 'yet-another-react-lightbox/plugins/download'
-import Slideshow from 'yet-another-react-lightbox/plugins/slideshow'
+import dynamic from 'next/dynamic'
+
+const LightboxViewer = dynamic(
+  () => import('./lightbox-viewer').then(module => module.LightboxViewer),
+  { ssr: false }
+)
 
 interface BlogImageLightboxProps
   extends React.ImgHTMLAttributes<HTMLImageElement> {
   src?: string
 }
 
-interface BlogLightboxSlide {
+export interface BlogLightboxSlide {
   id: string
   src: string
   alt?: string
@@ -66,39 +68,13 @@ export function BlogLightboxGallery({ children }: BlogLightboxGalleryProps) {
   return (
     <BlogLightboxContext.Provider value={contextValue}>
       {children}
-      <Lightbox
-        open={gallery !== null}
-        close={() => setGallery(null)}
-        slides={gallery?.slides ?? []}
-        plugins={[Download, Slideshow]}
-        index={gallery?.index ?? 0}
-        styles={{
-          container: {
-            backgroundColor: 'rgba(0,0,0,0.5)'
-          }
-        }}
-        render={{
-          slide: ({ slide }) => (
-            <div className="flex h-full w-full flex-col items-center justify-center">
-              <img
-                src={slide.src}
-                alt={slide.alt || ''}
-                style={{
-                  maxHeight: '80vh',
-                  maxWidth: '100%',
-                  objectFit: 'contain',
-                  borderRadius: '0.5rem'
-                }}
-              />
-              {slide.alt ? (
-                <div className="mt-4 text-center text-base text-white">
-                  {slide.alt}
-                </div>
-              ) : null}
-            </div>
-          )
-        }}
-      />
+      {gallery ? (
+        <LightboxViewer
+          slides={gallery.slides}
+          index={gallery.index}
+          onClose={() => setGallery(null)}
+        />
+      ) : null}
     </BlogLightboxContext.Provider>
   )
 }
@@ -106,7 +82,7 @@ export function BlogLightboxGallery({ children }: BlogLightboxGalleryProps) {
 export default function BlogImageLightbox(props: BlogImageLightboxProps) {
   const gallery = useContext(BlogLightboxContext)
   const imageId = useId()
-  const { src, alt, style, width, ...rest } = props
+  const { src, alt, style, width, loading = 'lazy', ...rest } = props
 
   useEffect(() => {
     if (!gallery || !src) return
@@ -116,15 +92,20 @@ export default function BlogImageLightbox(props: BlogImageLightboxProps) {
 
   return (
     <figure className="my-6 flex flex-col items-center">
-      <span
+      <button
+        type="button"
         onClick={() => gallery?.openSlide(imageId)}
-        className="cursor-zoom-in"
+        aria-label={alt ? `Open image: ${alt}` : 'Open image'}
+        className="cursor-zoom-in rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 dark:focus-visible:ring-neutral-400"
         style={{ display: 'block', width: '100%' }}
       >
+        {/* MDX images can be remote and do not consistently provide dimensions. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={src}
-          alt={alt}
+          alt={alt ?? ''}
           width={width}
+          loading={loading}
           {...rest}
           style={{
             width: width ?? '100%',
@@ -136,7 +117,7 @@ export default function BlogImageLightbox(props: BlogImageLightboxProps) {
             ...style
           }}
         />
-      </span>
+      </button>
       {alt ? (
         <figcaption className="mt-2 text-center text-sm text-neutral-500">
           {alt}

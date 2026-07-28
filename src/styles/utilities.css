@@ -19,6 +19,13 @@
   animation-name: slide-in-down;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(page-content),
+  ::view-transition-new(page-content) {
+    animation: none;
+  }
+}
+
 @keyframes slide-out-up {
   to {
     transform: translateY(-20px);

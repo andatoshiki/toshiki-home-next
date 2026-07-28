@@ -1,38 +1,25 @@
-import React, { ComponentProps } from 'react'
+import React from 'react'
 import type { Metadata } from 'next'
-import { ArtalkComment } from '~/components/ui/artalk/artalk-comment'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { Toc } from '../../_components/toc'
 import {
   Folder,
   CalendarBlank,
   Eye,
   Tag,
-  Lightbulb,
-  Warning,
-  WarningOctagon,
-  Check,
-  X,
   ArrowsHorizontal
 } from '@phosphor-icons/react/dist/ssr'
-import { BiSolidQuoteAltRight } from 'react-icons/bi'
 
-import { Post, posts } from '#content'
+import { posts } from '#content'
+import type { Post } from '#content'
 
 import { slug } from '~/lib/slug'
 import { Date } from '~/components/date'
-// import { GiscusComments } from '~/components/giscus-comments'
-import { MDXContent } from '~/components/mdx-content'
+import { BlogMdxContent } from '../../_components/blog-mdx-content'
 
-import { TopButton } from './_components/top-button'
-import { TocDrawer } from './_components/toc-drawer'
-import { Anchor } from './_components/anchor'
-import { PrettyCodeElement } from './_components/pretty-code-element'
-// import { VitePressStyledCopyCode } from './_components/vitepress-styled-copy-code'
-import { CopyButton } from './_components/copy-button'
-import { Spoiler } from './_components/spoiler'
-import { Ruby } from './_components/ruby'
+import { postMdxComponents } from './_components/mdx-components'
+import { LazyArtalkComment } from './_components/lazy-artalk-comment'
+import { PostNavigation } from './_components/post-navigation'
 import 'katex/dist/katex.min.css'
 
 interface Props {
@@ -80,85 +67,6 @@ export function generateMetadata({ params }: Props): Metadata {
   }
 }
 
-const mdxComponents = {
-  a: ({ children, href, ...props }) =>
-    href?.startsWith('http') ? (
-      <Anchor href={href} {...props}>
-        {children}
-      </Anchor>
-    ) : (
-      <a href={href} {...props}>
-        {children}
-      </a>
-    ),
-  figure: PrettyCodeElement,
-  Correct: ({
-    children,
-    message,
-    ...rest
-  }: ComponentProps<'div'> & { message?: string }) => (
-    <div {...rest} className="answear correct">
-      <span className="icon">
-        <Check size="1em" />
-      </span>
-      <div className="content">{children}</div>
-      {message && <span className="message">{message}</span>}
-    </div>
-  ),
-  Wrong: ({
-    children,
-    message,
-    ...rest
-  }: ComponentProps<'div'> & { message?: string }) => (
-    <div {...rest} className="answear wrong">
-      <span className="icon">
-        <X size="1em" />
-      </span>
-      <div className="content">{children}</div>
-      {message && <span className="message">{message}</span>}
-    </div>
-  ),
-  Tip: ({ children, ...rest }: ComponentProps<'div'>) => (
-    <div {...rest} className="hint tip">
-      <span className="icon">
-        <Lightbulb size="1em" />
-      </span>
-      {children}
-    </div>
-  ),
-  Warn: ({ children, ...rest }: ComponentProps<'div'>) => (
-    <div {...rest} className="hint warn">
-      <span className="icon">
-        <Warning size="1em" />
-      </span>
-      {children}
-    </div>
-  ),
-  Error: ({ children, ...rest }: ComponentProps<'div'>) => (
-    <div {...rest} className="hint error">
-      <span className="icon">
-        <WarningOctagon size="1em" />
-      </span>
-      {children}
-    </div>
-  ),
-  blockquote: ({ children, ...rest }: ComponentProps<'blockquote'>) => (
-    <blockquote {...rest}>
-      <span className="icon">
-        <BiSolidQuoteAltRight size="1em" />
-      </span>
-      {children}
-    </blockquote>
-  ),
-  Spoiler,
-  Ruby,
-  table: ({ children, ...rest }: ComponentProps<'table'>) => (
-    <div className="my-3 overflow-x-auto">
-      <table {...rest}>{children}</table>
-    </div>
-  )
-}
-
 export default function Page({ params }: Props) {
   const post = posts.find(post => post.slug === params.slug)
 
@@ -170,16 +78,16 @@ export default function Page({ params }: Props) {
   return (
     <div className="content-container m-auto">
       <div className="relative">
-        <aside className="absolute right-full top-0 z-10 mr-[calc((100vw-78rem)/4)] hidden h-full w-52 min-[1320px]:block">
-          <div className="sticky top-20">
-            <Toc toc={post.toc} mode="sidebar" />
-          </div>
-        </aside>
+        <PostNavigation toc={post.toc} />
         <div className="flex flex-col gap-4 leading-6">
           <div className="blog-meta-row">
             <span className="inline-flex items-center gap-2">
               <span className="blog-meta-item">
-                <CalendarBlank size={18} className="shrink-0" />
+                <CalendarBlank
+                  aria-hidden="true"
+                  size={18}
+                  className="shrink-0"
+                />
                 <Date dateString={post.date} />
               </span>
               {post.lastUpdate && (
@@ -187,14 +95,18 @@ export default function Page({ params }: Props) {
                   className="inline-flex items-center gap-1"
                   title="Last Update"
                 >
-                  <ArrowsHorizontal size={16} className="shrink-0" />
+                  <ArrowsHorizontal
+                    aria-hidden="true"
+                    size={16}
+                    className="shrink-0"
+                  />
                   <span>updated</span>
                   <Date dateString={post.lastUpdate} />
                 </span>
               )}
             </span>
             <span className="blog-meta-item">
-              <Folder size={18} className="shrink-0" />
+              <Folder aria-hidden="true" size={18} className="shrink-0" />
               <Link
                 href={`/blog/categories/${slug(post.category)}`}
                 className="text-neutral-500 no-underline transition-colors duration-200 ease-out hover:text-neutral-700 active:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-300 dark:active:text-neutral-100"
@@ -204,7 +116,7 @@ export default function Page({ params }: Props) {
             </span>
             {post.tags.length > 0 && (
               <span className="blog-meta-item">
-                <Tag size={18} className="shrink-0" />
+                <Tag aria-hidden="true" size={18} className="shrink-0" />
                 <span className="blog-meta-taxonomy">
                   {post.tags.map((tag, index) => (
                     <React.Fragment key={tag}>
@@ -228,7 +140,7 @@ export default function Page({ params }: Props) {
               </span>
             )}
             <span className="blog-meta-item">
-              <Eye size={18} className="shrink-0" />
+              <Eye aria-hidden="true" size={18} className="shrink-0" />
               <span>{Math.ceil(post.metadata.readingTime)} minutes</span>
             </span>
           </div>
@@ -250,7 +162,7 @@ export default function Page({ params }: Props) {
           aria-hidden="true"
         />
         <div className="post-content">
-          <MDXContent code={post.content} components={mdxComponents} />
+          <BlogMdxContent code={post.content} components={postMdxComponents} />
         </div>
         <div className="blog-footer-note blog-footer-note-near-outro">
           <div className="blog-footer-note-meta">
@@ -261,7 +173,7 @@ export default function Page({ params }: Props) {
           <a
             href="https://github.com/andatoshiki/toshiki-home-next/blob/master/LICENSE"
             className="blog-footer-note-link"
-            rel="license"
+            rel="license noopener noreferrer"
             target="_blank"
           >
             license
@@ -273,14 +185,8 @@ export default function Page({ params }: Props) {
         />
       </div>
       <div className="pt-12">
-        <ArtalkComment
-          pageTitle={post.title}
-          pagePath={post.slug}
-          // server, site are optional and have defaults
-        />
+        <LazyArtalkComment pageTitle={post.title} pagePath={post.slug} />
       </div>
-      <TopButton />
-      <TocDrawer toc={post.toc} />
     </div>
   )
 }
