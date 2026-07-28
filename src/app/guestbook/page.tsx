@@ -1,4 +1,3 @@
-import { GiscusComments } from '~/components/giscus-comments'
 import { Title } from '~/components/title'
 import { Metadata } from 'next'
 import { ArtalkComment } from '~/components/ui/artalk/artalk-comment'
@@ -33,15 +32,6 @@ export default function Page() {
         </p>
       </div>
       <div>
-        {/* <GiscusComments
-          category="Show and tell"
-          categoryId="MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMyNzg0MzYw"
-          reactionsEnabled="0"
-          inputPosition="top"
-          mapping="specific"
-          term="Guestbook"
-          transparentDark={false}
-        /> */}
         <ArtalkComment
           pageTitle="Guestbook"
           pagePath="/guestbook"

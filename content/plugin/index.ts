@@ -5,13 +5,11 @@ import remarkMath from 'remark-math'
 
 import rehypeSlug from 'rehype-slug'
 import rehypeKatex from 'rehype-katex'
-// import { rehypeGithubAlerts } from 'rehype-github-alerts'
 import rehypeCallouts from 'rehype-callouts'
 import rehypeAutolinkHeadings from './rehype-autolink-headings'
 import rehypeShiftHeadings from './rehype-shift-heading'
 import rehypePrettyCode from './rehype-pretty-code'
 import rehypeStringify from 'rehype-stringify'
-// import rehypeShikiPlugin from './rehype-shiki'
 
 type NodeChildren = {
   type: string
@@ -58,17 +56,11 @@ export const rehypePlugins = [
         errorCode === 'unknownSymbol' ? 'ignore' : 'warn'
     }
   ],
-  // rehypeGithubAlerts,
   rehypeCallouts,
   rehypeAutolinkHeadings,
   rehypeShiftHeadings,
-
-  // Option 1: Use rehypePrettyCode (comment out rehypeShiki below if using this)
   saveCodeTagContentToRaw,
   rehypePrettyCode,
   addRawCodeToPrettyCodeFragment,
-
-  // Option 2: Use rehypeShiki (now with full JS/TS support restored)
-  // rehypeShikiPlugin,
   rehypeStringify
 ]
