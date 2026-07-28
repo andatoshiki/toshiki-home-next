@@ -15,6 +15,7 @@
     "build": "run-s build:*",
     "start": "next start",
     "lint": "next lint",
+    "test:til-headings": "tsx --test content/plugin/remark-validate-til-headings.test.ts src/components/til-heading-levels.test.ts",
     "bump-tag": "tsx tools/bump-tag-version.ts",
     "new": "tsx tools/new-content.ts",
     "format": "prettier . --write",

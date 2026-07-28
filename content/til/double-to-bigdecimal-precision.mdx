@@ -24,7 +24,7 @@ System.out.println(b2);
 - **Problem**: `0.48` cannot be represented exactly as a binary floating-point number.
 - **Result**: Using the constructor with `double` introduces tiny rounding errors.
 
-## 1: Use `valueOf`
+# 1: Use `valueOf`
 
 To avoid this, always use the official `valueOf` method:
 
@@ -36,7 +36,7 @@ public static BigDecimal valueOf(double val) {
 
 This first converts the `double` into a `String`, then constructs a `BigDecimal` from that string, preserving precision.
 
-## 2: Use String Constructor
+# 2: Use String Constructor
 
 You can also directly pass a string:
 
@@ -46,7 +46,7 @@ final BigDecimal b3 = new BigDecimal("0.48");
 System.out.println(b3);
 ```
 
-## Summary
+# Summary
 
 - `new BigDecimal(double)` → precision loss.
 - `BigDecimal.valueOf(double)` → safe.

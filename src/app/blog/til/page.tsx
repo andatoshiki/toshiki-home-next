@@ -16,9 +16,7 @@ export default function Page() {
   return (
     <div className="content-container m-auto space-y-4">
       <Title text="Today I Learned" />
-      <div className="flex flex-col gap-3">
-        <TilList tils={tils} />
-      </div>
+      <TilList tils={tils} />
     </div>
   )
 }

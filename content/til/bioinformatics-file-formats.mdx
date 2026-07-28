@@ -11,7 +11,7 @@ tags:
 
 In bioinformatics analysis, you often encounter many different file formats. Beyond raw sequencing data (`fastq`), you also need reference genome files (`fasta`) and gene annotation files (`gtf`). During processing, many intermediate files are generated such as `bed`, `bed12`, `sam`, `bam`, `wig`, `bigwig`, and `bedgraph`. Understanding what each column means helps decide which information to extract for the next analysis step.
 
-## 1: FASTQ Files
+# 1: FASTQ Files
 
 - **Purpose**: Stores sequencing data, usually compressed as `.fq.gz`.
 - **Format**: Every 4 lines represent one read:
@@ -33,7 +33,7 @@ In bioinformatics analysis, you often encounter many different file formats. Bey
   zcat file.fq.gz | awk '{if(FNR%4==0) base+=length}END{print base/10^9,"G";}'
   ```
 
-## 2: FASTA Files
+# 2: FASTA Files
 
 - Stores DNA or protein sequences.
 - Header lines begin with `>`. Sequences may span multiple lines.
@@ -46,7 +46,7 @@ Example:
 NNNNN...
 ```
 
-## 3: GFF and GTF Annotation Files
+# 3: GFF and GTF Annotation Files
 
 - **GFF** = General Feature Format, **GTF** = Gene Transfer Format.
 - Both have 9 columns describing genome features.
@@ -56,13 +56,13 @@ NNNNN...
   gunzip Homo_sapiens.GRCh38.gtf.gz -c | grep -v '^#' | sed '/^[^chr]/ s/^/chr/' > GRCh38.gtf
   ```
 
-## 4: BED Files
+# 4: BED Files
 
 - Represent genomic regions (e.g., peaks, gene positions).
 - **3 required columns**: chrom, chromStart (0-based), chromEnd.
 - **Optional columns**: name, score, strand, thickStart, thickEnd, color, exon count, etc.
 
-## 5: SAM and BAM Files
+# 5: SAM and BAM Files
 
 - **SAM**: Text format for sequence alignment results.
 - **BAM**: Binary compressed SAM for storage efficiency.
@@ -81,7 +81,7 @@ NNNNN...
 
 - **Flag values**: Second column encodes read properties (paired, mapped, strand, etc.) using bitwise sums. Tools like [samformat.info](https://www.samformat.info/sam-format-flag) help decode them.
 
-## 6: WIG, BigWig, and BedGraph Files
+# 6: WIG, BigWig, and BedGraph Files
 
 - Store coverage or signal intensity data for visualization.
 - **wig**: Text format showing density or probability scores.

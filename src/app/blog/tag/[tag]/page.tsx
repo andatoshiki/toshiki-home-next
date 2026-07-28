@@ -47,7 +47,7 @@ export default function Page({ params }: Props) {
       {tilList.length > 0 && (
         <div className="space-y-4">
           <Title as="h2" text="T.I.L." />
-          <TilList tils={tilList} />
+          <TilList tils={tilList} titleHeadingLevel={3} />
         </div>
       )}
     </div>

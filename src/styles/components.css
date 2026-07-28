@@ -402,8 +402,6 @@
   }
 
   .til-content {
-    h1,
-    h2,
     h3,
     h4,
     h5,
@@ -411,24 +409,29 @@
       @apply m-0;
     }
 
-    h2 {
-      @apply pb-1 text-2xl underline-offset-2;
-    }
     h3 {
       @apply pb-0 text-xl underline-offset-2;
     }
     h4 {
-      @apply text-xl;
+      @apply text-lg md:text-xl;
     }
     h5 {
-      @apply text-lg;
+      @apply text-base md:text-lg;
     }
     h6 {
       @apply text-base;
     }
 
     p {
-      @apply my-4 border-red-600 last:mb-0 [&:nth-child(2)]:mt-0;
+      @apply my-4 last:mb-0;
+    }
+
+    > :first-child {
+      @apply mt-0;
+    }
+
+    > :is(h3, h4, h5, h6):first-child + p {
+      @apply mt-0;
     }
   }
 }
