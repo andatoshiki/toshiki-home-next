@@ -1,0 +1,52 @@
+.journey-map .mapboxgl-canvas {
+  touch-action: none !important;
+}
+
+.journey-map .mapboxgl-popup-content {
+  border-radius: 8px !important;
+  background: #fff !important;
+  padding: 0 !important;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.15) !important;
+}
+
+.dark .journey-map .mapboxgl-popup-content {
+  background: #262626 !important;
+}
+
+.journey-map .mapboxgl-popup-tip {
+  border-top-color: #fff !important;
+}
+
+.dark .journey-map .mapboxgl-popup-tip {
+  border-top-color: #262626 !important;
+}
+
+.journey-popup-content {
+  padding: 6px 10px;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+.journey-popup-title {
+  color: #171717;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dark .journey-popup-title {
+  color: #f5f5f5;
+}
+
+.journey-popup-description {
+  max-width: 180px;
+  margin-top: 2px;
+  color: #525252;
+  font-size: 11px;
+}
+
+.dark .journey-popup-description {
+  color: #a3a3a3;
+}
