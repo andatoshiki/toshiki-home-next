@@ -43,3 +43,7 @@ yarn-error.log*
 .velite
 public/static
 docs/*
+
+# generated typescript files
+*.tsbuildinfo
+next-env.d.ts
