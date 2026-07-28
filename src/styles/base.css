@@ -2,11 +2,21 @@
 
 @layer base {
   html {
-    @apply scrollbar-track-transparent scrollbar-thumb-neutral-700 scrollbar-thumb-rounded-lg;
+    --scrollbar-size: 3px;
+    @apply scrollbar-track-transparent scrollbar-thumb-neutral-400 scrollbar-thumb-rounded-lg;
+  }
+
+  html.dark {
+    @apply scrollbar-thumb-neutral-700;
   }
 
   * {
     @apply scrollbar-thin;
+  }
+
+  *::-webkit-scrollbar {
+    width: var(--scrollbar-size) !important;
+    height: var(--scrollbar-size) !important;
   }
 
   body {
