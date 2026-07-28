@@ -1,7 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
-import type { MediaListEntry } from '../_components/media/types'
+import { useMemo } from 'react'
 import type { MediaType } from '../_components/media/media-type-tabs'
 import type { StatusFilter } from '../_components/media/status-tabs'
 import { getLocalMediaList } from '../_components/media/local-data'
@@ -12,29 +11,13 @@ export function useMediaLibrary(
   currentPage: number,
   activeStatus: StatusFilter
 ) {
-  const [entries, setEntries] = useState<MediaListEntry[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    if (activeType === 'GAMES' || activeType === 'BOOKS') return
-
-    setLoading(true)
-    setError(null)
-    try {
-      const data = getLocalMediaList(activeType)
-      setEntries(data)
-      setLoading(false)
-      if (data.length === 0) {
-        setError(
-          `No local ${activeType.toLowerCase()} data found. Run 'npx tsx tools/sync-anilist.ts --${activeType.toLowerCase()}' to sync.`
-        )
-      }
-    } catch {
-      setError(`Failed to load local ${activeType.toLowerCase()} data`)
-      setLoading(false)
-    }
-  }, [activeType])
+  const entries = useMemo(
+    () =>
+      activeType === 'ANIME' || activeType === 'MANGA'
+        ? getLocalMediaList(activeType)
+        : [],
+    [activeType]
+  )
 
   const statusCounts = useMemo(() => {
     const counts: Record<StatusFilter, number> = {
@@ -70,8 +53,6 @@ export function useMediaLibrary(
 
   return {
     entries,
-    loading,
-    error,
     statusCounts,
     filteredEntries,
     paginatedEntries,

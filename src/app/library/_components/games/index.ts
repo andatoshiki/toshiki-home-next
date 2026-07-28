@@ -1,7 +1,0 @@
-export * from './types'
-export * from './game-card'
-export * from './game-grid'
-export * from './steam-profile-card'
-export * from './game-sort-tabs'
-export * from './game-filter-tabs'
-export * from './local-data'

@@ -1,30 +1,5 @@
 // Types for Hardcover books data
 
-export interface HardcoverProfile {
-  userId: number
-  username: string
-  name?: string
-  bio?: string
-  avatarUrl?: string
-  profileUrl: string
-  location?: string
-  link?: string
-  booksCount: number
-  followersCount: number
-  followingCount: number
-  createdAt: string
-  // Status counts
-  wantToReadCount: number
-  currentlyReadingCount: number
-  readCount: number
-  didNotFinishCount: number
-  ownedCount: number
-  // Stats
-  averageRating?: number
-  totalPagesRead: number
-  lastUpdated: number
-}
-
 export interface BookEntry {
   // Book identification
   bookId: number
@@ -100,10 +75,4 @@ export type BookStatusFilter =
   | 'DID_NOT_FINISH'
   | 'OWNED'
 
-export type BookSortOption =
-  | 'recent'
-  | 'rating'
-  | 'title'
-  | 'dateAdded'
-  | 'pages'
-  | 'communityRating'
+export type BookSortOption = 'recent' | 'rating' | 'dateAdded'

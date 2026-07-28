@@ -1,9 +1,7 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 import type {
-  GameEntry,
-  SteamProfile,
   GameFilterOption,
   GameSortOption
 } from '../_components/games/types'
@@ -13,34 +11,14 @@ import {
 } from '../_components/games/local-data'
 import { clampPage, GAMES_PER_PAGE } from './use-library-query-state'
 
+const games = getLocalGamesList()
+const profile = getLocalSteamProfile()
+
 export function useGamesLibrary(
   currentPage: number,
   activeFilter: GameFilterOption,
   activeSort: GameSortOption
 ) {
-  const [games, setGames] = useState<GameEntry[]>([])
-  const [profile, setProfile] = useState<SteamProfile | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    try {
-      const localGames = getLocalGamesList()
-      const localProfile = getLocalSteamProfile()
-      setGames(localGames)
-      setProfile(localProfile)
-      setLoading(false)
-      if (localGames.length === 0) {
-        setError(
-          "No local games data found. Run 'npx tsx tools/sync-steam.ts' to sync."
-        )
-      }
-    } catch {
-      setError('Failed to load local games data')
-      setLoading(false)
-    }
-  }, [])
-
   const filterCounts = useMemo(
     () => ({
       all: games.length,
@@ -89,8 +67,6 @@ export function useGamesLibrary(
   return {
     games,
     profile,
-    loading,
-    error,
     filterCounts,
     filteredGames,
     paginatedGames,

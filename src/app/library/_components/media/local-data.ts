@@ -1,11 +1,5 @@
-// This file exports local anime/manga data from Velite collections
-// Import this when ANIME_DATA_IS_LOCAL is set to true
-
-// Note: This will only work after running `npx velite` to generate the data
-// and after syncing data with `npx ts-node tools/sync-anilist.ts --all`
-
 import { animeList, mangaList } from '#content'
-import { MediaListEntry, Media } from './types'
+import type { MediaListEntry, Media } from './types'
 
 // Transform Velite data to match MediaListEntry interface
 function transformVeliteEntry(
@@ -42,29 +36,15 @@ function transformVeliteEntry(
 }
 
 export function getLocalAnimeList(): MediaListEntry[] {
-  try {
-    return animeList
-      .map(transformVeliteEntry)
-      .sort((a, b) => b.updatedAt - a.updatedAt)
-  } catch {
-    console.warn(
-      'No local anime data found. Run `npx ts-node tools/sync-anilist.ts --anime` to sync.'
-    )
-    return []
-  }
+  return animeList
+    .map(transformVeliteEntry)
+    .sort((a, b) => b.updatedAt - a.updatedAt)
 }
 
 export function getLocalMangaList(): MediaListEntry[] {
-  try {
-    return mangaList
-      .map(transformVeliteEntry)
-      .sort((a, b) => b.updatedAt - a.updatedAt)
-  } catch {
-    console.warn(
-      'No local manga data found. Run `npx ts-node tools/sync-anilist.ts --manga` to sync.'
-    )
-    return []
-  }
+  return mangaList
+    .map(transformVeliteEntry)
+    .sort((a, b) => b.updatedAt - a.updatedAt)
 }
 
 export function getLocalMediaList(type: 'ANIME' | 'MANGA'): MediaListEntry[] {
