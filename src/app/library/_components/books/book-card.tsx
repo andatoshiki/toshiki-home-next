@@ -6,6 +6,7 @@ import {
   Star,
   BookOpen,
   BookBookmark,
+  Books,
   Heart,
   XCircle
 } from '@phosphor-icons/react'
@@ -18,8 +19,11 @@ const STATUS_ICONS: Record<string, React.ReactNode> = {
   CURRENTLY_READING: <BookOpen className="h-3 w-3" weight="fill" />,
   WANT_TO_READ: <BookBookmark className="h-3 w-3" weight="fill" />,
   READ: <Heart className="h-3 w-3" weight="fill" />,
-  DID_NOT_FINISH: <XCircle className="h-3 w-3" weight="fill" />
+  DID_NOT_FINISH: <XCircle className="h-3 w-3" weight="fill" />,
+  OWNED: <Books className="h-3 w-3" weight="fill" />
 }
+
+const DEFAULT_STATUS_ICON = <BookOpen className="h-3 w-3" weight="fill" />
 
 const STATUS_COLORS: Record<string, string> = {
   CURRENTLY_READING: 'bg-blue-600',
@@ -29,7 +33,17 @@ const STATUS_COLORS: Record<string, string> = {
   OWNED: 'bg-purple-600'
 }
 
+const STATUS_LABELS: Record<string, string> = {
+  CURRENTLY_READING: 'Reading',
+  WANT_TO_READ: 'Want to Read',
+  READ: 'Read',
+  DID_NOT_FINISH: 'DNF',
+  OWNED: 'Owned'
+}
+
 export function BookCard({ book }: BookCardProps) {
+  const statusLabel = STATUS_LABELS[book.status] || book.statusDisplay
+
   return (
     <a
       href={book.hardcoverUrl}
@@ -57,21 +71,31 @@ export function BookCard({ book }: BookCardProps) {
           </div>
         )}
 
-        {/* Status Badge */}
-        <div
-          className={`absolute left-2 top-2 flex items-center gap-1 rounded px-1.5 py-0.5 text-[10px] font-semibold text-white ${STATUS_COLORS[book.status] || 'bg-neutral-600'}`}
-        >
-          {STATUS_ICONS[book.status]}
-          <span className="hidden sm:inline">{book.statusDisplay}</span>
-        </div>
-
-        {/* User Rating Badge */}
-        {book.rating && (
-          <div className="absolute right-2 top-2 flex items-center gap-0.5 rounded bg-black/70 px-1.5 py-0.5 text-xs font-bold text-white">
-            <Star className="h-3 w-3 text-yellow-400" weight="fill" />
-            {book.rating}
+        {/* Cover Badges */}
+        <div className="absolute inset-x-2 top-2 z-10 flex items-start justify-between gap-1">
+          <div
+            className={`flex h-5 min-w-0 max-w-[70%] items-center gap-1 overflow-hidden whitespace-nowrap rounded-full px-2 text-[10px] font-semibold leading-none text-white shadow-sm ${STATUS_COLORS[book.status] || 'bg-neutral-600'}`}
+          >
+            <span className="flex shrink-0" aria-hidden="true">
+              {STATUS_ICONS[book.status] || DEFAULT_STATUS_ICON}
+            </span>
+            <span className="sr-only">{book.statusDisplay}</span>
+            <span
+              aria-hidden="true"
+              className="hidden min-w-0 truncate sm:block"
+            >
+              {statusLabel}
+            </span>
           </div>
-        )}
+
+          {/* User Rating Badge */}
+          {book.rating && (
+            <div className="flex h-5 shrink-0 items-center gap-0.5 rounded-full bg-black/70 px-2 text-[10px] font-bold leading-none text-white shadow-sm">
+              <Star className="h-3 w-3 text-yellow-400" weight="fill" />
+              {book.rating}
+            </div>
+          )}
+        </div>
 
         {/* Starred indicator */}
         {book.starred && (
