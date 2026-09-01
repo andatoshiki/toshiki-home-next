@@ -1,13 +1,8 @@
-'use client'
+import { Desktop, Globe, Keyboard } from '@phosphor-icons/react'
+import type { ElementType } from 'react'
+import type { UsesEntry } from '#content'
 
-import {
-  Monitor,
-  Keyboard,
-  Monitor as Peripherals,
-  Globe
-} from '@phosphor-icons/react'
-
-export type UsesType = 'software' | 'hardware' | 'peripherals' | 'browser'
+export type UsesType = UsesEntry['type']
 
 interface UsesTypeTabsProps {
   activeType: UsesType
@@ -17,10 +12,10 @@ interface UsesTypeTabsProps {
 const tabs: {
   type: UsesType
   label: string
-  icon: React.ElementType
+  icon: ElementType
 }[] = [
-  { type: 'software', label: 'Software', icon: Monitor },
-  { type: 'hardware', label: 'Hardware', icon: Monitor },
+  { type: 'software', label: 'Software', icon: Desktop },
+  { type: 'hardware', label: 'Hardware', icon: Desktop },
   { type: 'peripherals', label: 'Peripherals', icon: Keyboard },
   { type: 'browser', label: 'Browsers', icon: Globe }
 ]
@@ -35,6 +30,8 @@ export function UsesTypeTabs({ activeType, onTypeChange }: UsesTypeTabsProps) {
         return (
           <button
             key={tab.type}
+            type="button"
+            aria-pressed={isActive}
             onClick={() => onTypeChange(tab.type)}
             className={`flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all ${
               isActive

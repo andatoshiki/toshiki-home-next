@@ -1,10 +1,8 @@
-'use client'
-
 import Image from 'next/image'
-import Link from 'next/link'
 import * as Dialog from '@radix-ui/react-dialog'
-import { ArrowSquareOut, X } from '@phosphor-icons/react'
-import { UsesEntry } from '.velite'
+import { X } from '@phosphor-icons/react'
+import type { UsesEntry } from '#content'
+import { LinkV2 } from '~/components/ui/link-v2'
 
 interface SoftwareModalProps {
   item: UsesEntry | null
@@ -23,12 +21,11 @@ export function SoftwareModal({
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/60 backdrop-blur-md duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
-        <Dialog.Content className="fixed left-[50%] top-[50%] z-50 w-[calc(100%-2rem)] max-w-sm translate-x-[-50%] translate-y-[-50%] duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]">
-          {/* Card */}
+        <Dialog.Content className="fixed left-[50%] top-[50%] z-50 w-[calc(100%-2rem)] max-w-lg translate-x-[-50%] translate-y-[-50%] duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]">
           <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-50 shadow-xl dark:border-neutral-800 dark:bg-neutral-900">
-            {/* Close Button */}
             <Dialog.Close asChild>
               <button
+                type="button"
                 className="absolute right-3 top-3 z-10 rounded-full p-1.5 text-neutral-500 transition-colors hover:bg-neutral-200 hover:text-neutral-700 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
                 aria-label="Close"
               >
@@ -36,55 +33,61 @@ export function SoftwareModal({
               </button>
             </Dialog.Close>
 
-            {/* Content */}
-            <div className="flex flex-col items-center p-6 pt-8 text-center">
-              {/* App Icon */}
-              <div className="relative mb-4 h-20 w-20 overflow-hidden rounded-[18px] border border-neutral-200 shadow-sm dark:border-neutral-700">
+            <div className="flex flex-col gap-4 p-5 sm:flex-row sm:gap-5">
+              <div className="relative mx-auto h-28 w-28 flex-shrink-0 overflow-hidden rounded-2xl sm:mx-0 sm:h-36 sm:w-36 md:h-40 md:w-40">
                 <Image
                   src={item.image}
                   alt={item.name}
                   fill
                   className="object-cover"
-                  sizes="80px"
+                  sizes="160px"
                 />
               </div>
 
-              {/* App Name */}
-              <Dialog.Title className="mb-1 text-lg font-semibold text-neutral-900 dark:text-neutral-100">
-                {item.name}
-              </Dialog.Title>
+              <div className="flex min-w-0 flex-1 flex-col gap-3 sm:justify-between sm:py-0.5">
+                <Dialog.Title asChild>
+                  <div className="flex justify-center sm:justify-start">
+                    {item.url ? (
+                      <LinkV2
+                        href={item.url}
+                        label={item.name}
+                        className="text-lg font-semibold text-neutral-900 dark:text-neutral-100"
+                      />
+                    ) : (
+                      <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+                        {item.name}
+                      </h2>
+                    )}
+                  </div>
+                </Dialog.Title>
 
-              {/* Tags */}
-              {item.tags && item.tags.length > 0 && (
-                <div className="mb-3 flex flex-wrap justify-center gap-1.5">
-                  {item.tags.map(tag => (
-                    <span
-                      key={tag}
-                      className="rounded-full bg-neutral-100 px-2 py-0.5 text-xs text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div className="space-y-0.5 text-center sm:text-left">
+                  <span className="text-[10px] font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-500">
+                    Description
+                  </span>
+                  <Dialog.Description className="line-clamp-2 text-sm leading-snug text-neutral-600 dark:text-neutral-400">
+                    {item.description}
+                  </Dialog.Description>
                 </div>
-              )}
 
-              {/* Description */}
-              <Dialog.Description className="mb-5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
-                {item.description}
-              </Dialog.Description>
-
-              {/* Action Button */}
-              {item.url && (
-                <Link
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-neutral-200 bg-white px-5 py-2.5 text-sm font-medium text-neutral-900 transition-colors hover:border-neutral-300 hover:bg-neutral-100 active:scale-[0.98] dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 dark:hover:border-neutral-600 dark:hover:bg-neutral-700"
-                >
-                  <ArrowSquareOut size={16} weight="bold" />
-                  Open Website
-                </Link>
-              )}
+                {item.tags.length > 0 && (
+                  <div className="space-y-0.5 text-center sm:text-left">
+                    <span className="text-[10px] font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-500">
+                      Tags
+                    </span>
+                    <div className="flex flex-wrap justify-center gap-1 sm:justify-start">
+                      {item.tags.map(tag => (
+                        <span
+                          key={tag}
+                          className="rounded-full bg-neutral-100 px-2 py-0.5 text-xs text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </Dialog.Content>

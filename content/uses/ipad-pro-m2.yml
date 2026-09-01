@@ -1,0 +1,11 @@
+id: ipad-pro-m2
+name: iPad Pro 12.9-inch M2
+type: hardware
+description: Apple's 12.9-inch, 6th-generation M2 iPad Pro, measuring 280.6 × 214.9 × 6.4 mm, with a Liquid Retina XDR display and Apple Pencil support.
+image: https://cdn.tosh1ki.de/assets/images/20260620013237.png
+url: https://support.apple.com/en-us/111841
+tags:
+  - tablet
+  - apple
+  - mobile
+featured: false
