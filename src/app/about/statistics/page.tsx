@@ -7,7 +7,6 @@ import {
   Timer
 } from '@phosphor-icons/react/dist/ssr'
 import { Title } from '~/components/title'
-import { GithubDataProvider } from '~/components/providers/github-data-provider'
 
 import { GithubDashboard } from './_components/github-dashboard'
 import { LastFmDashboard } from './_components/lastfm-dashboard'
@@ -41,9 +40,7 @@ export default function Page() {
           <h2>Github</h2>
           <GithubLogo size="1em" weight="duotone" />
         </div>
-        <GithubDataProvider includeActivity>
-          <GithubDashboard />
-        </GithubDataProvider>
+        <GithubDashboard />
       </div>
       <div className="space-y-5">
         <div className="flex w-full items-center justify-center gap-2 text-3xl font-semibold text-[#f89f1b] lg:justify-start">

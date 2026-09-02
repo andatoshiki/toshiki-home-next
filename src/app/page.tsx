@@ -2,7 +2,6 @@ import { AboutMe } from './_components/about-me'
 import { Grid } from './_components/grid'
 import { MainTitle } from './_components/main-title'
 import { ExploreButton } from './_components/explore-button'
-import { GithubDataProvider } from '~/components/providers/github-data-provider'
 import { BlogHeatmap } from '~/components/heatmap/heatmap'
 import { PostList } from '~/components/post-list'
 import { HeroPagesCards } from '~/components/ui/hero-cards'
@@ -26,11 +25,9 @@ export default function Page() {
         <HeroTitle className="pb-3">ME</HeroTitle>
         <HeroMeCards />
       </div>
-      <GithubDataProvider>
-        <AboutMe />
-        {/* <GalleryShowcase /> */}
-        <Grid />
-      </GithubDataProvider>
+      <AboutMe />
+      {/* <GalleryShowcase /> */}
+      <Grid />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import { CalendarBlank } from '@phosphor-icons/react/dist/ssr'
-import type { GithubContributionCalendarDay } from '~/lib/api/github'
+import type { GithubContributionCalendarDay } from '~/lib/api/github/types'
 import { GithubContributionCalendar } from '~/components/heatmap/github-contribution-calendar'
 
 export function ContributionCalendar({

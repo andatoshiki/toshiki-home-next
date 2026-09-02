@@ -13,7 +13,7 @@ import type { ReactNode } from 'react'
 import { GithubLogo } from '~/app/about/sections/contact/icons'
 import { Date } from '~/components/date'
 import { useGithubData } from '~/hooks/use-github-data'
-import type { GithubRepository } from '~/lib/api/github'
+import type { GithubRepository } from '~/lib/api/github/types'
 
 const preferredRepositoryName = 'toshiki-home-next'
 

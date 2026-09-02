@@ -1,66 +1,11 @@
 import { eachDayOfInterval, startOfDay, subDays } from 'date-fns'
-
-export interface GithubUserData {
-  login: string
-  followers: number
-  public_repos: number
-  name?: string
-  avatar_url?: string
-}
-
-export interface GithubFollower {
-  login: string
-  avatar_url: string
-  html_url: string
-}
-
-export interface GithubRepository {
-  name: string
-  full_name: string
-  html_url: string
-  description?: string | null
-  homepage?: string | null
-  language: string | null
-  stargazers_count: number
-  forks_count: number
-  license?: {
-    spdx_id?: string | null
-  } | null
-  fork: boolean
-  created_at: string
-  updated_at: string
-}
-
-export interface GithubContributionCalendarDay {
-  date: string
-  count: number
-  level: number
-}
-
-export interface GithubPublicSnapshot {
-  user: GithubUserData
-  followers: GithubFollower[]
-  repositories: GithubRepository[]
-  contributions: GithubContributionCalendarDay[]
-  totalContributionsLastYear: number
-}
-
-export interface GithubContributionActivityDay {
-  date: string
-  shortDate: string
-  contributionCount: number
-}
-
-export interface GithubPublicMetrics {
-  username: string
-  followersCount: number
-  repositoryCount: number
-  stars: number
-  languages: number
-  contributionCount: number
-  contributionSeries: GithubContributionActivityDay[]
-  totalContributionsLastYear: number
-}
+import type {
+  GithubContributionActivityDay,
+  GithubContributionCalendarDay,
+  GithubPublicMetrics,
+  GithubPublicSnapshot,
+  GithubRepository
+} from './types'
 
 export const githubContributionWindowDays = 30
 
@@ -89,9 +34,10 @@ function getGithubLanguageCount(repositories: GithubRepository[]) {
 
 export function getGithubContributionSeries(
   contributions: GithubContributionCalendarDay[],
-  days = githubContributionWindowDays
+  days = githubContributionWindowDays,
+  now = new Date()
 ): GithubContributionActivityDay[] {
-  const end = startOfDay(new Date())
+  const end = startOfDay(now)
   const start = subDays(end, Math.max(days - 1, 0))
   const counts = new Map<string, number>()
 
@@ -134,11 +80,13 @@ export function getGithubContributionSeriesTotal(
 }
 
 export function getGithubPublicMetrics(
-  snapshot: GithubPublicSnapshot
+  snapshot: GithubPublicSnapshot,
+  now = new Date()
 ): GithubPublicMetrics {
   const contributionSeries = getGithubContributionSeries(
     snapshot.contributions,
-    githubContributionWindowDays
+    githubContributionWindowDays,
+    now
   )
 
   return {

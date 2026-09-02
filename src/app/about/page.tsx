@@ -6,7 +6,6 @@ import { Knowledge } from './sections/knowledge'
 import { StatisticsGrid } from './sections/statistics'
 import { Experience } from './sections/experience'
 import { Educational } from './sections/educational'
-import { GithubDataProvider } from '~/components/providers/github-data-provider'
 
 import './style.css'
 
@@ -21,9 +20,7 @@ export default function Page() {
   return (
     <div className="content-container m-auto space-y-32">
       <AboutMe />
-      <GithubDataProvider>
-        <StatisticsGrid />
-      </GithubDataProvider>
+      <StatisticsGrid />
       <Knowledge />
       <Experience />
       <Educational />

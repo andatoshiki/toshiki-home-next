@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { cn } from '~/lib/utils'
-import type { GithubContributionCalendarDay } from '~/lib/api/github'
+import type { GithubContributionCalendarDay } from '~/lib/api/github/types'
 import {
   Tooltip,
   TooltipContent,
