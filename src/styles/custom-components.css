@@ -38,13 +38,6 @@ pre {
   fill: #222;
 }
 
-@media (min-width: 471px) and (max-width: 765px) {
-  .sm-center-balance {
-    flex-direction: column !important;
-    align-items: center !important;
-  }
-}
-
 /* :root {
   --popover: #fff;
   --popover-foreground: #222;

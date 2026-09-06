@@ -99,7 +99,6 @@
   },
   "devDependencies": {
     "@clack/prompts": "^0.7.0",
-    "@number-flow/react": "^0.5.10",
     "@tailwindcss/forms": "^0.5.3",
     "@types/mapbox-gl": "^3.4.1",
     "@types/mdx": "^2.0.3",
