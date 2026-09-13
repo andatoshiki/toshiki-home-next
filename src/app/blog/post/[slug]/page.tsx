@@ -79,7 +79,7 @@ export default function Page({ params }: Props) {
     <div className="content-container m-auto">
       <div className="relative">
         <PostNavigation toc={post.toc} />
-        <div className="flex flex-col gap-4 leading-6">
+        <div className="flex min-w-0 flex-col gap-4 leading-6">
           <div className="blog-meta-row">
             <span className="inline-flex items-center gap-2">
               <span className="blog-meta-item">
@@ -145,13 +145,13 @@ export default function Page({ params }: Props) {
             </span>
           </div>
           <div className="space-y-3">
-            <div>
-              <h1 className="text-left text-4xl font-bold md:text-left">
+            <div className="min-w-0">
+              <h1 className="text-left text-4xl font-bold [overflow-wrap:anywhere] md:text-left">
                 {post.title}
               </h1>
             </div>
             {post.description ? (
-              <p className="w-full text-[0.95rem] leading-relaxed text-neutral-500 dark:text-neutral-400">
+              <p className="w-full text-[0.95rem] leading-relaxed text-neutral-500 [overflow-wrap:anywhere] dark:text-neutral-400">
                 {post.description}
               </p>
             ) : null}

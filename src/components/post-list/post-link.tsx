@@ -58,9 +58,9 @@ export function PostLink({ post, hideYear = false, headingLevel = 2 }: Props) {
 
   if (post.status === 'planned') {
     return (
-      <section className="space-y-1">
-        <div className="flex items-center justify-between gap-2 md:justify-start">
-          <Heading className="text-xl font-bold text-neutral-600 dark:text-neutral-300">
+      <section className="min-w-0 space-y-1">
+        <div className="flex min-w-0 items-start justify-between gap-2 md:justify-start">
+          <Heading className="min-w-0 text-xl font-bold text-neutral-600 [overflow-wrap:anywhere] dark:text-neutral-300">
             {post.title}
           </Heading>
           <div className="flex items-center gap-2">
@@ -68,7 +68,7 @@ export function PostLink({ post, hideYear = false, headingLevel = 2 }: Props) {
             {showLanguageBadge && <LanguageBadge lang={rawLanguage!} />}
           </div>
         </div>
-        <span className="hidden text-neutral-600 dark:text-neutral-500 md:inline">
+        <span className="hidden text-neutral-600 [overflow-wrap:anywhere] dark:text-neutral-500 md:inline">
           {post.description}
         </span>
       </section>
@@ -98,13 +98,13 @@ export function PostLink({ post, hideYear = false, headingLevel = 2 }: Props) {
     return (
       <Link
         href={`/blog/post/${post.slug}`}
-        className="group flex flex-col justify-between gap-1 rounded-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-400 dark:focus-visible:ring-offset-neutral-950 md:flex-row md:gap-3"
+        className="group flex min-w-0 flex-col justify-between gap-1 rounded-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 focus-visible:ring-offset-2 dark:focus-visible:ring-neutral-400 dark:focus-visible:ring-offset-neutral-950 md:flex-row md:gap-3"
       >
-        <section>
-          <div className="flex items-center justify-between gap-2 md:justify-start">
-            <Heading className="flex items-center gap-1 text-lg font-bold text-neutral-600 transition-colors duration-200 group-hover:text-neutral-900 group-active:text-neutral-900 dark:text-neutral-400 dark:group-hover:text-neutral-300 group-active:dark:text-neutral-300 md:text-xl">
+        <section className="min-w-0">
+          <div className="flex min-w-0 items-start justify-between gap-2 md:justify-start">
+            <Heading className="flex min-w-0 items-start gap-1 text-lg font-bold text-neutral-600 transition-colors duration-200 [overflow-wrap:anywhere] group-hover:text-neutral-900 group-active:text-neutral-900 dark:text-neutral-400 dark:group-hover:text-neutral-300 group-active:dark:text-neutral-300 md:text-xl">
               {titleIcon && (
-                <span aria-hidden="true" className="text-xl">
+                <span aria-hidden="true" className="shrink-0 text-xl">
                   {titleIcon}
                 </span>
               )}
@@ -114,7 +114,7 @@ export function PostLink({ post, hideYear = false, headingLevel = 2 }: Props) {
             {post.status === 'draft' && !post.test && <DraftBadge />}
             {showLanguageBadge && <LanguageBadge lang={rawLanguage!} />}
           </div>
-          <span className="hidden items-center gap-3 text-neutral-600 transition-colors duration-200 group-hover:text-neutral-700 group-active:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 group-active:dark:text-neutral-400 md:inline-flex">
+          <span className="hidden min-w-0 items-center gap-3 text-neutral-600 transition-colors duration-200 [overflow-wrap:anywhere] group-hover:text-neutral-700 group-active:text-neutral-700 dark:text-neutral-500 dark:group-hover:text-neutral-400 group-active:dark:text-neutral-400 md:inline-flex">
             {post.description}
           </span>
         </section>

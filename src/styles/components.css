@@ -63,6 +63,7 @@
 
   .post-content {
     @apply min-w-0 leading-6 text-neutral-600 dark:text-neutral-400;
+    overflow-wrap: anywhere;
 
     kbd {
       @apply keyboard;
@@ -74,7 +75,7 @@
     h4,
     h5,
     h6 {
-      @apply mx-0 my-5 w-full scroll-mt-24 whitespace-pre-wrap font-medium md:w-max md:text-left;
+      @apply mx-0 my-5 w-full scroll-mt-24 whitespace-pre-wrap font-medium md:text-left;
 
       a {
         @apply text-neutral-900 hover:no-underline dark:text-neutral-100;
@@ -132,7 +133,7 @@
     }
 
     table {
-      @apply my-1 w-max border-separate border-spacing-0 overflow-hidden rounded-lg md:max-w-full;
+      @apply my-1 w-full max-w-full border-separate border-spacing-0 overflow-hidden rounded-lg;
 
       th,
       td {
@@ -170,7 +171,7 @@
     }
 
     blockquote {
-      @apply relative my-3 w-max max-w-full overflow-hidden px-4 py-1;
+      @apply relative my-3 w-full max-w-full overflow-hidden px-4 py-1;
       @apply border-l-[4px] border-l-neutral-300 dark:border-l-neutral-600;
       @apply text-base leading-tight;
 
@@ -305,7 +306,7 @@
     }
 
     div.hint {
-      @apply relative my-4 w-max max-w-full overflow-hidden rounded-lg p-3 backdrop-blur-lg;
+      @apply relative my-4 w-full max-w-full overflow-hidden rounded-lg p-3 backdrop-blur-lg;
 
       p {
         @apply m-0;
@@ -346,7 +347,7 @@
     }
 
     div.answer {
-      @apply relative my-4 w-max max-w-full overflow-hidden rounded-lg backdrop-blur-lg;
+      @apply relative my-4 w-full max-w-full overflow-hidden rounded-lg backdrop-blur-lg;
 
       .content {
         @apply p-4;
