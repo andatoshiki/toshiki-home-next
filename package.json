@@ -15,6 +15,7 @@
     "build": "run-s build:*",
     "start": "next start",
     "lint": "next lint",
+    "test:toc": "node --import tsx --test 'src/app/blog/post/[[]slug]/_lib/toc.test.ts'",
     "test:github": "tsx --test src/lib/api/github/*.test.ts",
     "test:til-headings": "tsx --test content/plugin/remark-validate-til-headings.test.ts src/components/til-heading-levels.test.ts",
     "bump-tag": "tsx tools/bump-tag-version.ts",

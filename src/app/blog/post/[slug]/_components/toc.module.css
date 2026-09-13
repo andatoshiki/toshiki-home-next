@@ -1,0 +1,157 @@
+.shell {
+  --toc-indent: calc(0.75rem + 1px);
+  --toc-border: theme(colors.neutral.200);
+  position: relative;
+  height: var(--toc-collapsed-height);
+  contain: layout style;
+}
+
+:global(.dark) .shell {
+  --toc-border: theme(colors.neutral.800);
+}
+
+.shell li + li {
+  margin-top: 0;
+}
+
+.skeleton,
+.expanded {
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  width: 100%;
+  transform-origin: top left;
+  backface-visibility: hidden;
+  will-change: opacity, transform;
+}
+
+.skeleton {
+  visibility: visible;
+  opacity: 1;
+  transition:
+    opacity 160ms cubic-bezier(0.2, 0, 0, 1),
+    visibility 0s;
+}
+
+.expanded {
+  z-index: 1;
+  top: var(--toc-expanded-offset);
+  max-height: var(--toc-expanded-max-height);
+  overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale3d(1, 0.94, 1);
+  transform-origin: left center;
+  pointer-events: none;
+  transition:
+    opacity 180ms cubic-bezier(0.2, 0, 0, 1),
+    transform 180ms cubic-bezier(0.2, 0, 0, 1),
+    visibility 0s 180ms;
+}
+
+.shell[data-expanded='true'] .skeleton {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 160ms cubic-bezier(0.2, 0, 0, 1),
+    visibility 0s 160ms;
+}
+
+.shell[data-expanded='true'] .expanded {
+  visibility: visible;
+  opacity: 1;
+  transform: scale3d(1, 1, 1);
+  pointer-events: auto;
+  transition:
+    opacity 180ms cubic-bezier(0.2, 0, 0, 1),
+    transform 180ms cubic-bezier(0.2, 0, 0, 1),
+    visibility 0s;
+}
+
+.skeletonEntry,
+.entry {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+.skeletonEntry {
+  height: 10px;
+  padding: 3px 0.25rem;
+}
+
+.skeletonEntry::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0.25rem;
+  width: min(var(--toc-bar-width), calc(100% - 0.5rem));
+  height: 4px;
+  transform: translateY(-50%);
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.skeletonEntry[aria-current='location']::after {
+  opacity: 1;
+}
+
+.entry {
+  padding: 3px 0.25rem;
+  overflow-wrap: anywhere;
+}
+
+.entry::before {
+  content: '';
+  position: absolute;
+  inset-block: 0.375rem;
+  left: -0.375rem;
+  width: 2px;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0;
+}
+
+.entry[aria-current='location']::before {
+  opacity: 1;
+}
+
+.nested {
+  position: relative;
+  margin-top: 0;
+  padding-left: var(--toc-indent);
+}
+
+.group::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: 1px;
+  background: var(--toc-border);
+}
+
+/* Wide touch-only screens keep the readable outline visible. */
+@media (hover: none) {
+  .skeleton {
+    display: none;
+  }
+
+  .expanded {
+    visibility: visible;
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+    pointer-events: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton,
+  .expanded {
+    transition: none;
+  }
+}

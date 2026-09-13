@@ -1,0 +1,153 @@
+---
+title: 'TOC motion test playground'
+date: '2026-09-13'
+description: 'Dummy article for testing the desktop table of contents, long labels, nested headings, active tracking, and expansion motion.'
+category: 'Test'
+tags: 'dummy, test, toc'
+status: 'published'
+test: true
+---
+
+This page is intentionally repetitive. It provides enough headings and vertical space to test the collapsed skeleton, the expanded table of contents, active section tracking, navigation, wrapping, and behavior near the end of an article.
+
+## Start
+
+The first section has a very short label. Hover over the skeleton cluster, move the pointer in and out several times, and confirm that every label appears in a single smooth expansion without pushing the article horizontally.
+
+Scroll slowly until the next heading reaches the reading position. The active marker should move from this entry to the next one without changing the width or height of any skeleton bar.
+
+## A medium-length heading for ordinary navigation
+
+This section represents the common case: a heading that fits comfortably on one line. Click its TOC entry from another part of the page and confirm that the hash changes and the heading lands at the expected offset.
+
+The text here adds breathing room between anchors. It also makes it easier to see whether active tracking updates too early, too late, or differently when scrolling upward.
+
+### Nested short
+
+This is a third-level heading. Its TOC entry should remain indented beneath its parent and the hierarchy stroke should appear only in the expanded state.
+
+### A nested heading long enough to wrap naturally onto another line
+
+This label is deliberately long. It should wrap at its natural width, remain fully readable, and pop into view as a complete label without a clipped upper or lower half.
+
+The content below the heading is ordinary placeholder prose. Resize the browser while this entry is active and confirm that the line break changes without causing a horizontal scrollbar or a sudden jump in the article.
+
+## Tiny
+
+Short labels create the narrowest skeleton bars. This one is useful for checking that proportional widths still have a practical minimum and remain easy to identify when highlighted.
+
+Scroll past this paragraph quickly, then reverse direction. The active state should return to Tiny before moving back to the preceding nested heading.
+
+## A heading with punctuation: commas, parentheses, and an em dash — all together
+
+Punctuation gives anchor generation and line wrapping more varied input. The TOC link should navigate to this section without losing any characters from its visible label.
+
+This paragraph is long enough to separate the next anchor from this one. The expanded rail should stay centered in the left gutter and should never overlap the article container while its labels expand.
+
+### Child A
+
+Child A is intentionally concise. Compare its indentation with the longer child that follows it and confirm that indentation does not alter the proportional skeleton width.
+
+### Child B has a substantially longer title for another wrapping test
+
+Child B should occupy more horizontal and vertical space when expanded while its collapsed pill remains only a scaled representation of the title length.
+
+Move the pointer from the first line of this label to the second line. The TOC must remain open because both lines belong to the same clickable link.
+
+### Child C
+
+This third sibling helps expose discontinuities in the hierarchy line. The line should remain continuous past all three children and end cleanly at the group.
+
+## Repeated heading
+
+This is the first heading with a repeated title. Its generated anchor must still be unique, and selecting it from the TOC should navigate here rather than to the later copy.
+
+Add a little scrolling distance before the next section. Active tracking should continue to use the current anchor rather than matching entries by visible text.
+
+## Numbers 1234567890 and symbols + / = ?
+
+Numbers and symbols change the apparent length of a heading without changing the number of characters very much. The skeleton remains an approximation, so exact typographic measurement is unnecessary, but the result should still look proportional.
+
+Use this section to test rapid repeated hover. Enter the cluster, leave after the pop begins, and enter again during collapse. The animation should reverse from its current state without flashing or restarting from an unrelated size.
+
+### One
+
+This entry begins a deeper-looking run of compact labels.
+
+### Two two
+
+This entry is slightly longer than the previous one.
+
+### Three three three
+
+This entry is longer again, producing an easy visual progression in the collapsed skeleton cluster.
+
+## A number that moves without lying about where the reader currently is
+
+This long heading echoes the shape of a realistic article title. It is expected to wrap in the sidebar while remaining a single semantic link.
+
+The active indicator should follow the reader through this section. It should not be affected by the pop transform because tracking is based on article headings rather than the animated dimensions of the TOC entries.
+
+## The market moved, or you did
+
+This medium label should sit directly after the preceding long label in both the expanded list and the collapsed miniature representation.
+
+Scroll with a trackpad, keyboard, scrollbar, and the TOC links if available. Each input method should produce the same active section.
+
+## Sats, bitcoin, or your currency
+
+This section offers another ordinary one-line label. Hover styling should remain distinct from the scroll-based active state, and clicking should preserve the usual browser history behavior for hash navigation.
+
+The extra paragraph creates enough separation to observe the active marker before reaching the next heading.
+
+## Green and red are not decoration
+
+Color is not the only active-state signal. The stronger skeleton pill and the expanded indicator should continue to communicate which section is current in both light and dark themes.
+
+Toggle the site theme while the rail is open and confirm that muted text, hierarchy strokes, focus rings, and the active marker retain useful contrast.
+
+## Rounding is a correctness problem with a title that should wrap
+
+This label should wrap without truncation. During the animation, both lines must scale as one complete label rather than revealing fragments through a moving edge.
+
+This section is also a convenient place to test focus. Tab to the TOC, move through its links, and confirm that keyboard focus keeps the readable form open.
+
+### Floating point
+
+The nested entry should remain visible when focused, even if the pointer is no longer over the rail.
+
+### Rounding up
+
+Move between these nested links with the keyboard and verify that the page does not scroll merely because the active entry is already visible inside the rail.
+
+### When the number should hold still
+
+If this entry approaches the rail's lower edge, only the TOC should scroll to keep it visible. The article itself should move only in response to deliberate navigation or normal page scrolling.
+
+## Repeated heading
+
+This is the second heading with the same visible title. Its anchor should receive a distinct suffix, its TOC entry should be independently clickable, and active tracking should distinguish it from the first copy.
+
+The surrounding prose makes the distinction visible in the page position. Use the browser Back button after selecting both repeated entries to verify ordinary hash history behavior.
+
+## An exceptionally long table of contents label designed to occupy several lines without truncation or animation clipping
+
+This is the primary stress case. The entire title must remain readable at the rail's fixed width. It may use several lines, but it must never introduce an ellipsis, hide overflow, or draw over a neighboring entry.
+
+Repeatedly collapse and expand while watching the first and last lines. They should remain part of the same smooth motion and settle at the same time.
+
+### Deeply indented and intentionally verbose nested heading for limited-width testing
+
+Indentation leaves this entry with the least horizontal room on the page. It should wrap more often than its parent while preserving the nested hierarchy and remaining fully clickable across every line.
+
+## Near the bottom
+
+This section moves the active state close to the end of the TOC. The rail may need to scroll internally to keep the active entry visible, but it must remain fixed in the viewport and stay below the index link.
+
+Continue to the final section using normal page scrolling. Confirm that neither the skeleton cluster nor the expanded list moves underneath the index control.
+
+## Final section at the bottom of the article
+
+This is the last anchor. At the bottom of the page, the active marker should rest on this entry and the TOC should remain in its fixed viewport position.
+
+Hover one final time, click an earlier heading, and then return here. The rail should expand smoothly in either location, and the final entry should remain available without being covered or truncated.
