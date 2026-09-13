@@ -186,6 +186,69 @@ subtle and infrequent:
 - `shadow-lg` or `shadow-xl` only for overlays and dialogs;
 - avoid applying a large shadow and vertical lift to every hoverable card.
 
+### 4.5 Breakpoints and density
+
+Use the default Tailwind breakpoints as the shared responsive vocabulary:
+
+| Name | Width        | Intended use                                    |
+| ---- | ------------ | ----------------------------------------------- |
+| Base | below 640 px | Phone-first layout and touch interaction        |
+| `sm` | 640 px       | Room for denser card grids and paired content   |
+| `md` | 768 px       | Desktop-style alignment and expanded navigation |
+| `lg` | 1024 px      | Wider grids and supporting side content         |
+
+Add a custom breakpoint only when the content demonstrably breaks between these
+steps. Do not use one-off media queries to patch a component whose internal
+layout should reflow naturally.
+
+The site supports two intentional density levels:
+
+- **comfortable:** normal pages, prose, navigation cards, forms, and primary
+  controls;
+- **compact:** metadata, dashboards, tables, heatmaps, and dense media grids.
+
+Compact does not mean tiny. Both densities use the same typography, target
+sizes, color roles, and interaction states. Density should be set by the owning
+section rather than changed unpredictably inside individual cards.
+
+### 4.6 Layering
+
+The current interface uses several unrelated large and arbitrary z-index values.
+Use a small shared layer order so overlays remain predictable:
+
+| Layer   | Intended content                                               |
+| ------- | -------------------------------------------------------------- |
+| Base    | Page content and decorative backgrounds                        |
+| Raised  | Sticky section controls and local floating affordances         |
+| Header  | Global navigation and its menus                                |
+| Overlay | Scrims and full-screen interaction backdrops                   |
+| Dialog  | Dialogs, command menu, lightbox content, and popovers          |
+| Notice  | Time-sensitive toast or system notice that must remain visible |
+
+Prefer named CSS variables or documented shared utilities when the layer is
+used across routes. A route-local decorative effect must not rise above the
+global header or an active dialog. Negative z-index content must remain purely
+decorative and must never contain interaction or essential information.
+
+### 4.7 Theme behavior
+
+Light, dark, and system modes are equal presentations of one design system.
+
+- Use the root theme class and shared color roles; do not maintain route-local
+  theme state.
+- Keep the browser `color-scheme` and theme color aligned with the rendered
+  background.
+- Avoid a flash of the wrong theme and avoid rendering theme-dependent text or
+  geometry that changes during hydration.
+- Light and dark image variants must use the same dimensions and composition so
+  changing theme does not move content.
+- Third-party interfaces should follow the selected theme when their APIs allow
+  it without duplicating theme observers throughout the component tree.
+- The theme control must expose the current selection, support the keyboard,
+  and use clear labels for Light, Dark, and System.
+- A theme may adjust contrast and imagery, but it must not change navigation,
+  content order, available actions, or component identity.
+
 ## 5. Layout and hierarchy
 
 ### 5.1 Global shell
@@ -194,10 +257,11 @@ Every normal route should use the same page background, content alignment,
 header, footer, and vertical rhythm. The shell must feel calm enough to support
 both articles and visually rich features.
 
-The active header direction—signature plus compact menu and theme controls—is
-stronger than maintaining multiple navigation bars. Standardize its control
-sizes, grouping, labels, focus states, and surface treatment. Remove obsolete
-header presentations once their lack of consumers is proven.
+The compact signature-led header is a stronger base than maintaining multiple
+navigation bars. Keep its calm silhouette, but make essential destinations
+discoverable without prior shortcut knowledge. Standardize control sizes,
+grouping, labels, focus states, and surface treatment. Remove obsolete header
+presentations once their lack of consumers is proven.
 
 The command menu may supplement navigation, but essential destinations must
 remain understandable and keyboard accessible. A shortcut string is helpful
@@ -235,6 +299,27 @@ page title
 
 Do not use extra cards, pills, or headings when spacing and typography already
 express the relationship.
+
+### 5.4 Navigation and location
+
+Navigation should make the site's breadth discoverable without forcing visitors
+to understand a command palette.
+
+- Keep the same essential destinations available on phone and desktop, even if
+  their presentation changes.
+- Show an active state when the visitor is inside a major section.
+- Use Next.js links for internal navigation and ordinary anchors for external
+  destinations or downloadable resources.
+- Preserve browser expectations such as opening links in a new tab, copying a
+  destination, and using back and forward navigation.
+- Reflect meaningful filters, selected categories, pagination, and other
+  shareable views in the URL.
+- Deep routes should provide enough context through the title, metadata,
+  breadcrumbs, or nearby navigation to explain where the visitor is.
+- Pagination uses clear Previous and Next labels, identifies the current page,
+  and does not present unavailable directions as active controls.
+- A table of contents supplements article structure and must not obscure the
+  document or focused headings at any viewport.
 
 ## 6. Component language
 
@@ -343,6 +428,127 @@ represent competing systems and should be consolidated.
 - Dialog and drawer scroll must remain contained on touch devices.
 - Overlay surfaces may use stronger elevation than ordinary cards.
 
+### 6.8 Forms and inputs
+
+Guestbook comments, search, selectors, and future forms should share one input
+language rather than inherit an external library's defaults.
+
+- Every control has a visible label or an accessible name. Placeholder text is
+  supporting guidance, not a label.
+- Labels and their controls share one click or tap target where applicable.
+- Use the correct input type, input mode, name, and autocomplete value.
+- Use `rounded-lg`, a neutral border, the page surface color, and the standard
+  focus ring.
+- Keep control text at least `text-sm` and primary input targets at least 44 px
+  high on touch layouts.
+- Show validation beside the affected field and focus the first invalid field
+  after submission.
+- Preserve pasted content and browser autofill. Do not block paste or password
+  managers without a specific security reason.
+- Keep the submit action available until submission starts, then communicate
+  progress without replacing the button with an unexplained spinner.
+- Warn before discarding meaningful unsaved input.
+- Use native controls when they satisfy the interaction. A custom selector must
+  reproduce keyboard navigation, focus, selected state, and dismissal behavior.
+
+### 6.9 Charts heatmaps and metrics
+
+Data visualization must explain information rather than decorate a dashboard.
+
+- Give every chart a visible title or nearby label that states what is being
+  measured and over what period.
+- Use a small intentional palette. Do not generate a rainbow merely because a
+  series can have a unique color.
+- Never make color the only distinction; pair it with labels, ordering, shape,
+  texture, or an accessible summary.
+- Preserve sufficient contrast for marks, grid lines, axes, and tooltip text in
+  both themes.
+- Format numbers, dates, durations, and percentages consistently with `Intl`
+  formatters or an established shared formatter.
+- Use tabular numerals in aligned values and avoid false precision.
+- Tooltips must supplement information that is also reachable without precise
+  pointer hover. Provide a text summary or table when the graphic communicates
+  important data.
+- Keep axis labels and legends readable at phone widths. Reduce detail or allow
+  intentional horizontal scrolling instead of shrinking text below 12 px.
+- Loading, empty, partial, stale, and error states retain the chart's context so
+  users know which data is unavailable.
+- A prominent number should include its unit and timeframe; a naked metric is
+  not meaningful hierarchy.
+
+### 6.10 Images video and galleries
+
+Media should feel deliberately art-directed and should not cause layout shift.
+
+- Provide intrinsic dimensions or a stable aspect ratio for every image and
+  video.
+- Use one crop rule within a repeated collection. Use `object-cover` for
+  editorial thumbnails and `object-contain` for products, logos, or objects
+  whose full silhouette matters.
+- Reserve eager loading or priority for genuinely above-the-fold media. Lazy
+  load noncritical media.
+- Write alternative text for the image's purpose in context. Use empty
+  alternative text for decoration and avoid repeating a nearby caption.
+- Captions use the metadata style and remain associated with their figure.
+- Lightboxes preserve the source ratio, provide previous, next, and close
+  controls where applicable, trap focus, restore focus on close, and support
+  the keyboard.
+- Hover captions must also appear on focus and have a readable touch behavior.
+- Do not stretch low-resolution assets to imply importance. Use intentional
+  cropping, a neutral fallback, or a higher-quality source.
+- Prefer compressed video with a still fallback over an animated GIF for
+  nonessential loops. Stop decorative motion under reduced-motion preferences.
+- Credit or attribution belongs next to the relevant media or in route-owned
+  metadata rather than in a detached global note.
+
+### 6.11 Third-party interfaces
+
+An embedded service is a capability, not a license to introduce another design
+system.
+
+- Place third-party UI inside a route-owned boundary with a stable loading,
+  failure, and unavailable state.
+- Normalize typography, control shapes, focus treatment, and core surface colors
+  where the service safely allows customization.
+- Do not globally override broad selectors to restyle one integration.
+- Avoid remote decorative assets that add motion, visual noise, tracking, or a
+  new visual theme without improving the task.
+- Keep attribution and required provider branding intact, but separate it from
+  the page's primary hierarchy.
+- If an integration cannot meet the site's keyboard, contrast, privacy, or
+  responsive baseline, isolate it clearly and record the limitation.
+
+### 6.12 Prose code and tables
+
+Long-form content is a primary product surface and should remain calmer than
+dashboard or showcase UI.
+
+- Keep prose within a readable line length and use consistent paragraph rhythm.
+- Article headings use the documented hierarchy, scroll margin, and anchor-link
+  treatment.
+- Inline code is visually distinct without overpowering the sentence around it.
+- Code blocks preserve whitespace, scroll horizontally when required, and keep
+  titles, captions, line numbers, and highlighted lines legible in both themes.
+- Copy controls require a clear accessible label and visible success feedback.
+- Tables keep semantic header and cell markup. On narrow screens, scroll the
+  table container rather than compressing text into unreadable columns.
+- Callouts use color, icons, and labels together. Their tone and importance
+  should match the message rather than adding decoration to ordinary prose.
+- Quotes, footnotes, mathematics, embedded media, and captions must retain the
+  same reading measure and link language as the article.
+
+### 6.13 Accordions and disclosures
+
+- The entire disclosure heading is a button-sized target and communicates its
+  expanded state.
+- Use a consistent chevron or directional indicator and rotate it with an
+  explicit reduced-motion alternative.
+- Keep the trigger visible while its panel has keyboard focus.
+- Preserve heading hierarchy around disclosure triggers; do not choose a
+  heading level for size alone.
+- Do not hide essential page instructions inside a collapsed panel by default.
+- Expansion must not unexpectedly scroll the page or trap keyboard focus.
+
 ## 7. Interaction and motion
 
 The default interaction language is a small change in border, background,
@@ -358,6 +564,11 @@ foreground, opacity, or transform over 150 to 250 ms.
 - Continuous motion belongs only to meaningful live status or a deliberate
   showcase and must stop or simplify under reduced motion.
 - Page transitions should remain subtle and must not delay navigation.
+- Destructive or difficult-to-reverse actions require confirmation or a clear
+  undo window.
+- Drag, swipe, pinch, and hover interactions need a tap and keyboard alternative
+  unless the gesture is the essential subject of the experience.
+- Use autofocus only for one obvious desktop task and avoid it on mobile.
 
 The Home bento grid may use a small scale response as a personality detail. That
 effect is not the default interaction for Library, Projects, Blog, Uses, or
@@ -399,14 +610,60 @@ for isolated canvases or short actions, not as a default page layout. Optional
 remote widgets must fail independently rather than collapsing neighboring
 content.
 
-## 10. Accessibility baseline
+## 10. Content voice and formatting
+
+The portfolio can sound personal without making interface copy unpredictable.
+
+- Use a direct, concise, human voice. Personal narrative may use first person;
+  instructions should address the visitor directly.
+- Use Title Case for page titles, section headings, buttons, tabs, and short
+  control labels. Use sentence case for descriptions, hints, statuses, and
+  error messages.
+- Prefer specific action labels such as “Open Gallery” or “Retry Loading” over
+  vague labels such as “Continue” or “Click Here.”
+- Use a single ellipsis character in progress copy: “Loading…” rather than
+  “Loading...”
+- Error copy states what failed and the next useful action when one exists.
+- Use numerals for counts and keep units next to their values.
+- Format user-facing dates, times, numbers, and percentages with `Intl` rather
+  than assembling locale-specific strings by hand.
+- Preserve correct capitalization for brands, technologies, and personal names.
+- Wrap code tokens, account handles, and identifiers so translation tools do not
+  corrupt them when localization is introduced.
+- Edit copied or generated descriptions to match the site's voice before they
+  become interface text.
+- Truncation must not remove the only explanation of an action or state.
+
+## 11. Performance and perceived quality
+
+Performance affects visual trust and is part of the design standard.
+
+- Prevent layout shift with stable media geometry, skeleton geometry, and fixed
+  space for asynchronously loaded widgets.
+- Load critical fonts with a swap strategy and avoid adding a font for one
+  isolated label.
+- Defer below-the-fold media and heavy interactive canvases until needed while
+  preserving useful static HTML around them.
+- Prefer transform and opacity animation and avoid layout reads during render.
+- Consider virtualization or `content-visibility` for collections that grow
+  beyond roughly 50 substantial items.
+- Do not make the initial page depend on an optional analytics, comments, map,
+  music, or statistics service.
+- Use preconnect only for stable critical asset origins; do not accumulate hints
+  for every optional third party.
+- Avoid animation, blur, backdrop filters, and large shadows when they do not
+  materially improve hierarchy or feedback.
+
+## 12. Accessibility baseline
 
 Accessibility is part of the design system, not a final polish pass.
 
 - Use semantic elements before ARIA.
 - Maintain one logical `h1` and a hierarchical heading outline.
+- Provide a keyboard-visible skip link to the main content.
 - Give every interactive element a visible `focus-visible` indicator.
 - Never remove an outline without providing an equivalent focus treatment.
+- Ensure sticky headers, sidebars, and overlays do not cover the focused element.
 - Label icon-only controls and form controls.
 - Keep keyboard access equivalent to pointer access.
 - Give meaningful images useful alternative text and decorative images empty
@@ -415,13 +672,15 @@ Accessibility is part of the design system, not a final polish pass.
 - Preserve browser zoom and text resizing.
 - Respect reduced-motion preferences.
 - Keep anchored headings clear of the header with scroll margin.
+- Give meaningful audio and video an appropriate caption, transcript, or text
+  description.
 
 The project should follow the current
 [Vercel Web Interface Guidelines](https://github.com/vercel-labs/web-interface-guidelines/blob/main/command.md)
 as a practical implementation checklist in addition to this product-specific
 direction.
 
-## 11. Intentional and justified variation
+## 13. Intentional and justified variation
 
 These differences support the content and should not be flattened into generic
 cards:
@@ -440,7 +699,7 @@ cards:
 Variation is justified by a change in content model or interaction mode. It is
 not justified merely because an older route already looks different.
 
-## 12. Inconsistencies to redesign
+## 14. Inconsistencies to redesign
 
 The following current patterns should not be copied and should be corrected in
 focused changes:
@@ -470,12 +729,28 @@ focused changes:
 14. Double-applied page spacing and local alignment patches that compensate for
     unclear ownership between the root shell and route layouts.
 15. Multiple header presentations that imply different navigation systems.
+16. Arbitrary z-index values that make local decoration compete with navigation,
+    lightboxes, menus, or dialogs.
+17. Chart palettes and hover-driven details that lack a shared visual or
+    accessible data-presentation contract.
+18. Form and selector styling inherited from route code or third-party defaults
+    without a consistent label, error, focus, and submission pattern.
+19. Media treatments that vary in crop, caption placement, hover behavior, and
+    loading geometry without a content-based reason.
+20. Copied, generated, or legacy interface copy that uses inconsistent casing,
+    voice, punctuation, units, and action labels.
+21. Essential navigation hidden behind a command palette whose generic trigger
+    does not explain the site's main destinations.
+22. Route-local theme handling and light or dark asset decisions that can create
+    duplicate observers, hydration changes, or mismatched component states.
+23. Disclosure, pagination, prose-table, and code-block controls that follow
+    local conventions instead of one keyboard and responsive contract.
 
 These are design debts, not permission for a repository-wide rewrite. Address
 them by component family or route, verify current consumers, and preserve
 behavior unless a task explicitly includes redesign.
 
-## 13. Consolidation order
+## 15. Consolidation order
 
 ### Priority 0: Foundation
 
@@ -484,6 +759,9 @@ behavior unless a task explicitly includes redesign.
 3. Standardize focus rings, touch targets, link states, and reduced motion.
 4. Remove or isolate duplicate and obsolete global CSS after proving it unused.
 5. Choose the active global header presentation and remove stale alternatives.
+6. Replace arbitrary z-index values with a shared layer order.
+7. Make primary destinations visibly discoverable and keep the command palette
+   as a fast supplemental navigation path.
 
 ### Priority 1: Shared component families
 
@@ -492,6 +770,9 @@ behavior unless a task explicitly includes redesign.
 3. Unify Uses, Journey, and Library segmented controls.
 4. Unify badges, empty states, error states, and skeleton geometry.
 5. Consolidate tooltip and overlay styling on the accessible primitives.
+6. Define shared form-field and data-visualization contracts as real reuse is
+   encountered.
+7. Standardize disclosure, pagination, long-form table, and code-block controls.
 
 ### Priority 2: Route alignment
 
@@ -502,8 +783,10 @@ behavior unless a task explicitly includes redesign.
 4. Reduce the visual weight of the comment integration.
 5. Audit the Home bento cards so their deliberate personality does not create
    accidental base patterns.
+6. Align gallery media behavior, chart accessibility, and interface copy with
+   the documented standards.
 
-## 14. Contribution rules
+## 16. Contribution rules
 
 Before adding or changing UI:
 
@@ -519,14 +802,20 @@ Before adding or changing UI:
    loading, empty, error, and long-content states where applicable.
 9. Confirm that visual changes do not compromise static export.
 10. Record any intentional exception in the owning component or route.
+11. Verify labels, formats, and messages with short, typical, empty, and long
+    content.
+12. Check that local overlays use the shared layer order and restore focus when
+    dismissed.
 
 When two implementations conflict, prefer the one that is simpler, more
 legible, more accessible, and closer to the neutral editorial direction. A
 component being newer or older is not by itself a design argument.
 
-## 15. Review checklist
+## 17. Review checklist
 
 - Does the page clearly communicate its title and primary purpose?
+- Can a first-time visitor discover the primary destination without knowing a
+  keyboard shortcut?
 - Does it use the shared content grid and avoid duplicate vertical spacing?
 - Are type sizes and weights drawn from the documented hierarchy?
 - Do colors express semantic roles rather than local preference?
@@ -535,6 +824,16 @@ component being newer or older is not by itself a design argument.
 - Are hover, active, disabled, focus-visible, and reduced-motion states present?
 - Does the interface remain usable without hover and at narrow widths?
 - Are loading, empty, error, and long-content states intentional?
+- Are forms labeled, actionable, and safe against lost input?
+- Can charts and visualizations be understood without color or precise hover?
+- Do images use deliberate crops, stable dimensions, useful alternative text,
+  and appropriate loading priority?
+- Are dates, numbers, units, labels, and messages formatted consistently?
+- Do overlays and sticky elements follow the shared layer order without hiding
+  focus?
+- Do light, dark, and system modes preserve the same hierarchy and behavior
+  without layout shift?
+- Does the page remain useful before optional third-party UI loads?
 - Is route-specific personality contained rather than becoming a second design
   system?
 - Would the feature still look native if placed beside Blog, Uses, Songs, or
