@@ -133,6 +133,8 @@ export function Toc({ toc }: TocProps) {
   const pendingFocusUrlRef = useRef<string>()
   const leaveTimerRef = useRef<ReturnType<typeof setTimeout>>()
   const isRevealedRef = useRef(false)
+  const isPointerInsideRef = useRef(false)
+  const hasKeyboardFocusRef = useRef(false)
   const entries = useMemo(() => flattenToc(toc), [toc])
   const longestTitle = Math.max(1, ...entries.map(entry => entry.title.length))
   const collapsedHeight =
@@ -307,24 +309,34 @@ export function Toc({ toc }: TocProps) {
       data-expanded={isRevealed}
       onPointerEnter={event => {
         if (event.pointerType === 'touch') return
+        isPointerInsideRef.current = true
         clearTimeout(leaveTimerRef.current)
         reveal(true)
       }}
       onPointerLeave={() => {
+        isPointerInsideRef.current = false
         clearTimeout(leaveTimerRef.current)
         leaveTimerRef.current = setTimeout(() => {
-          if (!expandedRef.current?.contains(document.activeElement)) {
-            reveal(false)
-          }
+          if (!hasKeyboardFocusRef.current) reveal(false)
         }, 250)
       }}
       onPointerCancel={() => {
+        isPointerInsideRef.current = false
         clearTimeout(leaveTimerRef.current)
-        reveal(false)
+        if (!hasKeyboardFocusRef.current) reveal(false)
+      }}
+      onPointerDownCapture={() => {
+        hasKeyboardFocusRef.current = false
+      }}
+      onFocusCapture={event => {
+        clearTimeout(leaveTimerRef.current)
+        hasKeyboardFocusRef.current = event.target.matches(':focus-visible')
+        reveal(true)
       }}
       onBlurCapture={event => {
         if (event.currentTarget.contains(event.relatedTarget)) return
-        reveal(false)
+        hasKeyboardFocusRef.current = false
+        if (!isPointerInsideRef.current) reveal(false)
       }}
     >
       <ol className={cn(styles.skeleton, 'px-2 py-3')} aria-hidden={isRevealed}>
