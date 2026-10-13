@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="0 0 360 360">
+  <!-- Default vinyl for the home music card: grooves, track gaps and two off-axis sheen wedges so the slow spin stays visible -->
+  <defs>
+    <radialGradient id="vinyl" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a1a1a" />
+      <stop offset="70%" stop-color="#0d0d0d" />
+      <stop offset="100%" stop-color="#050505" />
+    </radialGradient>
+    <radialGradient id="sheen" cx="50%" cy="50%" r="50%">
+      <stop offset="35%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="72%" stop-color="#ffffff" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.04" />
+    </radialGradient>
+    <radialGradient id="label" cx="42%" cy="38%" r="70%">
+      <stop offset="0%" stop-color="#b91c1c" />
+      <stop offset="100%" stop-color="#7f1d1d" />
+    </radialGradient>
+  </defs>
+  <circle cx="180" cy="180" r="176" fill="url(#vinyl)" />
+  <g fill="none" stroke="#ffffff" stroke-width="0.8">
+  <circle cx="180" cy="180" r="70.0" stroke-opacity="0.11" />
+  <circle cx="180" cy="180" r="72.4" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="74.8" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="77.2" stroke-opacity="0.11" />
+  <circle cx="180" cy="180" r="79.6" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="82.0" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="84.4" stroke-opacity="0.11" />
+  <circle cx="180" cy="180" r="86.8" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="89.2" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="91.6" stroke-opacity="0.11" />
+  <circle cx="180" cy="180" r="94.0" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="96.4" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="98.8" stroke-opacity="0.11" />
+  <circle cx="180" cy="180" r="101.2" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="103.6" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="106.0" stroke-opacity="0.11" />
+  <circle cx="180" cy="180" r="108.4" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="110.8" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="113.2" stroke-opacity="0.11" />
+  <circle cx="180" cy="180" r="115.6" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="118.0" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="120.4" stroke-opacity="0.11" />
+  <circle cx="180" cy="180" r="122.8" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="125.2" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="127.6" stroke-opacity="0.11" />
+  <circle cx="180" cy="180" r="130.0" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="132.4" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="134.8" stroke-opacity="0.11" />
+  <circle cx="180" cy="180" r="137.2" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="139.6" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="142.0" stroke-opacity="0.11" />
+  <circle cx="180" cy="180" r="144.4" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="146.8" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="149.2" stroke-opacity="0.11" />
+  <circle cx="180" cy="180" r="151.6" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="154.0" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="156.4" stroke-opacity="0.11" />
+  <circle cx="180" cy="180" r="158.8" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="161.2" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="163.6" stroke-opacity="0.11" />
+  <circle cx="180" cy="180" r="166.0" stroke-opacity="0.05" />
+  <circle cx="180" cy="180" r="168.4" stroke-opacity="0.05" />
+  </g>
+  <g fill="none" stroke="#000000" stroke-opacity="0.55" stroke-width="3">
+    <circle cx="180" cy="180" r="112" />
+    <circle cx="180" cy="180" r="146" />
+  </g>
+  <path d="M180 180 L238.8 18.3 A172 172 0 0 1 311.8 69.4 Z" fill="url(#sheen)" />
+  <path d="M180 180 L121.2 341.7 A172 172 0 0 1 48.2 290.6 Z" fill="url(#sheen)" />
+  <circle cx="180" cy="180" r="175" fill="none" stroke="#2a2a2a" stroke-width="2" />
+  <circle cx="180" cy="180" r="60" fill="url(#label)" />
+  <circle cx="180" cy="180" r="54" fill="none" stroke="#000000" stroke-opacity="0.2" stroke-width="1" />
+  <circle cx="180" cy="180" r="9" fill="#000000" fill-opacity="0.35" />
+  <circle cx="180" cy="180" r="5" fill="#000000" />
+</svg>

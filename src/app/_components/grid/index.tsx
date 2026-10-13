@@ -5,7 +5,7 @@ import { GithubStats } from './cards/github-stats'
 import { LatestPost } from './cards/latest-post'
 import { LetterboxedLink } from './cards/letterboxed-link'
 import { LinksCard } from './cards/links'
-import { MostListenedMusic } from './cards/most-listened-music'
+import { NowPlayingMusic } from './cards/now-playing-music'
 import { StacksCard } from './cards/stacks-card'
 import { CatCard } from './cards/cat-card'
 import { AnalysisCard } from './cards/analysis'
@@ -40,7 +40,7 @@ export function Grid() {
         <div className="col-span-2">
           <GithubStats />
         </div>
-        <MostListenedMusic />
+        <NowPlayingMusic />
       </div>
 
       {/* second row */}

@@ -120,13 +120,25 @@ function useLastFmQuery<T>(url: string, ttlMs: number, refreshIntervalMs = 0) {
 
     load()
 
-    const interval = refreshIntervalMs
-      ? window.setInterval(() => load(true), refreshIntervalMs)
-      : null
+    if (!refreshIntervalMs) {
+      return () => {
+        cancelled = true
+      }
+    }
+
+    // Poll only while the tab is visible, and catch up when it returns
+    const interval = window.setInterval(() => {
+      if (document.visibilityState === 'visible') load(true)
+    }, refreshIntervalMs)
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') load()
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange)
 
     return () => {
       cancelled = true
-      if (interval) window.clearInterval(interval)
+      window.clearInterval(interval)
+      document.removeEventListener('visibilitychange', onVisibilityChange)
     }
   }, [refreshIntervalMs, ttlMs, url])
 
