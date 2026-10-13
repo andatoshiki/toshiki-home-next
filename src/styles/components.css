@@ -231,12 +231,12 @@
 
     code {
       @apply font-mono text-sm leading-[1.4] text-neutral-800 dark:text-neutral-300;
-      @apply text-ellipsis break-words rounded-sm bg-black/5 px-1 py-[0.16rem] backdrop-blur-3xl dark:bg-white/5;
+      @apply text-ellipsis break-words rounded-sm bg-black/5 px-1 py-[0.16rem] dark:bg-white/5;
     }
 
     /* Only affect inline code, not code blocks. */
     :not(pre) > code {
-      @apply whitespace-normal break-words align-baseline;
+      @apply whitespace-normal break-words box-decoration-clone align-baseline;
     }
 
     figure[data-rehype-pretty-code-figure=''] {
@@ -252,7 +252,6 @@
           @apply grid;
           @apply px-0 py-2;
           @apply bg-transparent dark:bg-transparent;
-          @apply backdrop-blur-0;
 
           &[data-line-numbers=''] {
             counter-reset: line;
