@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
+import { cn } from '~/lib/utils/style'
 
 const CHARSET =
   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=<>?'
@@ -130,8 +131,8 @@ export function ScrambleText({
   if (mode === 'progressive') {
     return (
       <span
-        className={className}
-        style={{ fontFamily: 'monospace', letterSpacing: '0.1em' }}
+        className={cn('font-mono', className)}
+        style={{ letterSpacing: '0.1em' }}
       >
         {content}
       </span>

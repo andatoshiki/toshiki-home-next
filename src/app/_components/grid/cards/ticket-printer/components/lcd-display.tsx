@@ -35,11 +35,11 @@ export function LCDDisplay({
               onDone={onRamblingDone}
             />
           ) : lcdState === 'id' && visitorId ? (
-            <span style={{ fontFamily: 'monospace', letterSpacing: '0.1em' }}>
+            <span className="font-mono" style={{ letterSpacing: '0.1em' }}>
               {visitorId}
             </span>
           ) : (
-            <span style={{ fontFamily: 'monospace', letterSpacing: '0.1em' }}>
+            <span className="font-mono" style={{ letterSpacing: '0.1em' }}>
               {LCD_PLACEHOLDER}
             </span>
           )}

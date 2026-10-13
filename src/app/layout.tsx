@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import { Inter, Caveat, Crimson_Text } from 'next/font/google'
+import localFont from 'next/font/local'
 
 import { config } from 'global-config'
 import { Header } from './_components/header/nav'
@@ -88,6 +89,35 @@ const crimsonText = Crimson_Text({
   display: 'block'
 })
 
+const berkeleyMono = localFont({
+  src: [
+    {
+      path: './_fonts/berkeley-mono-regular.woff2',
+      weight: '400',
+      style: 'normal'
+    },
+    {
+      path: './_fonts/berkeley-mono-oblique.woff2',
+      weight: '400',
+      style: 'italic'
+    },
+    {
+      path: './_fonts/berkeley-mono-medium.woff2',
+      weight: '500',
+      style: 'normal'
+    },
+    {
+      path: './_fonts/berkeley-mono-bold.woff2',
+      weight: '700',
+      style: 'normal'
+    }
+  ],
+  variable: '--font-berkeley-mono',
+  display: 'swap',
+  // The default size-adjusted Arial fallback would not be monospaced
+  adjustFontFallback: false
+})
+
 export default function RootLayout({
   children
 }: {
@@ -96,7 +126,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth motion-reduce:scroll-auto">
       <body
-        className={`flex min-h-screen flex-col scroll-smooth motion-reduce:scroll-auto ${inter.variable} ${dancingScript.variable} ${crimsonText.variable}`}
+        className={`flex min-h-screen flex-col scroll-smooth motion-reduce:scroll-auto ${inter.variable} ${dancingScript.variable} ${crimsonText.variable} ${berkeleyMono.variable}`}
       >
         <Providers>
           <div className="relative flex min-h-screen flex-col">

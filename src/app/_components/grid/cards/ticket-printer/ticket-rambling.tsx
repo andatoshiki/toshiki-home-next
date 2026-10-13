@@ -72,7 +72,7 @@ export function TicketRamblingId({
   }, [length, duration, onDone])
 
   return (
-    <span style={{ fontFamily: 'monospace', letterSpacing: '0.1em' }}>
+    <span className="font-mono" style={{ letterSpacing: '0.1em' }}>
       {display}
     </span>
   )
@@ -141,7 +141,7 @@ export default function Ramble({
   }, [text, speed, duration])
 
   return (
-    <span style={{ fontFamily: 'monospace', letterSpacing: '0.1em' }}>
+    <span className="font-mono" style={{ letterSpacing: '0.1em' }}>
       {display}
     </span>
   )

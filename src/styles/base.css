@@ -228,19 +228,6 @@ html.dark .analysis-diagonal-bg::after {
   background: #0f141bff;
 }
 
-/* maple font mono */
-@font-face {
-  font-family: 'Maple Mono';
-  font-style: normal;
-  font-display: swap;
-  font-weight: 400;
-  src:
-    url(https://cdn.jsdelivr.net/fontsource/fonts/-mono@latest/latin-400-normal.woff2)
-      format('woff2'),
-    url(https://cdn.jsdelivr.net/fontsource/fonts/-mono@latest/latin-400-normal.woff)
-      format('woff');
-}
-
 .mapboxgl-ctrl-logo {
   display: none !important;
 }

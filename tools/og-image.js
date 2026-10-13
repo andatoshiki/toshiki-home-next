@@ -5,6 +5,7 @@ const posts = require('./assets/posts.json') // <-- Your posts data as JSON
 
 const Inter = fs.readFileSync('./assets/Inter-Regular.ttf')
 const InterBold = fs.readFileSync('./assets/Inter-Bold.ttf')
+const BerkeleyMono = fs.readFileSync('./assets/berkeley-mono-medium.woff')
 
 const outputDir = path.join(
   process.cwd(),
@@ -67,7 +68,7 @@ async function generateImage(post) {
     color: theme === 'light' ? '#222' : '#f3f3f3',
     borderRadius: '8px',
     padding: '0.25em 0.75em',
-    fontFamily: 'monospace',
+    fontFamily: 'Berkeley Mono',
     fontSize: '22px',
     fontWeight: 500,
     display: 'flex',
@@ -287,7 +288,13 @@ async function generateImage(post) {
       height: 525,
       fonts: [
         { name: 'Inter', data: Inter, weight: 400, style: 'normal' },
-        { name: 'Inter', data: InterBold, weight: 700, style: 'normal' }
+        { name: 'Inter', data: InterBold, weight: 700, style: 'normal' },
+        {
+          name: 'Berkeley Mono',
+          data: BerkeleyMono,
+          weight: 500,
+          style: 'normal'
+        }
       ]
     }
   )

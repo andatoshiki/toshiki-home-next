@@ -52,7 +52,7 @@ export function TicketRamblingId({ length = 10, duration = 2000, onDone }) {
   }, [length, duration, onDone])
 
   return (
-    <span style={{ fontFamily: 'monospace', letterSpacing: '0.1em' }}>
+    <span className="font-mono" style={{ letterSpacing: '0.1em' }}>
       {display}
     </span>
   )

@@ -26,7 +26,7 @@ const config: Config = {
         serif: 'var(--font-crimson-text)',
         handwrite: 'var(--font-caveat)',
         mono: [
-          'Maple Mono',
+          'var(--font-berkeley-mono)',
           'ui-monospace',
           'SFMono-Regular',
           'Menlo',

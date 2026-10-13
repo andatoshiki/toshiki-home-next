@@ -107,7 +107,7 @@ system during that migration.
 Use typography to make content scannable before adding containers or color.
 
 - Inter is the product and reading typeface.
-- Maple Mono is for code, technical identifiers, keyboard hints, and genuinely
+- Berkeley Mono is for code, technical identifiers, keyboard hints, and genuinely
   machine-like decorative objects.
 - Caveat is reserved for the signature or a rare personal accent.
 - Crimson Text does not currently have a clear product role. Do not introduce
