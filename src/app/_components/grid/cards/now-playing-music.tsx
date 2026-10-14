@@ -75,7 +75,7 @@ function CardContent({
           )}
         >
           {/* Translucent backdrop: starts with the title and overhangs its cap line */}
-          <span className="absolute -right-5 top-0 h-fit max-h-full truncate text-[2.25rem] opacity-30">
+          <span className="absolute -right-4 top-0 h-fit max-h-full truncate text-[2rem] opacity-30">
             {artist}
           </span>
           <div className="truncate">{title}</div>
