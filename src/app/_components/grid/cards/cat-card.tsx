@@ -8,7 +8,11 @@ export function CatCard() {
         className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 overflow-visible"
         style={{ width: 140, height: 140 }}
       >
-        <Ripple />
+        {/* One tone per ring; stacked translucent rings fade evenly outward */}
+        <Ripple
+          mainCircleOpacity={0.2}
+          className="bg-neutral-600 dark:bg-neutral-400"
+        />
       </div>
       <Cat size={100} />
     </div>

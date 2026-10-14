@@ -102,13 +102,15 @@
 
 /* Always set base styles for .cute-cat */
 .cute-cat {
-  --cat-border: #ffb399;
-  --cat-bg-light: #5ddfe8;
-  --cat-bg-dark: #111;
-  --cat-sun: #ffee94;
-  --cat-moon: #eee;
-  --cat-body-light: #777;
-  --cat-body-dark: #444;
+  /* Monochrome: every role maps to a neutral step (DESIGN.md §4.1) */
+  --cat-border: theme('colors.neutral.400');
+  --cat-bg-light: theme('colors.neutral.300');
+  --cat-bg-dark: theme('colors.neutral.900');
+  --cat-sun: theme('colors.neutral.50');
+  --cat-moon: theme('colors.neutral.200');
+  --cat-body-light: theme('colors.neutral.600');
+  --cat-body-dark: theme('colors.neutral.700');
+  --cat-detail: theme('colors.neutral.900');
 
   position: relative;
   display: block;
@@ -163,7 +165,10 @@
   height: 0;
   width: 0;
   content: '';
-  top: calc(var(--cat-size) * -0.08);
+  /* Sit on the head with a 1px overlap; border widths round down, so a
+     computed offset can leave the ear touching the head edge-to-edge and
+     show a hairline seam when the card is scaled on hover */
+  bottom: calc(100% - 1px);
   border-bottom: calc(var(--cat-size) * 0.085) solid var(--cat-body-light);
 }
 .cute-cat .the-cat::before {
@@ -198,7 +203,7 @@
   margin-right: auto;
   display: block;
   height: 100%;
-  background: var(--cat-border);
+  background: var(--cat-detail);
   transition: all 0.5s;
   width: calc(var(--cat-size) * 0.021);
   border-radius: 100%;
@@ -209,7 +214,7 @@
   margin-right: auto;
   display: block;
   border-radius: 9999px;
-  background: var(--cat-border);
+  background: var(--cat-detail);
   height: calc(var(--cat-size) * 0.043);
   width: calc(var(--cat-size) * 0.043);
   top: calc(var(--cat-size) * 0.191);
@@ -226,33 +231,9 @@
 
 /* Tailwind dark mode for .cute-cat */
 .dark .cute-cat {
-  background: var(--cat-bg-dark);
-}
-.dark .cute-cat .the-sun {
-  top: calc(var(--cat-size) * 0.851);
-}
-.dark .cute-cat .the-moon {
-  top: calc(var(--cat-size) * 0.17);
-}
-.dark .cute-cat .the-cat {
-  background: var(--cat-body-dark);
-}
-.dark .cute-cat .the-cat::before,
-.dark .cute-cat .the-cat::after {
-  border-bottom: calc(var(--cat-size) * 0.085) solid var(--cat-body-dark);
-}
-.dark .cute-cat .the-cat .eyes .pupil {
-  height: 90%;
-  width: calc(var(--cat-size) * 0.145);
-  margin: 5% auto;
-}
-.dark .cute-cat:hover .the-cat .eyes {
-  height: calc(var(--cat-size) * 0.17);
-  bottom: calc(var(--cat-size) * 0.34);
-}
-
-/* Tailwind dark mode for .cute-cat */
-.dark .cute-cat {
+  --cat-border: theme('colors.neutral.700');
+  --cat-sun: theme('colors.neutral.200');
+  --cat-detail: theme('colors.neutral.950');
   background: var(--cat-bg-dark);
 }
 .dark .cute-cat .the-sun {

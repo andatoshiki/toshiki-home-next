@@ -694,6 +694,7 @@ cards:
 | Journey                  | Map canvas and semantic location colors                | Keep surrounding controls and summary cards canonical                            |
 | Room                     | 3D canvas and lighting controls                        | Keep loading, error, reduced-motion, and input patterns canonical                |
 | Ticket or receipt object | Skeuomorphic color, mono type, and physical motion     | Contain it to the object and never use it as a general card template             |
+| Home cat theme toggle    | Stacked translucent ripple forming a soft gradient     | Use one neutral tone; let ring opacity, not hue, fade evenly toward the card     |
 | Brand integrations       | Official service colors and logos                      | Use only where identity or status requires them                                  |
 
 Variation is justified by a change in content model or interaction mode. It is
