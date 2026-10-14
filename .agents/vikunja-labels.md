@@ -5,9 +5,12 @@ with the `veans` CLI. Labels mirror GitHub issue labels. `veans` prepends the
 `veans:` namespace automatically, so pass the short name:
 
 ```bash
-veans create "fix toc collapsing on scroll" --label bug --label area:blog
+veans create "fix toc collapsing on scroll" --priority 2 --label bug --label area:blog
 veans update HOME-NEXT-12 --label-add responsive
 ```
+
+The full task shape (title, priority, body) is defined in
+`.agents/vikunja-tasks.md`. This file only decides which labels to pass.
 
 All labels below already exist in Vikunja. Do not invent new labels; if none
 fits, use the closest one and say why in the description.
@@ -90,27 +93,30 @@ Add one together with `veans update <ID> -s scrapped --reason "..."`:
 
 ## Examples
 
+The `-d` body is omitted here for brevity; real tasks always include one.
+
 ```bash
 # Music card shows the wrong track after Last.fm returns an empty response
-veans create "music card keeps stale track on empty last.fm response" \
-  --label bug --label area:home --label external-api --priority 3
+veans create "fix music card keeping stale track on empty last.fm response" \
+  --priority 3 --label bug --label area:home --label external-api
 
 # Add a "location" field to journey entries and show it on the globe
 veans create "add location field to journey entries" \
-  --label enhancement --label area:content-pipeline --label area:journey
+  --priority 2 --label enhancement --label area:content-pipeline --label area:journey
 
 # Gallery grid overflows horizontally on phones
-veans create "album grid overflows on narrow screens" \
-  --label bug --label area:gallery --label responsive
+veans create "fix album grid overflowing on phones" \
+  --priority 3 --label bug --label area:gallery --label responsive
 
 # Rename the mansory route to masonry
 veans create "rename /mansory route to /masonry" \
-  --label refactor --label area:gallery --label breaking --label static-export
+  --priority 2 --label refactor --label area:gallery --label breaking --label static-export
 
 # Upgrade Next.js
 veans create "upgrade next to latest minor" \
-  --label dependencies --label area:tooling --label static-export
+  --priority 2 --label dependencies --label area:tooling --label static-export
 
 # Publish a new blog post
-veans create "write post about kintaro onsen trip" --label content --label area:blog
+veans create "write post about kintaro onsen trip" \
+  --priority 1 --label content --label area:blog
 ```
