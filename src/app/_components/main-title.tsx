@@ -40,7 +40,8 @@ export function MainTitle() {
                   Hi, I am{' '}
                   <span className="text-black/90 dark:text-white/90">
                     安田俊樹
-                  </span>
+                  </span>{' '}
+                  or
                 </span>
                 <span className="flex-1" />
                 <span className="hidden flex-shrink-0 md:flex">
