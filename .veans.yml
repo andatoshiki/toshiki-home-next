@@ -1,0 +1,13 @@
+server: https://task.toshiki.dev
+project_id: 5
+project_identifier: HOME-NEXT
+view_id: 20
+buckets:
+    todo: 14
+    in_progress: 15
+    in_review: 18
+    done: 16
+    scrapped: 17
+bot:
+    username: bot-toshiki-home-next
+    user_id: 5
