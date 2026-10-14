@@ -67,15 +67,15 @@ function CardContent({
         size="1em"
         className="absolute left-0 top-0 text-[50px] text-red-800"
       />
-      <div className="absolute inset-y-1 right-1.5 z-10 flex w-10 justify-end overflow-hidden">
+      <div className="absolute inset-y-1 right-1.5 z-10 flex w-14 justify-end overflow-hidden">
         <div
           className={cn(
             'side-text relative h-full max-w-full font-extrabold leading-none text-white',
             pulse && 'animate-pulse motion-reduce:animate-none'
           )}
         >
-          {/* Translucent backdrop starting where the title starts (flipped) */}
-          <span className="absolute right-0 top-0 h-fit max-h-full truncate text-[1.75rem] opacity-30">
+          {/* Translucent backdrop: starts with the title and overhangs its cap line */}
+          <span className="absolute -right-5 top-0 h-fit max-h-full truncate text-[2.25rem] opacity-30">
             {artist}
           </span>
           <div className="truncate">{title}</div>
