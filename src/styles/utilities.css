@@ -55,8 +55,10 @@
     @apply bg-white/0 bg-gradient-to-r from-white/0 via-white/30 to-white/0 text-white/0 dark:via-white/10;
   }
 
+  /* Vertical text read bottom to top. Sideways orientation lays every script
+     on its side so the flip cannot turn upright CJK glyphs upside down */
   .side-text {
-    @apply scale-flip [writing-mode:vertical-rl];
+    @apply scale-flip [text-orientation:sideways] [writing-mode:vertical-rl];
   }
 }
 
